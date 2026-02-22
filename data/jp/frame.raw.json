@@ -1,0 +1,5476 @@
+{
+  "meta": {
+    "targetUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
+    "finalUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
+    "capturedAt": "2026-02-22T06:16:36.684Z",
+    "harCaptured": true,
+    "harError": null,
+    "extractionError": null
+  },
+  "source": "best-candidate",
+  "bestCandidateId": "c1",
+  "candidateCount": 17,
+  "rows": [
+    {
+      "index": 0,
+      "text": "技名 | 動作フレーム発生持続技の動作中に攻撃判定が発生しているフレームを表します（例） 【10-12】表記の場合、【10F/11F/12F】の【3F】間、攻撃判定が持続硬直 | 硬直差ヒットガード | キャンセル【C】必殺技、ドライブインパクト、ドライブラッシュ、SAでキャンセル可能【SA】SA技でのみキャンセル可能【SA2】SA2、SA3でキャンセル可能【SA3】SA3でのみキャンセル可能【※】特定の技でのみキャンセル可能 | ダメージ | コンボ補正値通常のコンボ補正に加えて、技自体に特殊な補正が設定されている場合に記載されます。【始動補正】コンボの初段にヒットさせた際に加算される補正【コンボ補正】コンボの2段目以降にヒットさせた際に加算される補正【即時補正】コンボの2段目以降にヒットさせた際、その技自体に加算される補正【乗算補正】コンボに組み込んだ際に、それ以降のコンボ補正値に乗算される補正値 | Dゲージ増加ヒット攻撃側のドライブゲージ増加量（ヒット時） | Dゲージ減少ガード防御側のドライブゲージ減少量（ガード時）パニッシュカウンター防御側のドライブゲージ減少量（パニッシュカウンター時） | SAゲージ増加 | 属性攻撃判定の属性を表します【上】立ち/しゃがみガード可能な上段攻撃【中】立ちガードのみ可能な中段攻撃【下】しゃがみガードのみ可能な下段攻撃【投】ガードできない投げ技【弾】飛び道具【空弾】空中判定の飛び道具 | 備考",
+      "cells": [
+        "技名",
+        "動作フレーム発生持続技の動作中に攻撃判定が発生しているフレームを表します（例） 【10-12】表記の場合、【10F/11F/12F】の【3F】間、攻撃判定が持続硬直",
+        "硬直差ヒットガード",
+        "キャンセル【C】必殺技、ドライブインパクト、ドライブラッシュ、SAでキャンセル可能【SA】SA技でのみキャンセル可能【SA2】SA2、SA3でキャンセル可能【SA3】SA3でのみキャンセル可能【※】特定の技でのみキャンセル可能",
+        "ダメージ",
+        "コンボ補正値通常のコンボ補正に加えて、技自体に特殊な補正が設定されている場合に記載されます。【始動補正】コンボの初段にヒットさせた際に加算される補正【コンボ補正】コンボの2段目以降にヒットさせた際に加算される補正【即時補正】コンボの2段目以降にヒットさせた際、その技自体に加算される補正【乗算補正】コンボに組み込んだ際に、それ以降のコンボ補正値に乗算される補正値",
+        "Dゲージ増加ヒット攻撃側のドライブゲージ増加量（ヒット時）",
+        "Dゲージ減少ガード防御側のドライブゲージ減少量（ガード時）パニッシュカウンター防御側のドライブゲージ減少量（パニッシュカウンター時）",
+        "SAゲージ増加",
+        "属性攻撃判定の属性を表します【上】立ち/しゃがみガード可能な上段攻撃【中】立ちガードのみ可能な中段攻撃【下】しゃがみガードのみ可能な下段攻撃【投】ガードできない投げ技【弾】飛び道具【空弾】空中判定の飛び道具",
+        "備考"
+      ],
+      "cellCount": 11,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data"
+    },
+    {
+      "index": 1,
+      "text": "通常技",
+      "cells": [
+        "通常技"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "通常技"
+    },
+    {
+      "index": 2,
+      "text": "立ち弱P（ノーシ）弱 | 6 | 6-8 | 10 | 4 | -2 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上 | 連打キャンセル対応",
+      "cells": [
+        "立ち弱P（ノーシ）弱",
+        "6",
+        "6-8",
+        "10",
+        "4",
+        "-2",
+        "C",
+        "300",
+        "始動補正20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "上",
+        "連打キャンセル対応"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowKind": "data",
+      "skillName": "立ち弱P（ノーシ）",
+      "commandInput": {
+        "commandText": "[icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "text": "立ち弱K（ニージニイ・ウダール）弱 | 5 | 5-7 | 11 | 3 | -2 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上",
+      "cells": [
+        "立ち弱K（ニージニイ・ウダール）弱",
+        "5",
+        "5-7",
+        "11",
+        "3",
+        "-2",
+        "C",
+        "300",
+        "始動補正20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "立ち弱K（ニージニイ・ウダール）",
+      "commandInput": {
+        "commandText": "[icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "text": "立ち中P（シュトゥールム）中 | 12 | 12-14 | 21 | 1 | -6 | 700 | 3000 | -4000 | -6000 | 500 | 上",
+      "cells": [
+        "立ち中P（シュトゥールム）中",
+        "12",
+        "12-14",
+        "21",
+        "1",
+        "-6",
+        "",
+        "700",
+        "",
+        "3000",
+        "-4000",
+        "-6000",
+        "500",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "立ち中P（シュトゥールム）",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "text": "立ち中K（ウームヌィ・ウダール）中 | 8 | 8-10 | 19 | 3 | -3 | C | 600 | 1500 | -3000 | -4000 | 500 | 上",
+      "cells": [
+        "立ち中K（ウームヌィ・ウダール）中",
+        "8",
+        "8-10",
+        "19",
+        "3",
+        "-3",
+        "C",
+        "600",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "500",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "立ち中K（ウームヌィ・ウダール）",
+      "commandInput": {
+        "commandText": "[icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "text": "立ち強P（キンターヴル）強 | 12 | 12-13 | 22 | 3 | -3 | C | 800 | 始動補正20% | 2000 | -5000 | -8000 | 1000 | 上 | 空中ヒット時吹き飛びダウンパニッシュカウンター時+25F",
+      "cells": [
+        "立ち強P（キンターヴル）強",
+        "12",
+        "12-13",
+        "22",
+        "3",
+        "-3",
+        "C",
+        "800",
+        "始動補正20%",
+        "2000",
+        "-5000",
+        "-8000",
+        "1000",
+        "上",
+        "空中ヒット時吹き飛びダウンパニッシュカウンター時+25F"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowKind": "data",
+      "skillName": "立ち強P（キンターヴル）",
+      "commandInput": {
+        "commandText": "[icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "text": "立ち強K（オボロートニ）強 | 12 | 12-15 | 17 | 7 | 2 | 800 | 3000 | -6000 | -10000 | 1000 | 上",
+      "cells": [
+        "立ち強K（オボロートニ）強",
+        "12",
+        "12-15",
+        "17",
+        "7",
+        "2",
+        "",
+        "800",
+        "",
+        "3000",
+        "-6000",
+        "-10000",
+        "1000",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "立ち強K（オボロートニ）",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "text": "しゃがみ弱P（ブィストルイ・ウダール） 弱 | 4 | 4-5 | 11 | 4 | -1 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上 | 連打キャンセル対応",
+      "cells": [
+        "しゃがみ弱P（ブィストルイ・ウダール） 弱",
+        "4",
+        "4-5",
+        "11",
+        "4",
+        "-1",
+        "C",
+        "300",
+        "始動補正20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "上",
+        "連打キャンセル対応"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowKind": "data",
+      "skillName": "しゃがみ弱P（ブィストルイ・ウダール）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "text": "しゃがみ弱K（リョーフキー・ウダール） 弱 | 6 | 6-7 | 10 | 2 | -2 | 200 | 始動補正20% | 250 | -500 | -2000 | 300 | 下 | 連打キャンセル対応",
+      "cells": [
+        "しゃがみ弱K（リョーフキー・ウダール） 弱",
+        "6",
+        "6-7",
+        "10",
+        "2",
+        "-2",
+        "",
+        "200",
+        "始動補正20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "下",
+        "連打キャンセル対応"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "しゃがみ弱K（リョーフキー・ウダール）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "text": "しゃがみ中P（ズミヤー） 中 | 7 | 7-10 | 14 | 6 | -2 | C | 600 | 1500 | -3000 | -4000 | 500 | 上",
+      "cells": [
+        "しゃがみ中P（ズミヤー） 中",
+        "7",
+        "7-10",
+        "14",
+        "6",
+        "-2",
+        "C",
+        "600",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "500",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "しゃがみ中P（ズミヤー）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "text": "しゃがみ中K（ズローバ） 中 | 9 | 9-11 | 17 | 3 | -3 | 700 | 始動補正20% | 2000 | -4000 | -6000 | 500 | 下",
+      "cells": [
+        "しゃがみ中K（ズローバ） 中",
+        "9",
+        "9-11",
+        "17",
+        "3",
+        "-3",
+        "",
+        "700",
+        "始動補正20%",
+        "2000",
+        "-4000",
+        "-6000",
+        "500",
+        "下",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "しゃがみ中K（ズローバ）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "text": "しゃがみ強P（マリートヴァ） 強 | 9 | 9-14 | 20 | 1 | -6 | C | 800 | 2000 | -5000 | -8000 | 1000 | 上 | 強制立ち効果",
+      "cells": [
+        "しゃがみ強P（マリートヴァ） 強",
+        "9",
+        "9-14",
+        "20",
+        "1",
+        "-6",
+        "C",
+        "800",
+        "",
+        "2000",
+        "-5000",
+        "-8000",
+        "1000",
+        "上",
+        "強制立ち効果"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "しゃがみ強P（マリートヴァ）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "text": "しゃがみ強K（ジョーキル） 強 | 10 | 10-12 | 21 | D | -6 | 900 | 2000 | -5000 | -10000 | 1000 | 下 | パニッシュカウンター時ダウン時間増加、ハードノックダウン",
+      "cells": [
+        "しゃがみ強K（ジョーキル） 強",
+        "10",
+        "10-12",
+        "21",
+        "D",
+        "-6",
+        "",
+        "900",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "下",
+        "パニッシュカウンター時ダウン時間増加、ハードノックダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "しゃがみ強K（ジョーキル）",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "text": "ジャンプ弱P（ルイースイ）（ジャンプ中に）弱 | 5 | 5-14 | 着地後3 | 300 | 500 | -1500 | -2000 | 300 | 中",
+      "cells": [
+        "ジャンプ弱P（ルイースイ）（ジャンプ中に）弱",
+        "5",
+        "5-14",
+        "着地後3",
+        "",
+        "",
+        "",
+        "300",
+        "",
+        "500",
+        "-1500",
+        "-2000",
+        "300",
+        "中",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowKind": "data",
+      "skillName": "ジャンプ弱P（ルイースイ）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "text": "ジャンプ弱K（ヴァローナ）（ジャンプ中に）弱 | 6 | 6-13 | 着地後3 | 300 | 500 | -1500 | -2000 | 300 | 中 | めくり性能",
+      "cells": [
+        "ジャンプ弱K（ヴァローナ）（ジャンプ中に）弱",
+        "6",
+        "6-13",
+        "着地後3",
+        "",
+        "",
+        "",
+        "300",
+        "",
+        "500",
+        "-1500",
+        "-2000",
+        "300",
+        "中",
+        "めくり性能"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "ジャンプ弱K（ヴァローナ）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "text": "ジャンプ中P（ローシャッチ）（ジャンプ中に）中 | 12 | 12-14 | 着地後3 | 700 | 1000 | -2500 | -4000 | 500 | 中",
+      "cells": [
+        "ジャンプ中P（ローシャッチ）（ジャンプ中に）中",
+        "12",
+        "12-14",
+        "着地後3",
+        "",
+        "",
+        "",
+        "700",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "中",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowKind": "data",
+      "skillName": "ジャンプ中P（ローシャッチ）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "text": "ジャンプ中K（コンダ）（ジャンプ中に）中 | 7 | 7-12 | 着地後3 | 600 | 1000 | -2500 | -4000 | 500 | 中 | 空中ヒット時吹き飛びダウン",
+      "cells": [
+        "ジャンプ中K（コンダ）（ジャンプ中に）中",
+        "7",
+        "7-12",
+        "着地後3",
+        "",
+        "",
+        "",
+        "600",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "中",
+        "空中ヒット時吹き飛びダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "ジャンプ中K（コンダ）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "text": "ジャンプ強P（イディナローク）（ジャンプ中に）強 | 9 | 9-13 | 着地後3 | 800 | 2000 | -4000 | -5000 | 1000 | 中 | 空中カウンター/パニッシュカウンター時叩きつけダウン",
+      "cells": [
+        "ジャンプ強P（イディナローク）（ジャンプ中に）強",
+        "9",
+        "9-13",
+        "着地後3",
+        "",
+        "",
+        "",
+        "800",
+        "",
+        "2000",
+        "-4000",
+        "-5000",
+        "1000",
+        "中",
+        "空中カウンター/パニッシュカウンター時叩きつけダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "ジャンプ強P（イディナローク）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "text": "ジャンプ強K（ジャール・プチーツァ）（ジャンプ中に）強 | 11 | 11-16 | 着地後3 | 800 | 2000 | -4000 | -5000 | 1000 | 中",
+      "cells": [
+        "ジャンプ強K（ジャール・プチーツァ）（ジャンプ中に）強",
+        "11",
+        "11-16",
+        "着地後3",
+        "",
+        "",
+        "",
+        "800",
+        "",
+        "2000",
+        "-4000",
+        "-5000",
+        "1000",
+        "中",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowKind": "data",
+      "skillName": "ジャンプ強K（ジャール・プチーツァ）",
+      "commandInput": {
+        "commandText": "（ジャンプ中に） [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "text": "特殊技",
+      "cells": [
+        "特殊技"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "特殊技"
+    },
+    {
+      "index": 21,
+      "text": "ギリオチーナ 中 | 22 | 22-23 | 19 | 3 | -3 | 700 | 1500 | -2500 | -5000 | 500 | 中",
+      "cells": [
+        "ギリオチーナ 中",
+        "22",
+        "22-23",
+        "19",
+        "3",
+        "-3",
+        "",
+        "700",
+        "",
+        "1500",
+        "-2500",
+        "-5000",
+        "500",
+        "中",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "ギリオチーナ",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 22,
+      "text": "シャーロスチ 強 | 16 | 16-18 | 31 | D | -14 | 900 | 3000 | -4000 | -10000 | 1000 | 下 | カウンター/パニッシュカウンター時ダウン時間延長",
+      "cells": [
+        "シャーロスチ 強",
+        "16",
+        "16-18",
+        "31",
+        "D",
+        "-14",
+        "",
+        "900",
+        "",
+        "3000",
+        "-4000",
+        "-10000",
+        "1000",
+        "下",
+        "カウンター/パニッシュカウンター時ダウン時間延長"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "シャーロスチ",
+      "commandInput": {
+        "commandText": "[key-dr.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-dr.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 23,
+      "text": "ヴィリーナ 強 | 11 | 11-1611-12, 13-16 | 24 | D | -5 | C | 900 | 2500 | -5000 | -10000 | 1000 | 上 | 空中ヒット時吹き飛びダウン",
+      "cells": [
+        "ヴィリーナ 強",
+        "11",
+        "11-1611-12, 13-16",
+        "24",
+        "D",
+        "-5",
+        "C",
+        "900",
+        "",
+        "2500",
+        "-5000",
+        "-10000",
+        "1000",
+        "上",
+        "空中ヒット時吹き飛びダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "ヴィリーナ",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 24,
+      "text": "グロームストレルカ（1段目） 中 | 8 | 8-10 | 16 | 5 | -1 | C | 500 | 1500 | -3000 | -4000 | 400 | 上",
+      "cells": [
+        "グロームストレルカ（1段目） 中",
+        "8",
+        "8-10",
+        "16",
+        "5",
+        "-1",
+        "C",
+        "500",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "400",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "グロームストレルカ（1段目）",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 25,
+      "text": "グロームストレルカ（2段目） 中中 | 10 | 10-12 | 20 | 3 | -6 | C | 500 | コンボ補正20% | 800 | -2000 | -3000 | 400 | 上",
+      "cells": [
+        "グロームストレルカ（2段目） 中中",
+        "10",
+        "10-12",
+        "20",
+        "3",
+        "-6",
+        "C",
+        "500",
+        "コンボ補正20%",
+        "800",
+        "-2000",
+        "-3000",
+        "400",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "グロームストレルカ（2段目）",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] 中 [arrow_3.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "arrow_3.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "text": "ジラント強強 | 20 | 20-22 | 20 | 3 | -3 | C | 500 | 1000 | -2500 | -4000 | 500 | 上",
+      "cells": [
+        "ジラント強強",
+        "20",
+        "20-22",
+        "20",
+        "3",
+        "-3",
+        "C",
+        "500",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "上",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "ジラント",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 27,
+      "text": "ジラントルカー強強強 | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | 中",
+      "cells": [
+        "ジラントルカー強強強",
+        "21",
+        "21-23",
+        "22",
+        "3",
+        "-4",
+        "",
+        "1000",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "中",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "ジラントルカー",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 28,
+      "text": "ジラントナガー強強強 | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | 下",
+      "cells": [
+        "ジラントナガー強強強",
+        "21",
+        "21-23",
+        "22",
+        "3",
+        "-4",
+        "",
+        "1000",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "下",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "ジラントナガー",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強 [arrow_3.png] [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png",
+          "arrow_3.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 29,
+      "text": "必殺技",
+      "cells": [
+        "必殺技"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "必殺技"
+    },
+    {
+      "index": 30,
+      "text": "弱 トリグラフ 弱 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
+      "cells": [
+        "弱 トリグラフ 弱",
+        "22",
+        "22-31",
+        "全体 55",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "弱 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 31,
+      "text": "中 トリグラフ 中 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
+      "cells": [
+        "中 トリグラフ 中",
+        "22",
+        "22-31",
+        "全体 55",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "中 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 32,
+      "text": "強 トリグラフ 強 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
+      "cells": [
+        "強 トリグラフ 強",
+        "22",
+        "22-31",
+        "全体 55",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "強 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 33,
+      "text": "OD 弱 トリグラフ 弱中 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
+      "cells": [
+        "OD 弱 トリグラフ 弱中",
+        "20",
+        "20-39",
+        "全体 53",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "OD 弱 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "text": "OD 中 トリグラフ 弱強 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
+      "cells": [
+        "OD 中 トリグラフ 弱強",
+        "20",
+        "20-39",
+        "全体 53",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "OD 中 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 35,
+      "text": "OD 強 トリグラフ 中強 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
+      "cells": [
+        "OD 強 トリグラフ 中強",
+        "20",
+        "20-39",
+        "全体 53",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "OD 強 トリグラフ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] 中 [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "text": "弱 ストリボーグ 弱 | 16 | 16-21 | 全体 49 | D | -10 | SA3 | 1000 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）",
+      "cells": [
+        "弱 ストリボーグ 弱",
+        "16",
+        "16-21",
+        "全体 49",
+        "D",
+        "-10",
+        "SA3",
+        "1000",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "上",
+        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "弱 ストリボーグ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "text": "中 ストリボーグ 中 | 20 | 20-2620-22, 24-26 | 全体 53 | D | -8 | SA3 | 1200 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）",
+      "cells": [
+        "中 ストリボーグ 中",
+        "20",
+        "20-2620-22, 24-26",
+        "全体 53",
+        "D",
+        "-8",
+        "SA3",
+        "1200",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "上",
+        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "中 ストリボーグ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "text": "強 ストリボーグ 強 | 28 | 28-4228-30, 40-42 | 全体 61 | D | 4 | SA3 | 800 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加",
+      "cells": [
+        "強 ストリボーグ 強",
+        "28",
+        "28-4228-30, 40-42",
+        "全体 61",
+        "D",
+        "4",
+        "SA3",
+        "800",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "上",
+        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "強 ストリボーグ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 39,
+      "text": "OD ストリボーグ | 19 | 19-3019-21, 28-30 | 全体 52 | D | 2 | SA2 | 1000 | 0 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加初段のみSA2/SA3/CAでキャンセル可能",
+      "cells": [
+        "OD ストリボーグ",
+        "19",
+        "19-3019-21, 28-30",
+        "全体 52",
+        "D",
+        "2",
+        "SA2",
+        "1000",
+        "",
+        "0",
+        "-3500",
+        "-5000",
+        "800",
+        "上",
+        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加初段のみSA2/SA3/CAでキャンセル可能"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "OD ストリボーグ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "index": 40,
+      "text": "弱 ヴィーハト 弱 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
+      "cells": [
+        "弱 ヴィーハト 弱",
+        "150",
+        "150-159",
+        "全体 50",
+        "",
+        "",
+        "",
+        "800",
+        "始動補正20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "弱 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "index": 41,
+      "text": "中 ヴィーハト 中 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
+      "cells": [
+        "中 ヴィーハト 中",
+        "150",
+        "150-159",
+        "全体 50",
+        "",
+        "",
+        "",
+        "800",
+        "始動補正20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "中 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 42,
+      "text": "強 ヴィーハト 強 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
+      "cells": [
+        "強 ヴィーハト 強",
+        "150",
+        "150-159",
+        "全体 50",
+        "",
+        "",
+        "",
+        "800",
+        "始動補正20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "強 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 43,
+      "text": "OD 弱 ヴィーハト 弱中 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
+      "cells": [
+        "OD 弱 ヴィーハト 弱中",
+        "110",
+        "110-149110-119, 140-149",
+        "全体 40",
+        "",
+        "",
+        "",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "OD 弱 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "text": "OD 中 ヴィーハト 弱強 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
+      "cells": [
+        "OD 中 ヴィーハト 弱強",
+        "110",
+        "110-149110-119, 140-149",
+        "全体 40",
+        "",
+        "",
+        "",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "OD 中 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 45,
+      "text": "OD 強 ヴィーハト 中強 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
+      "cells": [
+        "OD 強 ヴィーハト 中強",
+        "110",
+        "110-149110-119, 140-149",
+        "全体 40",
+        "",
+        "",
+        "",
+        "1000",
+        "始動補正20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "上・弾",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "OD 強 ヴィーハト",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] 中 [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 46,
+      "text": "ヴィーハト・アクノ（ヴィーハト設置中に） 弱中 | 全体 44 | 0 | 0 | 0 | 0 | 0 | 6-25F 完全無敵26F目から空中判定31F目から行動可",
+      "cells": [
+        "ヴィーハト・アクノ（ヴィーハト設置中に） 弱中",
+        "",
+        "",
+        "全体 44",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "6-25F 完全無敵26F目から空中判定31F目から行動可"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 8,
+      "rowKind": "data",
+      "skillName": "ヴィーハト・アクノ",
+      "commandInput": {
+        "commandText": "（ヴィーハト設置中に） [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [key-or.png] [icon_punch_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "key-or.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ヴィーハト設置中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "index": 47,
+      "text": "ヴィーハト・チェーニ（ヴィーハト設置中に） 強 | 全体 40 | 0 | 0 | 0 | 0 | 0",
+      "cells": [
+        "ヴィーハト・チェーニ（ヴィーハト設置中に） 強",
+        "",
+        "",
+        "全体 40",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 7,
+      "rowKind": "data",
+      "skillName": "ヴィーハト・チェーニ",
+      "commandInput": {
+        "commandText": "（ヴィーハト設置中に） [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ヴィーハト設置中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "index": 48,
+      "text": "アムネジア | 3 | 3-20 | 35 | 800 | 始動補正50％※即時補正60％ | 1000 | -2500 | -3000 | 1000 | 上・弾 | 当身成立時にドライブゲージ10000増加当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる",
+      "cells": [
+        "アムネジア",
+        "3",
+        "3-20",
+        "35",
+        "",
+        "",
+        "",
+        "800",
+        "始動補正50％※即時補正60％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "上・弾",
+        "当身成立時にドライブゲージ10000増加当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "アムネジア",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 49,
+      "text": "OD アムネジア | 1 | 1-20 | 35 | 1200 | 始動補正50％※即時補正60％ | 0 | -3000 | -5000 | 1200 | 上・弾 | 当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる",
+      "cells": [
+        "OD アムネジア",
+        "1",
+        "1-20",
+        "35",
+        "",
+        "",
+        "",
+        "1200",
+        "始動補正50％※即時補正60％",
+        "0",
+        "-3000",
+        "-5000",
+        "1200",
+        "上・弾",
+        "当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "OD アムネジア",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 50,
+      "text": "弱 トルバラン 弱 | 22 | 全体 50 | D | -6 | SA3 | 800 | 1000 | -2500 | -3000 | 600 | 上・弾 | 発生は密着で発動した場合の数値",
+      "cells": [
+        "弱 トルバラン 弱",
+        "22",
+        "",
+        "全体 50",
+        "D",
+        "-6",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "上・弾",
+        "発生は密着で発動した場合の数値"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "弱 トルバラン",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 51,
+      "text": "中 トルバラン 中 | 26 | 全体 50 | 6 | -8 | SA3 | 1000 | 始動補正20% | 1000 | -2500 | -3000 | 600 | 中・弾 | 発生は密着で発動した場合の数値",
+      "cells": [
+        "中 トルバラン 中",
+        "26",
+        "",
+        "全体 50",
+        "6",
+        "-8",
+        "SA3",
+        "1000",
+        "始動補正20%",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "中・弾",
+        "発生は密着で発動した場合の数値"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "中 トルバラン",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "text": "強 トルバラン 強 | 26 | 全体 50 | 6 | -8 | SA3 | 1000 | 始動補正20% | 1000 | -2500 | -3000 | 600 | 下・弾 | 発生は密着で発動した場合の数値",
+      "cells": [
+        "強 トルバラン 強",
+        "26",
+        "",
+        "全体 50",
+        "6",
+        "-8",
+        "SA3",
+        "1000",
+        "始動補正20%",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "下・弾",
+        "発生は密着で発動した場合の数値"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "強 トルバラン",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 53,
+      "text": "OD トルバラン | 22 | 全体 50 | D | 25 | SA2 | 800 | 始動補正20% | 0 | -5000 | -5000 | 800 | 上・弾 | 発生は密着で発動した場合の数値初段のみSA2/SA3/CAでキャンセル可能",
+      "cells": [
+        "OD トルバラン",
+        "22",
+        "",
+        "全体 50",
+        "D",
+        "25",
+        "SA2",
+        "800",
+        "始動補正20%",
+        "0",
+        "-5000",
+        "-5000",
+        "800",
+        "上・弾",
+        "発生は密着で発動した場合の数値初段のみSA2/SA3/CAでキャンセル可能"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "OD トルバラン",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 54,
+      "text": "アブニマーチ | 26 | 全体 72 | 1800 | 即時補正10% | 2500 | 0 | -10000 | 3000 | 投 | ■クラシック操作パニッシュカウンター時のダメージ2070発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（1656）",
+      "cells": [
+        "アブニマーチ",
+        "26",
+        "",
+        "全体 72",
+        "",
+        "",
+        "",
+        "1800",
+        "即時補正10%",
+        "2500",
+        "0",
+        "-10000",
+        "3000",
+        "投",
+        "■クラシック操作パニッシュカウンター時のダメージ2070発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（1656）"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "アブニマーチ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 55,
+      "text": "OD アブニマーチ | 26 | 全体 72 | 2600 | 即時補正10% | 0 | 0 | -10000 | 3000 | 投 | ■クラシック操作パニッシュカウンター時のダメージ2990発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（2392）",
+      "cells": [
+        "OD アブニマーチ",
+        "26",
+        "",
+        "全体 72",
+        "",
+        "",
+        "",
+        "2600",
+        "即時補正10%",
+        "0",
+        "0",
+        "-10000",
+        "3000",
+        "投",
+        "■クラシック操作パニッシュカウンター時のダメージ2990発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（2392）"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "OD アブニマーチ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 56,
+      "text": "スーパーアーツ",
+      "cells": [
+        "スーパーアーツ"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "スーパーアーツ"
+    },
+    {
+      "index": 57,
+      "text": "SA1 チェルノボーグ | 8 | 全体 84 | D | -33 | 2000 | 0 | -2500 | -5000 | 0 | 上 | 1-10F 打撃・投げに対して無敵最低保障ダメージ30％カウンター/パニッシュカウンターで数値が変動しない",
+      "cells": [
+        "SA1 チェルノボーグ",
+        "8",
+        "",
+        "全体 84",
+        "D",
+        "-33",
+        "",
+        "2000",
+        "",
+        "0",
+        "-2500",
+        "-5000",
+        "0",
+        "上",
+        "1-10F 打撃・投げに対して無敵最低保障ダメージ30％カウンター/パニッシュカウンターで数値が変動しない"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowKind": "data",
+      "skillName": "SA1 チェルノボーグ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "index": 58,
+      "text": "SA2 ラヴーシュカ | 29 | 全体 13 | 2000 | 始動補正25％※即時補正25％ | 0 | -4000 | -10000 | 0 | 上中下中 | 最低保障ダメージ40％カウンター/パニッシュカウンターで数値が変動しない※コンボの3段目以降に補正がかかる",
+      "cells": [
+        "SA2 ラヴーシュカ",
+        "29",
+        "",
+        "全体 13",
+        "",
+        "",
+        "",
+        "2000",
+        "始動補正25％※即時補正25％",
+        "0",
+        "-4000",
+        "-10000",
+        "0",
+        "上中下中",
+        "最低保障ダメージ40％カウンター/パニッシュカウンターで数値が変動しない※コンボの3段目以降に補正がかかる"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "SA2 ラヴーシュカ",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "index": 59,
+      "text": "SA3 ザプリェット | 18 | 18-23 | 62 | D | -50 | 4000 | ※即時補正10% | 0 | -7500 | -15000 | 0 | 上 | 1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用",
+      "cells": [
+        "SA3 ザプリェット",
+        "18",
+        "18-23",
+        "62",
+        "D",
+        "-50",
+        "",
+        "4000",
+        "※即時補正10%",
+        "0",
+        "-7500",
+        "-15000",
+        "0",
+        "上",
+        "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "SA3 ザプリェット",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 60,
+      "text": "CA ザプリェット（体力25%以下で） | 18 | 18-23 | 62 | D | -50 | 4500 | ※即時補正10% | 0 | -10000 | -20000 | 0 | 上 | 1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用",
+      "cells": [
+        "CA ザプリェット（体力25%以下で）",
+        "18",
+        "18-23",
+        "62",
+        "D",
+        "-50",
+        "",
+        "4500",
+        "※即時補正10%",
+        "0",
+        "-10000",
+        "-20000",
+        "0",
+        "上",
+        "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "CA ザプリェット",
+      "commandInput": {
+        "commandText": "（体力25%以下で） [key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（体力25%以下で）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "index": 61,
+      "text": "通常投げ",
+      "cells": [
+        "通常投げ"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "通常投げ"
+    },
+    {
+      "index": 62,
+      "text": "ラヴィーナ（近距離で） 弱弱 | 5 | 5-7 | 23 | D | 1200 | 始動補正40%即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
+      "cells": [
+        "ラヴィーナ（近距離で） 弱弱",
+        "5",
+        "5-7",
+        "23",
+        "D",
+        "",
+        "",
+        "1200",
+        "始動補正40%即時補正20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "投",
+        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "ラヴィーナ",
+      "commandInput": {
+        "commandText": "（近距離で） [key-nutral.png] [key-or.png] [key-r.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-nutral.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-nutral.png",
+          "key-or.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（近距離で）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-nutral.png",
+            "file": "key-nutral.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-nutral.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 63,
+      "text": "ウラガーン（近距離で） 弱弱 | 5 | 5-7 | 23 | D | 1200 | 始動補正40%即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
+      "cells": [
+        "ウラガーン（近距離で） 弱弱",
+        "5",
+        "5-7",
+        "23",
+        "D",
+        "",
+        "",
+        "1200",
+        "始動補正40%即時補正20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "投",
+        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "ウラガーン",
+      "commandInput": {
+        "commandText": "（近距離で） [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（近距離で）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 64,
+      "text": "タルナード（ジャンプ中に）（近距離で）弱弱 | 5 | 5-7 | 着地後3 | D | 1200 | 即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
+      "cells": [
+        "タルナード（ジャンプ中に）（近距離で）弱弱",
+        "5",
+        "5-7",
+        "着地後3",
+        "D",
+        "",
+        "",
+        "1200",
+        "即時補正20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "投",
+        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "タルナード",
+      "commandInput": {
+        "commandText": "（ジャンプ中に）（近距離で） [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ジャンプ中に）（近距離で）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "弱"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "index": 65,
+      "text": "共通システム",
+      "cells": [
+        "共通システム"
+      ],
+      "cellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowKind": "section",
+      "skillName": "共通システム"
+    },
+    {
+      "index": 66,
+      "text": "前方ステップ | 全体 22 | 0 | 0 | 0 | 0 | 0",
+      "cells": [
+        "前方ステップ",
+        "",
+        "",
+        "全体 22",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        ""
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 7,
+      "rowKind": "data",
+      "skillName": "前方ステップ",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-r.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png"
+        ]
+      }
+    },
+    {
+      "index": 67,
+      "text": "後方ステップ | 全体 23 | 0 | 0 | 0 | 0 | 0 | 1-15F 投げ無敵",
+      "cells": [
+        "後方ステップ",
+        "",
+        "",
+        "全体 23",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "1-15F 投げ無敵"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 8,
+      "rowKind": "data",
+      "skillName": "後方ステップ",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-l.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-l.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-l.png"
+        ]
+      }
+    },
+    {
+      "index": 68,
+      "text": "ドライブインパクト（エスパーダ）強強 | 26 | 26-27 | 35 | D | -3 | 800 | 始動補正20% | 0 | -5000 | -15000 | 0 | 上 | 1-27F アーマー判定（2回）パニッシュカウンター、もしくはアーマー成立後にヒットで以下の性能変化・地上ヒット膝崩れ・空中ヒットきりもみダウン・SAゲージ3000増加",
+      "cells": [
+        "ドライブインパクト（エスパーダ）強強",
+        "26",
+        "26-27",
+        "35",
+        "D",
+        "-3",
+        "",
+        "800",
+        "始動補正20%",
+        "0",
+        "-5000",
+        "-15000",
+        "0",
+        "上",
+        "1-27F アーマー判定（2回）パニッシュカウンター、もしくはアーマー成立後にヒットで以下の性能変化・地上ヒット膝崩れ・空中ヒットきりもみダウン・SAゲージ3000増加"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowKind": "data",
+      "skillName": "ドライブインパクト（エスパーダ）",
+      "commandInput": {
+        "commandText": "[icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 69,
+      "text": "[ガード時]ドライブリバーサル（エクシリオ）（ガード中 or ドライブパリィ成立中に） 強強 | 20 | 20-22 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | 上 | リカバリアブルダメージ1-22F 完全無敵ヒット時硬直5F増加",
+      "cells": [
+        "[ガード時]ドライブリバーサル（エクシリオ）（ガード中 or ドライブパリィ成立中に） 強強",
+        "20",
+        "20-22",
+        "26",
+        "D",
+        "-6",
+        "",
+        "500",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "上",
+        "リカバリアブルダメージ1-22F 完全無敵ヒット時硬直5F増加"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "[ガード時]ドライブリバーサル（エクシリオ）",
+      "commandInput": {
+        "commandText": "（ガード中 or ドライブパリィ成立中に） [key-r.png] [key-plus.png] [icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ガード中 or ドライブパリィ成立中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 70,
+      "text": "[起き上がり時]ドライブリバーサル（エクシリオ）（起き上がり時に） 強強 | 18 | 18-20 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | 上 | リカバリアブルダメージ1-20F 完全無敵ヒット時硬直5F増加",
+      "cells": [
+        "[起き上がり時]ドライブリバーサル（エクシリオ）（起き上がり時に） 強強",
+        "18",
+        "18-20",
+        "26",
+        "D",
+        "-6",
+        "",
+        "500",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "上",
+        "リカバリアブルダメージ1-20F 完全無敵ヒット時硬直5F増加"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowKind": "data",
+      "skillName": "[起き上がり時]ドライブリバーサル（エクシリオ）",
+      "commandInput": {
+        "commandText": "（起き上がり時に） [key-r.png] [key-plus.png] [icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（起き上がり時に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "強"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "index": 71,
+      "text": "ドライブパリィ中中 | 1 | [※2] 1-12 | 33 | ※1 | 0 | 0 | 0 | 0 | 0 | ※1 動作の4F目からドライブラッシュでキャンセル可※2 ボタンホールドでパリィの持続を延長可硬直部分はガードのみ可動作中常に被パニッシュカウンター判定",
+      "cells": [
+        "ドライブパリィ中中",
+        "1",
+        "[※2] 1-12",
+        "33",
+        "",
+        "",
+        "※1",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "※1 動作の4F目からドライブラッシュでキャンセル可※2 ボタンホールドでパリィの持続を延長可硬直部分はガードのみ可動作中常に被パニッシュカウンター判定"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowKind": "data",
+      "skillName": "ドライブパリィ",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 72,
+      "text": "ジャストパリィ（打撃）ガード方向 中中 | 1 | 1 | 0 | 始動補正50％ | 相手の攻撃に対応した方向入力を行った状態でパリィを入力し、入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する（上段/中段攻撃に対して←方向、下段攻撃に対しては↙方向)方向が正しくなかった場合は通常のドライブパリィとなり、追加でDゲージが3000増加する硬直終了から5Fの間完全無敵 （パリィを継続した場合は無敵にならない）ジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター",
+      "cells": [
+        "ジャストパリィ（打撃）ガード方向 中中",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "0",
+        "始動補正50％",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "相手の攻撃に対応した方向入力を行った状態でパリィを入力し、入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する（上段/中段攻撃に対して←方向、下段攻撃に対しては↙方向)方向が正しくなかった場合は通常のドライブパリィとなり、追加でDゲージが3000増加する硬直終了から5Fの間完全無敵 （パリィを継続した場合は無敵にならない）ジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 6,
+      "rowKind": "data",
+      "skillName": "ジャストパリィ（打撃）",
+      "commandInput": {
+        "commandText": "ガード方向 [key-plus.png] [icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "ガード方向"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 73,
+      "text": "ジャストパリィ（飛び道具）中中 | 1 | 10 | 0 | 始動補正50％ | パリィを入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する暗転演出が入らないジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター",
+      "cells": [
+        "ジャストパリィ（飛び道具）中中",
+        "1",
+        "",
+        "10",
+        "",
+        "",
+        "",
+        "0",
+        "始動補正50％",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "パリィを入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する暗転演出が入らないジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 6,
+      "rowKind": "data",
+      "skillName": "ジャストパリィ（飛び道具）",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "index": 74,
+      "text": "パリィドライブラッシュ（ドライブパリィ中に） | 全体 45 | ※ | 0 | 乗算補正15％ | 0 | 0 | 0 | 0 | 暗転10F※動作9F目から攻撃行動にキャンセル可 24F目からパリィ以外の行動でキャンセル可",
+      "cells": [
+        "パリィドライブラッシュ（ドライブパリィ中に）",
+        "",
+        "",
+        "全体 45",
+        "",
+        "",
+        "※",
+        "0",
+        "乗算補正15％",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "暗転10F※動作9F目から攻撃行動にキャンセル可 24F目からパリィ以外の行動でキャンセル可"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowKind": "data",
+      "skillName": "パリィドライブラッシュ",
+      "commandInput": {
+        "commandText": "（ドライブパリィ中に） [key-r.png] [key-r.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（ドライブパリィ中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png"
+        ]
+      }
+    },
+    {
+      "index": 75,
+      "text": "キャンセルドライブラッシュ（必殺技キャンセル可能な攻撃ヒット中に） ( ) 中中 | 全体 46 | ※ | 0 | 乗算補正15％ | 0 | 0 | 0 | 0 | 暗転9F※動作10F目から攻撃行動にキャンセル可 25F目からパリィ以外の行動でキャンセル可",
+      "cells": [
+        "キャンセルドライブラッシュ（必殺技キャンセル可能な攻撃ヒット中に） ( ) 中中",
+        "",
+        "",
+        "全体 46",
+        "",
+        "",
+        "※",
+        "0",
+        "乗算補正15％",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "暗転9F※動作10F目から攻撃行動にキャンセル可 25F目からパリィ以外の行動でキャンセル可"
+      ],
+      "cellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowKind": "data",
+      "skillName": "キャンセルドライブラッシュ",
+      "commandInput": {
+        "commandText": "（必殺技キャンセル可能な攻撃ヒット中に） [key-r.png] [key-r.png] [key-or.png] ( [key-nutral.png] [key-or.png] [key-r.png] ) [key-plus.png] [icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-nutral.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png",
+          "key-or.png",
+          "key-nutral.png",
+          "key-or.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "（必殺技キャンセル可能な攻撃ヒット中に）"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "("
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-nutral.png",
+            "file": "key-nutral.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": ")"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "中"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-nutral.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    }
+  ]
+}

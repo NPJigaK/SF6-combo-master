@@ -1,0 +1,9 @@
+{
+	"id": "veop3SFpeVGSWpy",
+	"json": "{\"id\":\"veop3SFpeVGSWpy\",\"url\":\"https://www.streetfighter.com/6/ja-jp/character/jp/frame\",\"loadedUrl\":\"https://www.streetfighter.com/6/ja-jp/character/jp/frame\",\"uniqueKey\":\"https://www.streetfighter.com/6/ja-jp/character/jp/frame\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-02-22T06:17:11.090Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
+	"url": "https://www.streetfighter.com/6/ja-jp/character/jp/frame"
+}
