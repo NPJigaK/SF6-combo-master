@@ -12,6 +12,7 @@ function buildFrames(samples) {
       {
         timestampMs: index * 16.6667,
         direction: sample.direction,
+        physicalDown: sample.physicalDown ?? [],
         down: sample.down,
       },
       previousFrame,
@@ -23,28 +24,36 @@ function buildFrames(samples) {
 
 test("buildInputFrame reconstructs pressed/released from snapshots", () => {
   const [neutral, press, release] = buildFrames([
-    { direction: 5, down: [] },
-    { direction: 5, down: ["MP", "LP"] },
-    { direction: 5, down: ["MP"] },
+    { direction: 5, physicalDown: [], down: [] },
+    { direction: 5, physicalDown: ["North", "West"], down: ["MP", "LP"] },
+    { direction: 5, physicalDown: ["North"], down: ["MP"] },
   ]);
 
   assert.deepEqual(neutral.pressed, []);
   assert.deepEqual(neutral.released, []);
+  assert.deepEqual(neutral.physicalPressed, []);
+  assert.deepEqual(neutral.physicalReleased, []);
 
   assert.deepEqual(press.down, ["LP", "MP"]);
   assert.deepEqual(press.pressed, ["LP", "MP"]);
   assert.deepEqual(press.released, []);
+  assert.deepEqual(press.physicalDown, ["West", "North"]);
+  assert.deepEqual(press.physicalPressed, ["West", "North"]);
+  assert.deepEqual(press.physicalReleased, []);
 
   assert.deepEqual(release.down, ["MP"]);
   assert.deepEqual(release.pressed, []);
   assert.deepEqual(release.released, ["LP"]);
+  assert.deepEqual(release.physicalDown, ["North"]);
+  assert.deepEqual(release.physicalPressed, []);
+  assert.deepEqual(release.physicalReleased, ["West"]);
 });
 
 test("appendInputHistoryEntry compresses identical states into one entry", () => {
   const frames = buildFrames([
-    { direction: 5, down: [] },
-    { direction: 5, down: [] },
-    { direction: 5, down: [] },
+    { direction: 5, physicalDown: [], down: [] },
+    { direction: 5, physicalDown: [], down: [] },
+    { direction: 5, physicalDown: [], down: [] },
   ]);
 
   const entries = frames.reduce((previous, frame) => appendInputHistoryEntry(previous, frame, 24), []);
@@ -59,11 +68,11 @@ test("appendInputHistoryEntry compresses identical states into one entry", () =>
 
 test("appendInputHistoryEntry splits entries on direction and button changes", () => {
   const frames = buildFrames([
-    { direction: 6, down: ["MP"] },
-    { direction: 6, down: ["MP"] },
-    { direction: 6, down: ["MP", "LK"] },
-    { direction: 5, down: [] },
-    { direction: 4, down: [] },
+    { direction: 6, physicalDown: ["North"], down: ["MP"] },
+    { direction: 6, physicalDown: ["North"], down: ["MP"] },
+    { direction: 6, physicalDown: ["North", "South"], down: ["MP", "LK"] },
+    { direction: 5, physicalDown: [], down: [] },
+    { direction: 4, physicalDown: [], down: [] },
   ]);
 
   const entries = frames.reduce((previous, frame) => appendInputHistoryEntry(previous, frame, 24), []);
@@ -85,6 +94,7 @@ test("appendInputHistoryEntry saturates display at 99 while preserving internal 
   const frames = buildFrames(
     Array.from({ length: 120 }, () => ({
       direction: 5,
+      physicalDown: [],
       down: [],
     })),
   );
@@ -100,9 +110,9 @@ test("appendInputHistoryEntry saturates display at 99 while preserving internal 
 
 test("appendInputHistoryEntry enforces fixed entry limit", () => {
   const frames = buildFrames([
-    { direction: 6, down: [] },
-    { direction: 5, down: [] },
-    { direction: 4, down: [] },
+    { direction: 6, physicalDown: [], down: [] },
+    { direction: 5, physicalDown: [], down: [] },
+    { direction: 4, physicalDown: [], down: [] },
   ]);
 
   const entries = frames.reduce((previous, frame) => appendInputHistoryEntry(previous, frame, 2), []);

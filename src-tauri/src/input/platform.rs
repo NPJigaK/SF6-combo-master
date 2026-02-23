@@ -34,16 +34,19 @@ mod imp {
 
     use hidapi::{DeviceInfo, HidApi, HidDevice};
     use windows_sys::Win32::UI::Input::XboxController::{
-        XInputGetState, XINPUT_GAMEPAD_A, XINPUT_GAMEPAD_B, XINPUT_GAMEPAD_DPAD_DOWN,
-        XINPUT_GAMEPAD_DPAD_LEFT, XINPUT_GAMEPAD_DPAD_RIGHT, XINPUT_GAMEPAD_DPAD_UP,
-        XINPUT_GAMEPAD_LEFT_SHOULDER, XINPUT_GAMEPAD_RIGHT_SHOULDER, XINPUT_GAMEPAD_X,
-        XINPUT_GAMEPAD_Y, XINPUT_STATE, XUSER_MAX_COUNT,
+        XInputGetState, XINPUT_GAMEPAD_A, XINPUT_GAMEPAD_B, XINPUT_GAMEPAD_BACK,
+        XINPUT_GAMEPAD_DPAD_DOWN, XINPUT_GAMEPAD_DPAD_LEFT, XINPUT_GAMEPAD_DPAD_RIGHT,
+        XINPUT_GAMEPAD_DPAD_UP, XINPUT_GAMEPAD_LEFT_SHOULDER, XINPUT_GAMEPAD_LEFT_THUMB,
+        XINPUT_GAMEPAD_RIGHT_SHOULDER, XINPUT_GAMEPAD_RIGHT_THUMB, XINPUT_GAMEPAD_START,
+        XINPUT_GAMEPAD_X, XINPUT_GAMEPAD_Y, XINPUT_STATE, XUSER_MAX_COUNT,
     };
 
     use super::super::{
-        InputSample, NativeInputDetectResult, NativeInputMode, BUTTON_DI_MASK, BUTTON_HK_MASK,
-        BUTTON_HP_MASK, BUTTON_LK_MASK, BUTTON_LP_MASK, BUTTON_MK_MASK, BUTTON_MP_MASK,
-        BUTTON_PARRY_MASK,
+        InputSample, NativeInputDetectResult, NativeInputMode, BUTTON_DPAD_DOWN_MASK,
+        BUTTON_DPAD_LEFT_MASK, BUTTON_DPAD_RIGHT_MASK, BUTTON_DPAD_UP_MASK, BUTTON_EAST_MASK,
+        BUTTON_L1_MASK, BUTTON_L2_MASK, BUTTON_L3_MASK, BUTTON_NORTH_MASK, BUTTON_R1_MASK,
+        BUTTON_R2_MASK, BUTTON_R3_MASK, BUTTON_SELECT_MASK, BUTTON_SOUTH_MASK,
+        BUTTON_START_MASK, BUTTON_WEST_MASK,
     };
 
     const ERROR_DEVICE_NOT_CONNECTED: u32 = 1167;
@@ -220,41 +223,65 @@ mod imp {
 
         let mut down_mask = 0u16;
 
-        if has_xinput_button(buttons, XINPUT_GAMEPAD_X) {
-            down_mask |= BUTTON_LP_MASK;
-        }
-        if has_xinput_button(buttons, XINPUT_GAMEPAD_Y) {
-            down_mask |= BUTTON_MP_MASK;
-        }
-        if has_xinput_button(buttons, XINPUT_GAMEPAD_RIGHT_SHOULDER) {
-            down_mask |= BUTTON_HP_MASK;
-        }
         if has_xinput_button(buttons, XINPUT_GAMEPAD_A) {
-            down_mask |= BUTTON_LK_MASK;
+            down_mask |= BUTTON_SOUTH_MASK;
         }
         if has_xinput_button(buttons, XINPUT_GAMEPAD_B) {
-            down_mask |= BUTTON_MK_MASK;
+            down_mask |= BUTTON_EAST_MASK;
         }
-        if gamepad.bRightTrigger >= XINPUT_TRIGGER_THRESHOLD {
-            down_mask |= BUTTON_HK_MASK;
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_X) {
+            down_mask |= BUTTON_WEST_MASK;
         }
-        if has_xinput_button(buttons, XINPUT_GAMEPAD_LEFT_SHOULDER)
-            && has_xinput_button(buttons, XINPUT_GAMEPAD_RIGHT_SHOULDER)
-        {
-            down_mask |= BUTTON_DI_MASK;
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_Y) {
+            down_mask |= BUTTON_NORTH_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_LEFT_SHOULDER) {
+            down_mask |= BUTTON_L1_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_RIGHT_SHOULDER) {
+            down_mask |= BUTTON_R1_MASK;
         }
         if gamepad.bLeftTrigger >= XINPUT_TRIGGER_THRESHOLD {
-            down_mask |= BUTTON_PARRY_MASK;
+            down_mask |= BUTTON_L2_MASK;
+        }
+        if gamepad.bRightTrigger >= XINPUT_TRIGGER_THRESHOLD {
+            down_mask |= BUTTON_R2_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_BACK) {
+            down_mask |= BUTTON_SELECT_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_START) {
+            down_mask |= BUTTON_START_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_LEFT_THUMB) {
+            down_mask |= BUTTON_L3_MASK;
+        }
+        if has_xinput_button(buttons, XINPUT_GAMEPAD_RIGHT_THUMB) {
+            down_mask |= BUTTON_R3_MASK;
         }
 
-        let up = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_UP)
-            || gamepad.sThumbLY > XINPUT_AXIS_DEADZONE;
-        let down = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_DOWN)
-            || gamepad.sThumbLY < -XINPUT_AXIS_DEADZONE;
-        let left = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_LEFT)
-            || gamepad.sThumbLX < -XINPUT_AXIS_DEADZONE;
-        let right = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_RIGHT)
-            || gamepad.sThumbLX > XINPUT_AXIS_DEADZONE;
+        let dpad_up = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_UP);
+        let dpad_down = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_DOWN);
+        let dpad_left = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_LEFT);
+        let dpad_right = has_xinput_button(buttons, XINPUT_GAMEPAD_DPAD_RIGHT);
+
+        if dpad_up {
+            down_mask |= BUTTON_DPAD_UP_MASK;
+        }
+        if dpad_down {
+            down_mask |= BUTTON_DPAD_DOWN_MASK;
+        }
+        if dpad_left {
+            down_mask |= BUTTON_DPAD_LEFT_MASK;
+        }
+        if dpad_right {
+            down_mask |= BUTTON_DPAD_RIGHT_MASK;
+        }
+
+        let up = dpad_up || gamepad.sThumbLY > XINPUT_AXIS_DEADZONE;
+        let down = dpad_down || gamepad.sThumbLY < -XINPUT_AXIS_DEADZONE;
+        let left = dpad_left || gamepad.sThumbLX < -XINPUT_AXIS_DEADZONE;
+        let right = dpad_right || gamepad.sThumbLX > XINPUT_AXIS_DEADZONE;
 
         let horizontal = if right {
             1
@@ -294,32 +321,63 @@ mod imp {
         let right_trigger_analog = report[9];
         let mut down_mask = 0u16;
 
-        if buttons0 & 0x10 != 0 {
-            down_mask |= BUTTON_LP_MASK;
-        }
-        if buttons0 & 0x80 != 0 {
-            down_mask |= BUTTON_MP_MASK;
-        }
-        if buttons1 & 0x02 != 0 {
-            down_mask |= BUTTON_HP_MASK;
-        }
         if buttons0 & 0x20 != 0 {
-            down_mask |= BUTTON_LK_MASK;
+            down_mask |= BUTTON_SOUTH_MASK;
         }
         if buttons0 & 0x40 != 0 {
-            down_mask |= BUTTON_MK_MASK;
+            down_mask |= BUTTON_EAST_MASK;
         }
-        if buttons1 & 0x08 != 0 || right_trigger_analog >= TRIGGER_BYTE_THRESHOLD {
-            down_mask |= BUTTON_HK_MASK;
+        if buttons0 & 0x10 != 0 {
+            down_mask |= BUTTON_WEST_MASK;
         }
-        if (buttons1 & 0x01 != 0) && (buttons1 & 0x02 != 0) {
-            down_mask |= BUTTON_DI_MASK;
+        if buttons0 & 0x80 != 0 {
+            down_mask |= BUTTON_NORTH_MASK;
+        }
+        if buttons1 & 0x01 != 0 {
+            down_mask |= BUTTON_L1_MASK;
+        }
+        if buttons1 & 0x02 != 0 {
+            down_mask |= BUTTON_R1_MASK;
         }
         if buttons1 & 0x04 != 0 || left_trigger_analog >= TRIGGER_BYTE_THRESHOLD {
-            down_mask |= BUTTON_PARRY_MASK;
+            down_mask |= BUTTON_L2_MASK;
+        }
+        if buttons1 & 0x08 != 0 || right_trigger_analog >= TRIGGER_BYTE_THRESHOLD {
+            down_mask |= BUTTON_R2_MASK;
+        }
+        if buttons1 & 0x10 != 0 {
+            down_mask |= BUTTON_SELECT_MASK;
+        }
+        if buttons1 & 0x20 != 0 {
+            down_mask |= BUTTON_START_MASK;
+        }
+        if buttons1 & 0x40 != 0 {
+            down_mask |= BUTTON_L3_MASK;
+        }
+        if buttons1 & 0x80 != 0 {
+            down_mask |= BUTTON_R3_MASK;
         }
 
-        let hat_direction = direction_from_ds4_hat(buttons0 & 0x0F);
+        let hat = buttons0 & 0x0F;
+        let dpad_up = matches!(hat, 0 | 1 | 7);
+        let dpad_down = matches!(hat, 3 | 4 | 5);
+        let dpad_left = matches!(hat, 5 | 6 | 7);
+        let dpad_right = matches!(hat, 1 | 2 | 3);
+
+        if dpad_up {
+            down_mask |= BUTTON_DPAD_UP_MASK;
+        }
+        if dpad_down {
+            down_mask |= BUTTON_DPAD_DOWN_MASK;
+        }
+        if dpad_left {
+            down_mask |= BUTTON_DPAD_LEFT_MASK;
+        }
+        if dpad_right {
+            down_mask |= BUTTON_DPAD_RIGHT_MASK;
+        }
+
+        let hat_direction = direction_from_ds4_hat(hat);
         let direction = if hat_direction != 5 {
             hat_direction
         } else {

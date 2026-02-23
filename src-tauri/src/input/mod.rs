@@ -11,17 +11,42 @@ use std::{
 };
 use tauri::{AppHandle, Emitter, State};
 
-const BUTTON_ORDER: [&str; 8] = ["LP", "MP", "HP", "LK", "MK", "HK", "DI", "PARry"];
+const BUTTON_ORDER: [&str; 16] = [
+    "South",
+    "East",
+    "West",
+    "North",
+    "L1",
+    "R1",
+    "L2",
+    "R2",
+    "Select",
+    "Start",
+    "L3",
+    "R3",
+    "DPadUp",
+    "DPadDown",
+    "DPadLeft",
+    "DPadRight",
+];
 const FRAME_DURATION: Duration = Duration::from_nanos(16_666_667);
 
-pub(crate) const BUTTON_LP_MASK: u16 = 1 << 0;
-pub(crate) const BUTTON_MP_MASK: u16 = 1 << 1;
-pub(crate) const BUTTON_HP_MASK: u16 = 1 << 2;
-pub(crate) const BUTTON_LK_MASK: u16 = 1 << 3;
-pub(crate) const BUTTON_MK_MASK: u16 = 1 << 4;
-pub(crate) const BUTTON_HK_MASK: u16 = 1 << 5;
-pub(crate) const BUTTON_DI_MASK: u16 = 1 << 6;
-pub(crate) const BUTTON_PARRY_MASK: u16 = 1 << 7;
+pub(crate) const BUTTON_SOUTH_MASK: u16 = 1 << 0;
+pub(crate) const BUTTON_EAST_MASK: u16 = 1 << 1;
+pub(crate) const BUTTON_WEST_MASK: u16 = 1 << 2;
+pub(crate) const BUTTON_NORTH_MASK: u16 = 1 << 3;
+pub(crate) const BUTTON_L1_MASK: u16 = 1 << 4;
+pub(crate) const BUTTON_R1_MASK: u16 = 1 << 5;
+pub(crate) const BUTTON_L2_MASK: u16 = 1 << 6;
+pub(crate) const BUTTON_R2_MASK: u16 = 1 << 7;
+pub(crate) const BUTTON_SELECT_MASK: u16 = 1 << 8;
+pub(crate) const BUTTON_START_MASK: u16 = 1 << 9;
+pub(crate) const BUTTON_L3_MASK: u16 = 1 << 10;
+pub(crate) const BUTTON_R3_MASK: u16 = 1 << 11;
+pub(crate) const BUTTON_DPAD_UP_MASK: u16 = 1 << 12;
+pub(crate) const BUTTON_DPAD_DOWN_MASK: u16 = 1 << 13;
+pub(crate) const BUTTON_DPAD_LEFT_MASK: u16 = 1 << 14;
+pub(crate) const BUTTON_DPAD_RIGHT_MASK: u16 = 1 << 15;
 
 #[derive(Clone, Copy, Debug, Deserialize)]
 #[serde(rename_all = "lowercase")]
@@ -64,7 +89,7 @@ struct InputFramePayload {
     frame: u64,
     timestamp_ms: u64,
     direction: u8,
-    down: Vec<String>,
+    physical_down: Vec<String>,
 }
 
 fn mask_to_buttons(mask: u16) -> Vec<String> {
@@ -113,7 +138,7 @@ impl InputWorker {
                         frame: frame_index,
                         timestamp_ms: sample.timestamp_ms,
                         direction: sample.direction,
-                        down: mask_to_buttons(sample.down_mask),
+                        physical_down: mask_to_buttons(sample.down_mask),
                     };
 
                     let _ = app.emit("input/frame", payload);

@@ -170,6 +170,126 @@ body {
   padding: 0.42rem 0.7rem;
 }
 
+.open-bindings-button {
+  border: 1px solid #4f79df;
+  border-radius: 9px;
+  background: #0a1f4e;
+  color: #f3f7ff;
+  padding: 0.42rem 0.78rem;
+  cursor: pointer;
+}
+
+.open-bindings-button:hover {
+  background: #0f2e70;
+}
+
+.bindings-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 7, 20, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.bindings-panel {
+  margin-top: 0.8rem;
+  border: 1px solid #3e5fae;
+  border-radius: 10px;
+  background: rgba(7, 22, 53, 0.72);
+  padding: 0.7rem 0.8rem;
+}
+
+.bindings-modal {
+  margin-top: 0;
+  width: min(920px, 100%);
+  max-height: min(86vh, 900px);
+  display: flex;
+  flex-direction: column;
+}
+
+.bindings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.bindings-head-actions {
+  display: inline-flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.bindings-head h3 {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+.bindings-head button,
+.bindings-actions button {
+  border: 1px solid #4f79df;
+  border-radius: 8px;
+  background: #0a1f4e;
+  color: #f3f7ff;
+  padding: 0.32rem 0.6rem;
+  cursor: pointer;
+}
+
+.bindings-head button:hover,
+.bindings-actions button:hover {
+  background: #0f2e70;
+}
+
+.bindings-head button:disabled,
+.bindings-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.bindings-help {
+  margin: 0.45rem 0 0;
+  color: #c6d7ff;
+  font-size: 0.82rem;
+}
+
+.bindings-table-wrap {
+  margin-top: 0.5rem;
+  overflow: auto;
+}
+
+.bindings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  min-width: 460px;
+}
+
+.bindings-table th,
+.bindings-table td {
+  border-bottom: 1px solid #355094;
+  padding: 0.36rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.bindings-table th {
+  background: #0b2457;
+}
+
+.bindings-table tr.is-pending-bind {
+  background: rgba(70, 114, 221, 0.22);
+}
+
+.bindings-actions {
+  display: inline-flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
 .native-error {
   margin-top: 0.8rem;
   border: 1px solid #b74646;

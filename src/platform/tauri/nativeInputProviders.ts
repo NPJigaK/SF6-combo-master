@@ -1,13 +1,15 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen, type UnlistenFn } from "@tauri-apps/api/event";
+import { mapPhysicalButtonsToCanonical } from "../../domain/input/buttonMapping";
 import { buildInputFrame } from "../../domain/input/frame";
 import {
-  isCanonicalButton,
+  type ButtonBindings,
   type Direction,
   type InputFrame,
   type InputProvider,
   type InputProviderKind,
   type InputSnapshot,
+  isPhysicalButton,
 } from "../../domain/input/types";
 import { WebGamepadProvider } from "../web/gamepadProvider";
 
@@ -22,7 +24,7 @@ type NativeInputFramePayload = {
   frame: number;
   timestamp_ms: number;
   direction: number;
-  down: string[];
+  physical_down: string[];
 };
 
 function toDirection(value: number): Direction {
@@ -32,19 +34,26 @@ function toDirection(value: number): Direction {
   return 5;
 }
 
-function toInputSnapshot(payload: NativeInputFramePayload): InputSnapshot {
+function toInputSnapshot(payload: NativeInputFramePayload, bindings: ButtonBindings): InputSnapshot {
+  const physicalDown = payload.physical_down.filter(isPhysicalButton);
   return {
     timestampMs: payload.timestamp_ms,
     direction: toDirection(payload.direction),
-    down: payload.down.filter(isCanonicalButton),
+    physicalDown,
+    down: mapPhysicalButtonsToCanonical(physicalDown, bindings),
   };
 }
 
-function toInputFrame(payload: NativeInputFramePayload, previousFrame: InputFrame | null): InputFrame {
-  return buildInputFrame(payload.frame, toInputSnapshot(payload), previousFrame);
+function toInputFrame(
+  payload: NativeInputFramePayload,
+  previousFrame: InputFrame | null,
+  bindings: ButtonBindings,
+): InputFrame {
+  return buildInputFrame(payload.frame, toInputSnapshot(payload, bindings), previousFrame);
 }
 
 abstract class TauriNativeModeProvider implements InputProvider {
+  private readonly getButtonBindings: () => ButtonBindings;
   private readonly subscribers = new Set<(frame: InputFrame) => void>();
   private running = false;
   private unlisten: UnlistenFn | null = null;
@@ -52,6 +61,10 @@ abstract class TauriNativeModeProvider implements InputProvider {
 
   protected abstract readonly nativeMode: NativeInputMode;
   protected abstract readonly providerKind: InputProviderKind;
+
+  protected constructor(getButtonBindings: () => ButtonBindings) {
+    this.getButtonBindings = getButtonBindings;
+  }
 
   public get kind(): InputProviderKind {
     return this.providerKind;
@@ -64,7 +77,7 @@ abstract class TauriNativeModeProvider implements InputProvider {
 
     this.previousFrame = null;
     this.unlisten = await listen<NativeInputFramePayload>("input/frame", (event) => {
-      const frame = toInputFrame(event.payload, this.previousFrame);
+      const frame = toInputFrame(event.payload, this.previousFrame, this.getButtonBindings());
       this.previousFrame = frame;
       for (const callback of this.subscribers) {
         callback(frame);
@@ -111,20 +124,33 @@ abstract class TauriNativeModeProvider implements InputProvider {
 }
 
 export class TauriNativeXInputProvider extends TauriNativeModeProvider {
+  public constructor(getButtonBindings: () => ButtonBindings) {
+    super(getButtonBindings);
+  }
+
   protected readonly nativeMode = "xinput" as const;
   protected readonly providerKind = "tauri-native-xinput" as const;
 }
 
 export class TauriNativeHidProvider extends TauriNativeModeProvider {
+  public constructor(getButtonBindings: () => ButtonBindings) {
+    super(getButtonBindings);
+  }
+
   protected readonly nativeMode = "hid" as const;
   protected readonly providerKind = "tauri-native-hid" as const;
 }
 
 export class TauriNativeAutoProvider implements InputProvider {
+  private readonly getButtonBindings: () => ButtonBindings;
   private readonly subscribers = new Set<(frame: InputFrame) => void>();
   private running = false;
   private delegate: InputProvider | null = null;
   private unbindDelegate: (() => void) | null = null;
+
+  public constructor(getButtonBindings: () => ButtonBindings) {
+    this.getButtonBindings = getButtonBindings;
+  }
 
   public get kind(): InputProviderKind {
     return this.delegate?.kind ?? "web-gamepad";
@@ -137,10 +163,10 @@ export class TauriNativeAutoProvider implements InputProvider {
 
     const detectResult = await invoke<NativeInputDetectResult>("input_detect");
     const delegate = detectResult.xinput
-      ? new TauriNativeXInputProvider()
+      ? new TauriNativeXInputProvider(this.getButtonBindings)
       : detectResult.hid
-        ? new TauriNativeHidProvider()
-        : new WebGamepadProvider();
+        ? new TauriNativeHidProvider(this.getButtonBindings)
+        : new WebGamepadProvider(this.getButtonBindings);
 
     const unbindDelegate = delegate.subscribe((frame) => {
       for (const callback of this.subscribers) {

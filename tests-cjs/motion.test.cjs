@@ -12,6 +12,7 @@ function buildDirectionFrames(directions) {
       {
         timestampMs: frame * 16.6667,
         direction,
+        physicalDown: [],
         down: [],
       },
       previousFrame,

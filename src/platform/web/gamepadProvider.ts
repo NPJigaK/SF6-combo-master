@@ -1,9 +1,28 @@
 import { buildInputFrame } from "../../domain/input/frame";
-import type { CanonicalButton, Direction, InputFrame, InputProvider, InputSnapshot } from "../../domain/input/types";
+import { mapPhysicalButtonsToCanonical } from "../../domain/input/buttonMapping";
+import type { ButtonBindings, Direction, InputFrame, InputProvider, InputSnapshot, PhysicalButton } from "../../domain/input/types";
 
 const FRAME_DURATION_MS = 1000 / 60;
 const STICK_DEADZONE = 0.5;
 const TRIGGER_THRESHOLD = 0.5;
+const GAMEPAD_PHYSICAL_BUTTON_INDEX: ReadonlyArray<PhysicalButton> = [
+  "South",
+  "East",
+  "West",
+  "North",
+  "L1",
+  "R1",
+  "L2",
+  "R2",
+  "Select",
+  "Start",
+  "L3",
+  "R3",
+  "DPadUp",
+  "DPadDown",
+  "DPadLeft",
+  "DPadRight",
+];
 
 function toDirection(horizontal: -1 | 0 | 1, vertical: -1 | 0 | 1): Direction {
   if (horizontal === 0 && vertical === 0) {
@@ -51,12 +70,13 @@ function isButtonDown(gamepad: Gamepad, index: number, threshold = TRIGGER_THRES
   return button.pressed || button.value >= threshold;
 }
 
-function readSnapshot(timestampMs: number): InputSnapshot {
+function readSnapshot(timestampMs: number, bindings: ButtonBindings): InputSnapshot {
   const gamepad = getPrimaryGamepad();
   if (!gamepad) {
     return {
       timestampMs,
       direction: 5,
+      physicalDown: [],
       down: [],
     };
   }
@@ -81,44 +101,13 @@ function readSnapshot(timestampMs: number): InputSnapshot {
 
   const vertical = dpadUp ? 1 : dpadDown ? -1 : stickVertical < -STICK_DEADZONE ? 1 : stickVertical > STICK_DEADZONE ? -1 : 0;
 
-  const downButtons: CanonicalButton[] = [];
-  const a = isButtonDown(gamepad, 0);
-  const b = isButtonDown(gamepad, 1);
-  const x = isButtonDown(gamepad, 2);
-  const y = isButtonDown(gamepad, 3);
-  const leftShoulder = isButtonDown(gamepad, 4);
-  const rightShoulder = isButtonDown(gamepad, 5);
-  const leftTrigger = isButtonDown(gamepad, 6);
-  const rightTrigger = isButtonDown(gamepad, 7);
-
-  if (x) {
-    downButtons.push("LP");
-  }
-  if (y) {
-    downButtons.push("MP");
-  }
-  if (rightShoulder) {
-    downButtons.push("HP");
-  }
-  if (a) {
-    downButtons.push("LK");
-  }
-  if (b) {
-    downButtons.push("MK");
-  }
-  if (rightTrigger) {
-    downButtons.push("HK");
-  }
-  if (leftShoulder && rightShoulder) {
-    downButtons.push("DI");
-  }
-  if (leftTrigger) {
-    downButtons.push("PARry");
-  }
+  const physicalDown = GAMEPAD_PHYSICAL_BUTTON_INDEX.filter((_, index) => isButtonDown(gamepad, index));
+  const downButtons = mapPhysicalButtonsToCanonical(physicalDown, bindings);
 
   return {
     timestampMs,
     direction: toDirection(horizontal, vertical),
+    physicalDown,
     down: downButtons,
   };
 }
@@ -126,6 +115,7 @@ function readSnapshot(timestampMs: number): InputSnapshot {
 export class WebGamepadProvider implements InputProvider {
   public readonly kind = "web-gamepad" as const;
 
+  private readonly getButtonBindings: () => ButtonBindings;
   private running = false;
   private subscribers = new Set<(frame: InputFrame) => void>();
   private rafId: number | null = null;
@@ -133,6 +123,10 @@ export class WebGamepadProvider implements InputProvider {
   private accumulatedMs = 0;
   private frameCounter = 0;
   private previousFrame: InputFrame | null = null;
+
+  public constructor(getButtonBindings: () => ButtonBindings) {
+    this.getButtonBindings = getButtonBindings;
+  }
 
   public async start(): Promise<void> {
     if (this.running) {
@@ -159,7 +153,7 @@ export class WebGamepadProvider implements InputProvider {
 
       while (this.accumulatedMs >= FRAME_DURATION_MS) {
         const sampleTimestamp = timestampMs - this.accumulatedMs + FRAME_DURATION_MS;
-        const snapshot = readSnapshot(sampleTimestamp);
+        const snapshot = readSnapshot(sampleTimestamp, this.getButtonBindings());
         const frame = buildInputFrame(this.frameCounter, snapshot, this.previousFrame);
 
         this.previousFrame = frame;
@@ -192,4 +186,3 @@ export class WebGamepadProvider implements InputProvider {
     };
   }
 }
-

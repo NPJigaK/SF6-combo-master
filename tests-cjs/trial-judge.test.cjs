@@ -15,6 +15,7 @@ function advanceWithSamples(judge, samples) {
       {
         timestampMs: frame * 16.6667,
         direction: sample.direction,
+        physicalDown: sample.physicalDown ?? [],
         down: sample.down,
       },
       previousFrame,
@@ -102,4 +103,36 @@ test("TrialJudge fails when a step is missed within the window", () => {
   assert.equal(snapshot.status, "failed");
   assert.equal(snapshot.failedStepIndex, 0);
   assert.match(snapshot.failReason, /not completed within the window/i);
+});
+
+test("TrialJudge does not accept legacy DI/PARry aliases", () => {
+  const trial = {
+    id: "legacy-di",
+    name: "legacy-di",
+    fps: 60,
+    steps: [
+      {
+        id: "step-1",
+        expect: {
+          buttons: ["DI"],
+        },
+        window: {
+          openAfterPrevFrames: 0,
+          closeAfterPrevFrames: 2,
+        },
+      },
+    ],
+  };
+
+  const judge = new TrialJudge(trial);
+  const snapshot = advanceWithSamples(judge, [
+    { direction: 5, down: [] },
+    { direction: 5, down: ["HP", "HK"] },
+    { direction: 5, down: ["HP", "HK"] },
+    { direction: 5, down: [] },
+    { direction: 5, down: [] },
+  ]);
+
+  assert.equal(snapshot.status, "failed");
+  assert.equal(snapshot.failedStepIndex, 0);
 });

@@ -1,6 +1,22 @@
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  ATTACK_ACTIONS,
+  PHYSICAL_BUTTON_LABELS,
+  createDefaultButtonBindings,
+  normalizeButtonBindings,
+  setBinding,
+} from "../domain/input/buttonMapping";
 import { appendInputHistoryEntry, toDisplayHoldFrames, type InputHistoryEntry } from "../domain/input/history";
-import type { CanonicalButton, InputFrame, InputMode, InputProvider } from "../domain/input/types";
+import {
+  ATTACK_ACTION_IDS,
+  type AttackActionId,
+  type ButtonBindings,
+  type CanonicalButton,
+  type InputFrame,
+  type InputMode,
+  type InputProvider,
+  type PhysicalButton,
+} from "../domain/input/types";
 import { TrialJudge, type TrialJudgeSnapshot } from "../domain/trial/judge";
 import type { ComboTrial, TrialStep } from "../domain/trial/schema";
 import { createInputProvider } from "../platform/createInputProvider";
@@ -10,6 +26,7 @@ const RAW_FRAME_LOG_LIMIT = 24;
 const INPUT_MODE_STORAGE_KEY = "sf6_input_mode";
 const DIRECTION_DISPLAY_MODE_STORAGE_KEY = "sf6_direction_display_mode";
 const DOWN_DISPLAY_MODE_STORAGE_KEY = "sf6_down_display_mode";
+const BUTTON_BINDINGS_STORAGE_KEY = "sf6_button_bindings:v2";
 const INPUT_MODES: InputMode[] = ["auto", "xinput", "hid", "web"];
 const DIRECTION_DISPLAY_MODES = ["number", "arrow"] as const;
 const DOWN_DISPLAY_MODES = ["text", "icon"] as const;
@@ -246,6 +263,53 @@ function readStoredDownDisplayMode(): DownDisplayMode {
   return "text";
 }
 
+function isPhysicalButton(value: unknown): value is PhysicalButton {
+  return typeof value === "string" && value in PHYSICAL_BUTTON_LABELS;
+}
+
+function readStoredButtonBindings(): ButtonBindings {
+  const fallback = createDefaultButtonBindings();
+
+  if (typeof window === "undefined") {
+    return fallback;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(BUTTON_BINDINGS_STORAGE_KEY);
+    if (!stored) {
+      return fallback;
+    }
+
+    const parsed = JSON.parse(stored) as unknown;
+    if (!parsed || typeof parsed !== "object") {
+      return fallback;
+    }
+
+    const partial: Partial<Record<AttackActionId, PhysicalButton | null>> = {};
+    const record = parsed as Record<string, unknown>;
+
+    for (const actionId of ATTACK_ACTION_IDS) {
+      const value = record[actionId];
+      if (value === null) {
+        partial[actionId] = null;
+      } else if (isPhysicalButton(value)) {
+        partial[actionId] = value;
+      }
+    }
+
+    return normalizeButtonBindings(partial);
+  } catch {
+    return fallback;
+  }
+}
+
+function physicalButtonLabel(button: PhysicalButton | null): string {
+  if (button === null) {
+    return "-";
+  }
+  return PHYSICAL_BUTTON_LABELS[button] ?? button;
+}
+
 function modeLabel(mode: InputMode): string {
   switch (mode) {
     case "auto":
@@ -287,6 +351,9 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   const [inputMode, setInputMode] = useState<InputMode>(() => readStoredInputMode());
   const [directionDisplayMode, setDirectionDisplayMode] = useState<DirectionDisplayMode>(() => readStoredDirectionDisplayMode());
   const [downDisplayMode, setDownDisplayMode] = useState<DownDisplayMode>(() => readStoredDownDisplayMode());
+  const [buttonBindings, setButtonBindings] = useState<ButtonBindings>(() => readStoredButtonBindings());
+  const [pendingBindingTarget, setPendingBindingTarget] = useState<AttackActionId | null>(null);
+  const [isBindingsOpen, setIsBindingsOpen] = useState(false);
   const [providerKind, setProviderKind] = useState<InputProvider["kind"]>("web-gamepad");
   const [providerError, setProviderError] = useState<string | null>(null);
   const [judgeSnapshot, setJudgeSnapshot] = useState<TrialJudgeSnapshot>(() => {
@@ -295,6 +362,20 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   });
   const [recentFrames, setRecentFrames] = useState<InputFrame[]>([]);
   const [inputHistory, setInputHistory] = useState<InputHistoryEntry[]>([]);
+  const buttonBindingsRef = useRef<ButtonBindings>(buttonBindings);
+  const pendingBindingTargetRef = useRef<AttackActionId | null>(pendingBindingTarget);
+
+  const resetSessionState = () => {
+    const judge = judgeRef.current;
+    if (!judge) {
+      return;
+    }
+
+    judge.reset();
+    setJudgeSnapshot(judge.getSnapshot());
+    setRecentFrames([]);
+    setInputHistory([]);
+  };
 
   const handleInputModeChange = (value: string) => {
     if (!isInputMode(value)) {
@@ -317,6 +398,33 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
     setDownDisplayMode(value);
   };
 
+  const handleStartBinding = (actionId: AttackActionId) => {
+    setPendingBindingTarget(actionId);
+  };
+
+  const handleCancelBinding = () => {
+    setPendingBindingTarget(null);
+  };
+
+  const handleClearBinding = (actionId: AttackActionId) => {
+    setButtonBindings((previous) => setBinding(previous, actionId, null));
+    setPendingBindingTarget((current) => (current === actionId ? null : current));
+  };
+
+  const handleResetBindingsToDefault = () => {
+    setButtonBindings(createDefaultButtonBindings());
+    setPendingBindingTarget(null);
+  };
+
+  const handleOpenBindings = () => {
+    setIsBindingsOpen(true);
+  };
+
+  const handleCloseBindings = () => {
+    setPendingBindingTarget(null);
+    setIsBindingsOpen(false);
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(INPUT_MODE_STORAGE_KEY, inputMode);
@@ -336,7 +444,52 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   }, [downDisplayMode]);
 
   useEffect(() => {
-    const provider = createInputProvider(inputMode);
+    buttonBindingsRef.current = buttonBindings;
+  }, [buttonBindings]);
+
+  useEffect(() => {
+    pendingBindingTargetRef.current = pendingBindingTarget;
+  }, [pendingBindingTarget]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(BUTTON_BINDINGS_STORAGE_KEY, JSON.stringify(buttonBindings));
+    } catch {
+      // Ignore storage errors such as private mode or quota exceeded.
+    }
+  }, [buttonBindings]);
+
+  useEffect(() => {
+    resetSessionState();
+  }, [buttonBindings]);
+
+  useEffect(() => {
+    setPendingBindingTarget(null);
+  }, [inputMode]);
+
+  useEffect(() => {
+    if (!isBindingsOpen || typeof window === "undefined") {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleCloseBindings();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isBindingsOpen]);
+
+  useEffect(() => {
+    const provider = createInputProvider(inputMode, () => buttonBindingsRef.current);
     const judge = new TrialJudge(trial);
     judgeRef.current = judge;
 
@@ -350,6 +503,16 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
     const unsubscribe = provider.subscribe((frame) => {
       if (!mounted) {
         return;
+      }
+
+      const pendingTarget = pendingBindingTargetRef.current;
+      if (pendingTarget) {
+        const physical = frame.physicalPressed[0];
+        if (physical) {
+          setButtonBindings((previous) => setBinding(previous, pendingTarget, physical));
+          setPendingBindingTarget(null);
+          return;
+        }
       }
 
       const snapshot = judge.advance(frame);
@@ -399,15 +562,7 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   }, [inputHistory]);
 
   const handleReset = () => {
-    const judge = judgeRef.current;
-    if (!judge) {
-      return;
-    }
-
-    judge.reset();
-    setJudgeSnapshot(judge.getSnapshot());
-    setRecentFrames([]);
-    setInputHistory([]);
+    resetSessionState();
   };
 
   return (
@@ -459,7 +614,76 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
         <p className="provider-line">
           Input Provider: <strong>{providerKind}</strong>
         </p>
+        <button
+          className="open-bindings-button"
+          type="button"
+          aria-haspopup="dialog"
+          aria-expanded={isBindingsOpen}
+          onClick={handleOpenBindings}
+        >
+          Button Bindings
+        </button>
       </div>
+
+      {isBindingsOpen ? (
+        <div className="bindings-modal-backdrop" role="presentation" onClick={handleCloseBindings}>
+          <section className="bindings-panel bindings-modal" role="dialog" aria-label="Button Bindings" onClick={(event) => event.stopPropagation()}>
+            <div className="bindings-head">
+              <h3>Button Bindings</h3>
+              <div className="bindings-head-actions">
+                <button type="button" onClick={handleResetBindingsToDefault}>
+                  Reset Default
+                </button>
+                <button type="button" onClick={handleCloseBindings}>
+                  Close
+                </button>
+              </div>
+            </div>
+            <p className="bindings-help">
+              {pendingBindingTarget
+                ? `Press any physical button to assign to ${pendingBindingTarget}.`
+                : "Assign each action to the physical button that matches your SF6 settings."}
+            </p>
+            <div className="bindings-table-wrap">
+              <table className="bindings-table">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Assigned Button</th>
+                    <th>Controls</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ATTACK_ACTIONS.map((action) => {
+                    const assigned = buttonBindings[action.id];
+                    const pending = pendingBindingTarget === action.id;
+
+                    return (
+                      <tr key={action.id} className={pending ? "is-pending-bind" : undefined}>
+                        <td>
+                          <strong>{action.label}</strong>
+                        </td>
+                        <td>{physicalButtonLabel(assigned)}</td>
+                        <td className="bindings-actions">
+                          <button type="button" onClick={() => handleStartBinding(action.id)} disabled={pending}>
+                            Assign
+                          </button>
+                          <button type="button" onClick={() => handleClearBinding(action.id)} disabled={assigned === null}>
+                            Clear
+                          </button>
+                          <button type="button" onClick={handleCancelBinding} disabled={!pending}>
+                            Cancel
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      ) : null}
 
       {providerError ? (
         <div className="native-error">
