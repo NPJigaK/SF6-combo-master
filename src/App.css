@@ -283,6 +283,10 @@ body {
   font-size: 0.8rem;
 }
 
+.history-table {
+  table-layout: fixed;
+}
+
 .frame-log-table th,
 .frame-log-table td {
   border-bottom: 1px solid #355094;
@@ -295,6 +299,44 @@ body {
   position: sticky;
   top: 0;
   background: #0b2457;
+}
+
+.history-table th:nth-child(1),
+.history-table td:nth-child(1) {
+  width: 3.4rem;
+  white-space: nowrap;
+}
+
+.history-table th:nth-child(2),
+.history-table td:nth-child(2) {
+  width: 3.2rem;
+  white-space: nowrap;
+}
+
+.history-table td:nth-child(3) {
+  overflow-wrap: anywhere;
+}
+
+.dir-icon,
+.button-icon,
+.button-separator-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: -0.08em;
+}
+
+.input-buttons {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+
+.button-fallback {
+  font-size: 0.8rem;
+  line-height: 1;
 }
 
 .debug-frame-panel {
