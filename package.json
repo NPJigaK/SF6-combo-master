@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "tsc -p tsconfig.tests.json && node -e \"require('node:fs').writeFileSync('.test-dist/package.json', '{\\\"type\\\":\\\"commonjs\\\"}\\n')\" && node --test tests-cjs/input-frame.test.cjs tests-cjs/motion.test.cjs tests-cjs/trial-judge.test.cjs",
     "preview": "vite preview",
-    "tauri": "tauri",
+    "tauri:build": "tauri build",
     "tauri:dev": "scripts\\tauri-dev.cmd dev",
     "scrape:jp": "tsx tools/scrape-sf6-frames.ts"
   },

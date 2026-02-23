@@ -67,6 +67,248 @@ body {
   padding: 1rem;
 }
 
+.trial-panel {
+  border: 1px solid #3156aa;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #071f4f, #04132e);
+  padding: 1rem;
+}
+
+.trial-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.trial-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.trial-head p {
+  margin: 0.3rem 0 0;
+  color: #c6d7ff;
+}
+
+.trial-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.trial-actions button {
+  border: 1px solid #4f79df;
+  border-radius: 9px;
+  background: #0a1f4e;
+  color: #f3f7ff;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.trial-actions button:hover {
+  background: #0f2e70;
+}
+
+.trial-status {
+  border-radius: 99px;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.68rem;
+  border: 1px solid #7293e8;
+}
+
+.trial-status.is-running {
+  color: #d8e4ff;
+  border-color: #7394ea;
+  background: rgba(53, 96, 205, 0.25);
+}
+
+.trial-status.is-success {
+  color: #dcffe9;
+  border-color: #40c379;
+  background: rgba(31, 138, 72, 0.28);
+}
+
+.trial-status.is-failed {
+  color: #ffe5e5;
+  border-color: #d76363;
+  background: rgba(146, 36, 36, 0.35);
+}
+
+.provider-line {
+  margin: 0;
+  color: #c6d7ff;
+}
+
+.input-mode-row {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.input-mode-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.input-mode-control span {
+  font-size: 0.85rem;
+  color: #c6d7ff;
+}
+
+.input-mode-control select {
+  border: 1px solid #4f79df;
+  border-radius: 9px;
+  background: #0a1f4e;
+  color: #f3f7ff;
+  padding: 0.42rem 0.7rem;
+}
+
+.native-error {
+  margin-top: 0.8rem;
+  border: 1px solid #b74646;
+  border-radius: 10px;
+  background: rgba(114, 22, 22, 0.38);
+  padding: 0.75rem 0.85rem;
+}
+
+.native-error h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.native-error p {
+  margin: 0.35rem 0 0;
+  color: #ffd7d7;
+}
+
+.trial-window {
+  margin-top: 0.8rem;
+  border: 1px solid #3e5fae;
+  border-radius: 10px;
+  background: rgba(7, 22, 53, 0.75);
+  padding: 0.7rem 0.8rem;
+}
+
+.trial-window p {
+  margin: 0.15rem 0;
+  color: #d6e3ff;
+}
+
+.fail-reason {
+  color: #ffdada !important;
+}
+
+.trial-layout {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 0.75rem;
+}
+
+.trial-steps-panel,
+.trial-log-panel {
+  border: 1px solid #355093;
+  border-radius: 10px;
+  background: rgba(8, 25, 58, 0.65);
+  padding: 0.7rem;
+}
+
+.trial-steps-panel h3,
+.trial-log-panel h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.96rem;
+}
+
+.trial-steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.trial-step {
+  border: 1px solid #3e5ea8;
+  border-radius: 8px;
+  background: rgba(10, 31, 71, 0.88);
+  padding: 0.55rem 0.6rem;
+}
+
+.trial-step.is-completed {
+  border-color: #40c379;
+}
+
+.trial-step.is-active {
+  border-color: #7ba6ff;
+  box-shadow: 0 0 0 1px rgba(124, 166, 255, 0.35);
+}
+
+.trial-step.is-failed {
+  border-color: #d76363;
+}
+
+.trial-step-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.trial-step-head span {
+  color: #bcd0ff;
+  font-size: 0.75rem;
+}
+
+.trial-step p {
+  margin: 0.3rem 0 0;
+  color: #dce8ff;
+  font-size: 0.86rem;
+}
+
+.frame-log-wrap {
+  max-height: 280px;
+  overflow: auto;
+}
+
+.frame-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.frame-log-table th,
+.frame-log-table td {
+  border-bottom: 1px solid #355094;
+  padding: 0.34rem 0.35rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.frame-log-table th {
+  position: sticky;
+  top: 0;
+  background: #0b2457;
+}
+
+.debug-frame-panel {
+  margin-top: 0.7rem;
+}
+
+.debug-frame-panel summary {
+  cursor: pointer;
+  color: #c6d7ff;
+  font-size: 0.82rem;
+  user-select: none;
+  margin-bottom: 0.35rem;
+}
+
 .preview-head {
   display: flex;
   align-items: center;
@@ -156,6 +398,10 @@ body {
 }
 
 @media (max-width: 680px) {
+  .trial-layout {
+    grid-template-columns: 1fr;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }

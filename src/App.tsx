@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import comboData from "../data/jp/frame.combo.json";
+import trialData from "../data/trials/jp/m1-sample.combo-trial.json";
+import { TrialRunnerPanel } from "./components/TrialRunnerPanel";
+import type { ComboTrial } from "./domain/trial/schema";
 import "./App.css";
 
 type CommandToken =
@@ -48,6 +51,7 @@ type ComboData = {
 
 const parsed = comboData as ComboData;
 const rows = parsed.rows ?? [];
+const trial = trialData as ComboTrial;
 
 const FIELD_ROWS: Array<{ label: string; key: keyof ComboRow }> = [
   { label: "Startup", key: "startup" },
@@ -135,6 +139,8 @@ function App() {
           </select>
         </label>
       </section>
+
+      <TrialRunnerPanel trial={trial} />
 
       {selectedRow ? (
         <section className="preview">
