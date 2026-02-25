@@ -9,7 +9,7 @@ use std::{
     thread::{self, JoinHandle},
     time::{Duration, Instant},
 };
-use tauri::{AppHandle, Emitter, State};
+use tauri::{async_runtime::spawn_blocking, AppHandle, Emitter, State};
 
 const BUTTON_ORDER: [&str; 16] = [
     "South",
@@ -172,17 +172,21 @@ pub struct InputRuntimeState {
 }
 
 #[tauri::command]
-pub fn input_detect() -> NativeInputDetectResult {
-    platform::input_detect()
+pub async fn input_detect() -> Result<NativeInputDetectResult, String> {
+    spawn_blocking(platform::input_detect)
+        .await
+        .map_err(|error| format!("Failed to detect native input devices: {error}"))
 }
 
 #[tauri::command]
-pub fn input_start(
+pub async fn input_start(
     app: AppHandle,
     state: State<'_, InputRuntimeState>,
     mode: NativeInputMode,
 ) -> Result<(), String> {
-    let detect = platform::input_detect();
+    let detect = spawn_blocking(platform::input_detect)
+        .await
+        .map_err(|error| format!("Failed to detect native input devices: {error}"))?;
     match mode {
         NativeInputMode::XInput if !detect.xinput => {
             return Err("Native input mode 'xinput' did not detect a connected controller.".to_string())

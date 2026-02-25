@@ -1,13 +1,13 @@
 import type { Direction, InputFrame } from "./types";
 
-export type MotionCode = "236" | "214" | "623";
+export type MotionCode = "236" | "214" | "623" | "22";
 
 export type MotionMatch = {
   startFrame: number;
   endFrame: number;
 };
 
-const MOTION_PATTERNS: Record<MotionCode, Direction[]> = {
+const MOTION_PATTERNS: Record<Exclude<MotionCode, "22">, Direction[]> = {
   "236": [2, 3, 6],
   "214": [2, 1, 4],
   "623": [6, 2, 3],
@@ -41,19 +41,53 @@ function compressDirectionHistory(history: InputFrame[], minFrame: number, maxFr
   return events;
 }
 
+function detectDoubleDown(events: DirectionEvent[]): MotionMatch | null {
+  let firstDown: DirectionEvent | null = null;
+  let bestMatch: MotionMatch | null = null;
+
+  for (const event of events) {
+    if (event.direction !== 2) {
+      continue;
+    }
+
+    if (!firstDown) {
+      firstDown = event;
+      continue;
+    }
+
+    const candidate: MotionMatch = {
+      startFrame: firstDown.frame,
+      endFrame: event.frame,
+    };
+
+    if (!bestMatch || candidate.endFrame > bestMatch.endFrame) {
+      bestMatch = candidate;
+    }
+
+    firstDown = event;
+  }
+
+  return bestMatch;
+}
+
 export function detectMotion(
   history: InputFrame[],
   motion: MotionCode,
   currentFrame: number,
   maxWindowFrames = 20,
 ): MotionMatch | null {
-  const pattern = MOTION_PATTERNS[motion];
   const minFrame = Math.max(0, currentFrame - maxWindowFrames);
   const events = compressDirectionHistory(history, minFrame, currentFrame);
 
   if (events.length === 0) {
     return null;
   }
+
+  if (motion === "22") {
+    return detectDoubleDown(events);
+  }
+
+  const pattern = MOTION_PATTERNS[motion];
 
   let bestMatch: MotionMatch | null = null;
 

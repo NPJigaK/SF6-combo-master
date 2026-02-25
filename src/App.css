@@ -131,12 +131,6 @@ body {
   background: rgba(31, 138, 72, 0.28);
 }
 
-.trial-status.is-failed {
-  color: #ffe5e5;
-  border-color: #d76363;
-  background: rgba(146, 36, 36, 0.35);
-}
-
 .provider-line {
   margin: 0;
   color: #c6d7ff;
@@ -308,6 +302,24 @@ body {
   color: #ffd7d7;
 }
 
+.provider-loading {
+  margin-top: 0.8rem;
+  border: 1px solid #4d72c4;
+  border-radius: 10px;
+  background: rgba(8, 25, 60, 0.72);
+  padding: 0.75rem 0.85rem;
+}
+
+.provider-loading h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.provider-loading p {
+  margin: 0.35rem 0 0;
+  color: #d8e5ff;
+}
+
 .trial-window {
   margin-top: 0.8rem;
   border: 1px solid #3e5fae;
@@ -321,8 +333,30 @@ body {
   color: #d6e3ff;
 }
 
-.fail-reason {
-  color: #ffdada !important;
+.trial-note-panel {
+  margin-top: 0.8rem;
+  border: 1px solid #4f6fb8;
+  border-radius: 10px;
+  background: rgba(10, 30, 68, 0.72);
+  padding: 0.65rem 0.8rem;
+}
+
+.trial-note-panel h3 {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.trial-note-panel ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.trial-note-panel li {
+  color: #dbe7ff;
+  font-size: 0.84rem;
 }
 
 .trial-layout {
@@ -370,10 +404,6 @@ body {
   box-shadow: 0 0 0 1px rgba(124, 166, 255, 0.35);
 }
 
-.trial-step.is-failed {
-  border-color: #d76363;
-}
-
 .trial-step-head {
   display: flex;
   justify-content: space-between;
@@ -386,10 +416,57 @@ body {
   font-size: 0.75rem;
 }
 
-.trial-step p {
+.trial-step p,
+.trial-step-expectation {
   margin: 0.3rem 0 0;
   color: #dce8ff;
   font-size: 0.86rem;
+}
+
+.trial-step-assessment {
+  margin: 0.28rem 0 0;
+  color: #bcd0ff;
+  font-size: 0.76rem;
+}
+
+.trial-step-expectation-parts {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+}
+
+.trial-step-expect-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.trial-step-expect-label {
+  color: #bcd0ff;
+  font-size: 0.75rem;
+}
+
+.trial-step-expect-join {
+  color: #9ab6f5;
+  font-weight: 700;
+}
+
+.trial-step-expect-frames {
+  color: #bcd0ff;
+  font-size: 0.75rem;
+}
+
+.trial-step-motion-seq {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.14rem;
+}
+
+.trial-step-motion-token {
+  display: inline-flex;
+  align-items: center;
 }
 
 .frame-log-wrap {

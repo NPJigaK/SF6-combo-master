@@ -1,0 +1,154 @@
+{
+  "id": "jp_m4_lp_lp_cancel_lp_back_mp_target_medium_stribog",
+  "name": "JP Combo 4: 小P > 小Pキャンセル > 小P > 引き中Pタゲコン > 中ストリボーグ",
+  "fps": 60,
+  "rules": {
+    "defaultMode": "timeline",
+    "allowModeOverride": true,
+    "timeline": {
+      "defaultToleranceFrames": 2,
+      "defaultMissAfterFrames": 45
+    },
+    "stepper": {
+      "timeoutFramesDefault": 45,
+      "requirePressedDefault": true,
+      "requireReleaseBeforeReuseDefault": true,
+      "requireNeutralBeforeStepDefault": false
+    }
+  },
+  "steps": [
+    {
+      "id": "小P",
+      "expect": {
+        "direction": 5,
+        "buttons": [
+          "LP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 45
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 2
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 45
+      }
+    },
+    {
+      "id": "キャンセルラッシュ",
+      "expect": {
+        "buttons": [
+          "MP",
+          "MK"
+        ],
+        "simultaneousWithinFrames": 2
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 12
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 75
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 12
+      }
+    },
+    {
+      "id": "小P",
+      "expect": {
+        "direction": 5,
+        "buttons": [
+          "LP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 20
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 2
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 20
+      }
+    },
+    {
+      "id": "引き中P（タゲコン1段目）",
+      "expect": {
+        "direction": 4,
+        "buttons": [
+          "MP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 25
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 24
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 25
+      }
+    },
+    {
+      "id": "引き中P（タゲコン2段目）",
+      "expect": {
+        "buttons": [
+          "MP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 16
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 25
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 16
+      }
+    },
+    {
+      "id": "中ストリボーグ",
+      "expect": {
+        "motion": "236",
+        "buttons": [
+          "MP"
+        ],
+        "simultaneousWithinFrames": 2
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 40
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 37
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 40
+      }
+    }
+  ]
+}

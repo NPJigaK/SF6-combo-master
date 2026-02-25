@@ -46,3 +46,28 @@ test("detectMotion prefers the latest valid motion", () => {
   assert.equal(match.startFrame, 4);
   assert.equal(match.endFrame, 6);
 });
+
+test("detectMotion finds 22 motion from repeated down edges", () => {
+  const history = buildDirectionFrames([5, 2, 5, 2]);
+  const match = detectMotion(history, "22", 3);
+
+  assert.ok(match);
+  assert.equal(match.startFrame, 1);
+  assert.equal(match.endFrame, 3);
+});
+
+test("detectMotion rejects 22 when down is only held once", () => {
+  const history = buildDirectionFrames([5, 2, 2, 2]);
+  const match = detectMotion(history, "22", 3);
+
+  assert.equal(match, null);
+});
+
+test("detectMotion prefers latest valid 22 motion", () => {
+  const history = buildDirectionFrames([2, 5, 2, 5, 2]);
+  const match = detectMotion(history, "22", 4);
+
+  assert.ok(match);
+  assert.equal(match.startFrame, 2);
+  assert.equal(match.endFrame, 4);
+});

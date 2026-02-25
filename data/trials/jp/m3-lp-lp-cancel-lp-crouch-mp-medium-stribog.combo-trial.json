@@ -1,0 +1,133 @@
+{
+  "id": "jp_m3_lp_lp_cancel_lp_crouch_mp_medium_stribog",
+  "name": "JP Combo 3: 小P > 小Pキャンセル > 小P > しゃがみ中P > 中ストリボーグ",
+  "fps": 60,
+  "rules": {
+    "defaultMode": "timeline",
+    "allowModeOverride": true,
+    "timeline": {
+      "defaultToleranceFrames": 2,
+      "defaultMissAfterFrames": 45
+    },
+    "stepper": {
+      "timeoutFramesDefault": 45,
+      "requirePressedDefault": true,
+      "requireReleaseBeforeReuseDefault": true,
+      "requireNeutralBeforeStepDefault": false
+    }
+  },
+  "steps": [
+    {
+      "id": "小P",
+      "expect": {
+        "direction": 5,
+        "buttons": [
+          "LP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 45
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 2
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 45
+      }
+    },
+    {
+      "id": "キャンセルラッシュ",
+      "expect": {
+        "buttons": [
+          "MP",
+          "MK"
+        ],
+        "simultaneousWithinFrames": 2
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 12
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 75
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 12
+      }
+    },
+    {
+      "id": "小P",
+      "expect": {
+        "direction": 5,
+        "buttons": [
+          "LP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 20
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 2
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 20
+      }
+    },
+    {
+      "id": "しゃがみ中P",
+      "expect": {
+        "direction": 2,
+        "buttons": [
+          "MP"
+        ]
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 25
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 10
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 25
+      }
+    },
+    {
+      "id": "中ストリボーグ",
+      "expect": {
+        "motion": "236",
+        "buttons": [
+          "MP"
+        ],
+        "simultaneousWithinFrames": 2
+      },
+      "window": {
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 40
+      },
+      "moveRef": {
+        "source": "frame.combo",
+        "rowIndex": 37
+      },
+      "timing": {
+        "kind": "manual",
+        "openAfterPrevFrames": 0,
+        "closeAfterPrevFrames": 40
+      }
+    }
+  ]
+}

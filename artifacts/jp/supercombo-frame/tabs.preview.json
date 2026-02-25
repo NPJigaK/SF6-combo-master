@@ -1,0 +1,320 @@
+{
+  "meta": {
+    "requestedUrls": [
+      "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-General",
+      "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-Details",
+      "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-Meter",
+      "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-Properties",
+      "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-Notes"
+    ],
+    "canonicalUrl": "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data",
+    "fetchUrl": "https://srk.shib.live/w/Street_Fighter_6/JP/Frame_data",
+    "sourceType": "mirror",
+    "capturedAt": "2026-02-23T13:33:04.813Z",
+    "finalUrl": "https://srk.shib.live/w/Street_Fighter_6/JP/Frame_data",
+    "status": 200,
+    "revisionId": 310371,
+    "lastEditedText": "Last modified This page was last edited on 19 October 2024, at 05:16.",
+    "extractionError": null
+  },
+  "groupCount": 4,
+  "groups": [
+    {
+      "groupKey": "",
+      "heading": "Normals and Target Combos",
+      "tabs": [
+        {
+          "tabName": "General",
+          "panelId": "tabber-General",
+          "rowCount": 26,
+          "headers": [
+            "input",
+            "Damage",
+            "Startup",
+            "Active",
+            "Recovery",
+            "Total",
+            "Hit Adv",
+            "Block Adv",
+            "Guard",
+            "Cancel",
+            "Hitconfirm"
+          ]
+        },
+        {
+          "tabName": "Details",
+          "panelId": "tabber-Details",
+          "rowCount": 26,
+          "headers": [
+            "input",
+            "Dmg Scaling",
+            "Punish Adv",
+            "PerfParry Adv",
+            "DR Cancel onHit",
+            "DR Cancel onBlock",
+            "After DR onHit",
+            "After DR onBlock",
+            "Hitstun",
+            "Blockstun",
+            "Hitstop"
+          ]
+        },
+        {
+          "tabName": "Meter",
+          "panelId": "tabber-Meter",
+          "rowCount": 26,
+          "headers": [
+            "input",
+            "DriveDmg Block",
+            "DriveDmg Hit[PC]",
+            "Drive Gain",
+            "SuperGain Hit",
+            "SuperGain Block"
+          ]
+        },
+        {
+          "tabName": "Properties",
+          "panelId": "tabber-Properties",
+          "rowCount": 26,
+          "headers": [
+            "input",
+            "Invuln",
+            "Armor",
+            "Airborne",
+            "Range",
+            "Juggle Start",
+            "Juggle Increase",
+            "Juggle Limit"
+          ]
+        },
+        {
+          "tabName": "Notes",
+          "panelId": "tabber-Notes",
+          "rowCount": 26,
+          "headers": [
+            "input",
+            "Notes"
+          ]
+        }
+      ]
+    },
+    {
+      "groupKey": "_2",
+      "heading": "Drive and Throw",
+      "tabs": [
+        {
+          "tabName": "General",
+          "panelId": "tabber-General_2",
+          "rowCount": 9,
+          "headers": [
+            "input",
+            "Damage",
+            "Startup",
+            "Active",
+            "Recovery",
+            "Total",
+            "Hit Adv",
+            "Block Adv",
+            "Guard"
+          ]
+        },
+        {
+          "tabName": "Details",
+          "panelId": "tabber-Details_2",
+          "rowCount": 9,
+          "headers": [
+            "input",
+            "Chip",
+            "Dmg Scaling",
+            "Punish Adv",
+            "PerfParry Adv",
+            "Blockstun",
+            "Hitstop"
+          ]
+        },
+        {
+          "tabName": "Meter",
+          "panelId": "tabber-Meter_2",
+          "rowCount": 9,
+          "headers": [
+            "input",
+            "DriveDmg Block",
+            "DriveDmg Hit[PC]",
+            "Drive Gain",
+            "SuperGain Hit"
+          ]
+        },
+        {
+          "tabName": "Properties",
+          "panelId": "tabber-Properties_2",
+          "rowCount": 9,
+          "headers": [
+            "input",
+            "Invuln",
+            "Armor",
+            "Range",
+            "Juggle Start",
+            "Juggle Increase",
+            "Juggle Limit"
+          ]
+        },
+        {
+          "tabName": "Notes",
+          "panelId": "tabber-Notes_2",
+          "rowCount": 9,
+          "headers": [
+            "input",
+            "Notes"
+          ]
+        }
+      ]
+    },
+    {
+      "groupKey": "_3",
+      "heading": "Specials",
+      "tabs": [
+        {
+          "tabName": "General",
+          "panelId": "tabber-General_3",
+          "rowCount": 22,
+          "headers": [
+            "input",
+            "Damage",
+            "Startup",
+            "Active",
+            "Recovery",
+            "Total",
+            "Hit Adv",
+            "Block Adv",
+            "Guard",
+            "Cancel",
+            "Hitconfirm"
+          ]
+        },
+        {
+          "tabName": "Details",
+          "panelId": "tabber-Details_3",
+          "rowCount": 22,
+          "headers": [
+            "input",
+            "Chip",
+            "Dmg Scaling",
+            "Punish Adv",
+            "PerfParry Adv",
+            "Blockstun",
+            "Hitstop"
+          ]
+        },
+        {
+          "tabName": "Meter",
+          "panelId": "tabber-Meter_3",
+          "rowCount": 22,
+          "headers": [
+            "input",
+            "DriveDmg Block",
+            "DriveDmg Hit[PC]",
+            "Drive Gain",
+            "SuperGain Hit",
+            "SuperGain Block"
+          ]
+        },
+        {
+          "tabName": "Properties",
+          "panelId": "tabber-Properties_3",
+          "rowCount": 22,
+          "headers": [
+            "input",
+            "Invuln",
+            "Armor",
+            "Airborne",
+            "Range",
+            "Juggle Start",
+            "Juggle Increase",
+            "Juggle Limit"
+          ]
+        },
+        {
+          "tabName": "Notes",
+          "panelId": "tabber-Notes_3",
+          "rowCount": 22,
+          "headers": [
+            "input",
+            "Notes"
+          ]
+        }
+      ]
+    },
+    {
+      "groupKey": "_4",
+      "heading": "Supers",
+      "tabs": [
+        {
+          "tabName": "General",
+          "panelId": "tabber-General_4",
+          "rowCount": 4,
+          "headers": [
+            "input",
+            "Damage",
+            "Startup",
+            "Active",
+            "Recovery",
+            "Total",
+            "Hit Adv",
+            "Block Adv",
+            "Guard"
+          ]
+        },
+        {
+          "tabName": "Details",
+          "panelId": "tabber-Details_4",
+          "rowCount": 4,
+          "headers": [
+            "input",
+            "Chip",
+            "Dmg Scaling",
+            "Punish Adv",
+            "PerfParry Adv",
+            "Blockstun",
+            "Hitstop"
+          ]
+        },
+        {
+          "tabName": "Meter",
+          "panelId": "tabber-Meter_4",
+          "rowCount": 4,
+          "headers": [
+            "input",
+            "DriveDmg Block",
+            "DriveDmg Hit[PC]",
+            "SuperGain Hit",
+            "SuperGain Block"
+          ]
+        },
+        {
+          "tabName": "Properties",
+          "panelId": "tabber-Properties_4",
+          "rowCount": 4,
+          "headers": [
+            "input",
+            "Invuln",
+            "Armor",
+            "Airborne",
+            "Range",
+            "Juggle Start",
+            "Juggle Increase",
+            "Juggle Limit"
+          ]
+        },
+        {
+          "tabName": "Notes",
+          "panelId": "tabber-Notes_4",
+          "rowCount": 4,
+          "headers": [
+            "input",
+            "Notes"
+          ]
+        }
+      ]
+    }
+  ]
+}

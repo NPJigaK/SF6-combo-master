@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createFrameComboRowIndex } from "../domain/frameData/normalizer";
 import {
   ATTACK_ACTIONS,
   PHYSICAL_BUTTON_LABELS,
@@ -7,6 +8,7 @@ import {
   setBinding,
 } from "../domain/input/buttonMapping";
 import { appendInputHistoryEntry, toDisplayHoldFrames, type InputHistoryEntry } from "../domain/input/history";
+import { computeResetTrialPressTrigger, normalizeResetTrialBinding, type ResetTrialBinding } from "../domain/input/resetBinding";
 import {
   ATTACK_ACTION_IDS,
   type AttackActionId,
@@ -17,8 +19,10 @@ import {
   type InputProvider,
   type PhysicalButton,
 } from "../domain/input/types";
-import { TrialJudge, type TrialJudgeSnapshot } from "../domain/trial/judge";
-import type { ComboTrial, TrialStep } from "../domain/trial/schema";
+import { createTrialEngine } from "../domain/trial-engine/createTrialEngine";
+import type { TrialEngine, TrialEngineSnapshot } from "../domain/trial-engine/core/types";
+import type { ComboTrial, TrialMode, TrialStep } from "../domain/trial/schema";
+import type { TrialMoveDataResolver } from "../domain/trial/validate";
 import { createInputProvider } from "../platform/createInputProvider";
 
 const INPUT_HISTORY_LIMIT = 24;
@@ -27,7 +31,10 @@ const INPUT_MODE_STORAGE_KEY = "sf6_input_mode";
 const DIRECTION_DISPLAY_MODE_STORAGE_KEY = "sf6_direction_display_mode";
 const DOWN_DISPLAY_MODE_STORAGE_KEY = "sf6_down_display_mode";
 const BUTTON_BINDINGS_STORAGE_KEY = "sf6_button_bindings:v2";
+const RESET_TRIAL_BINDING_STORAGE_KEY = "sf6_reset_trial_binding:v1";
+const TRIAL_MODE_STORAGE_KEY = "sf6_trial_mode_override";
 const INPUT_MODES: InputMode[] = ["auto", "xinput", "hid", "web"];
+const TRIAL_MODES: TrialMode[] = ["timeline", "stepper"];
 const DIRECTION_DISPLAY_MODES = ["number", "arrow"] as const;
 const DOWN_DISPLAY_MODES = ["text", "icon"] as const;
 const BUTTON_SEPARATOR_ICON_SRC = "/assets/controller/key-plus.png";
@@ -43,12 +50,104 @@ const BUTTON_ICON_BY_NAME: Partial<Record<CanonicalButton, string>> = {
 
 type DirectionDisplayMode = (typeof DIRECTION_DISPLAY_MODES)[number];
 type DownDisplayMode = (typeof DOWN_DISPLAY_MODES)[number];
+type BindingTarget = AttackActionId | "resetTrial";
+
+type FrameComboRow = {
+  index: number;
+  skillName: string;
+  startup: string;
+  hitAdvantage: string;
+};
 
 type DirectionIconSpec = {
   src: string;
   alt: string;
   rotateDeg?: number;
 };
+
+type SfxTone = {
+  wave: OscillatorType;
+  frequency: number;
+  endFrequency?: number;
+  delaySec: number;
+  durationSec: number;
+  gain: number;
+};
+
+let sfxContext: AudioContext | null = null;
+
+function getSfxContext(): AudioContext | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const audioContextCtor = window.AudioContext ?? (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!audioContextCtor) {
+    return null;
+  }
+
+  if (!sfxContext) {
+    sfxContext = new audioContextCtor();
+  }
+
+  return sfxContext;
+}
+
+function scheduleTone(context: AudioContext, baseTime: number, tone: SfxTone): void {
+  const startAt = baseTime + tone.delaySec;
+  const endAt = startAt + tone.durationSec;
+  const attackAt = startAt + Math.min(0.02, tone.durationSec * 0.5);
+
+  const oscillator = context.createOscillator();
+  oscillator.type = tone.wave;
+  oscillator.frequency.setValueAtTime(tone.frequency, startAt);
+  if (tone.endFrequency !== undefined) {
+    oscillator.frequency.linearRampToValueAtTime(tone.endFrequency, endAt);
+  }
+
+  const gain = context.createGain();
+  gain.gain.setValueAtTime(0, startAt);
+  gain.gain.linearRampToValueAtTime(tone.gain, attackAt);
+  gain.gain.linearRampToValueAtTime(0, endAt);
+
+  oscillator.connect(gain);
+  gain.connect(context.destination);
+  oscillator.start(startAt);
+  oscillator.stop(endAt + 0.01);
+}
+
+function playToneSequence(tones: SfxTone[]): void {
+  const context = getSfxContext();
+  if (!context) {
+    return;
+  }
+
+  const schedule = () => {
+    const baseTime = context.currentTime + 0.01;
+    for (const tone of tones) {
+      scheduleTone(context, baseTime, tone);
+    }
+  };
+
+  if (context.state === "suspended") {
+    void context
+      .resume()
+      .then(() => {
+        schedule();
+      })
+      .catch(() => undefined);
+    return;
+  }
+
+  schedule();
+}
+
+function playSuccessSfx(): void {
+  playToneSequence([
+    { wave: "triangle", frequency: 880, delaySec: 0, durationSec: 0.09, gain: 0.08 },
+    { wave: "sine", frequency: 1320, delaySec: 0.08, durationSec: 0.15, gain: 0.1 },
+  ]);
+}
 
 function toDirectionIconSpec(direction: number): DirectionIconSpec | null {
   switch (direction) {
@@ -168,41 +267,102 @@ function renderButtonSet(buttons: readonly string[], mode: DownDisplayMode): Rea
   );
 }
 
-function describeStep(step: TrialStep): string {
-  const parts: string[] = [];
-
-  if (step.expect.motion) {
-    parts.push(`motion ${step.expect.motion}`);
-  }
-  if (step.expect.direction) {
-    parts.push(`dir ${step.expect.direction}`);
-  }
-  if (step.expect.buttons?.length) {
-    const buttonLabel = step.expect.buttons.join("+");
-    if (step.expect.simultaneousWithinFrames !== undefined) {
-      parts.push(`${buttonLabel} (${step.expect.simultaneousWithinFrames}F)`);
-    } else {
-      parts.push(buttonLabel);
+function parseMotionDirections(motion: string): number[] {
+  const directions: number[] = [];
+  for (const char of motion) {
+    const direction = Number(char);
+    if (Number.isInteger(direction) && direction >= 1 && direction <= 9) {
+      directions.push(direction);
     }
   }
-
-  return parts.length > 0 ? parts.join(" + ") : "No expectation";
+  return directions;
 }
 
-function statusLabel(snapshot: TrialJudgeSnapshot): string {
+function renderMotionValue(motion: string, directionDisplayMode: DirectionDisplayMode): ReactNode {
+  const directions = parseMotionDirections(motion);
+  if (directions.length === 0) {
+    return motion;
+  }
+
+  return (
+    <span className="trial-step-motion-seq">
+      {directions.map((direction, index) => (
+        <span key={`${motion}-${index}-${direction}`} className="trial-step-motion-token">
+          {renderDirectionValue(direction, directionDisplayMode)}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function renderStepExpectation(step: TrialStep, directionDisplayMode: DirectionDisplayMode, downDisplayMode: DownDisplayMode): ReactNode {
+  const parts: ReactNode[] = [];
+
+  if (step.expect.motion) {
+    parts.push(
+      <span key="motion" className="trial-step-expect-group">
+        <span className="trial-step-expect-label">motion</span>
+        <span>{renderMotionValue(step.expect.motion, directionDisplayMode)}</span>
+      </span>,
+    );
+  }
+
+  if (step.expect.direction) {
+    parts.push(
+      <span key="direction" className="trial-step-expect-group">
+        <span className="trial-step-expect-label">dir</span>
+        <span>{renderDirectionValue(step.expect.direction, directionDisplayMode)}</span>
+      </span>,
+    );
+  }
+
+  if (step.expect.buttons?.length) {
+    parts.push(
+      <span key="buttons" className="trial-step-expect-group">
+        <span>{renderButtonSet(step.expect.buttons, downDisplayMode)}</span>
+        {step.expect.simultaneousWithinFrames !== undefined ? (
+          <span className="trial-step-expect-frames">({step.expect.simultaneousWithinFrames}F)</span>
+        ) : null}
+      </span>,
+    );
+  }
+
+  if (step.expect.anyTwoButtonsFrom?.length) {
+    parts.push(
+      <span key="any-two-buttons" className="trial-step-expect-group">
+        <span className="trial-step-expect-label">Any 2</span>
+        <span>{renderButtonSet(step.expect.anyTwoButtonsFrom, downDisplayMode)}</span>
+        {step.expect.simultaneousWithinFrames !== undefined ? (
+          <span className="trial-step-expect-frames">({step.expect.simultaneousWithinFrames}F)</span>
+        ) : null}
+      </span>,
+    );
+  }
+
+  if (parts.length === 0) {
+    return "No expectation";
+  }
+
+  return (
+    <span className="trial-step-expectation-parts">
+      {parts.map((part, index) => (
+        <Fragment key={`step-part-${index}`}>
+          {index > 0 ? <span className="trial-step-expect-join">+</span> : null}
+          {part}
+        </Fragment>
+      ))}
+    </span>
+  );
+}
+
+function statusLabel(snapshot: TrialEngineSnapshot): string {
   if (snapshot.status === "success") {
     return "Success";
-  }
-  if (snapshot.status === "failed") {
-    return "Failed";
   }
   return "Running";
 }
 
-function stepStateClass(stepIndex: number, snapshot: TrialJudgeSnapshot): string {
-  if (snapshot.status === "failed" && snapshot.failedStepIndex === stepIndex) {
-    return "is-failed";
-  }
+function stepStateClass(stepIndex: number, snapshot: TrialEngineSnapshot): string {
   if (stepIndex < snapshot.currentStepIndex) {
     return "is-completed";
   }
@@ -303,11 +463,48 @@ function readStoredButtonBindings(): ButtonBindings {
   }
 }
 
+function readStoredResetTrialBinding(): PhysicalButton[] {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const stored = window.localStorage.getItem(RESET_TRIAL_BINDING_STORAGE_KEY);
+    if (!stored) {
+      return [];
+    }
+
+    const parsed = JSON.parse(stored) as unknown;
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+
+    const collected: PhysicalButton[] = [];
+    for (const value of parsed) {
+      if (isPhysicalButton(value)) {
+        collected.push(value);
+      }
+    }
+
+    return normalizeResetTrialBinding(collected);
+  } catch {
+    return [];
+  }
+}
+
 function physicalButtonLabel(button: PhysicalButton | null): string {
   if (button === null) {
     return "-";
   }
   return PHYSICAL_BUTTON_LABELS[button] ?? button;
+}
+
+function physicalButtonSetLabel(buttons: ResetTrialBinding): string {
+  if (buttons.length === 0) {
+    return "-";
+  }
+
+  return buttons.map((button) => PHYSICAL_BUTTON_LABELS[button] ?? button).join("+");
 }
 
 function modeLabel(mode: InputMode): string {
@@ -323,6 +520,34 @@ function modeLabel(mode: InputMode): string {
     default:
       return mode;
   }
+}
+
+function trialModeLabel(mode: TrialMode): string {
+  switch (mode) {
+    case "timeline":
+      return "Timeline";
+    case "stepper":
+      return "Stepper";
+    default:
+      return mode;
+  }
+}
+
+function isTrialMode(value: string): value is TrialMode {
+  return TRIAL_MODES.includes(value as TrialMode);
+}
+
+function readStoredTrialMode(): TrialMode | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const stored = window.localStorage.getItem(TRIAL_MODE_STORAGE_KEY);
+  if (!stored || !isTrialMode(stored)) {
+    return null;
+  }
+
+  return stored;
 }
 
 function directionDisplayModeLabel(mode: DirectionDisplayMode): string {
@@ -345,34 +570,102 @@ function downDisplayModeLabel(mode: DownDisplayMode): string {
   }
 }
 
-export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
-  const judgeRef = useRef<TrialJudge | null>(null);
+function resolveStepWindow(step: TrialStep): { openAfterPrevFrames: number; closeAfterPrevFrames: number } {
+  return {
+    openAfterPrevFrames: step.timing?.openAfterPrevFrames ?? step.window?.openAfterPrevFrames ?? 0,
+    closeAfterPrevFrames: step.timing?.closeAfterPrevFrames ?? step.window?.closeAfterPrevFrames ?? 0,
+  };
+}
+
+function createMoveDataResolver(frameRows: readonly FrameComboRow[]): TrialMoveDataResolver | undefined {
+  if (frameRows.length === 0) {
+    return undefined;
+  }
+
+  const rowIndex = createFrameComboRowIndex(frameRows);
+  return (moveRef) => {
+    const row = rowIndex.get(moveRef.rowIndex);
+    if (!row) {
+      return null;
+    }
+
+    return {
+      rowIndex: row.index,
+      skillName: row.skillName,
+      startup: row.startup,
+      hitAdvantage: row.hitAdvantage,
+    };
+  };
+}
+
+function resolveDefaultTrialMode(trial: ComboTrial): TrialMode {
+  return trial.rules?.defaultMode ?? "timeline";
+}
+
+function resolveAvailableTrialModes(): TrialMode[] {
+  return ["timeline", "stepper"];
+}
+
+function resolveInitialTrialMode(trial: ComboTrial): TrialMode {
+  const available = resolveAvailableTrialModes();
+  const preferred = resolveDefaultTrialMode(trial);
+  const allowOverride = trial.rules?.allowModeOverride ?? true;
+
+  if (!allowOverride) {
+    if (available.includes(preferred)) {
+      return preferred;
+    }
+    return available[0] ?? "timeline";
+  }
+
+  const stored = readStoredTrialMode();
+
+  if (stored && available.includes(stored)) {
+    return stored;
+  }
+
+  if (available.includes(preferred)) {
+    return preferred;
+  }
+
+  return available[0] ?? "timeline";
+}
+
+export function TrialRunnerPanel({ trial, frameRows }: { trial: ComboTrial; frameRows: FrameComboRow[] }) {
+  const moveDataResolver = useMemo(() => createMoveDataResolver(frameRows), [frameRows]);
+  const [selectedTrialMode, setSelectedTrialMode] = useState<TrialMode>(() => resolveInitialTrialMode(trial));
+  const availableTrialModes = useMemo(() => resolveAvailableTrialModes(), []);
+  const engineRef = useRef<TrialEngine>(
+    createTrialEngine(trial, {
+      modeOverride: selectedTrialMode,
+      resolveMoveData: moveDataResolver,
+    }),
+  );
 
   const [inputMode, setInputMode] = useState<InputMode>(() => readStoredInputMode());
   const [directionDisplayMode, setDirectionDisplayMode] = useState<DirectionDisplayMode>(() => readStoredDirectionDisplayMode());
   const [downDisplayMode, setDownDisplayMode] = useState<DownDisplayMode>(() => readStoredDownDisplayMode());
   const [buttonBindings, setButtonBindings] = useState<ButtonBindings>(() => readStoredButtonBindings());
-  const [pendingBindingTarget, setPendingBindingTarget] = useState<AttackActionId | null>(null);
+  const [resetTrialBinding, setResetTrialBinding] = useState<PhysicalButton[]>(() => readStoredResetTrialBinding());
+  const [pendingBindingTarget, setPendingBindingTarget] = useState<BindingTarget | null>(null);
   const [isBindingsOpen, setIsBindingsOpen] = useState(false);
   const [providerKind, setProviderKind] = useState<InputProvider["kind"]>("web-gamepad");
+  const [providerLoading, setProviderLoading] = useState(false);
   const [providerError, setProviderError] = useState<string | null>(null);
-  const [judgeSnapshot, setJudgeSnapshot] = useState<TrialJudgeSnapshot>(() => {
-    const judge = new TrialJudge(trial);
-    return judge.getSnapshot();
-  });
+  const [trialSnapshot, setTrialSnapshot] = useState<TrialEngineSnapshot>(() => engineRef.current.getSnapshot());
+  const previousStatusRef = useRef<TrialEngineSnapshot["status"]>(trialSnapshot.status);
   const [recentFrames, setRecentFrames] = useState<InputFrame[]>([]);
   const [inputHistory, setInputHistory] = useState<InputHistoryEntry[]>([]);
   const buttonBindingsRef = useRef<ButtonBindings>(buttonBindings);
-  const pendingBindingTargetRef = useRef<AttackActionId | null>(pendingBindingTarget);
+  const resetTrialBindingRef = useRef<PhysicalButton[]>(resetTrialBinding);
+  const pendingBindingTargetRef = useRef<BindingTarget | null>(pendingBindingTarget);
+  const resetTrialComboActiveRef = useRef(false);
+  const pendingResetCaptureRef = useRef<Set<PhysicalButton>>(new Set());
+  const pendingResetCaptureArmedRef = useRef(false);
 
   const resetSessionState = () => {
-    const judge = judgeRef.current;
-    if (!judge) {
-      return;
-    }
-
-    judge.reset();
-    setJudgeSnapshot(judge.getSnapshot());
+    engineRef.current.reset();
+    setTrialSnapshot(engineRef.current.getSnapshot());
     setRecentFrames([]);
     setInputHistory([]);
   };
@@ -398,11 +691,33 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
     setDownDisplayMode(value);
   };
 
+  const handleTrialModeChange = (value: string) => {
+    if (!isTrialMode(value)) {
+      return;
+    }
+    if (!availableTrialModes.includes(value)) {
+      return;
+    }
+    setSelectedTrialMode(value);
+  };
+
+  const clearPendingResetCapture = () => {
+    pendingResetCaptureRef.current.clear();
+    pendingResetCaptureArmedRef.current = false;
+  };
+
   const handleStartBinding = (actionId: AttackActionId) => {
+    clearPendingResetCapture();
     setPendingBindingTarget(actionId);
   };
 
+  const handleStartResetTrialBinding = () => {
+    clearPendingResetCapture();
+    setPendingBindingTarget("resetTrial");
+  };
+
   const handleCancelBinding = () => {
+    clearPendingResetCapture();
     setPendingBindingTarget(null);
   };
 
@@ -411,8 +726,17 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
     setPendingBindingTarget((current) => (current === actionId ? null : current));
   };
 
+  const handleClearResetTrialBinding = () => {
+    setResetTrialBinding([]);
+    clearPendingResetCapture();
+    setPendingBindingTarget((current) => (current === "resetTrial" ? null : current));
+  };
+
   const handleResetBindingsToDefault = () => {
     setButtonBindings(createDefaultButtonBindings());
+    setResetTrialBinding([]);
+    clearPendingResetCapture();
+    resetTrialComboActiveRef.current = false;
     setPendingBindingTarget(null);
   };
 
@@ -421,6 +745,7 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   };
 
   const handleCloseBindings = () => {
+    clearPendingResetCapture();
     setPendingBindingTarget(null);
     setIsBindingsOpen(false);
   };
@@ -444,8 +769,28 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   }, [downDisplayMode]);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(TRIAL_MODE_STORAGE_KEY, selectedTrialMode);
+    }
+  }, [selectedTrialMode]);
+
+  useEffect(() => {
+    if (availableTrialModes.includes(selectedTrialMode)) {
+      return;
+    }
+
+    const fallback = resolveInitialTrialMode(trial);
+    setSelectedTrialMode(fallback);
+  }, [availableTrialModes, selectedTrialMode, trial]);
+
+  useEffect(() => {
     buttonBindingsRef.current = buttonBindings;
   }, [buttonBindings]);
+
+  useEffect(() => {
+    resetTrialBindingRef.current = resetTrialBinding;
+    resetTrialComboActiveRef.current = false;
+  }, [resetTrialBinding]);
 
   useEffect(() => {
     pendingBindingTargetRef.current = pendingBindingTarget;
@@ -464,10 +809,24 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   }, [buttonBindings]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(RESET_TRIAL_BINDING_STORAGE_KEY, JSON.stringify(resetTrialBinding));
+    } catch {
+      // Ignore storage errors such as private mode or quota exceeded.
+    }
+  }, [resetTrialBinding]);
+
+  useEffect(() => {
     resetSessionState();
   }, [buttonBindings]);
 
   useEffect(() => {
+    clearPendingResetCapture();
+    resetTrialComboActiveRef.current = false;
     setPendingBindingTarget(null);
   }, [inputMode]);
 
@@ -489,34 +848,79 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
   }, [isBindingsOpen]);
 
   useEffect(() => {
+    const engine = createTrialEngine(trial, {
+      modeOverride: selectedTrialMode,
+      resolveMoveData: moveDataResolver,
+    });
+    engineRef.current = engine;
+    const snapshot = engine.getSnapshot();
+    setTrialSnapshot(snapshot);
+    previousStatusRef.current = snapshot.status;
+    setRecentFrames([]);
+    setInputHistory([]);
+  }, [trial, moveDataResolver, selectedTrialMode]);
+
+  useEffect(() => {
     const provider = createInputProvider(inputMode, () => buttonBindingsRef.current);
-    const judge = new TrialJudge(trial);
-    judgeRef.current = judge;
 
     setProviderKind(provider.kind);
     setProviderError(null);
-    setJudgeSnapshot(judge.getSnapshot());
-    setRecentFrames([]);
-    setInputHistory([]);
+    setProviderLoading(true);
+    resetSessionState();
+    resetTrialComboActiveRef.current = false;
+    clearPendingResetCapture();
 
     let mounted = true;
+    let rafId: number | null = null;
+    let startPromise: Promise<void> | null = null;
     const unsubscribe = provider.subscribe((frame) => {
       if (!mounted) {
         return;
       }
 
       const pendingTarget = pendingBindingTargetRef.current;
+      if (pendingTarget === "resetTrial") {
+        if (frame.physicalDown.length > 0) {
+          pendingResetCaptureArmedRef.current = true;
+          for (const button of frame.physicalDown) {
+            pendingResetCaptureRef.current.add(button);
+          }
+          return;
+        }
+
+        if (pendingResetCaptureArmedRef.current) {
+          const capturedButtons = normalizeResetTrialBinding(Array.from(pendingResetCaptureRef.current));
+          setResetTrialBinding(capturedButtons);
+          clearPendingResetCapture();
+          setPendingBindingTarget(null);
+          return;
+        }
+
+        return;
+      }
+
       if (pendingTarget) {
         const physical = frame.physicalPressed[0];
         if (physical) {
           setButtonBindings((previous) => setBinding(previous, pendingTarget, physical));
           setPendingBindingTarget(null);
-          return;
         }
+        return;
       }
 
-      const snapshot = judge.advance(frame);
-      setJudgeSnapshot(snapshot);
+      const { active, triggered } = computeResetTrialPressTrigger(
+        frame,
+        resetTrialBindingRef.current,
+        resetTrialComboActiveRef.current,
+      );
+      resetTrialComboActiveRef.current = active;
+      if (triggered) {
+        resetSessionState();
+        return;
+      }
+
+      const snapshot = engineRef.current.advance(frame);
+      setTrialSnapshot(snapshot);
       setRecentFrames((previous) => {
         const next = [...previous, frame];
         if (next.length > RAW_FRAME_LOG_LIMIT) {
@@ -527,31 +931,73 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
       setInputHistory((previous) => appendInputHistoryEntry(previous, frame, INPUT_HISTORY_LIMIT));
     });
 
-    provider
-      .start()
-      .then(() => {
-        if (mounted) {
-          setProviderKind(provider.kind);
-        }
-      })
-      .catch((error) => {
+    const startProvider = async () => {
+      try {
+        await provider.start();
         if (!mounted) {
+          await provider.stop().catch(() => undefined);
           return;
         }
-        const message = error instanceof Error ? error.message : String(error);
-        setProviderError(message);
+
+        setProviderKind(provider.kind);
+      } catch (error) {
+        if (mounted) {
+          const message = error instanceof Error ? error.message : String(error);
+          setProviderError(message);
+        }
+      } finally {
+        if (mounted) {
+          setProviderLoading(false);
+        }
+      }
+    };
+
+    if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        startPromise = startProvider();
       });
+    } else {
+      startPromise = startProvider();
+    }
 
     return () => {
       mounted = false;
+      if (typeof window !== "undefined" && rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
       unsubscribe();
-      provider.stop().catch(() => undefined);
+      void (async () => {
+        if (startPromise) {
+          await startPromise.catch(() => undefined);
+        }
+        await provider.stop().catch(() => undefined);
+      })();
     };
-  }, [trial, inputMode]);
+  }, [inputMode]);
+
+  useEffect(() => {
+    const previousStatus = previousStatusRef.current;
+    const currentStatus = trialSnapshot.status;
+
+    if (previousStatus === currentStatus) {
+      return;
+    }
+
+    if (previousStatus === "running" && currentStatus === "success") {
+      playSuccessSfx();
+    }
+
+    previousStatusRef.current = currentStatus;
+  }, [trialSnapshot.status]);
 
   const currentStep = useMemo(() => {
-    return trial.steps[judgeSnapshot.currentStepIndex] ?? null;
-  }, [judgeSnapshot.currentStepIndex, trial.steps]);
+    return trial.steps[trialSnapshot.currentStepIndex] ?? null;
+  }, [trialSnapshot.currentStepIndex, trial.steps]);
+  const allowModeOverride = trial.rules?.allowModeOverride ?? true;
+  const currentAssessment = useMemo(() => {
+    return trialSnapshot.assessments[trialSnapshot.currentStepIndex] ?? null;
+  }, [trialSnapshot.assessments, trialSnapshot.currentStepIndex]);
 
   const visibleFrames = useMemo(() => {
     return [...recentFrames].reverse();
@@ -569,11 +1015,11 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
     <section className="trial-panel">
       <div className="trial-head">
         <div>
-          <h2>Combo Trial (M1)</h2>
+          <h2>Combo Trial ({trialModeLabel(trialSnapshot.mode)})</h2>
           <p>{trial.name}</p>
         </div>
         <div className="trial-actions">
-          <span className={`trial-status is-${judgeSnapshot.status}`}>{statusLabel(judgeSnapshot)}</span>
+          <span className={`trial-status is-${trialSnapshot.status}`}>{statusLabel(trialSnapshot)}</span>
           <button type="button" onClick={handleReset}>
             Reset Trial
           </button>
@@ -581,6 +1027,16 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
       </div>
 
       <div className="input-mode-row">
+        <label className="input-mode-control">
+          <span>Trial Mode</span>
+          <select value={selectedTrialMode} onChange={(event) => handleTrialModeChange(event.currentTarget.value)} disabled={!allowModeOverride}>
+            {availableTrialModes.map((mode) => (
+              <option key={mode} value={mode}>
+                {trialModeLabel(mode)}
+              </option>
+            ))}
+          </select>
+        </label>
         <label className="input-mode-control">
           <span>Input Mode</span>
           <select value={inputMode} onChange={(event) => handleInputModeChange(event.currentTarget.value)}>
@@ -640,9 +1096,11 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
               </div>
             </div>
             <p className="bindings-help">
-              {pendingBindingTarget
-                ? `Press any physical button to assign to ${pendingBindingTarget}.`
-                : "Assign each action to the physical button that matches your SF6 settings."}
+              {pendingBindingTarget === "resetTrial"
+                ? "Press all buttons for Reset Trial, then release to save."
+                : pendingBindingTarget
+                  ? `Press any physical button to assign to ${pendingBindingTarget}.`
+                  : "Assign each action to the physical button that matches your SF6 settings."}
             </p>
             <div className="bindings-table-wrap">
               <table className="bindings-table">
@@ -654,6 +1112,23 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
                   </tr>
                 </thead>
                 <tbody>
+                  <tr className={pendingBindingTarget === "resetTrial" ? "is-pending-bind" : undefined}>
+                    <td>
+                      <strong>Reset Trial</strong>
+                    </td>
+                    <td>{physicalButtonSetLabel(resetTrialBinding)}</td>
+                    <td className="bindings-actions">
+                      <button type="button" onClick={handleStartResetTrialBinding} disabled={pendingBindingTarget === "resetTrial"}>
+                        Assign
+                      </button>
+                      <button type="button" onClick={handleClearResetTrialBinding} disabled={resetTrialBinding.length === 0}>
+                        Clear
+                      </button>
+                      <button type="button" onClick={handleCancelBinding} disabled={pendingBindingTarget !== "resetTrial"}>
+                        Cancel
+                      </button>
+                    </td>
+                  </tr>
                   {ATTACK_ACTIONS.map((action) => {
                     const assigned = buttonBindings[action.id];
                     const pending = pendingBindingTarget === action.id;
@@ -691,40 +1166,86 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
           <p>{providerError}</p>
           <p>選択中モードで入力を開始できませんでした。コントローラー接続とモード設定を確認してください。</p>
         </div>
+      ) : providerLoading ? (
+        <div className="provider-loading">
+          <h3>Input Provider</h3>
+          <p>入力プロバイダーを初期化しています...</p>
+        </div>
       ) : (
         <div className="trial-window">
           <p>
-            Current Step: <strong>{currentStep ? `${judgeSnapshot.currentStepIndex + 1}/${trial.steps.length} ${currentStep.id}` : "Complete"}</strong>
+            Mode: <strong>{trialModeLabel(trialSnapshot.mode)}</strong>
           </p>
           <p>
-            Window: <strong>{judgeSnapshot.currentWindowOpenFrame ?? "-"}F - {judgeSnapshot.currentWindowCloseFrame ?? "-"}F</strong>
+            Current Step: <strong>{currentStep ? `${trialSnapshot.currentStepIndex + 1}/${trial.steps.length} ${currentStep.id}` : "Complete"}</strong>
           </p>
           <p>
-            Last Match: <strong>{judgeSnapshot.lastMatchedFrame ?? "-"}</strong>
+            Window: <strong>{trialSnapshot.currentWindowOpenFrame ?? "-"}F - {trialSnapshot.currentWindowCloseFrame ?? "-"}F</strong>
           </p>
-          {judgeSnapshot.failReason ? (
-            <p className="fail-reason">
-              Reason: <strong>{judgeSnapshot.failReason}</strong>
+          <p>
+            Last Match: <strong>{trialSnapshot.lastMatchedFrame ?? "-"}</strong>
+          </p>
+          <p>
+            Last Input / Commit:{" "}
+            <strong>
+              {trialSnapshot.lastMatchedInputFrame ?? "-"}F / {trialSnapshot.lastMatchedCommitFrame ?? "-"}F
+            </strong>
+          </p>
+          {trialSnapshot.mode === "timeline" ? (
+            <p>
+              Timeline Delta:{" "}
+              <strong>
+                {currentAssessment?.deltaFrames === null || currentAssessment?.deltaFrames === undefined
+                  ? "-"
+                  : `${currentAssessment.deltaFrames >= 0 ? "+" : ""}${currentAssessment.deltaFrames}F`}
+              </strong>
+            </p>
+          ) : null}
+          {trialSnapshot.mode === "stepper" ? (
+            <p>
+              Step Attempts: <strong>{currentAssessment?.attempts ?? 0}</strong>
             </p>
           ) : null}
         </div>
       )}
 
+      {trial.notes?.length ? (
+        <section className="trial-note-panel">
+          <h3>Note</h3>
+          <ul>
+            {trial.notes.map((note, index) => (
+              <li key={`${trial.id}-note-${index}`}>{note}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       <div className="trial-layout">
         <section className="trial-steps-panel">
           <h3>Steps</h3>
           <ol className="trial-steps">
-            {trial.steps.map((step, stepIndex) => (
-              <li key={step.id} className={`trial-step ${stepStateClass(stepIndex, judgeSnapshot)}`}>
-                <div className="trial-step-head">
-                  <strong>{step.id}</strong>
-                  <span>
-                    +{step.window.openAfterPrevFrames}F to +{step.window.closeAfterPrevFrames}F
-                  </span>
-                </div>
-                <p>{describeStep(step)}</p>
-              </li>
-            ))}
+            {trial.steps.map((step, stepIndex) => {
+              const window = resolveStepWindow(step);
+              const assessment = trialSnapshot.assessments[stepIndex];
+              return (
+                <li key={`${step.id}-${stepIndex}`} className={`trial-step ${stepStateClass(stepIndex, trialSnapshot)}`}>
+                  <div className="trial-step-head">
+                    <strong>{step.id}</strong>
+                    <span>
+                      +{window.openAfterPrevFrames}F to +{window.closeAfterPrevFrames}F
+                    </span>
+                  </div>
+                  <p className="trial-step-expectation">{renderStepExpectation(step, directionDisplayMode, downDisplayMode)}</p>
+                  {assessment ? (
+                    <p className="trial-step-assessment">
+                      {assessment.result}
+                      {assessment.deltaFrames !== null ? ` / delta ${assessment.deltaFrames >= 0 ? "+" : ""}${assessment.deltaFrames}F` : ""}
+                      {assessment.attempts > 0 ? ` / attempts ${assessment.attempts}` : ""}
+                    </p>
+                  ) : null}
+                </li>
+              );
+            })}
           </ol>
         </section>
 
@@ -784,6 +1305,40 @@ export function TrialRunnerPanel({ trial }: { trial: ComboTrial }) {
                   ) : (
                     <tr>
                       <td colSpan={5}>No input frames yet.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details className="debug-frame-panel">
+            <summary>Mode Events ({trialSnapshot.events.length})</summary>
+            <div className="frame-log-wrap">
+              <table className="frame-log-table">
+                <thead>
+                  <tr>
+                    <th>F</th>
+                    <th>Type</th>
+                    <th>Step</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {trialSnapshot.events.length > 0 ? (
+                    [...trialSnapshot.events]
+                      .reverse()
+                      .map((event, index) => (
+                        <tr key={`${event.frame}-${event.type}-${index}`}>
+                          <td>{event.frame}</td>
+                          <td>{event.type}</td>
+                          <td>{event.stepId ?? "-"}</td>
+                          <td>{event.message}</td>
+                        </tr>
+                      ))
+                  ) : (
+                    <tr>
+                      <td colSpan={4}>No mode events yet.</td>
                     </tr>
                   )}
                 </tbody>

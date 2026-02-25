@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import comboData from "../data/jp/frame.combo.json";
-import trialData from "../data/trials/jp/m1-sample.combo-trial.json";
+import trialM2 from "../data/trials/jp/m2-crouch-lp-stand-lp-light-stribog.combo-trial.json";
+import trialM3 from "../data/trials/jp/m3-lp-lp-cancel-lp-crouch-mp-medium-stribog.combo-trial.json";
+import trialM4 from "../data/trials/jp/m4-lp-lp-cancel-lp-back-mp-target-medium-stribog.combo-trial.json";
+import trialM5 from "../data/trials/jp/m5-corner-route-strong-vihat.combo-trial.json";
+import trialM6 from "../data/trials/jp/m6-corner-route-od-vihat.combo-trial.json";
 import { TrialRunnerPanel } from "./components/TrialRunnerPanel";
 import type { ComboTrial } from "./domain/trial/schema";
 import "./App.css";
@@ -49,9 +53,21 @@ type ComboData = {
   rows: ComboRow[];
 };
 
+type TrialOption = {
+  id: string;
+  label: string;
+  trial: ComboTrial;
+};
+
 const parsed = comboData as ComboData;
 const rows = parsed.rows ?? [];
-const trial = trialData as ComboTrial;
+const TRIAL_OPTIONS: TrialOption[] = [
+  { id: (trialM2 as ComboTrial).id, label: (trialM2 as ComboTrial).name, trial: trialM2 as ComboTrial },
+  { id: (trialM3 as ComboTrial).id, label: (trialM3 as ComboTrial).name, trial: trialM3 as ComboTrial },
+  { id: (trialM4 as ComboTrial).id, label: (trialM4 as ComboTrial).name, trial: trialM4 as ComboTrial },
+  { id: (trialM5 as ComboTrial).id, label: (trialM5 as ComboTrial).name, trial: trialM5 as ComboTrial },
+  { id: (trialM6 as ComboTrial).id, label: (trialM6 as ComboTrial).name, trial: trialM6 as ComboTrial },
+];
 
 const FIELD_ROWS: Array<{ label: string; key: keyof ComboRow }> = [
   { label: "Startup", key: "startup" },
@@ -79,8 +95,13 @@ function App() {
     return ["ALL", ...Array.from(new Set(rows.map((row) => row.section ?? "Unsectioned")))];
   }, []);
 
+  const [selectedTrialId, setSelectedTrialId] = useState<string>(TRIAL_OPTIONS[0]?.id ?? "");
   const [selectedSection, setSelectedSection] = useState<string>("ALL");
   const [selectedRowIndex, setSelectedRowIndex] = useState<number>(rows[0]?.index ?? -1);
+
+  const selectedTrial = useMemo(() => {
+    return TRIAL_OPTIONS.find((option) => option.id === selectedTrialId)?.trial ?? TRIAL_OPTIONS[0]?.trial ?? null;
+  }, [selectedTrialId]);
 
   const filteredRows = useMemo(() => {
     if (selectedSection === "ALL") {
@@ -113,6 +134,17 @@ function App() {
       </header>
 
       <section className="controls">
+        <label className="control grow">
+          <span>Trial Combo</span>
+          <select value={selectedTrialId} onChange={(event) => setSelectedTrialId(event.currentTarget.value)}>
+            {TRIAL_OPTIONS.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <label className="control">
           <span>Section</span>
           <select value={selectedSection} onChange={(event) => setSelectedSection(event.currentTarget.value)}>
@@ -140,7 +172,7 @@ function App() {
         </label>
       </section>
 
-      <TrialRunnerPanel trial={trial} />
+      {selectedTrial ? <TrialRunnerPanel trial={selectedTrial} frameRows={rows} /> : <p className="empty">No combo trial data.</p>}
 
       {selectedRow ? (
         <section className="preview">

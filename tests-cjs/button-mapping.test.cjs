@@ -7,6 +7,12 @@ const {
   normalizeButtonBindings,
   setBinding,
 } = require("../.test-dist/src/domain/input/buttonMapping.js");
+const { buildInputFrame } = require("../.test-dist/src/domain/input/frame.js");
+const {
+  computeResetTrialPressTrigger,
+  isExactResetTrialBindingMatch,
+  normalizeResetTrialBinding,
+} = require("../.test-dist/src/domain/input/resetBinding.js");
 
 test("default bindings expand combo actions to real button set", () => {
   const bindings = createDefaultButtonBindings();
@@ -47,4 +53,49 @@ test("normalizeButtonBindings drops duplicate physical assignments", () => {
 
   assert.equal(normalized.LP, "South");
   assert.equal(normalized.LK, null);
+});
+
+test("normalizeResetTrialBinding dedupes and sorts physical buttons", () => {
+  const binding = normalizeResetTrialBinding(["Start", "Select", "Start", "West"]);
+
+  assert.deepEqual(binding, ["West", "Select", "Start"]);
+});
+
+test("isExactResetTrialBindingMatch requires exact set equality", () => {
+  const binding = normalizeResetTrialBinding(["Select", "Start"]);
+
+  assert.equal(isExactResetTrialBindingMatch(["Select", "Start"], binding), true);
+  assert.equal(isExactResetTrialBindingMatch(["Start", "Select"], binding), true);
+  assert.equal(isExactResetTrialBindingMatch(["Select"], binding), false);
+  assert.equal(isExactResetTrialBindingMatch(["Select", "Start", "L1"], binding), false);
+  assert.equal(isExactResetTrialBindingMatch(["Select", "Start"], []), false);
+});
+
+test("computeResetTrialPressTrigger fires once per combo press", () => {
+  const binding = normalizeResetTrialBinding(["Select", "Start"]);
+  const samples = [["Select"], ["Select", "Start"], ["Select", "Start"], [], ["Select", "Start"]];
+
+  let previousFrame = null;
+  let previousActive = false;
+  const triggeredHistory = [];
+
+  for (let index = 0; index < samples.length; index += 1) {
+    const frame = buildInputFrame(
+      index,
+      {
+        timestampMs: index * 16.6667,
+        direction: 5,
+        physicalDown: samples[index],
+        down: [],
+      },
+      previousFrame,
+    );
+    previousFrame = frame;
+
+    const { active, triggered } = computeResetTrialPressTrigger(frame, binding, previousActive);
+    previousActive = active;
+    triggeredHistory.push(triggered);
+  }
+
+  assert.deepEqual(triggeredHistory, [false, true, false, false, true]);
 });
