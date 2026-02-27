@@ -1,0 +1,5476 @@
+{
+  "meta": {
+    "targetUrl": "https://www.streetfighter.com/6/en-us/character/jp/frame",
+    "finalUrl": "https://www.streetfighter.com/6/en-us/character/jp/frame",
+    "capturedAt": "2026-02-26T21:10:35.059Z",
+    "harCaptured": true,
+    "harError": null,
+    "extractionError": null
+  },
+  "source": "best-candidate",
+  "bestCandidateId": "c1",
+  "candidateCount": 2,
+  "rows": [
+    {
+      "rowIndex": 0,
+      "rowText": "Move Name | FrameStart-upActive'The value listed here is what frame the attack hitbox will come out when the attack is performed.Ex.If the value is 10-12, then the attack hitbox will be active from frames 10-12.Recovery | RecoveryHitBlock | CancelCCan be canceled by a special move, Drive Impact, Drive Rush or Super ArtSACan only be canceled by a Super ArtSA2Can only be canceled by a level 2 or 3 Super ArtSA3Can only be canceled by a level 3 Super Art or Critical Art*Can only be canceled by specific attacks | Damage | Combo ScalingIn addition to the regular combo scaling, any unique scaling that an attack has is displayed hereInitial ScalingScaling added when the first hit of the combo landsCombo ScalingScaling added after the second hit of the combo landsImmediate ScalingScaling added to the attack itself after the second hit of the combo landsMultiplier Scaling Scaling value that is multiplied by subsequent combo scaling values when incorporated into a combo. | Drive Gauge IncreaseHitAmount of Drive Gauge recovered by the attacker when the attack hits | Drive Gauge DecreaseBlockAmount of Drive Gauge lost by the defender when blockingPunish CounterAmount of Drive Gauge lost by the defender on a Punish Counter | Super Art Gauge Increase | PropertiesDisplays the attack hitbox properties.HHigh level attacks that can be blocked standing or crouchingMMid level overhead attacks that must be blocked standingLLow level attacks that must be blocked crouchingTThrows that cannot be blockedPProjectile attacksMPMid-air projectile attacks that are considered to be aerial attacks | Miscellaneous",
+      "cellTexts": [
+        "Move Name",
+        "FrameStart-upActive'The value listed here is what frame the attack hitbox will come out when the attack is performed.Ex.If the value is 10-12, then the attack hitbox will be active from frames 10-12.Recovery",
+        "RecoveryHitBlock",
+        "CancelCCan be canceled by a special move, Drive Impact, Drive Rush or Super ArtSACan only be canceled by a Super ArtSA2Can only be canceled by a level 2 or 3 Super ArtSA3Can only be canceled by a level 3 Super Art or Critical Art*Can only be canceled by specific attacks",
+        "Damage",
+        "Combo ScalingIn addition to the regular combo scaling, any unique scaling that an attack has is displayed hereInitial ScalingScaling added when the first hit of the combo landsCombo ScalingScaling added after the second hit of the combo landsImmediate ScalingScaling added to the attack itself after the second hit of the combo landsMultiplier Scaling Scaling value that is multiplied by subsequent combo scaling values when incorporated into a combo.",
+        "Drive Gauge IncreaseHitAmount of Drive Gauge recovered by the attacker when the attack hits",
+        "Drive Gauge DecreaseBlockAmount of Drive Gauge lost by the defender when blockingPunish CounterAmount of Drive Gauge lost by the defender on a Punish Counter",
+        "Super Art Gauge Increase",
+        "PropertiesDisplays the attack hitbox properties.HHigh level attacks that can be blocked standing or crouchingMMid level overhead attacks that must be blocked standingLLow level attacks that must be blocked crouchingTThrows that cannot be blockedPProjectile attacksMPMid-air projectile attacks that are considered to be aerial attacks",
+        "Miscellaneous"
+      ],
+      "totalCellCount": 11,
+      "nonEmptyCellCount": 11,
+      "rowType": "data"
+    },
+    {
+      "rowIndex": 1,
+      "rowText": "Normal Moves",
+      "cellTexts": [
+        "Normal Moves"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Normal Moves"
+    },
+    {
+      "rowIndex": 2,
+      "rowText": "Standing Light PunchL | 6 | 6-8 | 10 | 4 | -2 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High | Can be rapid canceled",
+      "cellTexts": [
+        "Standing Light PunchL",
+        "6",
+        "6-8",
+        "10",
+        "4",
+        "-2",
+        "C",
+        "300",
+        "Starter scaling 20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "High",
+        "Can be rapid canceled"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowType": "data",
+      "moveName": "Standing Light Punch",
+      "commandInput": {
+        "commandText": "[icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 3,
+      "rowText": "Standing Light KickL | 5 | 5-7 | 11 | 3 | -2 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High",
+      "cellTexts": [
+        "Standing Light KickL",
+        "5",
+        "5-7",
+        "11",
+        "3",
+        "-2",
+        "C",
+        "300",
+        "Starter scaling 20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Standing Light Kick",
+      "commandInput": {
+        "commandText": "[icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 4,
+      "rowText": "Standing Medium PunchM | 12 | 12-14 | 21 | 1 | -6 | 700 | 3000 | -4000 | -6000 | 500 | High",
+      "cellTexts": [
+        "Standing Medium PunchM",
+        "12",
+        "12-14",
+        "21",
+        "1",
+        "-6",
+        "",
+        "700",
+        "",
+        "3000",
+        "-4000",
+        "-6000",
+        "500",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Standing Medium Punch",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 5,
+      "rowText": "Standing Medium KickM | 8 | 8-10 | 19 | 3 | -3 | C | 600 | 1500 | -3000 | -4000 | 500 | High",
+      "cellTexts": [
+        "Standing Medium KickM",
+        "8",
+        "8-10",
+        "19",
+        "3",
+        "-3",
+        "C",
+        "600",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "500",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Standing Medium Kick",
+      "commandInput": {
+        "commandText": "[icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 6,
+      "rowText": "Standing Heavy PunchH | 12 | 12-13 | 22 | 3 | -3 | C | 800 | Starter scaling 20% | 2000 | -5000 | -8000 | 1000 | High | Forces a juggle state when hitting a mid-air opponentAdds +25 frames of advantage on a Punish Counter",
+      "cellTexts": [
+        "Standing Heavy PunchH",
+        "12",
+        "12-13",
+        "22",
+        "3",
+        "-3",
+        "C",
+        "800",
+        "Starter scaling 20%",
+        "2000",
+        "-5000",
+        "-8000",
+        "1000",
+        "High",
+        "Forces a juggle state when hitting a mid-air opponentAdds +25 frames of advantage on a Punish Counter"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowType": "data",
+      "moveName": "Standing Heavy Punch",
+      "commandInput": {
+        "commandText": "[icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 7,
+      "rowText": "Standing Heavy KickH | 12 | 12-15 | 17 | 7 | 2 | 800 | 3000 | -6000 | -10000 | 1000 | High",
+      "cellTexts": [
+        "Standing Heavy KickH",
+        "12",
+        "12-15",
+        "17",
+        "7",
+        "2",
+        "",
+        "800",
+        "",
+        "3000",
+        "-6000",
+        "-10000",
+        "1000",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Standing Heavy Kick",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 8,
+      "rowText": "Crouching Light Punch L | 4 | 4-5 | 11 | 4 | -1 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High | Can be rapid canceled",
+      "cellTexts": [
+        "Crouching Light Punch L",
+        "4",
+        "4-5",
+        "11",
+        "4",
+        "-1",
+        "C",
+        "300",
+        "Starter scaling 20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "High",
+        "Can be rapid canceled"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 15,
+      "rowType": "data",
+      "moveName": "Crouching Light Punch",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 9,
+      "rowText": "Crouching Light Kick L | 6 | 6-7 | 10 | 2 | -2 | 200 | Starter scaling 20% | 250 | -500 | -2000 | 300 | Low | Can be rapid canceled",
+      "cellTexts": [
+        "Crouching Light Kick L",
+        "6",
+        "6-7",
+        "10",
+        "2",
+        "-2",
+        "",
+        "200",
+        "Starter scaling 20%",
+        "250",
+        "-500",
+        "-2000",
+        "300",
+        "Low",
+        "Can be rapid canceled"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Crouching Light Kick",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 10,
+      "rowText": "Crouching Medium Punch M | 7 | 7-10 | 14 | 6 | -2 | C | 600 | 1500 | -3000 | -4000 | 500 | High",
+      "cellTexts": [
+        "Crouching Medium Punch M",
+        "7",
+        "7-10",
+        "14",
+        "6",
+        "-2",
+        "C",
+        "600",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "500",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Crouching Medium Punch",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 11,
+      "rowText": "Crouching Medium Kick M | 9 | 9-11 | 17 | 3 | -3 | 700 | Starter scaling 20% | 2000 | -4000 | -6000 | 500 | Low",
+      "cellTexts": [
+        "Crouching Medium Kick M",
+        "9",
+        "9-11",
+        "17",
+        "3",
+        "-3",
+        "",
+        "700",
+        "Starter scaling 20%",
+        "2000",
+        "-4000",
+        "-6000",
+        "500",
+        "Low",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Crouching Medium Kick",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 12,
+      "rowText": "Crouching Heavy Punch H | 9 | 9-14 | 20 | 1 | -6 | C | 800 | 2000 | -5000 | -8000 | 1000 | High | Forces the opponent into a standing position",
+      "cellTexts": [
+        "Crouching Heavy Punch H",
+        "9",
+        "9-14",
+        "20",
+        "1",
+        "-6",
+        "C",
+        "800",
+        "",
+        "2000",
+        "-5000",
+        "-8000",
+        "1000",
+        "High",
+        "Forces the opponent into a standing position"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Crouching Heavy Punch",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 13,
+      "rowText": "Crouching Heavy Kick H | 10 | 10-12 | 21 | D | -6 | 900 | 2000 | -5000 | -10000 | 1000 | Low | Knockdown time extended when the attack lands as a Punish Counter, and changes to Hard Knockdown",
+      "cellTexts": [
+        "Crouching Heavy Kick H",
+        "10",
+        "10-12",
+        "21",
+        "D",
+        "-6",
+        "",
+        "900",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "Low",
+        "Knockdown time extended when the attack lands as a Punish Counter, and changes to Hard Knockdown"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Crouching Heavy Kick",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 14,
+      "rowText": "Jumping Light Punch(During a jump) L | 5 | 5-14 | 3 frame(s) after landing | 300 | 500 | -1500 | -2000 | 300 | Mid",
+      "cellTexts": [
+        "Jumping Light Punch(During a jump) L",
+        "5",
+        "5-14",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "300",
+        "",
+        "500",
+        "-1500",
+        "-2000",
+        "300",
+        "Mid",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowType": "data",
+      "moveName": "Jumping Light Punch",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 15,
+      "rowText": "Jumping Light Kick(During a jump) L | 6 | 6-13 | 3 frame(s) after landing | 300 | 500 | -1500 | -2000 | 300 | Mid | Has cross-up attack properties",
+      "cellTexts": [
+        "Jumping Light Kick(During a jump) L",
+        "6",
+        "6-13",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "300",
+        "",
+        "500",
+        "-1500",
+        "-2000",
+        "300",
+        "Mid",
+        "Has cross-up attack properties"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "Jumping Light Kick",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 16,
+      "rowText": "Jumping Medium Punch(During a jump) M | 12 | 12-14 | 3 frame(s) after landing | 700 | 1000 | -2500 | -4000 | 500 | Mid",
+      "cellTexts": [
+        "Jumping Medium Punch(During a jump) M",
+        "12",
+        "12-14",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "700",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "Mid",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowType": "data",
+      "moveName": "Jumping Medium Punch",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 17,
+      "rowText": "Jumping Medium Kick(During a jump) M | 7 | 7-12 | 3 frame(s) after landing | 600 | 1000 | -2500 | -4000 | 500 | Mid | Forces a juggle state when hitting a mid-air opponent",
+      "cellTexts": [
+        "Jumping Medium Kick(During a jump) M",
+        "7",
+        "7-12",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "600",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "Mid",
+        "Forces a juggle state when hitting a mid-air opponent"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "Jumping Medium Kick",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 18,
+      "rowText": "Jumping Heavy Punch(During a jump) H | 9 | 9-13 | 3 frame(s) after landing | 800 | 2000 | -4000 | -5000 | 1000 | Mid | Forces a slam knockdown on counter or Punish Counter when hitting a mid-air opponent",
+      "cellTexts": [
+        "Jumping Heavy Punch(During a jump) H",
+        "9",
+        "9-13",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "800",
+        "",
+        "2000",
+        "-4000",
+        "-5000",
+        "1000",
+        "Mid",
+        "Forces a slam knockdown on counter or Punish Counter when hitting a mid-air opponent"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "Jumping Heavy Punch",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 19,
+      "rowText": "Jumping Heavy Kick(During a jump) H | 11 | 11-16 | 3 frame(s) after landing | 800 | 2000 | -4000 | -5000 | 1000 | Mid",
+      "cellTexts": [
+        "Jumping Heavy Kick(During a jump) H",
+        "11",
+        "11-16",
+        "3 frame(s) after landing",
+        "",
+        "",
+        "",
+        "800",
+        "",
+        "2000",
+        "-4000",
+        "-5000",
+        "1000",
+        "Mid",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowType": "data",
+      "moveName": "Jumping Heavy Kick",
+      "commandInput": {
+        "commandText": "(During a jump) [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 20,
+      "rowText": "Unique Attacks",
+      "cellTexts": [
+        "Unique Attacks"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Unique Attacks"
+    },
+    {
+      "rowIndex": 21,
+      "rowText": "Guillotinna M | 22 | 22-23 | 19 | 3 | -3 | 700 | 1500 | -2500 | -5000 | 500 | Mid",
+      "cellTexts": [
+        "Guillotinna M",
+        "22",
+        "22-23",
+        "19",
+        "3",
+        "-3",
+        "",
+        "700",
+        "",
+        "1500",
+        "-2500",
+        "-5000",
+        "500",
+        "Mid",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Guillotinna",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 22,
+      "rowText": "Malice H | 16 | 16-18 | 31 | D | -14 | 900 | 3000 | -4000 | -10000 | 1000 | Low | Knockdown time extended when attack lands as a counter or Punish Counter",
+      "cellTexts": [
+        "Malice H",
+        "16",
+        "16-18",
+        "31",
+        "D",
+        "-14",
+        "",
+        "900",
+        "",
+        "3000",
+        "-4000",
+        "-10000",
+        "1000",
+        "Low",
+        "Knockdown time extended when attack lands as a counter or Punish Counter"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Malice",
+      "commandInput": {
+        "commandText": "[key-dr.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-dr.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 23,
+      "rowText": "Bylina H | 11 | 11-1611-12, 13-16 | 24 | D | -5 | C | 900 | 2500 | -5000 | -10000 | 1000 | High | Forces a juggle state when hitting a mid-air opponent",
+      "cellTexts": [
+        "Bylina H",
+        "11",
+        "11-1611-12, 13-16",
+        "24",
+        "D",
+        "-5",
+        "C",
+        "900",
+        "",
+        "2500",
+        "-5000",
+        "-10000",
+        "1000",
+        "High",
+        "Forces a juggle state when hitting a mid-air opponent"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Bylina",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 24,
+      "rowText": "Grom Strelka(1) M | 8 | 8-10 | 16 | 5 | -1 | C | 500 | 1500 | -3000 | -4000 | 400 | High",
+      "cellTexts": [
+        "Grom Strelka(1) M",
+        "8",
+        "8-10",
+        "16",
+        "5",
+        "-1",
+        "C",
+        "500",
+        "",
+        "1500",
+        "-3000",
+        "-4000",
+        "400",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Grom Strelka(1)",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 25,
+      "rowText": "Grom Strelka(2) MM | 10 | 10-12 | 20 | 3 | -6 | C | 500 | Combo scaling 20% | 800 | -2000 | -3000 | 400 | High",
+      "cellTexts": [
+        "Grom Strelka(2) MM",
+        "10",
+        "10-12",
+        "20",
+        "3",
+        "-6",
+        "C",
+        "500",
+        "Combo scaling 20%",
+        "800",
+        "-2000",
+        "-3000",
+        "400",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Grom Strelka(2)",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] M [arrow_3.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "arrow_3.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 26,
+      "rowText": "ZilantHH | 20 | 20-22 | 20 | 3 | -3 | C | 500 | 1000 | -2500 | -4000 | 500 | High",
+      "cellTexts": [
+        "ZilantHH",
+        "20",
+        "20-22",
+        "20",
+        "3",
+        "-3",
+        "C",
+        "500",
+        "",
+        "1000",
+        "-2500",
+        "-4000",
+        "500",
+        "High",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Zilant",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 27,
+      "rowText": "Zilant MidHHH | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | Mid",
+      "cellTexts": [
+        "Zilant MidHHH",
+        "21",
+        "21-23",
+        "22",
+        "3",
+        "-4",
+        "",
+        "1000",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "Mid",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Zilant Mid",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H [arrow_3.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 28,
+      "rowText": "Zilant LowHHH | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | Low",
+      "cellTexts": [
+        "Zilant LowHHH",
+        "21",
+        "21-23",
+        "22",
+        "3",
+        "-4",
+        "",
+        "1000",
+        "",
+        "2000",
+        "-5000",
+        "-10000",
+        "1000",
+        "Low",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Zilant Low",
+      "commandInput": {
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H [arrow_3.png] [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_kick_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/arrow_3.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_kick_h.png",
+          "arrow_3.png",
+          "icon_punch_h.png",
+          "arrow_3.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/arrow_3.png",
+            "file": "arrow_3.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_kick_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/arrow_3.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 29,
+      "rowText": "Special Moves",
+      "cellTexts": [
+        "Special Moves"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Special Moves"
+    },
+    {
+      "rowIndex": 30,
+      "rowText": "L Triglav L | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "L Triglav L",
+        "22",
+        "22-31",
+        "55 total frames",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "L Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 31,
+      "rowText": "M Triglav M | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "M Triglav M",
+        "22",
+        "22-31",
+        "55 total frames",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "M Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 32,
+      "rowText": "H Triglav H | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "H Triglav H",
+        "22",
+        "22-31",
+        "55 total frames",
+        "D",
+        "-2",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "H Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 33,
+      "rowText": "OD L Triglav LM | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD L Triglav LM",
+        "20",
+        "20-39",
+        "53 total frames",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "OD L Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 34,
+      "rowText": "OD M Triglav LH | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD M Triglav LH",
+        "20",
+        "20-39",
+        "53 total frames",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "OD M Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 35,
+      "rowText": "OD H Triglav MH | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD H Triglav MH",
+        "20",
+        "20-39",
+        "53 total frames",
+        "D",
+        "3",
+        "SA2",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "OD H Triglav",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] M [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 36,
+      "rowText": "L Stribog L | 16 | 16-21 | 49 total frames | D | -10 | SA3 | 1000 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)",
+      "cellTexts": [
+        "L Stribog L",
+        "16",
+        "16-21",
+        "49 total frames",
+        "D",
+        "-10",
+        "SA3",
+        "1000",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "L Stribog",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 37,
+      "rowText": "M Stribog M | 20 | 20-2620-22, 24-26 | 53 total frames | D | -8 | SA3 | 1200 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)",
+      "cellTexts": [
+        "M Stribog M",
+        "20",
+        "20-2620-22, 24-26",
+        "53 total frames",
+        "D",
+        "-8",
+        "SA3",
+        "1200",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "M Stribog",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 38,
+      "rowText": "H Stribog H | 28 | 28-4228-30, 40-42 | 61 total frames | D | 4 | SA3 | 800 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect Parry",
+      "cellTexts": [
+        "H Stribog H",
+        "28",
+        "28-4228-30, 40-42",
+        "61 total frames",
+        "D",
+        "4",
+        "SA3",
+        "800",
+        "",
+        "2000",
+        "-3500",
+        "-5000",
+        "800",
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect Parry"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "H Stribog",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 39,
+      "rowText": "OD Stribog | 19 | 19-3019-21, 28-30 | 52 total frames | D | 2 | SA2 | 1000 | 0 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect ParryOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art",
+      "cellTexts": [
+        "OD Stribog",
+        "19",
+        "19-3019-21, 28-30",
+        "52 total frames",
+        "D",
+        "2",
+        "SA2",
+        "1000",
+        "",
+        "0",
+        "-3500",
+        "-5000",
+        "800",
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect ParryOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "OD Stribog",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 40,
+      "rowText": "L Departure L | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "L Departure L",
+        "150",
+        "150-159",
+        "50 total frames",
+        "",
+        "",
+        "",
+        "800",
+        "Starter scaling 20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "L Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 41,
+      "rowText": "M Departure M | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "M Departure M",
+        "150",
+        "150-159",
+        "50 total frames",
+        "",
+        "",
+        "",
+        "800",
+        "Starter scaling 20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "M Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 42,
+      "rowText": "H Departure H | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "H Departure H",
+        "150",
+        "150-159",
+        "50 total frames",
+        "",
+        "",
+        "",
+        "800",
+        "Starter scaling 20％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "H Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 43,
+      "rowText": "OD L Departure LM | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD L Departure LM",
+        "110",
+        "110-149110-119, 140-149",
+        "40 total frames",
+        "",
+        "",
+        "",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "OD L Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 44,
+      "rowText": "OD M Departure LH | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD M Departure LH",
+        "110",
+        "110-149110-119, 140-149",
+        "40 total frames",
+        "",
+        "",
+        "",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "OD M Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 45,
+      "rowText": "OD H Departure MH | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD H Departure MH",
+        "110",
+        "110-149110-119, 140-149",
+        "40 total frames",
+        "",
+        "",
+        "",
+        "1000",
+        "Starter scaling 20％",
+        "0",
+        "-3000",
+        "-5000",
+        "800",
+        "High - Projectile",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "OD H Departure",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] M [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 46,
+      "rowText": "Departure: Window(While Departure is active) LM | 44 total frames | 0 | 0 | 0 | 0 | 0 | Completely invincible from frames 6 - 25Considered airborne from frame 26Can perform moves from frame 31",
+      "cellTexts": [
+        "Departure: Window(While Departure is active) LM",
+        "",
+        "",
+        "44 total frames",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "Completely invincible from frames 6 - 25Considered airborne from frame 26Can perform moves from frame 31"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 8,
+      "rowType": "data",
+      "moveName": "Departure: Window",
+      "commandInput": {
+        "commandText": "(While Departure is active) [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [key-or.png] [icon_punch_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/icon_punch_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "key-or.png",
+          "icon_punch_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(While Departure is active)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/icon_punch_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 47,
+      "rowText": "Departure: Shadow(While Departure is active) H | 40 total frames | 0 | 0 | 0 | 0 | 0",
+      "cellTexts": [
+        "Departure: Shadow(While Departure is active) H",
+        "",
+        "",
+        "40 total frames",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 7,
+      "rowType": "data",
+      "moveName": "Departure: Shadow",
+      "commandInput": {
+        "commandText": "(While Departure is active) [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(While Departure is active)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 48,
+      "rowText": "Amnesia | 3 | 3-20 | 35 | 800 | Starter scaling 50％※Immediate scaling 60％ | 1000 | -2500 | -3000 | 1000 | High - Projectile | Drive Gauge increases by 10,000 if the move is successfulFires a projectile if the move is successful* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "Amnesia",
+        "3",
+        "3-20",
+        "35",
+        "",
+        "",
+        "",
+        "800",
+        "Starter scaling 50％※Immediate scaling 60％",
+        "1000",
+        "-2500",
+        "-3000",
+        "1000",
+        "High - Projectile",
+        "Drive Gauge increases by 10,000 if the move is successfulFires a projectile if the move is successful* Combo scaling occurs after the 3rd hit"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "Amnesia",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 49,
+      "rowText": "OD Amnesia | 1 | 1-20 | 35 | 1200 | Starter scaling 50％※Immediate scaling 60％ | 0 | -3000 | -5000 | 1200 | High - Projectile | Fires a projectile if the move is successful* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "OD Amnesia",
+        "1",
+        "1-20",
+        "35",
+        "",
+        "",
+        "",
+        "1200",
+        "Starter scaling 50％※Immediate scaling 60％",
+        "0",
+        "-3000",
+        "-5000",
+        "1200",
+        "High - Projectile",
+        "Fires a projectile if the move is successful* Combo scaling occurs after the 3rd hit"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "OD Amnesia",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-d.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 50,
+      "rowText": "L Torbalan L | 22 | 50 total frames | D | -6 | SA3 | 800 | 1000 | -2500 | -3000 | 600 | High - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "L Torbalan L",
+        "22",
+        "",
+        "50 total frames",
+        "D",
+        "-6",
+        "SA3",
+        "800",
+        "",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "High - Projectile",
+        "Start up value listed is when the attack is performed at close range"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "L Torbalan",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 51,
+      "rowText": "M Torbalan M | 26 | 50 total frames | 6 | -8 | SA3 | 1000 | Starter scaling 20% | 1000 | -2500 | -3000 | 600 | Mid - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "M Torbalan M",
+        "26",
+        "",
+        "50 total frames",
+        "6",
+        "-8",
+        "SA3",
+        "1000",
+        "Starter scaling 20%",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "Mid - Projectile",
+        "Start up value listed is when the attack is performed at close range"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "M Torbalan",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 52,
+      "rowText": "H Torbalan H | 26 | 50 total frames | 6 | -8 | SA3 | 1000 | Starter scaling 20% | 1000 | -2500 | -3000 | 600 | Low - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "H Torbalan H",
+        "26",
+        "",
+        "50 total frames",
+        "6",
+        "-8",
+        "SA3",
+        "1000",
+        "Starter scaling 20%",
+        "1000",
+        "-2500",
+        "-3000",
+        "600",
+        "Low - Projectile",
+        "Start up value listed is when the attack is performed at close range"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "H Torbalan",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 53,
+      "rowText": "OD Torbalan | 22 | 50 total frames | D | 25 | SA2 | 800 | Starter scaling 20% | 0 | -5000 | -5000 | 800 | High - Projectile | Start up value listed is when the attack is performed at close rangeOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art",
+      "cellTexts": [
+        "OD Torbalan",
+        "22",
+        "",
+        "50 total frames",
+        "D",
+        "25",
+        "SA2",
+        "800",
+        "Starter scaling 20%",
+        "0",
+        "-5000",
+        "-5000",
+        "800",
+        "High - Projectile",
+        "Start up value listed is when the attack is performed at close rangeOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "OD Torbalan",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 54,
+      "rowText": "Embrace | 26 | 72 total frames | 1800 | Immediate scaling 10% | 2500 | 0 | -10000 | 3000 | Throw | With Classic ControlsDoes 2070 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 1656 individual damage when the attack lands as a Punish Counter",
+      "cellTexts": [
+        "Embrace",
+        "26",
+        "",
+        "72 total frames",
+        "",
+        "",
+        "",
+        "1800",
+        "Immediate scaling 10%",
+        "2500",
+        "0",
+        "-10000",
+        "3000",
+        "Throw",
+        "With Classic ControlsDoes 2070 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 1656 individual damage when the attack lands as a Punish Counter"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "Embrace",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 55,
+      "rowText": "OD Embrace | 26 | 72 total frames | 2600 | Immediate scaling 10% | 0 | 0 | -10000 | 3000 | Throw | With Classic ControlsDoes 2990 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 2392 individual damage when the attack lands as a Punish Counter",
+      "cellTexts": [
+        "OD Embrace",
+        "26",
+        "",
+        "72 total frames",
+        "",
+        "",
+        "",
+        "2600",
+        "Immediate scaling 10%",
+        "0",
+        "0",
+        "-10000",
+        "3000",
+        "Throw",
+        "With Classic ControlsDoes 2990 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 2392 individual damage when the attack lands as a Punish Counter"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "OD Embrace",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_kick.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 56,
+      "rowText": "Super Arts",
+      "cellTexts": [
+        "Super Arts"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Super Arts"
+    },
+    {
+      "rowIndex": 57,
+      "rowText": "SA1 Chornobog | 8 | 84 total frames | D | -33 | 2000 | 0 | -2500 | -5000 | 0 | High | Invincible to strikes and throws from frames 1 - 10Minimum guaranteed damage is 30%Values do not change on counter or Punish Counter",
+      "cellTexts": [
+        "SA1 Chornobog",
+        "8",
+        "",
+        "84 total frames",
+        "D",
+        "-33",
+        "",
+        "2000",
+        "",
+        "0",
+        "-2500",
+        "-5000",
+        "0",
+        "High",
+        "Invincible to strikes and throws from frames 1 - 10Minimum guaranteed damage is 30%Values do not change on counter or Punish Counter"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 12,
+      "rowType": "data",
+      "moveName": "SA1 Chornobog",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 58,
+      "rowText": "SA2 Lovushka | 29 | 13 total frames | 2000 | Starter scaling 25％※Immediate scaling 25％ | 0 | -4000 | -10000 | 0 | HighMidLowMid | Minimum guaranteed damage is 40%Values do not change on counter or Punish Counter* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "SA2 Lovushka",
+        "29",
+        "",
+        "13 total frames",
+        "",
+        "",
+        "",
+        "2000",
+        "Starter scaling 25％※Immediate scaling 25％",
+        "0",
+        "-4000",
+        "-10000",
+        "0",
+        "HighMidLowMid",
+        "Minimum guaranteed damage is 40%Values do not change on counter or Punish Counter* Combo scaling occurs after the 3rd hit"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "SA2 Lovushka",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dl.png",
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-d.png",
+          "key-dl.png",
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dl.png",
+            "file": "key-dl.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch.png",
+            "file": "icon_punch.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dl.png",
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 59,
+      "rowText": "SA3 Interdiction | 18 | 18-23 | 62 | D | -50 | 4000 | *Immediate scaling 10% | 0 | -7500 | -15000 | 0 | High | Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves",
+      "cellTexts": [
+        "SA3 Interdiction",
+        "18",
+        "18-23",
+        "62",
+        "D",
+        "-50",
+        "",
+        "4000",
+        "*Immediate scaling 10%",
+        "0",
+        "-7500",
+        "-15000",
+        "0",
+        "High",
+        "Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "SA3 Interdiction",
+      "commandInput": {
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 60,
+      "rowText": "CA Interdiction(when under 25% vitality) | 18 | 18-23 | 62 | D | -50 | 4500 | *Immediate scaling 10% | 0 | -10000 | -20000 | 0 | High | Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves",
+      "cellTexts": [
+        "CA Interdiction(when under 25% vitality)",
+        "18",
+        "18-23",
+        "62",
+        "D",
+        "-50",
+        "",
+        "4500",
+        "*Immediate scaling 10%",
+        "0",
+        "-10000",
+        "-20000",
+        "0",
+        "High",
+        "Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "CA Interdiction",
+      "commandInput": {
+        "commandText": "(when under 25% vitality) [key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-d.png",
+          "/6/assets/images/common/controller/key-dr.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_kick.png"
+        ],
+        "iconFiles": [
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-d.png",
+          "key-dr.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_kick.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(when under 25% vitality)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-d.png",
+            "file": "key-d.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-dr.png",
+            "file": "key-dr.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick.png",
+            "file": "icon_kick.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-d.png",
+          "/assets/controller/key-dr.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_kick.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 61,
+      "rowText": "Throws",
+      "cellTexts": [
+        "Throws"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Throws"
+    },
+    {
+      "rowIndex": 62,
+      "rowText": "Ravina(When near opponent) LL | 5 | 5-7 | 23 | D | 1200 | Starter scaling 40%Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Ravina(When near opponent) LL",
+        "5",
+        "5-7",
+        "23",
+        "D",
+        "",
+        "",
+        "1200",
+        "Starter scaling 40%Immediate scaling 20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Ravina",
+      "commandInput": {
+        "commandText": "(When near opponent) [key-nutral.png] [key-or.png] [key-r.png] [key-plus.png] [icon_punch_l.png] L [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-nutral.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-nutral.png",
+          "key-or.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(When near opponent)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-nutral.png",
+            "file": "key-nutral.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-nutral.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 63,
+      "rowText": "Uragan(When near opponent) LL | 5 | 5-7 | 23 | D | 1200 | Starter scaling 40%Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Uragan(When near opponent) LL",
+        "5",
+        "5-7",
+        "23",
+        "D",
+        "",
+        "",
+        "1200",
+        "Starter scaling 40%Immediate scaling 20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Uragan",
+      "commandInput": {
+        "commandText": "(When near opponent) [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-plus.png",
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(When near opponent)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 64,
+      "rowText": "Tornado(During a jump) (When near opponent)LL | 5 | 5-7 | 3 frame(s) after landing | D | 1200 | Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Tornado(During a jump) (When near opponent)LL",
+        "5",
+        "5-7",
+        "3 frame(s) after landing",
+        "D",
+        "",
+        "",
+        "1200",
+        "Immediate scaling 20%",
+        "2000",
+        "0",
+        "-10000",
+        "2000",
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Tornado",
+      "commandInput": {
+        "commandText": "(During a jump) (When near opponent) [icon_punch_l.png] L [icon_kick_l.png] L",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_l.png",
+          "/6/assets/images/common/controller/icon_kick_l.png"
+        ],
+        "iconFiles": [
+          "icon_punch_l.png",
+          "icon_kick_l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a jump) (When near opponent)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_l.png",
+            "file": "icon_punch_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_l.png",
+            "file": "icon_kick_l.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "L"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_l.png",
+          "/assets/controller/icon_kick_l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 65,
+      "rowText": "Common Moves",
+      "cellTexts": [
+        "Common Moves"
+      ],
+      "totalCellCount": 1,
+      "nonEmptyCellCount": 1,
+      "rowType": "section",
+      "moveName": "Common Moves"
+    },
+    {
+      "rowIndex": 66,
+      "rowText": "Forward Dash | 22 total frames | 0 | 0 | 0 | 0 | 0",
+      "cellTexts": [
+        "Forward Dash",
+        "",
+        "",
+        "22 total frames",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        ""
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 7,
+      "rowType": "data",
+      "moveName": "Forward Dash",
+      "commandInput": {
+        "commandText": "[key-r.png] [key-r.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 67,
+      "rowText": "Backward Dash | 23 total frames | 0 | 0 | 0 | 0 | 0 | Invincible to throws from frame 1 to frame 15.",
+      "cellTexts": [
+        "Backward Dash",
+        "",
+        "",
+        "23 total frames",
+        "",
+        "",
+        "",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "Invincible to throws from frame 1 to frame 15."
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 8,
+      "rowType": "data",
+      "moveName": "Backward Dash",
+      "commandInput": {
+        "commandText": "[key-l.png] [key-l.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-l.png",
+          "/6/assets/images/common/controller/key-l.png"
+        ],
+        "iconFiles": [
+          "key-l.png",
+          "key-l.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-l.png",
+            "file": "key-l.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-l.png",
+          "/assets/controller/key-l.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 68,
+      "rowText": "Drive Impact: EspadaHH | 26 | 26-27 | 35 | D | -3 | 800 | Starter scaling 20% | 0 | -5000 | -15000 | 0 | High | Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000",
+      "cellTexts": [
+        "Drive Impact: EspadaHH",
+        "26",
+        "26-27",
+        "35",
+        "D",
+        "-3",
+        "",
+        "800",
+        "Starter scaling 20%",
+        "0",
+        "-5000",
+        "-15000",
+        "0",
+        "High",
+        "Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 14,
+      "rowType": "data",
+      "moveName": "Drive Impact: Espada",
+      "commandInput": {
+        "commandText": "[icon_punch_h.png] H [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 69,
+      "rowText": "Drive Reversal (while blocking): Exilio(When blocking or during a successful Drive Parry) HH | 20 | 20-22 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | High | Recoverable damageCompletely invincible on frames 1 - 225 frames of recovery added on hit",
+      "cellTexts": [
+        "Drive Reversal (while blocking): Exilio(When blocking or during a successful Drive Parry) HH",
+        "20",
+        "20-22",
+        "26",
+        "D",
+        "-6",
+        "",
+        "500",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "High",
+        "Recoverable damageCompletely invincible on frames 1 - 225 frames of recovery added on hit"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Drive Reversal (while blocking): Exilio",
+      "commandInput": {
+        "commandText": "(When blocking or during a successful Drive Parry) [key-r.png] [key-plus.png] [icon_punch_h.png] H [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(When blocking or during a successful Drive Parry)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 70,
+      "rowText": "Drive Reversal (while recovering): Exilio(During knockdown recovery) HH | 18 | 18-20 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | High | Recoverable damageCompletely invincible on frames 1 - 205 frames of recovery added on hit",
+      "cellTexts": [
+        "Drive Reversal (while recovering): Exilio(During knockdown recovery) HH",
+        "18",
+        "18-20",
+        "26",
+        "D",
+        "-6",
+        "",
+        "500",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "High",
+        "Recoverable damageCompletely invincible on frames 1 - 205 frames of recovery added on hit"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 13,
+      "rowType": "data",
+      "moveName": "Drive Reversal (while recovering): Exilio",
+      "commandInput": {
+        "commandText": "(During knockdown recovery) [key-r.png] [key-plus.png] [icon_punch_h.png] H [icon_kick_h.png] H",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_h.png",
+          "/6/assets/images/common/controller/icon_kick_h.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_h.png",
+          "icon_kick_h.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During knockdown recovery)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_h.png",
+            "file": "icon_punch_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_h.png",
+            "file": "icon_kick_h.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_h.png",
+          "/assets/controller/icon_kick_h.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 71,
+      "rowText": "Drive ParryMM | 1 | [*2] 1-12 | 33 | *1 | 0 | 0 | 0 | 0 | 0 | *1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution.",
+      "cellTexts": [
+        "Drive ParryMM",
+        "1",
+        "[*2] 1-12",
+        "33",
+        "",
+        "",
+        "*1",
+        "0",
+        "",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "*1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution."
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 11,
+      "rowType": "data",
+      "moveName": "Drive Parry",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 72,
+      "rowText": "Perfect Parry (strike)Block Direction MM | 1 | 1 | 0 | Starter scaling 50％ | Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished",
+      "cellTexts": [
+        "Perfect Parry (strike)Block Direction MM",
+        "1",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "0",
+        "Starter scaling 50％",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 6,
+      "rowType": "data",
+      "moveName": "Perfect Parry (strike)",
+      "commandInput": {
+        "commandText": "Block Direction [key-plus.png] [icon_punch_m.png] M [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "Block Direction"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 73,
+      "rowText": "Perfect Parry (projectile)MM | 1 | 10 | 0 | Starter scaling 50％ | Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished",
+      "cellTexts": [
+        "Perfect Parry (projectile)MM",
+        "1",
+        "",
+        "10",
+        "",
+        "",
+        "",
+        "0",
+        "Starter scaling 50％",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 6,
+      "rowType": "data",
+      "moveName": "Perfect Parry (projectile)",
+      "commandInput": {
+        "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 74,
+      "rowText": "Parry Drive Rush(During a Drive Parry) | 45 total frames | * | 0 | Multiplier scaling 15％ | 0 | 0 | 0 | 0 | Screen freeze occurs until the 10th frame* Can be canceled into an attack on the 9th frame of the move Can be canceled into actions other than a parry from the 24th frame",
+      "cellTexts": [
+        "Parry Drive Rush(During a Drive Parry)",
+        "",
+        "",
+        "45 total frames",
+        "",
+        "",
+        "*",
+        "0",
+        "Multiplier scaling 15％",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "Screen freeze occurs until the 10th frame* Can be canceled into an attack on the 9th frame of the move Can be canceled into actions other than a parry from the 24th frame"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowType": "data",
+      "moveName": "Parry Drive Rush",
+      "commandInput": {
+        "commandText": "(During a Drive Parry) [key-r.png] [key-r.png]",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(During a Drive Parry)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png"
+        ]
+      }
+    },
+    {
+      "rowIndex": 75,
+      "rowText": "Cancel Drive Rush(While connecting with a special-cancelable move) ( ) MM | 46 total frames | * | 0 | Multiplier scaling 15％ | 0 | 0 | 0 | 0 | Screen freeze occurs until the 9th frame* Can be canceled into an attack from the 10th frame of the move Can be canceled into actions other than a parry from the 25th frame",
+      "cellTexts": [
+        "Cancel Drive Rush(While connecting with a special-cancelable move) ( ) MM",
+        "",
+        "",
+        "46 total frames",
+        "",
+        "",
+        "*",
+        "0",
+        "Multiplier scaling 15％",
+        "0",
+        "0",
+        "0",
+        "0",
+        "",
+        "Screen freeze occurs until the 9th frame* Can be canceled into an attack from the 10th frame of the move Can be canceled into actions other than a parry from the 25th frame"
+      ],
+      "totalCellCount": 15,
+      "nonEmptyCellCount": 10,
+      "rowType": "data",
+      "moveName": "Cancel Drive Rush",
+      "commandInput": {
+        "commandText": "(While connecting with a special-cancelable move) [key-r.png] [key-r.png] [key-or.png] ( [key-nutral.png] [key-or.png] [key-r.png] ) [key-plus.png] [icon_punch_m.png] M [icon_kick_m.png] M",
+        "iconPaths": [
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-nutral.png",
+          "/6/assets/images/common/controller/key-or.png",
+          "/6/assets/images/common/controller/key-r.png",
+          "/6/assets/images/common/controller/key-plus.png",
+          "/6/assets/images/common/controller/icon_punch_m.png",
+          "/6/assets/images/common/controller/icon_kick_m.png"
+        ],
+        "iconFiles": [
+          "key-r.png",
+          "key-r.png",
+          "key-or.png",
+          "key-nutral.png",
+          "key-or.png",
+          "key-r.png",
+          "key-plus.png",
+          "icon_punch_m.png",
+          "icon_kick_m.png"
+        ],
+        "iconAlts": [],
+        "tokens": [
+          {
+            "type": "text",
+            "value": "(While connecting with a special-cancelable move)"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "("
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-nutral.png",
+            "file": "key-nutral.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-or.png",
+            "file": "key-or.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-r.png",
+            "file": "key-r.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": ")"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/key-plus.png",
+            "file": "key-plus.png",
+            "alt": ""
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_punch_m.png",
+            "file": "icon_punch_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          },
+          {
+            "type": "icon",
+            "src": "/6/assets/images/common/controller/icon_kick_m.png",
+            "file": "icon_kick_m.png",
+            "alt": ""
+          },
+          {
+            "type": "text",
+            "value": "M"
+          }
+        ],
+        "localIconPaths": [
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-nutral.png",
+          "/assets/controller/key-or.png",
+          "/assets/controller/key-r.png",
+          "/assets/controller/key-plus.png",
+          "/assets/controller/icon_punch_m.png",
+          "/assets/controller/icon_kick_m.png"
+        ]
+      }
+    }
+  ]
+}

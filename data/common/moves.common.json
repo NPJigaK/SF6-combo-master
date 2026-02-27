@@ -1,0 +1,449 @@
+{
+  "meta": {
+    "schemaVersion": 2,
+    "policy": "jp_reference_common",
+    "referenceCharacterId": "jp",
+    "generatedAt": "2026-02-26T04:04:06.185Z"
+  },
+  "concepts": [
+    {
+      "conceptId": "sf6.system.driveImpact",
+      "label": "Drive Impact",
+      "source": {
+        "characterId": "jp",
+        "moveId": "sf6.jp.driveImpactEspada"
+      },
+      "canonicalData": {
+        "official": {
+          "rowIndex": 68,
+          "sectionHeading": "Common Moves",
+          "moveName": "Drive Impact: Espada",
+          "command": {
+            "commandText": "[icon_punch_h.png] H [icon_kick_h.png] H",
+            "iconFiles": [
+              "icon_punch_h.png",
+              "icon_kick_h.png"
+            ],
+            "iconPaths": [
+              "/6/assets/images/common/controller/icon_punch_h.png",
+              "/6/assets/images/common/controller/icon_kick_h.png"
+            ],
+            "iconAlts": [],
+            "localIconPaths": [
+              "/assets/controller/icon_punch_h.png",
+              "/assets/controller/icon_kick_h.png"
+            ],
+            "tokens": [
+              {
+                "type": "icon",
+                "file": "icon_punch_h.png",
+                "src": "/6/assets/images/common/controller/icon_punch_h.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "H"
+              },
+              {
+                "type": "icon",
+                "file": "icon_kick_h.png",
+                "src": "/6/assets/images/common/controller/icon_kick_h.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "H"
+              }
+            ]
+          },
+          "columns": {
+            "moveName": "Drive Impact: EspadaHH",
+            "startUpFrame": "26",
+            "activeFrame": "26-27",
+            "recoveryFrame": "35",
+            "hitRecovery": "D",
+            "blockRecovery": "-3",
+            "cancel": "",
+            "damage": "800",
+            "comboScaling": "Starter scaling 20%",
+            "hitDriveGaugeIncrease": "0",
+            "blockDriveGaugeDecrease": "-5000",
+            "punishCounterDriveGaugeDecrease": "-15000",
+            "superArtGaugeIncrease": "0",
+            "properties": "High",
+            "miscellaneous": "Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000"
+          },
+          "sourceRow": {
+            "cellTexts": [
+              "Drive Impact: EspadaHH",
+              "26",
+              "26-27",
+              "35",
+              "D",
+              "-3",
+              "",
+              "800",
+              "Starter scaling 20%",
+              "0",
+              "-5000",
+              "-15000",
+              "0",
+              "High",
+              "Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000"
+            ]
+          }
+        },
+        "supercomboExtras": {
+          "matched": true,
+          "matchRef": {
+            "supercomboMoveId": "supercombo:_2:3"
+          },
+          "general": {
+            "total": "62",
+            "hitconfirm": "",
+            "guard": "LH"
+          },
+          "details": {
+            "punishAdv": "Crumple (Standing +21, Juggle +46, HKD +104)",
+            "perfparryAdv": "-35",
+            "drCancelOnhit": "",
+            "drCancelOnblock": "",
+            "afterDrOnhit": "",
+            "afterDrOnblock": "",
+            "hitstun": "",
+            "blockstun": "34",
+            "hitstop": "25",
+            "chip": "200"
+          },
+          "meter": {
+            "drivedmgBlock": "5000",
+            "drivedmgHitPc": "10000 [15000]",
+            "driveGain": "-10000",
+            "supergainHit": "[3000(2100)]",
+            "supergainBlock": ""
+          },
+          "properties": {
+            "invuln": "",
+            "armor": "1-27",
+            "airborne": "",
+            "range": "2.535",
+            "juggleStart": "0",
+            "juggleIncrease": "1",
+            "juggleLimit": "0"
+          },
+          "notes": {
+            "rawText": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
+            "rawHtml": "See <a href=\"/w/Street_Fighter_6/Gauges#Drive_Impact\" title=\"Street Fighter 6/Gauges\">Drive Impact</a>. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height."
+          }
+        }
+      }
+    },
+    {
+      "conceptId": "sf6.system.driveParry",
+      "label": "Drive Parry",
+      "source": {
+        "characterId": "jp",
+        "moveId": "sf6.jp.driveParry"
+      },
+      "canonicalData": {
+        "official": {
+          "rowIndex": 71,
+          "sectionHeading": "Common Moves",
+          "moveName": "Drive Parry",
+          "command": {
+            "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
+            "iconFiles": [
+              "icon_punch_m.png",
+              "icon_kick_m.png"
+            ],
+            "iconPaths": [
+              "/6/assets/images/common/controller/icon_punch_m.png",
+              "/6/assets/images/common/controller/icon_kick_m.png"
+            ],
+            "iconAlts": [],
+            "localIconPaths": [
+              "/assets/controller/icon_punch_m.png",
+              "/assets/controller/icon_kick_m.png"
+            ],
+            "tokens": [
+              {
+                "type": "icon",
+                "file": "icon_punch_m.png",
+                "src": "/6/assets/images/common/controller/icon_punch_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              },
+              {
+                "type": "icon",
+                "file": "icon_kick_m.png",
+                "src": "/6/assets/images/common/controller/icon_kick_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              }
+            ]
+          },
+          "columns": {
+            "moveName": "Drive ParryMM",
+            "startUpFrame": "1",
+            "activeFrame": "[*2] 1-12",
+            "recoveryFrame": "33",
+            "hitRecovery": "",
+            "blockRecovery": "",
+            "cancel": "*1",
+            "damage": "0",
+            "comboScaling": "",
+            "hitDriveGaugeIncrease": "0",
+            "blockDriveGaugeDecrease": "0",
+            "punishCounterDriveGaugeDecrease": "0",
+            "superArtGaugeIncrease": "0",
+            "properties": "",
+            "miscellaneous": "*1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution."
+          },
+          "sourceRow": {
+            "cellTexts": [
+              "Drive ParryMM",
+              "1",
+              "[*2] 1-12",
+              "33",
+              "",
+              "",
+              "*1",
+              "0",
+              "",
+              "0",
+              "0",
+              "0",
+              "0",
+              "",
+              "*1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution."
+            ]
+          }
+        },
+        "supercomboExtras": {
+          "matched": false,
+          "matchRef": null,
+          "general": null,
+          "details": null,
+          "meter": null,
+          "properties": null,
+          "notes": null
+        }
+      }
+    },
+    {
+      "conceptId": "sf6.system.perfectParryStrike",
+      "label": "Perfect Parry (strike)",
+      "source": {
+        "characterId": "jp",
+        "moveId": "sf6.jp.perfectParryStrike"
+      },
+      "canonicalData": {
+        "official": {
+          "rowIndex": 72,
+          "sectionHeading": "Common Moves",
+          "moveName": "Perfect Parry (strike)",
+          "command": {
+            "commandText": "Block Direction [key-plus.png] [icon_punch_m.png] M [icon_kick_m.png] M",
+            "iconFiles": [
+              "key-plus.png",
+              "icon_punch_m.png",
+              "icon_kick_m.png"
+            ],
+            "iconPaths": [
+              "/6/assets/images/common/controller/key-plus.png",
+              "/6/assets/images/common/controller/icon_punch_m.png",
+              "/6/assets/images/common/controller/icon_kick_m.png"
+            ],
+            "iconAlts": [],
+            "localIconPaths": [
+              "/assets/controller/key-plus.png",
+              "/assets/controller/icon_punch_m.png",
+              "/assets/controller/icon_kick_m.png"
+            ],
+            "tokens": [
+              {
+                "type": "text",
+                "value": "Block Direction"
+              },
+              {
+                "type": "icon",
+                "file": "key-plus.png",
+                "src": "/6/assets/images/common/controller/key-plus.png",
+                "alt": ""
+              },
+              {
+                "type": "icon",
+                "file": "icon_punch_m.png",
+                "src": "/6/assets/images/common/controller/icon_punch_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              },
+              {
+                "type": "icon",
+                "file": "icon_kick_m.png",
+                "src": "/6/assets/images/common/controller/icon_kick_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              }
+            ]
+          },
+          "columns": {
+            "moveName": "Perfect Parry (strike)Block Direction MM",
+            "startUpFrame": "1",
+            "activeFrame": "",
+            "recoveryFrame": "1",
+            "hitRecovery": "",
+            "blockRecovery": "",
+            "cancel": "",
+            "damage": "0",
+            "comboScaling": "Starter scaling 50％",
+            "hitDriveGaugeIncrease": "",
+            "blockDriveGaugeDecrease": "",
+            "punishCounterDriveGaugeDecrease": "",
+            "superArtGaugeIncrease": "",
+            "properties": "",
+            "miscellaneous": "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+          },
+          "sourceRow": {
+            "cellTexts": [
+              "Perfect Parry (strike)Block Direction MM",
+              "1",
+              "",
+              "1",
+              "",
+              "",
+              "",
+              "0",
+              "Starter scaling 50％",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+            ]
+          }
+        },
+        "supercomboExtras": {
+          "matched": false,
+          "matchRef": null,
+          "general": null,
+          "details": null,
+          "meter": null,
+          "properties": null,
+          "notes": null
+        }
+      }
+    },
+    {
+      "conceptId": "sf6.system.perfectParryProjectile",
+      "label": "Perfect Parry (projectile)",
+      "source": {
+        "characterId": "jp",
+        "moveId": "sf6.jp.perfectParryProjectile"
+      },
+      "canonicalData": {
+        "official": {
+          "rowIndex": 73,
+          "sectionHeading": "Common Moves",
+          "moveName": "Perfect Parry (projectile)",
+          "command": {
+            "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
+            "iconFiles": [
+              "icon_punch_m.png",
+              "icon_kick_m.png"
+            ],
+            "iconPaths": [
+              "/6/assets/images/common/controller/icon_punch_m.png",
+              "/6/assets/images/common/controller/icon_kick_m.png"
+            ],
+            "iconAlts": [],
+            "localIconPaths": [
+              "/assets/controller/icon_punch_m.png",
+              "/assets/controller/icon_kick_m.png"
+            ],
+            "tokens": [
+              {
+                "type": "icon",
+                "file": "icon_punch_m.png",
+                "src": "/6/assets/images/common/controller/icon_punch_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              },
+              {
+                "type": "icon",
+                "file": "icon_kick_m.png",
+                "src": "/6/assets/images/common/controller/icon_kick_m.png",
+                "alt": ""
+              },
+              {
+                "type": "text",
+                "value": "M"
+              }
+            ]
+          },
+          "columns": {
+            "moveName": "Perfect Parry (projectile)MM",
+            "startUpFrame": "1",
+            "activeFrame": "",
+            "recoveryFrame": "10",
+            "hitRecovery": "",
+            "blockRecovery": "",
+            "cancel": "",
+            "damage": "0",
+            "comboScaling": "Starter scaling 50％",
+            "hitDriveGaugeIncrease": "",
+            "blockDriveGaugeDecrease": "",
+            "punishCounterDriveGaugeDecrease": "",
+            "superArtGaugeIncrease": "",
+            "properties": "",
+            "miscellaneous": "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+          },
+          "sourceRow": {
+            "cellTexts": [
+              "Perfect Parry (projectile)MM",
+              "1",
+              "",
+              "10",
+              "",
+              "",
+              "",
+              "0",
+              "Starter scaling 50％",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
+            ]
+          }
+        },
+        "supercomboExtras": {
+          "matched": false,
+          "matchRef": null,
+          "general": null,
+          "details": null,
+          "meter": null,
+          "properties": null,
+          "notes": null
+        }
+      }
+    }
+  ]
+}

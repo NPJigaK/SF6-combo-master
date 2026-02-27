@@ -1,29 +1,49 @@
+import { existsSync } from 'node:fs';
 import { mkdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { PlaywrightCrawler, log } from 'crawlee';
+import { PlaywrightCrawler, RequestQueue, log } from 'crawlee';
 import { chromium, type BrowserContext, type Page } from 'playwright';
 
-const TARGET_URL = 'https://www.streetfighter.com/6/ja-jp/character/jp/frame';
+const EN_TARGET_URL = 'https://www.streetfighter.com/6/en-us/character/jp/frame';
+const JA_TARGET_URL = 'https://www.streetfighter.com/6/ja-jp/character/jp/frame';
 
-const ARTIFACT_DIR = path.join('artifacts', 'jp', 'frame');
+const ARTIFACT_EN_DIR = path.join('artifacts', 'jp', 'frame');
+const ARTIFACT_JA_DIR = path.join('artifacts', 'jp', 'frame-ja');
 const DATA_DIR = path.join('data', 'jp');
 
-const PAGE_HTML_PATH = path.join(ARTIFACT_DIR, 'page.html');
-const PAGE_PNG_PATH = path.join(ARTIFACT_DIR, 'page.png');
-const NETWORK_HAR_PATH = path.join(ARTIFACT_DIR, 'network.har');
-const NETWORK_HAR_LOG_PATH = path.join(ARTIFACT_DIR, 'network.har.log.txt');
-const NETWORK_RESPONSES_PATH = path.join(ARTIFACT_DIR, 'network.responses.jsonl');
-const TABLES_PREVIEW_PATH = path.join(ARTIFACT_DIR, 'tables.preview.json');
 const RAW_JSON_PATH = path.join(DATA_DIR, 'frame.raw.json');
-const COMBO_JSON_PATH = path.join(DATA_DIR, 'frame.combo.json');
+const JA_MAP_JSON_PATH = path.join(DATA_DIR, 'frame.ja-map.json');
 const PUBLIC_CONTROLLER_BASE_PATH = '/assets/controller';
+const FIXED_CELL_COUNT = 15;
+
+type Locale = 'en-us' | 'ja-jp';
 
 type ResponseEntry = {
   url: string;
   status: number;
   method: string;
   resourceType: string;
+};
+
+type CommandInput = {
+  commandText: string;
+  iconPaths: string[];
+  iconFiles: string[];
+  iconAlts: string[];
+  localIconPaths?: string[];
+  tokens: Array<
+    | {
+        type: 'text';
+        value: string;
+      }
+    | {
+        type: 'icon';
+        src: string;
+        file: string;
+        alt: string;
+      }
+  >;
 };
 
 type RawRow = {
@@ -34,25 +54,35 @@ type RawRow = {
   nonEmptyCellCount?: number;
   rowKind?: 'data' | 'section' | 'note' | 'other';
   skillName?: string;
-  commandInput?: {
-    commandText: string;
-    iconPaths: string[];
-    iconFiles: string[];
-    iconAlts: string[];
-    localIconPaths?: string[];
-    tokens: Array<
-      | {
-          type: 'text';
-          value: string;
-        }
-      | {
-          type: 'icon';
-          src: string;
-          file: string;
-          alt: string;
-        }
-    >;
-  };
+  commandInput?: CommandInput;
+};
+
+type RawOutputRow = {
+  rowIndex: number;
+  rowText: string;
+  cellTexts: string[];
+  totalCellCount?: number;
+  nonEmptyCellCount?: number;
+  rowType?: RawRow['rowKind'];
+  moveName?: string;
+  commandInput?: CommandInput;
+};
+
+type HeaderColumn = {
+  columnIndex: number;
+  label: string;
+  parentLabel: string | null;
+  leafLabel: string;
+  description: string;
+};
+
+type ColumnDefinition = {
+  columnIndex: number;
+  label: string;
+  key: string;
+  parentLabel: string | null;
+  leafLabel: string;
+  description: string;
 };
 
 type Candidate = {
@@ -64,32 +94,34 @@ type Candidate = {
   score: number;
   selectorHint: string;
   rows: RawRow[];
+  headerColumns: string[];
+  headerDetails: HeaderColumn[];
 };
 
 type ComboRow = {
-  index: number;
-  section: string | null;
-  skillName: string;
-  startup: string;
-  active: string;
-  recovery: string;
-  hitAdvantage: string;
-  guardAdvantage: string;
+  rowIndex: number;
+  sectionHeading: string | null;
+  moveName: string;
+  startUpFrame: string;
+  activeFrame: string;
+  recoveryFrame: string;
+  hitRecovery: string;
+  blockRecovery: string;
   cancel: string;
   damage: string;
-  comboCorrection: string;
-  driveGaugeGainHit: string;
-  driveGaugeLossGuard: string;
-  driveGaugeLossPunishCounter: string;
-  saGaugeGain: string;
-  attribute: string;
-  notes: string;
-  commandInput?: RawRow['commandInput'];
-  source: {
-    rowKind?: RawRow['rowKind'];
-    cellCount?: number;
+  comboScaling: string;
+  hitDriveGaugeIncrease: string;
+  blockDriveGaugeDecrease: string;
+  punishCounterDriveGaugeDecrease: string;
+  superArtGaugeIncrease: string;
+  properties: string;
+  miscellaneous: string;
+  commandInput?: CommandInput;
+  sourceRow: {
+    rowType?: RawRow['rowKind'];
+    totalCellCount?: number;
     nonEmptyCellCount?: number;
-    cells: string[];
+    cellTexts: string[];
   };
 };
 
@@ -99,6 +131,66 @@ type HarCaptureResult = {
   harCaptured: boolean;
   harError?: string;
 };
+
+type LocaleConfig = {
+  locale: Locale;
+  targetUrl: string;
+  artifactDir: string;
+};
+
+type ScrapeLocaleOptions = {
+  canonicalColumnDefinitions?: ColumnDefinition[];
+};
+
+type ArtifactPaths = {
+  pageHtmlPath: string;
+  pagePngPath: string;
+  networkHarPath: string;
+  networkHarLogPath: string;
+  networkResponsesPath: string;
+  tablesPreviewPath: string;
+  rawExtractedPath: string;
+  comboExtractedPath: string;
+};
+
+type LocaleScrapeResult = {
+  locale: Locale;
+  targetUrl: string;
+  finalUrl: string;
+  capturedAt: string;
+  harCaptured: boolean;
+  harError?: string;
+  extractionError?: string;
+  bestCandidateId: string | null;
+  candidateCount: number;
+  headerColumns: string[];
+  columnDefinitions: ColumnDefinition[];
+  headerDetails: HeaderColumn[];
+  glossary: Record<string, string>;
+  rawRows: RawOutputRow[];
+  comboRows: ComboRow[];
+};
+
+type JaMapRow = {
+  rowIndex: number;
+  moveName: string;
+  comboScaling: string;
+  properties: string;
+  miscellaneous: string;
+};
+
+function buildArtifactPaths(artifactDir: string): ArtifactPaths {
+  return {
+    pageHtmlPath: path.join(artifactDir, 'page.html'),
+    pagePngPath: path.join(artifactDir, 'page.png'),
+    networkHarPath: path.join(artifactDir, 'network.har'),
+    networkHarLogPath: path.join(artifactDir, 'network.har.log.txt'),
+    networkResponsesPath: path.join(artifactDir, 'network.responses.jsonl'),
+    tablesPreviewPath: path.join(artifactDir, 'tables.preview.json'),
+    rawExtractedPath: path.join(artifactDir, 'raw.extracted.json'),
+    comboExtractedPath: path.join(artifactDir, 'combo.extracted.json'),
+  };
+}
 
 async function ensureDir(dirPath: string): Promise<void> {
   await mkdir(dirPath, { recursive: true });
@@ -147,15 +239,15 @@ async function waitForFrameCandidates(page: Page, timeoutMs = 25_000): Promise<b
   }
 }
 
-async function writeResponsesJsonl(entries: ResponseEntry[]): Promise<void> {
+async function writeResponsesJsonl(filePath: string, entries: ResponseEntry[]): Promise<void> {
   const lines = entries.map((entry) => JSON.stringify(entry)).join('\n');
   const trailingNewline = lines.length > 0 ? '\n' : '';
-  await writeText(NETWORK_RESPONSES_PATH, `${lines}${trailingNewline}`);
+  await writeText(filePath, `${lines}${trailingNewline}`);
 }
 
-async function captureHarArtifact(): Promise<HarCaptureResult> {
+async function captureHarArtifact(config: LocaleConfig, paths: ArtifactPaths): Promise<HarCaptureResult> {
   const responses: ResponseEntry[] = [];
-  let finalUrl = TARGET_URL;
+  let finalUrl = config.targetUrl;
   let harCaptured = false;
   let harError: string | undefined;
 
@@ -165,7 +257,7 @@ async function captureHarArtifact(): Promise<HarCaptureResult> {
   try {
     context = await browser.newContext({
       recordHar: {
-        path: NETWORK_HAR_PATH,
+        path: paths.networkHarPath,
         mode: 'minimal',
       },
     });
@@ -180,14 +272,14 @@ async function captureHarArtifact(): Promise<HarCaptureResult> {
       });
     });
 
-    await page.goto(TARGET_URL, { waitUntil: 'domcontentloaded', timeout: 120_000 });
+    await page.goto(config.targetUrl, { waitUntil: 'domcontentloaded', timeout: 120_000 });
     await waitForFrameCandidates(page);
     finalUrl = page.url();
 
     try {
       await page.waitForLoadState('networkidle', { timeout: 6_000 });
     } catch {
-      // keep moving in PoC mode
+      // Keep moving in PoC mode
     }
   } catch (error) {
     harError = `HAR capture failed: ${toErrorMessage(error)}`;
@@ -204,7 +296,7 @@ async function captureHarArtifact(): Promise<HarCaptureResult> {
   }
 
   try {
-    const harStats = await stat(NETWORK_HAR_PATH);
+    const harStats = await stat(paths.networkHarPath);
     harCaptured = harStats.size > 0;
     if (!harCaptured && !harError) {
       harError = 'HAR was created but file size is 0 bytes.';
@@ -376,12 +468,114 @@ async function extractCandidates(page: Page): Promise<Candidate[]> {
     };
   };
 
+  const extractLabelText = (el, removeList) => {
+    if (!el) return '';
+    const clone = el.cloneNode(true);
+    const selectors = [
+      'input',
+      'button',
+      'svg',
+      'img',
+      'script',
+      'style',
+      '[role="tooltip"]',
+      '.frame_ex___h3rR',
+    ];
+    if (removeList) selectors.push('ul');
+
+    for (const selector of selectors) {
+      for (const removable of Array.from(clone.querySelectorAll(selector))) {
+        removable.remove();
+      }
+    }
+
+    return normalize(clone.textContent);
+  };
+
+  const extractDescription = (el) => {
+    if (!el) return '';
+    const candidates = [
+      ':scope > .frame_ex___h3rR .frame_inner__Qf7xV',
+      '.frame_ex___h3rR .frame_inner__Qf7xV',
+    ];
+
+    for (const selector of candidates) {
+      const node = el.querySelector(selector);
+      if (!node) continue;
+      const text = normalize(node.textContent);
+      if (text) return text;
+    }
+
+    return '';
+  };
+
+  const collectHeaderColumns = (el) => {
+    const tagName = el.tagName ? el.tagName.toUpperCase() : '';
+    if (tagName !== 'TABLE') {
+      return {
+        headerColumns: [],
+        headerDetails: [],
+      };
+    }
+
+    const headerRow = el.querySelector('thead tr');
+    if (!headerRow) {
+      return {
+        headerColumns: [],
+        headerDetails: [],
+      };
+    }
+
+    const headerCells = Array.from(headerRow.querySelectorAll(':scope > th,:scope > td'));
+    const headerDetails = [];
+    let columnIndex = 0;
+
+    for (const cell of headerCells) {
+      const parentLabel = extractLabelText(cell, true);
+      const childItems = Array.from(cell.querySelectorAll(':scope > ul > li'));
+
+      if (childItems.length > 0) {
+        for (const item of childItems) {
+          const leafLabel = extractLabelText(item, true);
+          if (!leafLabel) continue;
+          const label = parentLabel ? leafLabel + ' (' + parentLabel + ')' : leafLabel;
+          headerDetails.push({
+            columnIndex,
+            label,
+            parentLabel: parentLabel || null,
+            leafLabel,
+            description: extractDescription(item),
+          });
+          columnIndex += 1;
+        }
+        continue;
+      }
+
+      if (!parentLabel) {
+        continue;
+      }
+
+      headerDetails.push({
+        columnIndex,
+        label: parentLabel,
+        parentLabel: null,
+        leafLabel: parentLabel,
+        description: extractDescription(cell),
+      });
+      columnIndex += 1;
+    }
+
+    return {
+      headerColumns: headerDetails.map((detail) => detail.label),
+      headerDetails,
+    };
+  };
+
   const collectRows = (el) => {
     let rowNodes = [];
     const tagName = el.tagName ? el.tagName.toUpperCase() : '';
 
     if (tagName === 'TABLE') {
-      // Prefer real table rows to avoid grabbing nested list items in note cells.
       rowNodes = Array.from(el.querySelectorAll('tr')).slice(0, 500);
     } else if (el.matches && (el.matches('[role="table"]') || el.matches('[role="grid"]'))) {
       rowNodes = Array.from(el.querySelectorAll('[role="row"]')).slice(0, 500);
@@ -453,10 +647,11 @@ async function extractCandidates(page: Page): Promise<Candidate[]> {
     const rows = collectRows(el);
     if (rows.length === 0) return;
 
+    const { headerColumns, headerDetails } = collectHeaderColumns(el);
     const headingGuess = headingGuessFor(el);
     const previewRows = rows.slice(0, 5).map((row) => row.text);
     const hasCells = rows.some((row) => (row.nonEmptyCellCount || row.cells.filter((cell) => cell.length > 0).length) > 1);
-    const score = baseScore + rows.length + (headingGuess ? 3 : 0) + (hasCells ? 2 : 0);
+    const score = baseScore + rows.length + (headingGuess ? 3 : 0) + (hasCells ? 2 : 0) + (headerColumns.length >= 12 ? 8 : 0);
 
     candidates.push({
       id: 'c' + (candidates.length + 1),
@@ -467,6 +662,8 @@ async function extractCandidates(page: Page): Promise<Candidate[]> {
       score,
       selectorHint: selectorHintFor(el),
       rows,
+      headerColumns,
+      headerDetails,
     });
   };
 
@@ -516,39 +713,164 @@ function attachLocalControllerPaths(rows: RawRow[]): RawRow[] {
   });
 }
 
-const COMBO_COLUMNS = [
-  '技名',
-  '発生（動作フレーム）',
-  '持続（動作フレーム）',
-  '硬直（動作フレーム）',
-  'ヒット（硬直差）',
-  'ガード（硬直差）',
-  'キャンセル',
-  'ダメージ',
-  'コンボ補正値',
-  'ヒット（Dゲージ増加）',
-  'ガード（Dゲージ減少）',
-  'パニッシュカウンター（Dゲージ減少）',
-  'SAゲージ増加',
-  '属性',
-  '備考',
+function normalizeHeaderColumns(columns: string[]): string[] {
+  return columns.map((column) => column.replace(/\s+/g, ' ').trim()).filter((column) => column.length > 0);
+}
+
+const EXPECTED_COLUMN_KEYS = [
+  'moveName',
+  'startUpFrame',
+  'activeFrame',
+  'recoveryFrame',
+  'hitRecovery',
+  'blockRecovery',
+  'cancel',
+  'damage',
+  'comboScaling',
+  'hitDriveGaugeIncrease',
+  'blockDriveGaugeDecrease',
+  'punishCounterDriveGaugeDecrease',
+  'superArtGaugeIncrease',
+  'properties',
+  'miscellaneous',
 ] as const;
 
-const COMBO_GLOSSARY = {
-  active:
-    '動作フレーム発生持続技の動作中に攻撃判定が発生しているフレームを表します（例） 【10-12】表記の場合、【10F/11F/12F】の【3F】間、攻撃判定が持続',
-  cancel:
-    '【C】必殺技、ドライブインパクト、ドライブラッシュ、SAでキャンセル可能【SA】SA技でのみキャンセル可能【SA2】SA2、SA3でキャンセル可能【SA3】SA3でのみキャンセル可能【※】特定の技でのみキャンセル可能',
-  comboCorrection:
-    '通常のコンボ補正に加えて、技自体に特殊な補正が設定されている場合に記載されます。【始動補正】コンボの初段にヒットさせた際に加算される補正【コンボ補正】コンボの2段目以降にヒットさせた際に加算される補正【即時補正】コンボの2段目以降にヒットさせた際、その技自体に加算される補正【乗算補正】コンボに組み込んだ際に、それ以降のコンボ補正値に乗算される補正値',
-  driveGaugeGainHit: '攻撃側のドライブゲージ増加量（ヒット時）',
-  driveGaugeLossGuard: '防御側のドライブゲージ減少量（ガード時）',
-  driveGaugeLossPunishCounter: '防御側のドライブゲージ減少量（パニッシュカウンター時）',
-  attribute:
-    '攻撃判定の属性を表します【上】立ち/しゃがみガード可能な上段攻撃【中】立ちガードのみ可能な中段攻撃【下】しゃがみガードのみ可能な下段攻撃【投】ガードできない投げ技【弾】飛び道具【空弾】空中判定の飛び道具',
-} as const;
+function toCamelCaseOfficialKey(label: string): string {
+  const normalized = label
+    .replace(/&/g, ' and ')
+    .replace(/[-/]/g, ' ')
+    .replace(/[()]/g, ' ')
+    .replace(/[^a-zA-Z0-9 ]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
-function buildComboRows(rows: RawRow[]): ComboRow[] {
+  if (!normalized) {
+    return '';
+  }
+
+  const tokens = normalized
+    .split(' ')
+    .map((token) => token.trim())
+    .filter((token) => token.length > 0)
+    .map((token) => token.toLowerCase());
+
+  if (tokens.length === 0) {
+    return '';
+  }
+
+  return tokens
+    .map((token, index) => {
+      if (index === 0) {
+        return token;
+      }
+      return token[0].toUpperCase() + token.slice(1);
+    })
+    .join('');
+}
+
+function buildColumnDefinitions(headerColumns: string[], headerDetails: HeaderColumn[]): ColumnDefinition[] {
+  const detailByIndex = new Map<number, HeaderColumn>();
+  for (const detail of headerDetails) {
+    detailByIndex.set(detail.columnIndex, detail);
+  }
+
+  const usedKeys = new Map<string, number>();
+  const definitions: ColumnDefinition[] = [];
+  for (let columnIndex = 0; columnIndex < headerColumns.length; columnIndex += 1) {
+    const label = headerColumns[columnIndex];
+    const baseKey = toCamelCaseOfficialKey(label);
+    if (!baseKey) {
+      throw new Error(`failed to generate key from header label: "${label}" at columnIndex=${columnIndex}`);
+    }
+
+    const duplicateCount = usedKeys.get(baseKey) ?? 0;
+    usedKeys.set(baseKey, duplicateCount + 1);
+    const key = duplicateCount === 0 ? baseKey : `${baseKey}Col${duplicateCount + 1}`;
+    const detail = detailByIndex.get(columnIndex);
+
+    definitions.push({
+      columnIndex,
+      label,
+      key,
+      parentLabel: detail?.parentLabel ?? null,
+      leafLabel: detail?.leafLabel ?? label,
+      description: detail?.description ?? '',
+    });
+  }
+
+  return definitions;
+}
+
+function projectColumnDefinitionsFromCanonical(
+  headerColumns: string[],
+  headerDetails: HeaderColumn[],
+  canonicalColumnDefinitions: ColumnDefinition[],
+  locale: Locale,
+): ColumnDefinition[] {
+  if (canonicalColumnDefinitions.length !== headerColumns.length) {
+    throw new Error(
+      `[scrape:${locale}] canonical column definition length mismatch. canonical=${canonicalColumnDefinitions.length}, headers=${headerColumns.length}`,
+    );
+  }
+
+  const detailByIndex = new Map<number, HeaderColumn>();
+  for (const detail of headerDetails) {
+    detailByIndex.set(detail.columnIndex, detail);
+  }
+
+  return canonicalColumnDefinitions.map((canonical, columnIndex) => {
+    const detail = detailByIndex.get(columnIndex);
+    const label = headerColumns[columnIndex] ?? canonical.label;
+    return {
+      columnIndex,
+      label,
+      key: canonical.key,
+      parentLabel: detail?.parentLabel ?? canonical.parentLabel,
+      leafLabel: detail?.leafLabel ?? label,
+      description: detail?.description ?? canonical.description,
+    };
+  });
+}
+
+function assertExpectedColumnKeys(columnDefinitions: ColumnDefinition[], locale: Locale): void {
+  const actualKeys = columnDefinitions.map((definition) => definition.key);
+  const expectedKeys = [...EXPECTED_COLUMN_KEYS];
+  const sameLength = actualKeys.length === expectedKeys.length;
+  const sameOrder = sameLength && actualKeys.every((key, index) => key === expectedKeys[index]);
+
+  if (!sameOrder) {
+    throw new Error(
+      `[scrape:${locale}] column key mismatch. expected=${JSON.stringify(expectedKeys)}, actual=${JSON.stringify(actualKeys)}`,
+    );
+  }
+}
+
+function buildGlossary(columnDefinitions: ColumnDefinition[]): Record<string, string> {
+  const glossary: Record<string, string> = {};
+  for (const definition of columnDefinitions) {
+    const description = definition.description.trim();
+    if (!description) {
+      continue;
+    }
+    glossary[definition.key] = description;
+  }
+  return glossary;
+}
+
+function buildRawOutputRows(rows: RawRow[]): RawOutputRow[] {
+  return rows.map((row) => ({
+    rowIndex: row.index,
+    rowText: row.text,
+    cellTexts: row.cells,
+    totalCellCount: row.cellCount,
+    nonEmptyCellCount: row.nonEmptyCellCount,
+    rowType: row.rowKind,
+    moveName: row.skillName,
+    commandInput: row.commandInput,
+  }));
+}
+
+function buildComboRows(rows: RawRow[], columnDefinitions: ColumnDefinition[], firstColumnLabel: string): ComboRow[] {
   const comboRows: ComboRow[] = [];
   let currentSection: string | null = null;
 
@@ -563,39 +885,44 @@ function buildComboRows(rows: RawRow[]): ComboRow[] {
       continue;
     }
 
-    if (row.cellCount !== 15 || row.cells.length !== 15) {
+    if (row.cellCount !== FIXED_CELL_COUNT || row.cells.length !== FIXED_CELL_COUNT) {
       continue;
     }
 
-    const skillName = (row.cells[0] ?? '').trim();
-    if (!skillName || skillName === '技名') {
+    const moveName = (row.cells[0] ?? '').trim();
+    if (!moveName || moveName === firstColumnLabel) {
       continue;
+    }
+
+    const valuesByKey: Record<string, string> = {};
+    for (const definition of columnDefinitions) {
+      valuesByKey[definition.key] = row.cells[definition.columnIndex] ?? '';
     }
 
     comboRows.push({
-      index: row.index,
-      section: currentSection,
-      skillName,
-      startup: row.cells[1] ?? '',
-      active: row.cells[2] ?? '',
-      recovery: row.cells[3] ?? '',
-      hitAdvantage: row.cells[4] ?? '',
-      guardAdvantage: row.cells[5] ?? '',
-      cancel: row.cells[6] ?? '',
-      damage: row.cells[7] ?? '',
-      comboCorrection: row.cells[8] ?? '',
-      driveGaugeGainHit: row.cells[9] ?? '',
-      driveGaugeLossGuard: row.cells[10] ?? '',
-      driveGaugeLossPunishCounter: row.cells[11] ?? '',
-      saGaugeGain: row.cells[12] ?? '',
-      attribute: row.cells[13] ?? '',
-      notes: row.cells[14] ?? '',
+      rowIndex: row.index,
+      sectionHeading: currentSection,
+      moveName,
+      startUpFrame: valuesByKey.startUpFrame ?? '',
+      activeFrame: valuesByKey.activeFrame ?? '',
+      recoveryFrame: valuesByKey.recoveryFrame ?? '',
+      hitRecovery: valuesByKey.hitRecovery ?? '',
+      blockRecovery: valuesByKey.blockRecovery ?? '',
+      cancel: valuesByKey.cancel ?? '',
+      damage: valuesByKey.damage ?? '',
+      comboScaling: valuesByKey.comboScaling ?? '',
+      hitDriveGaugeIncrease: valuesByKey.hitDriveGaugeIncrease ?? '',
+      blockDriveGaugeDecrease: valuesByKey.blockDriveGaugeDecrease ?? '',
+      punishCounterDriveGaugeDecrease: valuesByKey.punishCounterDriveGaugeDecrease ?? '',
+      superArtGaugeIncrease: valuesByKey.superArtGaugeIncrease ?? '',
+      properties: valuesByKey.properties ?? '',
+      miscellaneous: valuesByKey.miscellaneous ?? '',
       commandInput: row.commandInput,
-      source: {
-        rowKind: row.rowKind,
-        cellCount: row.cellCount,
+      sourceRow: {
+        rowType: row.rowKind,
+        totalCellCount: row.cellCount,
         nonEmptyCellCount: row.nonEmptyCellCount,
-        cells: row.cells,
+        cellTexts: row.cells,
       },
     });
   }
@@ -603,15 +930,69 @@ function buildComboRows(rows: RawRow[]): ComboRow[] {
   return comboRows;
 }
 
-async function runCrawlerAndWriteArtifacts(metaInput: {
-  capturedAt: string;
-  harCaptured: boolean;
-  harError?: string;
-  harFinalUrl: string;
-}): Promise<{ finalUrl: string }> {
-  let finalUrl = metaInput.harFinalUrl;
+function assertFixedColumns(columns: string[], locale: Locale): void {
+  if (columns.length !== FIXED_CELL_COUNT) {
+    throw new Error(
+      `[scrape:${locale}] expected ${FIXED_CELL_COUNT} header columns from official table, but got ${columns.length}. columns=${JSON.stringify(columns)}`,
+    );
+  }
+}
+
+function assertComboRows(result: LocaleScrapeResult): void {
+  if (result.comboRows.length === 0) {
+    throw new Error(`[scrape:${result.locale}] extracted combo rows is empty.`);
+  }
+
+  for (const row of result.comboRows) {
+    if (row.sourceRow.cellTexts.length !== FIXED_CELL_COUNT) {
+      throw new Error(
+        `[scrape:${result.locale}] row index=${row.rowIndex} has invalid cell length ${row.sourceRow.cellTexts.length} (expected ${FIXED_CELL_COUNT}).`,
+      );
+    }
+  }
+}
+
+function createSharedMeta(result: LocaleScrapeResult) {
+  return {
+    targetUrl: result.targetUrl,
+    finalUrl: result.finalUrl,
+    capturedAt: result.capturedAt,
+    harCaptured: result.harCaptured,
+    harError: result.harError ?? null,
+    extractionError: result.extractionError ?? null,
+  };
+}
+
+function buildRequestQueueName(locale: Locale, capturedAt: string): string {
+  const normalizedCapturedAt = capturedAt.replace(/[^a-zA-Z0-9_-]/g, '-');
+  return `sf6-frame-${locale}-${normalizedCapturedAt}`;
+}
+
+async function scrapeLocale(
+  config: LocaleConfig,
+  capturedAt: string,
+  options: ScrapeLocaleOptions = {},
+): Promise<LocaleScrapeResult> {
+  await ensureDir(config.artifactDir);
+  const paths = buildArtifactPaths(config.artifactDir);
+  const requestQueueName = buildRequestQueueName(config.locale, capturedAt);
+  const requestQueue = await RequestQueue.open(requestQueueName);
+
+  const harResult = await captureHarArtifact(config, paths);
+  if (!harResult.harCaptured) {
+    const reason = harResult.harError ?? 'HAR was not captured (unknown reason).';
+    const details = [`capturedAt=${capturedAt}`, `targetUrl=${config.targetUrl}`, `finalUrl=${harResult.finalUrl}`, `reason=${reason}`].join('\n');
+    await writeText(paths.networkHarLogPath, `${details}\n`);
+    await writeResponsesJsonl(paths.networkResponsesPath, harResult.responses);
+    log.warning(`[scrape:${config.locale}] HAR capture unavailable, wrote fallback logs: ${paths.networkHarLogPath}`);
+  }
+
+  let finalUrl = harResult.finalUrl;
+  let candidates: Candidate[] = [];
+  let extractionError: string | undefined;
 
   const crawler = new PlaywrightCrawler({
+    requestQueue,
     maxRequestsPerCrawl: 1,
     maxConcurrency: 1,
     requestHandlerTimeoutSecs: 180,
@@ -625,165 +1006,218 @@ async function runCrawlerAndWriteArtifacts(metaInput: {
       finalUrl = page.url();
 
       const html = await page.content();
-      await writeText(PAGE_HTML_PATH, html);
-      await page.screenshot({ path: PAGE_PNG_PATH, fullPage: true });
+      await writeText(paths.pageHtmlPath, html);
+      await page.screenshot({ path: paths.pagePngPath, fullPage: true });
 
-      let candidates: Candidate[] = [];
-      let extractionError: string | undefined;
       try {
         candidates = await extractCandidates(page);
       } catch (error) {
         extractionError = `candidate extraction failed: ${toErrorMessage(error)}`;
         crawlerLog.warning(extractionError);
       }
-
-      const bestCandidate = candidates[0];
-      const bestCandidateId = bestCandidate?.id ?? null;
-      const sharedMeta = {
-        targetUrl: TARGET_URL,
-        finalUrl,
-        capturedAt: metaInput.capturedAt,
-        harCaptured: metaInput.harCaptured,
-        harError: metaInput.harError ?? null,
-        extractionError: extractionError ?? null,
-      };
-
-      await writeJson(TABLES_PREVIEW_PATH, {
-        meta: sharedMeta,
-        bestCandidateId,
-        candidates: candidates.map((candidate) => ({
-          id: candidate.id,
-          kind: candidate.kind,
-          headingGuess: candidate.headingGuess,
-          rowCount: candidate.rowCount,
-          previewRows: candidate.previewRows,
-          score: candidate.score,
-          selectorHint: candidate.selectorHint,
-        })),
-      });
-
-      const rawRows = attachLocalControllerPaths(bestCandidate?.rows ?? []);
-      await writeJson(RAW_JSON_PATH, {
-        meta: sharedMeta,
-        source: 'best-candidate',
-        bestCandidateId,
-        candidateCount: candidates.length,
-        rows: rawRows,
-      });
-
-      const comboRows = buildComboRows(rawRows);
-      await writeJson(COMBO_JSON_PATH, {
-        meta: {
-          ...sharedMeta,
-          source: 'best-candidate',
-          mappingVersion: 1,
-          fixedCellCount: 15,
-          columns: COMBO_COLUMNS,
-        },
-        glossary: COMBO_GLOSSARY,
-        rows: comboRows,
-      });
     },
   });
 
-  await crawler.run([TARGET_URL]);
-  return { finalUrl };
-}
+  try {
+    await crawler.run([config.targetUrl]);
+  } catch (error) {
+    extractionError = extractionError ?? `crawler failed: ${toErrorMessage(error)}`;
+    throw error;
+  }
 
-async function writeFallbackJson(meta: {
-  capturedAt: string;
-  harCaptured: boolean;
-  harError?: string;
-  finalUrl: string;
-  extractionError: string;
-}): Promise<void> {
-  const sharedMeta = {
-    targetUrl: TARGET_URL,
-    finalUrl: meta.finalUrl,
-    capturedAt: meta.capturedAt,
-    harCaptured: meta.harCaptured,
-    harError: meta.harError ?? null,
-    extractionError: meta.extractionError,
+  const bestCandidate = candidates[0];
+  const bestCandidateId = bestCandidate?.id ?? null;
+  const extractedRows = attachLocalControllerPaths(bestCandidate?.rows ?? []);
+  const headerColumns = normalizeHeaderColumns(bestCandidate?.headerColumns ?? []);
+  const headerDetails = (bestCandidate?.headerDetails ?? []).map((detail) => ({
+    ...detail,
+    label: detail.label.replace(/\s+/g, ' ').trim(),
+    leafLabel: detail.leafLabel.replace(/\s+/g, ' ').trim(),
+    parentLabel: detail.parentLabel ? detail.parentLabel.replace(/\s+/g, ' ').trim() : null,
+    description: detail.description.replace(/\s+/g, ' ').trim(),
+  }));
+
+  assertFixedColumns(headerColumns, config.locale);
+  const columnDefinitions = options.canonicalColumnDefinitions
+    ? projectColumnDefinitionsFromCanonical(
+        headerColumns,
+        headerDetails,
+        options.canonicalColumnDefinitions,
+        config.locale,
+      )
+    : buildColumnDefinitions(headerColumns, headerDetails);
+  assertExpectedColumnKeys(columnDefinitions, config.locale);
+
+  const firstColumnLabel = headerColumns[0] ?? '';
+  const rawRows = buildRawOutputRows(extractedRows);
+  const comboRows = buildComboRows(extractedRows, columnDefinitions, firstColumnLabel);
+
+  const result: LocaleScrapeResult = {
+    locale: config.locale,
+    targetUrl: config.targetUrl,
+    finalUrl,
+    capturedAt,
+    harCaptured: harResult.harCaptured,
+    harError: harResult.harError,
+    extractionError,
+    bestCandidateId,
+    candidateCount: candidates.length,
+    headerColumns,
+    columnDefinitions,
+    headerDetails,
+    glossary: buildGlossary(columnDefinitions),
+    rawRows,
+    comboRows,
   };
 
-  await writeJson(TABLES_PREVIEW_PATH, {
+  const sharedMeta = createSharedMeta(result);
+
+  await writeJson(paths.tablesPreviewPath, {
     meta: sharedMeta,
-    bestCandidateId: null,
-    candidates: [],
+    bestCandidateId,
+    candidates: candidates.map((candidate) => ({
+      id: candidate.id,
+      kind: candidate.kind,
+      headingGuess: candidate.headingGuess,
+      rowCount: candidate.rowCount,
+      previewRows: candidate.previewRows,
+      score: candidate.score,
+      selectorHint: candidate.selectorHint,
+      headerColumns: candidate.headerColumns,
+    })),
   });
 
-  await writeJson(RAW_JSON_PATH, {
+  await writeJson(paths.rawExtractedPath, {
     meta: sharedMeta,
     source: 'best-candidate',
-    bestCandidateId: null,
-    candidateCount: 0,
-    rows: [],
+    bestCandidateId,
+    candidateCount: candidates.length,
+    rows: rawRows,
   });
 
-  await writeJson(COMBO_JSON_PATH, {
+  await writeJson(paths.comboExtractedPath, {
     meta: {
       ...sharedMeta,
       source: 'best-candidate',
       mappingVersion: 1,
-      fixedCellCount: 15,
-      columns: COMBO_COLUMNS,
+      fixedCellCount: FIXED_CELL_COUNT,
+      columns: headerColumns,
+      columnDefinitions: columnDefinitions.map((definition) => ({
+        columnIndex: definition.columnIndex,
+        label: definition.label,
+        key: definition.key,
+      })),
     },
-    glossary: COMBO_GLOSSARY,
-    rows: [],
+    glossary: result.glossary,
+    rows: comboRows,
+  });
+
+  if (!harResult.harCaptured && !existsSync(paths.networkResponsesPath)) {
+    await writeResponsesJsonl(paths.networkResponsesPath, []);
+  }
+
+  log.info(`[scrape:${config.locale}] saved: ${paths.pageHtmlPath}`);
+  log.info(`[scrape:${config.locale}] saved: ${paths.pagePngPath}`);
+  log.info(`[scrape:${config.locale}] saved: ${paths.tablesPreviewPath}`);
+  log.info(`[scrape:${config.locale}] saved: ${paths.rawExtractedPath}`);
+  log.info(`[scrape:${config.locale}] saved: ${paths.comboExtractedPath}`);
+  if (harResult.harCaptured) {
+    log.info(`[scrape:${config.locale}] saved: ${paths.networkHarPath}`);
+  } else {
+    log.info(`[scrape:${config.locale}] saved fallback: ${paths.networkHarLogPath}`);
+    log.info(`[scrape:${config.locale}] saved fallback: ${paths.networkResponsesPath}`);
+  }
+
+  assertComboRows(result);
+  return result;
+}
+
+function buildJaMapRows(enRows: ComboRow[], jaRows: ComboRow[]): JaMapRow[] {
+  if (enRows.length !== jaRows.length) {
+    throw new Error(`row count mismatch between en-us and ja-jp. en=${enRows.length}, ja=${jaRows.length}`);
+  }
+
+  const mapped: JaMapRow[] = [];
+  for (let i = 0; i < enRows.length; i += 1) {
+    const enRow = enRows[i];
+    const jaRow = jaRows[i];
+
+    if (enRow.rowIndex !== jaRow.rowIndex) {
+      throw new Error(
+        `row index mismatch at position=${i}. en.rowIndex=${enRow.rowIndex}, ja.rowIndex=${jaRow.rowIndex}. alignment is fixed by rowIndex and cannot auto-correct.`,
+      );
+    }
+
+    mapped.push({
+      rowIndex: enRow.rowIndex,
+      moveName: jaRow.moveName,
+      comboScaling: jaRow.comboScaling,
+      properties: jaRow.properties,
+      miscellaneous: jaRow.miscellaneous,
+    });
+  }
+
+  return mapped;
+}
+
+async function writeCanonicalOutputs(enResult: LocaleScrapeResult, jaResult: LocaleScrapeResult): Promise<void> {
+  const enMeta = createSharedMeta(enResult);
+
+  await writeJson(RAW_JSON_PATH, {
+    meta: enMeta,
+    source: 'best-candidate',
+    bestCandidateId: enResult.bestCandidateId,
+    candidateCount: enResult.candidateCount,
+    rows: enResult.rawRows,
+  });
+
+  const jaMapRows = buildJaMapRows(enResult.comboRows, jaResult.comboRows);
+  await writeJson(JA_MAP_JSON_PATH, {
+    meta: {
+      targetUrl: jaResult.targetUrl,
+      finalUrl: jaResult.finalUrl,
+      capturedAt: jaResult.capturedAt,
+      source: 'best-candidate',
+      matchKey: 'rowIndex',
+      mappedColumns: [enResult.headerColumns[0], enResult.headerColumns[8], enResult.headerColumns[13], enResult.headerColumns[14]],
+      mappedKeys: ['moveName', 'comboScaling', 'properties', 'miscellaneous'],
+    },
+    rows: jaMapRows,
   });
 }
 
 async function main(): Promise<void> {
-  await ensureDir(ARTIFACT_DIR);
   await ensureDir(DATA_DIR);
 
   const capturedAt = new Date().toISOString();
-  log.info(`starting scraper for ${TARGET_URL}`);
+  log.info(`starting scraper for canonical=en-us and map=ja-jp`);
 
-  const harResult = await captureHarArtifact();
-  if (!harResult.harCaptured) {
-    const reason = harResult.harError ?? 'HAR was not captured (unknown reason).';
-    const details = [`capturedAt=${capturedAt}`, `targetUrl=${TARGET_URL}`, `finalUrl=${harResult.finalUrl}`, `reason=${reason}`].join('\n');
-    await writeText(NETWORK_HAR_LOG_PATH, `${details}\n`);
-    await writeResponsesJsonl(harResult.responses);
-    log.warning(`HAR capture unavailable, wrote fallback logs: ${NETWORK_HAR_LOG_PATH}`);
-  }
+  const enResult = await scrapeLocale(
+    {
+      locale: 'en-us',
+      targetUrl: EN_TARGET_URL,
+      artifactDir: ARTIFACT_EN_DIR,
+    },
+    capturedAt,
+    {},
+  );
 
-  try {
-    const crawlResult = await runCrawlerAndWriteArtifacts({
-      capturedAt,
-      harCaptured: harResult.harCaptured,
-      harError: harResult.harError,
-      harFinalUrl: harResult.finalUrl,
-    });
-    log.info(`crawler completed, finalUrl=${crawlResult.finalUrl}`);
-  } catch (error) {
-    const extractionError = `crawler failed: ${toErrorMessage(error)}`;
-    await writeFallbackJson({
-      capturedAt,
-      harCaptured: harResult.harCaptured,
-      harError: harResult.harError,
-      finalUrl: harResult.finalUrl,
-      extractionError,
-    });
-    throw error;
-  }
+  const jaResult = await scrapeLocale(
+    {
+      locale: 'ja-jp',
+      targetUrl: JA_TARGET_URL,
+      artifactDir: ARTIFACT_JA_DIR,
+    },
+    capturedAt,
+    {
+      canonicalColumnDefinitions: enResult.columnDefinitions,
+    },
+  );
 
-  if (!harResult.harCaptured && !existsSync(NETWORK_RESPONSES_PATH)) {
-    await writeResponsesJsonl([]);
-  }
+  await writeCanonicalOutputs(enResult, jaResult);
 
-  log.info(`saved: ${PAGE_HTML_PATH}`);
-  log.info(`saved: ${PAGE_PNG_PATH}`);
-  log.info(`saved: ${TABLES_PREVIEW_PATH}`);
   log.info(`saved: ${RAW_JSON_PATH}`);
-  log.info(`saved: ${COMBO_JSON_PATH}`);
-  if (harResult.harCaptured) {
-    log.info(`saved: ${NETWORK_HAR_PATH}`);
-  } else {
-    log.info(`saved fallback: ${NETWORK_HAR_LOG_PATH}`);
-    log.info(`saved fallback: ${NETWORK_RESPONSES_PATH}`);
-  }
+  log.info(`saved: ${JA_MAP_JSON_PATH}`);
 }
 
 main().catch((error) => {

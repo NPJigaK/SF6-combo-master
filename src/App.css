@@ -631,6 +631,19 @@ body {
   word-break: break-word;
 }
 
+.supercombo-unique {
+  margin-top: 1rem;
+}
+
+.supercombo-unique h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.supercombo-unique .stats-grid {
+  margin-top: 0.55rem;
+}
+
 .empty {
   margin: 0;
   color: #c9c2e6;

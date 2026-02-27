@@ -53,10 +53,10 @@ type DownDisplayMode = (typeof DOWN_DISPLAY_MODES)[number];
 type BindingTarget = AttackActionId | "resetTrial";
 
 type FrameComboRow = {
-  index: number;
-  skillName: string;
-  startup: string;
-  hitAdvantage: string;
+  rowIndex: number;
+  moveName: string;
+  startUpFrame: string;
+  hitRecovery: string;
 };
 
 type DirectionIconSpec = {
@@ -590,10 +590,10 @@ function createMoveDataResolver(frameRows: readonly FrameComboRow[]): TrialMoveD
     }
 
     return {
-      rowIndex: row.index,
-      skillName: row.skillName,
-      startup: row.startup,
-      hitAdvantage: row.hitAdvantage,
+      rowIndex: row.rowIndex,
+      skillName: row.moveName,
+      startup: row.startUpFrame,
+      hitAdvantage: row.hitRecovery,
     };
   };
 }

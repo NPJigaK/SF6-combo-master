@@ -1,0 +1,506 @@
+{
+  "meta": {
+    "targetUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
+    "finalUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
+    "capturedAt": "2026-02-26T21:10:35.059Z",
+    "source": "best-candidate",
+    "matchKey": "rowIndex",
+    "mappedColumns": [
+      "Move Name",
+      "Combo Scaling",
+      "Properties",
+      "Miscellaneous"
+    ],
+    "mappedKeys": [
+      "moveName",
+      "comboScaling",
+      "properties",
+      "miscellaneous"
+    ]
+  },
+  "rows": [
+    {
+      "rowIndex": 2,
+      "moveName": "立ち弱P（ノーシ）弱",
+      "comboScaling": "始動補正20%",
+      "properties": "上",
+      "miscellaneous": "連打キャンセル対応"
+    },
+    {
+      "rowIndex": 3,
+      "moveName": "立ち弱K（ニージニイ・ウダール）弱",
+      "comboScaling": "始動補正20%",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 4,
+      "moveName": "立ち中P（シュトゥールム）中",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 5,
+      "moveName": "立ち中K（ウームヌィ・ウダール）中",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 6,
+      "moveName": "立ち強P（キンターヴル）強",
+      "comboScaling": "始動補正20%",
+      "properties": "上",
+      "miscellaneous": "空中ヒット時吹き飛びダウンパニッシュカウンター時+25F"
+    },
+    {
+      "rowIndex": 7,
+      "moveName": "立ち強K（オボロートニ）強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 8,
+      "moveName": "しゃがみ弱P（ブィストルイ・ウダール） 弱",
+      "comboScaling": "始動補正20%",
+      "properties": "上",
+      "miscellaneous": "連打キャンセル対応"
+    },
+    {
+      "rowIndex": 9,
+      "moveName": "しゃがみ弱K（リョーフキー・ウダール） 弱",
+      "comboScaling": "始動補正20%",
+      "properties": "下",
+      "miscellaneous": "連打キャンセル対応"
+    },
+    {
+      "rowIndex": 10,
+      "moveName": "しゃがみ中P（ズミヤー） 中",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 11,
+      "moveName": "しゃがみ中K（ズローバ） 中",
+      "comboScaling": "始動補正20%",
+      "properties": "下",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 12,
+      "moveName": "しゃがみ強P（マリートヴァ） 強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "強制立ち効果"
+    },
+    {
+      "rowIndex": 13,
+      "moveName": "しゃがみ強K（ジョーキル） 強",
+      "comboScaling": "",
+      "properties": "下",
+      "miscellaneous": "パニッシュカウンター時ダウン時間増加、ハードノックダウン"
+    },
+    {
+      "rowIndex": 14,
+      "moveName": "ジャンプ弱P（ルイースイ）（ジャンプ中に）弱",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 15,
+      "moveName": "ジャンプ弱K（ヴァローナ）（ジャンプ中に）弱",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": "めくり性能"
+    },
+    {
+      "rowIndex": 16,
+      "moveName": "ジャンプ中P（ローシャッチ）（ジャンプ中に）中",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 17,
+      "moveName": "ジャンプ中K（コンダ）（ジャンプ中に）中",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": "空中ヒット時吹き飛びダウン"
+    },
+    {
+      "rowIndex": 18,
+      "moveName": "ジャンプ強P（イディナローク）（ジャンプ中に）強",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": "空中カウンター/パニッシュカウンター時叩きつけダウン"
+    },
+    {
+      "rowIndex": 19,
+      "moveName": "ジャンプ強K（ジャール・プチーツァ）（ジャンプ中に）強",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 21,
+      "moveName": "ギリオチーナ 中",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 22,
+      "moveName": "シャーロスチ 強",
+      "comboScaling": "",
+      "properties": "下",
+      "miscellaneous": "カウンター/パニッシュカウンター時ダウン時間延長"
+    },
+    {
+      "rowIndex": 23,
+      "moveName": "ヴィリーナ 強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "空中ヒット時吹き飛びダウン"
+    },
+    {
+      "rowIndex": 24,
+      "moveName": "グロームストレルカ（1段目） 中",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 25,
+      "moveName": "グロームストレルカ（2段目） 中中",
+      "comboScaling": "コンボ補正20%",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 26,
+      "moveName": "ジラント強強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 27,
+      "moveName": "ジラントルカー強強強",
+      "comboScaling": "",
+      "properties": "中",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 28,
+      "moveName": "ジラントナガー強強強",
+      "comboScaling": "",
+      "properties": "下",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 30,
+      "moveName": "弱 トリグラフ 弱",
+      "comboScaling": "",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 31,
+      "moveName": "中 トリグラフ 中",
+      "comboScaling": "",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 32,
+      "moveName": "強 トリグラフ 強",
+      "comboScaling": "",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 33,
+      "moveName": "OD 弱 トリグラフ 弱中",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 34,
+      "moveName": "OD 中 トリグラフ 弱強",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 35,
+      "moveName": "OD 強 トリグラフ 中強",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 36,
+      "moveName": "弱 ストリボーグ 弱",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+    },
+    {
+      "rowIndex": 37,
+      "moveName": "中 ストリボーグ 中",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+    },
+    {
+      "rowIndex": 38,
+      "moveName": "強 ストリボーグ 強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加"
+    },
+    {
+      "rowIndex": 39,
+      "moveName": "OD ストリボーグ",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加初段のみSA2/SA3/CAでキャンセル可能"
+    },
+    {
+      "rowIndex": 40,
+      "moveName": "弱 ヴィーハト 弱",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 41,
+      "moveName": "中 ヴィーハト 中",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 42,
+      "moveName": "強 ヴィーハト 強",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 43,
+      "moveName": "OD 弱 ヴィーハト 弱中",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 44,
+      "moveName": "OD 中 ヴィーハト 弱強",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 45,
+      "moveName": "OD 強 ヴィーハト 中強",
+      "comboScaling": "始動補正20％",
+      "properties": "上・弾",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 46,
+      "moveName": "ヴィーハト・アクノ（ヴィーハト設置中に） 弱中",
+      "comboScaling": "",
+      "properties": "",
+      "miscellaneous": "6-25F 完全無敵26F目から空中判定31F目から行動可"
+    },
+    {
+      "rowIndex": 47,
+      "moveName": "ヴィーハト・チェーニ（ヴィーハト設置中に） 強",
+      "comboScaling": "",
+      "properties": "",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 48,
+      "moveName": "アムネジア",
+      "comboScaling": "始動補正50％※即時補正60％",
+      "properties": "上・弾",
+      "miscellaneous": "当身成立時にドライブゲージ10000増加当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+    },
+    {
+      "rowIndex": 49,
+      "moveName": "OD アムネジア",
+      "comboScaling": "始動補正50％※即時補正60％",
+      "properties": "上・弾",
+      "miscellaneous": "当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+    },
+    {
+      "rowIndex": 50,
+      "moveName": "弱 トルバラン 弱",
+      "comboScaling": "",
+      "properties": "上・弾",
+      "miscellaneous": "発生は密着で発動した場合の数値"
+    },
+    {
+      "rowIndex": 51,
+      "moveName": "中 トルバラン 中",
+      "comboScaling": "始動補正20%",
+      "properties": "中・弾",
+      "miscellaneous": "発生は密着で発動した場合の数値"
+    },
+    {
+      "rowIndex": 52,
+      "moveName": "強 トルバラン 強",
+      "comboScaling": "始動補正20%",
+      "properties": "下・弾",
+      "miscellaneous": "発生は密着で発動した場合の数値"
+    },
+    {
+      "rowIndex": 53,
+      "moveName": "OD トルバラン",
+      "comboScaling": "始動補正20%",
+      "properties": "上・弾",
+      "miscellaneous": "発生は密着で発動した場合の数値初段のみSA2/SA3/CAでキャンセル可能"
+    },
+    {
+      "rowIndex": 54,
+      "moveName": "アブニマーチ",
+      "comboScaling": "即時補正10%",
+      "properties": "投",
+      "miscellaneous": "■クラシック操作パニッシュカウンター時のダメージ2070発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（1656）"
+    },
+    {
+      "rowIndex": 55,
+      "moveName": "OD アブニマーチ",
+      "comboScaling": "即時補正10%",
+      "properties": "投",
+      "miscellaneous": "■クラシック操作パニッシュカウンター時のダメージ2990発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（2392）"
+    },
+    {
+      "rowIndex": 57,
+      "moveName": "SA1 チェルノボーグ",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "1-10F 打撃・投げに対して無敵最低保障ダメージ30％カウンター/パニッシュカウンターで数値が変動しない"
+    },
+    {
+      "rowIndex": 58,
+      "moveName": "SA2 ラヴーシュカ",
+      "comboScaling": "始動補正25％※即時補正25％",
+      "properties": "上中下中",
+      "miscellaneous": "最低保障ダメージ40％カウンター/パニッシュカウンターで数値が変動しない※コンボの3段目以降に補正がかかる"
+    },
+    {
+      "rowIndex": 59,
+      "moveName": "SA3 ザプリェット",
+      "comboScaling": "※即時補正10%",
+      "properties": "上",
+      "miscellaneous": "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+    },
+    {
+      "rowIndex": 60,
+      "moveName": "CA ザプリェット（体力25%以下で）",
+      "comboScaling": "※即時補正10%",
+      "properties": "上",
+      "miscellaneous": "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+    },
+    {
+      "rowIndex": 62,
+      "moveName": "ラヴィーナ（近距離で） 弱弱",
+      "comboScaling": "始動補正40%即時補正20%",
+      "properties": "投",
+      "miscellaneous": "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+    },
+    {
+      "rowIndex": 63,
+      "moveName": "ウラガーン（近距離で） 弱弱",
+      "comboScaling": "始動補正40%即時補正20%",
+      "properties": "投",
+      "miscellaneous": "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+    },
+    {
+      "rowIndex": 64,
+      "moveName": "タルナード（ジャンプ中に）（近距離で）弱弱",
+      "comboScaling": "即時補正20%",
+      "properties": "投",
+      "miscellaneous": "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+    },
+    {
+      "rowIndex": 66,
+      "moveName": "前方ステップ",
+      "comboScaling": "",
+      "properties": "",
+      "miscellaneous": ""
+    },
+    {
+      "rowIndex": 67,
+      "moveName": "後方ステップ",
+      "comboScaling": "",
+      "properties": "",
+      "miscellaneous": "1-15F 投げ無敵"
+    },
+    {
+      "rowIndex": 68,
+      "moveName": "ドライブインパクト（エスパーダ）強強",
+      "comboScaling": "始動補正20%",
+      "properties": "上",
+      "miscellaneous": "1-27F アーマー判定（2回）パニッシュカウンター、もしくはアーマー成立後にヒットで以下の性能変化・地上ヒット膝崩れ・空中ヒットきりもみダウン・SAゲージ3000増加"
+    },
+    {
+      "rowIndex": 69,
+      "moveName": "[ガード時]ドライブリバーサル（エクシリオ）（ガード中 or ドライブパリィ成立中に） 強強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "リカバリアブルダメージ1-22F 完全無敵ヒット時硬直5F増加"
+    },
+    {
+      "rowIndex": 70,
+      "moveName": "[起き上がり時]ドライブリバーサル（エクシリオ）（起き上がり時に） 強強",
+      "comboScaling": "",
+      "properties": "上",
+      "miscellaneous": "リカバリアブルダメージ1-20F 完全無敵ヒット時硬直5F増加"
+    },
+    {
+      "rowIndex": 71,
+      "moveName": "ドライブパリィ中中",
+      "comboScaling": "",
+      "properties": "",
+      "miscellaneous": "※1 動作の4F目からドライブラッシュでキャンセル可※2 ボタンホールドでパリィの持続を延長可硬直部分はガードのみ可動作中常に被パニッシュカウンター判定"
+    },
+    {
+      "rowIndex": 72,
+      "moveName": "ジャストパリィ（打撃）ガード方向 中中",
+      "comboScaling": "始動補正50％",
+      "properties": "",
+      "miscellaneous": "相手の攻撃に対応した方向入力を行った状態でパリィを入力し、入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する（上段/中段攻撃に対して←方向、下段攻撃に対しては↙方向)方向が正しくなかった場合は通常のドライブパリィとなり、追加でDゲージが3000増加する硬直終了から5Fの間完全無敵 （パリィを継続した場合は無敵にならない）ジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+    },
+    {
+      "rowIndex": 73,
+      "moveName": "ジャストパリィ（飛び道具）中中",
+      "comboScaling": "始動補正50％",
+      "properties": "",
+      "miscellaneous": "パリィを入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する暗転演出が入らないジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+    },
+    {
+      "rowIndex": 74,
+      "moveName": "パリィドライブラッシュ（ドライブパリィ中に）",
+      "comboScaling": "乗算補正15％",
+      "properties": "",
+      "miscellaneous": "暗転10F※動作9F目から攻撃行動にキャンセル可 24F目からパリィ以外の行動でキャンセル可"
+    },
+    {
+      "rowIndex": 75,
+      "moveName": "キャンセルドライブラッシュ（必殺技キャンセル可能な攻撃ヒット中に） ( ) 中中",
+      "comboScaling": "乗算補正15％",
+      "properties": "",
+      "miscellaneous": "暗転9F※動作10F目から攻撃行動にキャンセル可 25F目からパリィ以外の行動でキャンセル可"
+    }
+  ]
+}

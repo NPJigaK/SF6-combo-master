@@ -6,6 +6,7 @@ import { CheerioCrawler, log } from 'crawlee';
 const CANONICAL_URL = 'https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data';
 const FETCH_URL = 'https://srk.shib.live/w/Street_Fighter_6/JP/Frame_data';
 const SOURCE_TYPE = 'mirror' as const;
+const SCHEMA_VERSION = 2;
 
 const REQUESTED_URLS = [
   'https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-General',
@@ -16,6 +17,7 @@ const REQUESTED_URLS = [
 ] as const;
 
 const TAB_NAMES = ['General', 'Details', 'Meter', 'Properties', 'Notes'] as const;
+const TAB_KEYS = ['general', 'details', 'meter', 'properties', 'notes'] as const;
 const REQUEST_HEADERS = {
   'user-agent': 'curl/8.5.0',
   accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -30,12 +32,22 @@ const TABS_PREVIEW_PATH = path.join(ARTIFACT_DIR, 'tabs.preview.json');
 const RAW_JSON_PATH = path.join(DATA_DIR, 'frame.supercombo.raw.json');
 
 type TabName = (typeof TAB_NAMES)[number];
+type TabKey = (typeof TAB_KEYS)[number];
+
+type RawCell = {
+  index: number;
+  text: string;
+  innerHtml: string;
+  outerHtml: string;
+  attributes: Record<string, string>;
+};
 
 type RawRow = {
   index: number;
-  cellsHtml: string[];
-  cellsText: string[];
+  cells: RawCell[];
+  rowText: string;
   rowHtml: string;
+  rowAttributes: Record<string, string>;
   dataDetailsRaw: string | null;
 };
 
@@ -55,7 +67,7 @@ type RawGroup = {
   tabs: RawTab[];
 };
 
-type RawMeta = {
+type SharedMeta = {
   requestedUrls: readonly string[];
   canonicalUrl: string;
   fetchUrl: string;
@@ -68,13 +80,14 @@ type RawMeta = {
   extractionError: string | null;
 };
 
-type RawPayload = {
-  meta: RawMeta;
+type RawExtraction = {
+  meta: SharedMeta;
   groups: RawGroup[];
+  pageHtml: string;
 };
 
 type PreviewPayload = {
-  meta: RawMeta;
+  meta: SharedMeta;
   groupCount: number;
   groups: Array<{
     groupKey: string;
@@ -86,6 +99,60 @@ type PreviewPayload = {
       headers: string[];
     }>;
   }>;
+};
+
+type ColumnDefinition = {
+  columnIndex: number;
+  label: string;
+  key: string;
+};
+
+type ColumnDefinitionByTab = {
+  tabName: TabName;
+  tabKey: TabKey;
+  columns: ColumnDefinition[];
+};
+
+type MoveTabCell = {
+  columnIndex: number;
+  headerLabel: string;
+  headerKey: string;
+  rawText: string;
+  rawHtml: string;
+};
+
+type MoveTabData = {
+  cells: MoveTabCell[];
+  valuesByKey: Record<string, string>;
+};
+
+type MoveData = {
+  moveId: string;
+  groupKey: string;
+  groupHeading: string | null;
+  rowIndex: number;
+  input: string;
+  tabs: Record<TabKey, MoveTabData>;
+  source: {
+    rowsByTab: Record<TabKey, { rowHtml: string; dataDetailsRaw: string | null }>;
+  };
+};
+
+type SupercomboBuildPayload = {
+  meta: {
+    canonicalUrl: string;
+    fetchUrl: string;
+    capturedAt: string;
+    finalUrl: string;
+    revisionId: number | null;
+    sourceType: typeof SOURCE_TYPE;
+    schemaVersion: number;
+    status: number | null;
+    lastEditedText: string | null;
+    extractionError: string | null;
+  };
+  columnDefinitions: ColumnDefinitionByTab[];
+  moves: MoveData[];
 };
 
 function normalizeText(value: unknown): string {
@@ -134,7 +201,7 @@ function detectChallengePage(pageHtml: string): boolean {
   const normalized = pageHtml.toLowerCase();
   return (
     normalized.includes('making sure you&#39;re not a bot') ||
-    normalized.includes('making sure you\'re not a bot') ||
+    normalized.includes("making sure you're not a bot") ||
     normalized.includes('anubis_challenge') ||
     normalized.includes('cf-mitigated')
   );
@@ -214,6 +281,26 @@ function groupSortValue(groupKey: string): number {
   return Number.isFinite(parsed) ? parsed : Number.MAX_SAFE_INTEGER;
 }
 
+function toAttributeRecord(attributes: Record<string, unknown> | undefined | null): Record<string, string> {
+  if (!attributes) {
+    return {};
+  }
+
+  const entries = Object.entries(attributes)
+    .map(([key, value]) => {
+      if (value === undefined || value === null) {
+        return null;
+      }
+      if (Array.isArray(value)) {
+        return [key, value.map((item) => String(item)).join(' ')];
+      }
+      return [key, String(value)];
+    })
+    .filter((entry): entry is [string, string] => entry !== null);
+
+  return Object.fromEntries(entries);
+}
+
 function extractGroups($: any): RawGroup[] {
   type MutableGroup = {
     groupKey: string;
@@ -245,15 +332,29 @@ function extractGroups($: any): RawGroup[] {
     panel.find('tbody tr').each((rowIndex: number, rowElement: any) => {
       const row = $(rowElement);
       const cells = row.children('th,td');
+      const rowAttributes = toAttributeRecord(rowElement?.attribs);
+      const dataDetailsRaw = normalizeOptionalString(row.attr('data-details'));
+
+      const extractedCells: RawCell[] = cells
+        .map((cellIndex: number, cellElement: any) => {
+          const cellAttributes = toAttributeRecord(cellElement?.attribs);
+          return {
+            index: cellIndex,
+            text: normalizeText($(cellElement).text()),
+            innerHtml: normalizeOptionalString($(cellElement).html()) ?? '',
+            outerHtml: normalizeOptionalString($.html(cellElement)) ?? '',
+            attributes: cellAttributes,
+          };
+        })
+        .get();
 
       rows.push({
         index: rowIndex,
-        cellsHtml: cells
-          .map((__: number, cellElement: any) => normalizeOptionalString($(cellElement).html()) ?? '')
-          .get(),
-        cellsText: cells.map((__: number, cellElement: any) => normalizeText($(cellElement).text())).get(),
+        cells: extractedCells,
+        rowText: normalizeText(row.text()),
         rowHtml: normalizeOptionalString($.html(rowElement)) ?? '',
-        dataDetailsRaw: normalizeOptionalString(row.attr('data-details')),
+        rowAttributes,
+        dataDetailsRaw,
       });
     });
 
@@ -322,6 +423,264 @@ function detectMissingTabs(groups: RawGroup[]): string[] {
   return missingByGroup;
 }
 
+function toCamelCaseKey(label: string): string {
+  const normalized = label
+    .replace(/&/g, ' and ')
+    .replace(/[()\[\]{}]/g, ' ')
+    .replace(/[\/]/g, ' ')
+    .replace(/[^a-zA-Z0-9 ]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (!normalized) {
+    return 'column';
+  }
+
+  const tokens = normalized
+    .split(' ')
+    .map((token) => token.trim().toLowerCase())
+    .filter((token) => token.length > 0);
+
+  if (tokens.length === 0) {
+    return 'column';
+  }
+
+  return tokens
+    .map((token, index) => {
+      if (index === 0) {
+        return token;
+      }
+      return token[0].toUpperCase() + token.slice(1);
+    })
+    .join('');
+}
+
+function buildColumnDefinitions(groups: RawGroup[]): ColumnDefinitionByTab[] {
+  return TAB_NAMES.map((tabName, tabIndex) => {
+    const labels: string[] = [];
+    const seen = new Set<string>();
+
+    for (const group of groups) {
+      const tab = group.tabs.find((entry) => entry.tabName === tabName);
+      if (!tab) {
+        continue;
+      }
+
+      for (const header of tab.headers) {
+        if (seen.has(header)) {
+          continue;
+        }
+        seen.add(header);
+        labels.push(header);
+      }
+    }
+
+    const usedKeys = new Map<string, number>();
+    const columns = labels.map((label, columnIndex) => {
+      const baseKey = toCamelCaseKey(label);
+      const duplicate = usedKeys.get(baseKey) ?? 0;
+      usedKeys.set(baseKey, duplicate + 1);
+      const key = duplicate === 0 ? baseKey : `${baseKey}Col${duplicate + 1}`;
+
+      return {
+        columnIndex,
+        label,
+        key,
+      };
+    });
+
+    return {
+      tabName,
+      tabKey: TAB_KEYS[tabIndex],
+      columns,
+    };
+  });
+}
+
+function ensureAllTabs(groups: RawGroup[]): string | null {
+  return combineErrors(detectMissingTabs(groups));
+}
+
+function buildMovePayload(groups: RawGroup[], columnDefinitions: ColumnDefinitionByTab[]): { moves: MoveData[]; error: string | null } {
+  const errors: string[] = [];
+  const moves: MoveData[] = [];
+
+  for (const group of groups) {
+    const tabsByName = new Map(group.tabs.map((tab) => [tab.tabName, tab]));
+    const general = tabsByName.get('General');
+
+    if (!general) {
+      errors.push(`group ${group.groupKey || '(base)'} missing General tab`);
+      continue;
+    }
+
+    for (const tabName of TAB_NAMES) {
+      const tab = tabsByName.get(tabName);
+      if (!tab) {
+        errors.push(`group ${group.groupKey || '(base)'} missing ${tabName} tab`);
+        continue;
+      }
+
+      if (tab.rowCount !== general.rowCount) {
+        errors.push(
+          `row count mismatch in group ${group.groupKey || '(base)'}: General=${general.rowCount}, ${tabName}=${tab.rowCount}`,
+        );
+      }
+    }
+
+    for (let rowIndex = 0; rowIndex < general.rowCount; rowIndex += 1) {
+      const generalRow = general.rows[rowIndex];
+      const input = generalRow?.cells[0]?.text ?? '';
+      const moveId = `supercombo:${group.groupKey || 'base'}:${rowIndex}`;
+
+      const tabs: Partial<Record<TabKey, MoveTabData>> = {};
+      const rowsByTab: Partial<Record<TabKey, { rowHtml: string; dataDetailsRaw: string | null }>> = {};
+
+      TAB_NAMES.forEach((tabName, tabIndex) => {
+        const tab = tabsByName.get(tabName);
+        const tabKey = TAB_KEYS[tabIndex];
+
+        if (!tab || rowIndex >= tab.rows.length) {
+          tabs[tabKey] = {
+            cells: [],
+            valuesByKey: {},
+          };
+          rowsByTab[tabKey] = {
+            rowHtml: '',
+            dataDetailsRaw: null,
+          };
+          return;
+        }
+
+        const row = tab.rows[rowIndex];
+        const tabInput = row.cells[0]?.text ?? '';
+        if (tabInput !== input) {
+          errors.push(
+            `input mismatch in group ${group.groupKey || '(base)'} row=${rowIndex}: General='${input}', ${tabName}='${tabInput}'`,
+          );
+        }
+
+        const definitions = columnDefinitions.find((definition) => definition.tabName === tabName);
+        const headerIndexMap = new Map<string, number>();
+        tab.headers.forEach((header, index) => {
+          if (!headerIndexMap.has(header)) {
+            headerIndexMap.set(header, index);
+          }
+        });
+
+        const cells: MoveTabCell[] = [];
+        const valuesByKey: Record<string, string> = {};
+
+        for (const definition of definitions?.columns ?? []) {
+          const sourceIndex = headerIndexMap.get(definition.label);
+          const sourceCell = sourceIndex === undefined ? null : row.cells[sourceIndex] ?? null;
+
+          const rawText = sourceCell?.text ?? '';
+          const rawHtml = sourceCell?.innerHtml ?? '';
+
+          cells.push({
+            columnIndex: definition.columnIndex,
+            headerLabel: definition.label,
+            headerKey: definition.key,
+            rawText,
+            rawHtml,
+          });
+
+          valuesByKey[definition.key] = rawText;
+        }
+
+        tabs[tabKey] = {
+          cells,
+          valuesByKey,
+        };
+
+        rowsByTab[tabKey] = {
+          rowHtml: row.rowHtml,
+          dataDetailsRaw: row.dataDetailsRaw,
+        };
+      });
+
+      moves.push({
+        moveId,
+        groupKey: group.groupKey,
+        groupHeading: group.heading,
+        rowIndex,
+        input,
+        tabs: {
+          general: tabs.general ?? { cells: [], valuesByKey: {} },
+          details: tabs.details ?? { cells: [], valuesByKey: {} },
+          meter: tabs.meter ?? { cells: [], valuesByKey: {} },
+          properties: tabs.properties ?? { cells: [], valuesByKey: {} },
+          notes: tabs.notes ?? { cells: [], valuesByKey: {} },
+        },
+        source: {
+          rowsByTab: {
+            general: rowsByTab.general ?? { rowHtml: '', dataDetailsRaw: null },
+            details: rowsByTab.details ?? { rowHtml: '', dataDetailsRaw: null },
+            meter: rowsByTab.meter ?? { rowHtml: '', dataDetailsRaw: null },
+            properties: rowsByTab.properties ?? { rowHtml: '', dataDetailsRaw: null },
+            notes: rowsByTab.notes ?? { rowHtml: '', dataDetailsRaw: null },
+          },
+        },
+      });
+    }
+  }
+
+  return {
+    moves,
+    error: errors.length > 0 ? errors.join('\n') : null,
+  };
+}
+
+function toPreviewPayload(meta: SharedMeta, groups: RawGroup[]): PreviewPayload {
+  return {
+    meta,
+    groupCount: groups.length,
+    groups: groups.map((group) => ({
+      groupKey: group.groupKey,
+      heading: group.heading,
+      tabs: group.tabs.map((tab) => ({
+        tabName: tab.tabName,
+        panelId: tab.panelId,
+        rowCount: tab.rowCount,
+        headers: tab.headers,
+      })),
+    })),
+  };
+}
+
+function buildRawExtraction(meta: SharedMeta, groups: RawGroup[], pageHtml: string): RawExtraction {
+  return {
+    meta,
+    groups,
+    pageHtml,
+  };
+}
+
+function buildBuildPayload(extraction: RawExtraction): SupercomboBuildPayload {
+  const columnDefinitions = buildColumnDefinitions(extraction.groups);
+  const moveBuild = buildMovePayload(extraction.groups, columnDefinitions);
+
+  const mergedError = combineErrors([extraction.meta.extractionError, ensureAllTabs(extraction.groups), moveBuild.error]);
+
+  return {
+    meta: {
+      canonicalUrl: extraction.meta.canonicalUrl,
+      fetchUrl: extraction.meta.fetchUrl,
+      capturedAt: extraction.meta.capturedAt,
+      finalUrl: extraction.meta.finalUrl,
+      revisionId: extraction.meta.revisionId,
+      sourceType: extraction.meta.sourceType,
+      schemaVersion: SCHEMA_VERSION,
+      status: extraction.meta.status,
+      lastEditedText: extraction.meta.lastEditedText,
+      extractionError: mergedError,
+    },
+    columnDefinitions,
+    moves: moveBuild.moves,
+  };
+}
+
 async function ensureDir(dirPath: string): Promise<void> {
   await mkdir(dirPath, { recursive: true });
 }
@@ -334,12 +693,8 @@ async function writeJson(filePath: string, payload: unknown): Promise<void> {
   await writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 }
 
-async function main(): Promise<void> {
-  await ensureDir(ARTIFACT_DIR);
-  await ensureDir(DATA_DIR);
-
+async function scrapeSupercombo(): Promise<RawExtraction> {
   const capturedAt = new Date().toISOString();
-  log.info(`starting supercombo scraper for ${FETCH_URL}`);
 
   let pageHtml = '';
   let finalUrl = FETCH_URL;
@@ -385,16 +740,14 @@ async function main(): Promise<void> {
     crawlError = combineErrors([crawlError, `crawler failed: ${toErrorMessage(error)}`]);
   }
 
-  const missingTabs = detectMissingTabs(groups);
-  const missingTabsError =
-    missingTabs.length > 0 ? `missing tabs by group:\n${missingTabs.map((line) => `- ${line}`).join('\n')}` : null;
+  const missingTabsError = ensureAllTabs(groups);
   const emptyGroupsError = groups.length === 0 ? 'no tabber groups were extracted from the fetched HTML' : null;
   const challengePageError =
     pageHtml.length > 0 && detectChallengePage(pageHtml) ? 'fetched HTML appears to be an anti-bot challenge page' : null;
 
   const extractionError = combineErrors([crawlError, missingTabsError, emptyGroupsError, challengePageError]);
 
-  const meta: RawMeta = {
+  const meta: SharedMeta = {
     requestedUrls: REQUESTED_URLS,
     canonicalUrl: CANONICAL_URL,
     fetchUrl: FETCH_URL,
@@ -407,37 +760,35 @@ async function main(): Promise<void> {
     extractionError,
   };
 
-  const rawPayload: RawPayload = {
-    meta,
-    groups,
-  };
+  return buildRawExtraction(meta, groups, pageHtml);
+}
 
-  const previewPayload: PreviewPayload = {
-    meta,
-    groupCount: groups.length,
-    groups: groups.map((group) => ({
-      groupKey: group.groupKey,
-      heading: group.heading,
-      tabs: group.tabs.map((tab) => ({
-        tabName: tab.tabName,
-        panelId: tab.panelId,
-        rowCount: tab.rowCount,
-        headers: tab.headers,
-      })),
-    })),
-  };
+async function writeBuildArtifacts(extraction: RawExtraction): Promise<void> {
+  await ensureDir(ARTIFACT_DIR);
+  await ensureDir(DATA_DIR);
 
-  await writeText(PAGE_HTML_PATH, pageHtml);
+  const previewPayload = toPreviewPayload(extraction.meta, extraction.groups);
+  const buildPayload = buildBuildPayload(extraction);
+
+  await writeText(PAGE_HTML_PATH, extraction.pageHtml);
   await writeJson(TABS_PREVIEW_PATH, previewPayload);
-  await writeJson(RAW_JSON_PATH, rawPayload);
+  await writeJson(RAW_JSON_PATH, buildPayload);
 
   log.info(`saved: ${PAGE_HTML_PATH}`);
   log.info(`saved: ${TABS_PREVIEW_PATH}`);
   log.info(`saved: ${RAW_JSON_PATH}`);
 
-  if (extractionError) {
-    throw new Error(extractionError);
+  if (buildPayload.meta.extractionError) {
+    throw new Error(buildPayload.meta.extractionError);
   }
+}
+
+async function main(): Promise<void> {
+  log.info(`starting supercombo scraper for ${FETCH_URL}`);
+
+  const extraction = await scrapeSupercombo();
+
+  await writeBuildArtifacts(extraction);
 }
 
 main().catch((error) => {

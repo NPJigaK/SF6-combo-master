@@ -25,10 +25,10 @@ export type NormalizedHitAdvantage =
     };
 
 export type FrameComboRowLike = {
-  index: number;
-  skillName: string;
-  startup: string;
-  hitAdvantage: string;
+  rowIndex: number;
+  moveName: string;
+  startUpFrame: string;
+  hitRecovery: string;
 };
 
 function parseInteger(raw: string): number | null {
@@ -90,7 +90,7 @@ export function normalizeHitAdvantage(rawValue: string): NormalizedHitAdvantage 
 export function createFrameComboRowIndex(rows: readonly FrameComboRowLike[]): Map<number, FrameComboRowLike> {
   const index = new Map<number, FrameComboRowLike>();
   for (const row of rows) {
-    index.set(row.index, row);
+    index.set(row.rowIndex, row);
   }
   return index;
 }

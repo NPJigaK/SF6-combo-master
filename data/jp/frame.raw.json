@@ -1,52 +1,52 @@
 {
   "meta": {
-    "targetUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
-    "finalUrl": "https://www.streetfighter.com/6/ja-jp/character/jp/frame",
-    "capturedAt": "2026-02-22T06:16:36.684Z",
+    "targetUrl": "https://www.streetfighter.com/6/en-us/character/jp/frame",
+    "finalUrl": "https://www.streetfighter.com/6/en-us/character/jp/frame",
+    "capturedAt": "2026-02-26T21:10:35.059Z",
     "harCaptured": true,
     "harError": null,
     "extractionError": null
   },
   "source": "best-candidate",
   "bestCandidateId": "c1",
-  "candidateCount": 17,
+  "candidateCount": 2,
   "rows": [
     {
-      "index": 0,
-      "text": "技名 | 動作フレーム発生持続技の動作中に攻撃判定が発生しているフレームを表します（例） 【10-12】表記の場合、【10F/11F/12F】の【3F】間、攻撃判定が持続硬直 | 硬直差ヒットガード | キャンセル【C】必殺技、ドライブインパクト、ドライブラッシュ、SAでキャンセル可能【SA】SA技でのみキャンセル可能【SA2】SA2、SA3でキャンセル可能【SA3】SA3でのみキャンセル可能【※】特定の技でのみキャンセル可能 | ダメージ | コンボ補正値通常のコンボ補正に加えて、技自体に特殊な補正が設定されている場合に記載されます。【始動補正】コンボの初段にヒットさせた際に加算される補正【コンボ補正】コンボの2段目以降にヒットさせた際に加算される補正【即時補正】コンボの2段目以降にヒットさせた際、その技自体に加算される補正【乗算補正】コンボに組み込んだ際に、それ以降のコンボ補正値に乗算される補正値 | Dゲージ増加ヒット攻撃側のドライブゲージ増加量（ヒット時） | Dゲージ減少ガード防御側のドライブゲージ減少量（ガード時）パニッシュカウンター防御側のドライブゲージ減少量（パニッシュカウンター時） | SAゲージ増加 | 属性攻撃判定の属性を表します【上】立ち/しゃがみガード可能な上段攻撃【中】立ちガードのみ可能な中段攻撃【下】しゃがみガードのみ可能な下段攻撃【投】ガードできない投げ技【弾】飛び道具【空弾】空中判定の飛び道具 | 備考",
-      "cells": [
-        "技名",
-        "動作フレーム発生持続技の動作中に攻撃判定が発生しているフレームを表します（例） 【10-12】表記の場合、【10F/11F/12F】の【3F】間、攻撃判定が持続硬直",
-        "硬直差ヒットガード",
-        "キャンセル【C】必殺技、ドライブインパクト、ドライブラッシュ、SAでキャンセル可能【SA】SA技でのみキャンセル可能【SA2】SA2、SA3でキャンセル可能【SA3】SA3でのみキャンセル可能【※】特定の技でのみキャンセル可能",
-        "ダメージ",
-        "コンボ補正値通常のコンボ補正に加えて、技自体に特殊な補正が設定されている場合に記載されます。【始動補正】コンボの初段にヒットさせた際に加算される補正【コンボ補正】コンボの2段目以降にヒットさせた際に加算される補正【即時補正】コンボの2段目以降にヒットさせた際、その技自体に加算される補正【乗算補正】コンボに組み込んだ際に、それ以降のコンボ補正値に乗算される補正値",
-        "Dゲージ増加ヒット攻撃側のドライブゲージ増加量（ヒット時）",
-        "Dゲージ減少ガード防御側のドライブゲージ減少量（ガード時）パニッシュカウンター防御側のドライブゲージ減少量（パニッシュカウンター時）",
-        "SAゲージ増加",
-        "属性攻撃判定の属性を表します【上】立ち/しゃがみガード可能な上段攻撃【中】立ちガードのみ可能な中段攻撃【下】しゃがみガードのみ可能な下段攻撃【投】ガードできない投げ技【弾】飛び道具【空弾】空中判定の飛び道具",
-        "備考"
+      "rowIndex": 0,
+      "rowText": "Move Name | FrameStart-upActive'The value listed here is what frame the attack hitbox will come out when the attack is performed.Ex.If the value is 10-12, then the attack hitbox will be active from frames 10-12.Recovery | RecoveryHitBlock | CancelCCan be canceled by a special move, Drive Impact, Drive Rush or Super ArtSACan only be canceled by a Super ArtSA2Can only be canceled by a level 2 or 3 Super ArtSA3Can only be canceled by a level 3 Super Art or Critical Art*Can only be canceled by specific attacks | Damage | Combo ScalingIn addition to the regular combo scaling, any unique scaling that an attack has is displayed hereInitial ScalingScaling added when the first hit of the combo landsCombo ScalingScaling added after the second hit of the combo landsImmediate ScalingScaling added to the attack itself after the second hit of the combo landsMultiplier Scaling Scaling value that is multiplied by subsequent combo scaling values when incorporated into a combo. | Drive Gauge IncreaseHitAmount of Drive Gauge recovered by the attacker when the attack hits | Drive Gauge DecreaseBlockAmount of Drive Gauge lost by the defender when blockingPunish CounterAmount of Drive Gauge lost by the defender on a Punish Counter | Super Art Gauge Increase | PropertiesDisplays the attack hitbox properties.HHigh level attacks that can be blocked standing or crouchingMMid level overhead attacks that must be blocked standingLLow level attacks that must be blocked crouchingTThrows that cannot be blockedPProjectile attacksMPMid-air projectile attacks that are considered to be aerial attacks | Miscellaneous",
+      "cellTexts": [
+        "Move Name",
+        "FrameStart-upActive'The value listed here is what frame the attack hitbox will come out when the attack is performed.Ex.If the value is 10-12, then the attack hitbox will be active from frames 10-12.Recovery",
+        "RecoveryHitBlock",
+        "CancelCCan be canceled by a special move, Drive Impact, Drive Rush or Super ArtSACan only be canceled by a Super ArtSA2Can only be canceled by a level 2 or 3 Super ArtSA3Can only be canceled by a level 3 Super Art or Critical Art*Can only be canceled by specific attacks",
+        "Damage",
+        "Combo ScalingIn addition to the regular combo scaling, any unique scaling that an attack has is displayed hereInitial ScalingScaling added when the first hit of the combo landsCombo ScalingScaling added after the second hit of the combo landsImmediate ScalingScaling added to the attack itself after the second hit of the combo landsMultiplier Scaling Scaling value that is multiplied by subsequent combo scaling values when incorporated into a combo.",
+        "Drive Gauge IncreaseHitAmount of Drive Gauge recovered by the attacker when the attack hits",
+        "Drive Gauge DecreaseBlockAmount of Drive Gauge lost by the defender when blockingPunish CounterAmount of Drive Gauge lost by the defender on a Punish Counter",
+        "Super Art Gauge Increase",
+        "PropertiesDisplays the attack hitbox properties.HHigh level attacks that can be blocked standing or crouchingMMid level overhead attacks that must be blocked standingLLow level attacks that must be blocked crouchingTThrows that cannot be blockedPProjectile attacksMPMid-air projectile attacks that are considered to be aerial attacks",
+        "Miscellaneous"
       ],
-      "cellCount": 11,
+      "totalCellCount": 11,
       "nonEmptyCellCount": 11,
-      "rowKind": "data"
+      "rowType": "data"
     },
     {
-      "index": 1,
-      "text": "通常技",
-      "cells": [
-        "通常技"
+      "rowIndex": 1,
+      "rowText": "Normal Moves",
+      "cellTexts": [
+        "Normal Moves"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "通常技"
+      "rowType": "section",
+      "moveName": "Normal Moves"
     },
     {
-      "index": 2,
-      "text": "立ち弱P（ノーシ）弱 | 6 | 6-8 | 10 | 4 | -2 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上 | 連打キャンセル対応",
-      "cells": [
-        "立ち弱P（ノーシ）弱",
+      "rowIndex": 2,
+      "rowText": "Standing Light PunchL | 6 | 6-8 | 10 | 4 | -2 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High | Can be rapid canceled",
+      "cellTexts": [
+        "Standing Light PunchL",
         "6",
         "6-8",
         "10",
@@ -54,20 +54,20 @@
         "-2",
         "C",
         "300",
-        "始動補正20%",
+        "Starter scaling 20%",
         "250",
         "-500",
         "-2000",
         "300",
-        "上",
-        "連打キャンセル対応"
+        "High",
+        "Can be rapid canceled"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 15,
-      "rowKind": "data",
-      "skillName": "立ち弱P（ノーシ）",
+      "rowType": "data",
+      "moveName": "Standing Light Punch",
       "commandInput": {
-        "commandText": "[icon_punch_l.png] 弱",
+        "commandText": "[icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_l.png"
         ],
@@ -84,7 +84,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -93,10 +93,10 @@
       }
     },
     {
-      "index": 3,
-      "text": "立ち弱K（ニージニイ・ウダール）弱 | 5 | 5-7 | 11 | 3 | -2 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上",
-      "cells": [
-        "立ち弱K（ニージニイ・ウダール）弱",
+      "rowIndex": 3,
+      "rowText": "Standing Light KickL | 5 | 5-7 | 11 | 3 | -2 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High",
+      "cellTexts": [
+        "Standing Light KickL",
         "5",
         "5-7",
         "11",
@@ -104,20 +104,20 @@
         "-2",
         "C",
         "300",
-        "始動補正20%",
+        "Starter scaling 20%",
         "250",
         "-500",
         "-2000",
         "300",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "立ち弱K（ニージニイ・ウダール）",
+      "rowType": "data",
+      "moveName": "Standing Light Kick",
       "commandInput": {
-        "commandText": "[icon_kick_l.png] 弱",
+        "commandText": "[icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_l.png"
         ],
@@ -134,7 +134,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -143,10 +143,10 @@
       }
     },
     {
-      "index": 4,
-      "text": "立ち中P（シュトゥールム）中 | 12 | 12-14 | 21 | 1 | -6 | 700 | 3000 | -4000 | -6000 | 500 | 上",
-      "cells": [
-        "立ち中P（シュトゥールム）中",
+      "rowIndex": 4,
+      "rowText": "Standing Medium PunchM | 12 | 12-14 | 21 | 1 | -6 | 700 | 3000 | -4000 | -6000 | 500 | High",
+      "cellTexts": [
+        "Standing Medium PunchM",
         "12",
         "12-14",
         "21",
@@ -159,15 +159,15 @@
         "-4000",
         "-6000",
         "500",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "立ち中P（シュトゥールム）",
+      "rowType": "data",
+      "moveName": "Standing Medium Punch",
       "commandInput": {
-        "commandText": "[icon_punch_m.png] 中",
+        "commandText": "[icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_m.png"
         ],
@@ -184,7 +184,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -193,10 +193,10 @@
       }
     },
     {
-      "index": 5,
-      "text": "立ち中K（ウームヌィ・ウダール）中 | 8 | 8-10 | 19 | 3 | -3 | C | 600 | 1500 | -3000 | -4000 | 500 | 上",
-      "cells": [
-        "立ち中K（ウームヌィ・ウダール）中",
+      "rowIndex": 5,
+      "rowText": "Standing Medium KickM | 8 | 8-10 | 19 | 3 | -3 | C | 600 | 1500 | -3000 | -4000 | 500 | High",
+      "cellTexts": [
+        "Standing Medium KickM",
         "8",
         "8-10",
         "19",
@@ -209,15 +209,15 @@
         "-3000",
         "-4000",
         "500",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "立ち中K（ウームヌィ・ウダール）",
+      "rowType": "data",
+      "moveName": "Standing Medium Kick",
       "commandInput": {
-        "commandText": "[icon_kick_m.png] 中",
+        "commandText": "[icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_m.png"
         ],
@@ -234,7 +234,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -243,10 +243,10 @@
       }
     },
     {
-      "index": 6,
-      "text": "立ち強P（キンターヴル）強 | 12 | 12-13 | 22 | 3 | -3 | C | 800 | 始動補正20% | 2000 | -5000 | -8000 | 1000 | 上 | 空中ヒット時吹き飛びダウンパニッシュカウンター時+25F",
-      "cells": [
-        "立ち強P（キンターヴル）強",
+      "rowIndex": 6,
+      "rowText": "Standing Heavy PunchH | 12 | 12-13 | 22 | 3 | -3 | C | 800 | Starter scaling 20% | 2000 | -5000 | -8000 | 1000 | High | Forces a juggle state when hitting a mid-air opponentAdds +25 frames of advantage on a Punish Counter",
+      "cellTexts": [
+        "Standing Heavy PunchH",
         "12",
         "12-13",
         "22",
@@ -254,20 +254,20 @@
         "-3",
         "C",
         "800",
-        "始動補正20%",
+        "Starter scaling 20%",
         "2000",
         "-5000",
         "-8000",
         "1000",
-        "上",
-        "空中ヒット時吹き飛びダウンパニッシュカウンター時+25F"
+        "High",
+        "Forces a juggle state when hitting a mid-air opponentAdds +25 frames of advantage on a Punish Counter"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 15,
-      "rowKind": "data",
-      "skillName": "立ち強P（キンターヴル）",
+      "rowType": "data",
+      "moveName": "Standing Heavy Punch",
       "commandInput": {
-        "commandText": "[icon_punch_h.png] 強",
+        "commandText": "[icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_h.png"
         ],
@@ -284,7 +284,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -293,10 +293,10 @@
       }
     },
     {
-      "index": 7,
-      "text": "立ち強K（オボロートニ）強 | 12 | 12-15 | 17 | 7 | 2 | 800 | 3000 | -6000 | -10000 | 1000 | 上",
-      "cells": [
-        "立ち強K（オボロートニ）強",
+      "rowIndex": 7,
+      "rowText": "Standing Heavy KickH | 12 | 12-15 | 17 | 7 | 2 | 800 | 3000 | -6000 | -10000 | 1000 | High",
+      "cellTexts": [
+        "Standing Heavy KickH",
         "12",
         "12-15",
         "17",
@@ -309,15 +309,15 @@
         "-6000",
         "-10000",
         "1000",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "立ち強K（オボロートニ）",
+      "rowType": "data",
+      "moveName": "Standing Heavy Kick",
       "commandInput": {
-        "commandText": "[icon_kick_h.png] 強",
+        "commandText": "[icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_h.png"
         ],
@@ -334,7 +334,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -343,10 +343,10 @@
       }
     },
     {
-      "index": 8,
-      "text": "しゃがみ弱P（ブィストルイ・ウダール） 弱 | 4 | 4-5 | 11 | 4 | -1 | C | 300 | 始動補正20% | 250 | -500 | -2000 | 300 | 上 | 連打キャンセル対応",
-      "cells": [
-        "しゃがみ弱P（ブィストルイ・ウダール） 弱",
+      "rowIndex": 8,
+      "rowText": "Crouching Light Punch L | 4 | 4-5 | 11 | 4 | -1 | C | 300 | Starter scaling 20% | 250 | -500 | -2000 | 300 | High | Can be rapid canceled",
+      "cellTexts": [
+        "Crouching Light Punch L",
         "4",
         "4-5",
         "11",
@@ -354,20 +354,20 @@
         "-1",
         "C",
         "300",
-        "始動補正20%",
+        "Starter scaling 20%",
         "250",
         "-500",
         "-2000",
         "300",
-        "上",
-        "連打キャンセル対応"
+        "High",
+        "Can be rapid canceled"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 15,
-      "rowKind": "data",
-      "skillName": "しゃがみ弱P（ブィストルイ・ウダール）",
+      "rowType": "data",
+      "moveName": "Crouching Light Punch",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -400,7 +400,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -411,10 +411,10 @@
       }
     },
     {
-      "index": 9,
-      "text": "しゃがみ弱K（リョーフキー・ウダール） 弱 | 6 | 6-7 | 10 | 2 | -2 | 200 | 始動補正20% | 250 | -500 | -2000 | 300 | 下 | 連打キャンセル対応",
-      "cells": [
-        "しゃがみ弱K（リョーフキー・ウダール） 弱",
+      "rowIndex": 9,
+      "rowText": "Crouching Light Kick L | 6 | 6-7 | 10 | 2 | -2 | 200 | Starter scaling 20% | 250 | -500 | -2000 | 300 | Low | Can be rapid canceled",
+      "cellTexts": [
+        "Crouching Light Kick L",
         "6",
         "6-7",
         "10",
@@ -422,20 +422,20 @@
         "-2",
         "",
         "200",
-        "始動補正20%",
+        "Starter scaling 20%",
         "250",
         "-500",
         "-2000",
         "300",
-        "下",
-        "連打キャンセル対応"
+        "Low",
+        "Can be rapid canceled"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "しゃがみ弱K（リョーフキー・ウダール）",
+      "rowType": "data",
+      "moveName": "Crouching Light Kick",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_kick_l.png] 弱",
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -468,7 +468,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -479,10 +479,10 @@
       }
     },
     {
-      "index": 10,
-      "text": "しゃがみ中P（ズミヤー） 中 | 7 | 7-10 | 14 | 6 | -2 | C | 600 | 1500 | -3000 | -4000 | 500 | 上",
-      "cells": [
-        "しゃがみ中P（ズミヤー） 中",
+      "rowIndex": 10,
+      "rowText": "Crouching Medium Punch M | 7 | 7-10 | 14 | 6 | -2 | C | 600 | 1500 | -3000 | -4000 | 500 | High",
+      "cellTexts": [
+        "Crouching Medium Punch M",
         "7",
         "7-10",
         "14",
@@ -495,15 +495,15 @@
         "-3000",
         "-4000",
         "500",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "しゃがみ中P（ズミヤー）",
+      "rowType": "data",
+      "moveName": "Crouching Medium Punch",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -536,7 +536,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -547,10 +547,10 @@
       }
     },
     {
-      "index": 11,
-      "text": "しゃがみ中K（ズローバ） 中 | 9 | 9-11 | 17 | 3 | -3 | 700 | 始動補正20% | 2000 | -4000 | -6000 | 500 | 下",
-      "cells": [
-        "しゃがみ中K（ズローバ） 中",
+      "rowIndex": 11,
+      "rowText": "Crouching Medium Kick M | 9 | 9-11 | 17 | 3 | -3 | 700 | Starter scaling 20% | 2000 | -4000 | -6000 | 500 | Low",
+      "cellTexts": [
+        "Crouching Medium Kick M",
         "9",
         "9-11",
         "17",
@@ -558,20 +558,20 @@
         "-3",
         "",
         "700",
-        "始動補正20%",
+        "Starter scaling 20%",
         "2000",
         "-4000",
         "-6000",
         "500",
-        "下",
+        "Low",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "しゃがみ中K（ズローバ）",
+      "rowType": "data",
+      "moveName": "Crouching Medium Kick",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_kick_m.png] 中",
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -604,7 +604,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -615,10 +615,10 @@
       }
     },
     {
-      "index": 12,
-      "text": "しゃがみ強P（マリートヴァ） 強 | 9 | 9-14 | 20 | 1 | -6 | C | 800 | 2000 | -5000 | -8000 | 1000 | 上 | 強制立ち効果",
-      "cells": [
-        "しゃがみ強P（マリートヴァ） 強",
+      "rowIndex": 12,
+      "rowText": "Crouching Heavy Punch H | 9 | 9-14 | 20 | 1 | -6 | C | 800 | 2000 | -5000 | -8000 | 1000 | High | Forces the opponent into a standing position",
+      "cellTexts": [
+        "Crouching Heavy Punch H",
         "9",
         "9-14",
         "20",
@@ -631,15 +631,15 @@
         "-5000",
         "-8000",
         "1000",
-        "上",
-        "強制立ち効果"
+        "High",
+        "Forces the opponent into a standing position"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "しゃがみ強P（マリートヴァ）",
+      "rowType": "data",
+      "moveName": "Crouching Heavy Punch",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -672,7 +672,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -683,10 +683,10 @@
       }
     },
     {
-      "index": 13,
-      "text": "しゃがみ強K（ジョーキル） 強 | 10 | 10-12 | 21 | D | -6 | 900 | 2000 | -5000 | -10000 | 1000 | 下 | パニッシュカウンター時ダウン時間増加、ハードノックダウン",
-      "cells": [
-        "しゃがみ強K（ジョーキル） 強",
+      "rowIndex": 13,
+      "rowText": "Crouching Heavy Kick H | 10 | 10-12 | 21 | D | -6 | 900 | 2000 | -5000 | -10000 | 1000 | Low | Knockdown time extended when the attack lands as a Punish Counter, and changes to Hard Knockdown",
+      "cellTexts": [
+        "Crouching Heavy Kick H",
         "10",
         "10-12",
         "21",
@@ -699,15 +699,15 @@
         "-5000",
         "-10000",
         "1000",
-        "下",
-        "パニッシュカウンター時ダウン時間増加、ハードノックダウン"
+        "Low",
+        "Knockdown time extended when the attack lands as a Punish Counter, and changes to Hard Knockdown"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "しゃがみ強K（ジョーキル）",
+      "rowType": "data",
+      "moveName": "Crouching Heavy Kick",
       "commandInput": {
-        "commandText": "[key-d.png] [key-plus.png] [icon_kick_h.png] 強",
+        "commandText": "[key-d.png] [key-plus.png] [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -740,7 +740,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -751,13 +751,13 @@
       }
     },
     {
-      "index": 14,
-      "text": "ジャンプ弱P（ルイースイ）（ジャンプ中に）弱 | 5 | 5-14 | 着地後3 | 300 | 500 | -1500 | -2000 | 300 | 中",
-      "cells": [
-        "ジャンプ弱P（ルイースイ）（ジャンプ中に）弱",
+      "rowIndex": 14,
+      "rowText": "Jumping Light Punch(During a jump) L | 5 | 5-14 | 3 frame(s) after landing | 300 | 500 | -1500 | -2000 | 300 | Mid",
+      "cellTexts": [
+        "Jumping Light Punch(During a jump) L",
         "5",
         "5-14",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -767,15 +767,15 @@
         "-1500",
         "-2000",
         "300",
-        "中",
+        "Mid",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 10,
-      "rowKind": "data",
-      "skillName": "ジャンプ弱P（ルイースイ）",
+      "rowType": "data",
+      "moveName": "Jumping Light Punch",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_punch_l.png] 弱",
+        "commandText": "(During a jump) [icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_l.png"
         ],
@@ -786,7 +786,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -796,7 +796,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -805,13 +805,13 @@
       }
     },
     {
-      "index": 15,
-      "text": "ジャンプ弱K（ヴァローナ）（ジャンプ中に）弱 | 6 | 6-13 | 着地後3 | 300 | 500 | -1500 | -2000 | 300 | 中 | めくり性能",
-      "cells": [
-        "ジャンプ弱K（ヴァローナ）（ジャンプ中に）弱",
+      "rowIndex": 15,
+      "rowText": "Jumping Light Kick(During a jump) L | 6 | 6-13 | 3 frame(s) after landing | 300 | 500 | -1500 | -2000 | 300 | Mid | Has cross-up attack properties",
+      "cellTexts": [
+        "Jumping Light Kick(During a jump) L",
         "6",
         "6-13",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -821,15 +821,15 @@
         "-1500",
         "-2000",
         "300",
-        "中",
-        "めくり性能"
+        "Mid",
+        "Has cross-up attack properties"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "ジャンプ弱K（ヴァローナ）",
+      "rowType": "data",
+      "moveName": "Jumping Light Kick",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_kick_l.png] 弱",
+        "commandText": "(During a jump) [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_l.png"
         ],
@@ -840,7 +840,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -850,7 +850,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -859,13 +859,13 @@
       }
     },
     {
-      "index": 16,
-      "text": "ジャンプ中P（ローシャッチ）（ジャンプ中に）中 | 12 | 12-14 | 着地後3 | 700 | 1000 | -2500 | -4000 | 500 | 中",
-      "cells": [
-        "ジャンプ中P（ローシャッチ）（ジャンプ中に）中",
+      "rowIndex": 16,
+      "rowText": "Jumping Medium Punch(During a jump) M | 12 | 12-14 | 3 frame(s) after landing | 700 | 1000 | -2500 | -4000 | 500 | Mid",
+      "cellTexts": [
+        "Jumping Medium Punch(During a jump) M",
         "12",
         "12-14",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -875,15 +875,15 @@
         "-2500",
         "-4000",
         "500",
-        "中",
+        "Mid",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 10,
-      "rowKind": "data",
-      "skillName": "ジャンプ中P（ローシャッチ）",
+      "rowType": "data",
+      "moveName": "Jumping Medium Punch",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_punch_m.png] 中",
+        "commandText": "(During a jump) [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_m.png"
         ],
@@ -894,7 +894,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -904,7 +904,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -913,13 +913,13 @@
       }
     },
     {
-      "index": 17,
-      "text": "ジャンプ中K（コンダ）（ジャンプ中に）中 | 7 | 7-12 | 着地後3 | 600 | 1000 | -2500 | -4000 | 500 | 中 | 空中ヒット時吹き飛びダウン",
-      "cells": [
-        "ジャンプ中K（コンダ）（ジャンプ中に）中",
+      "rowIndex": 17,
+      "rowText": "Jumping Medium Kick(During a jump) M | 7 | 7-12 | 3 frame(s) after landing | 600 | 1000 | -2500 | -4000 | 500 | Mid | Forces a juggle state when hitting a mid-air opponent",
+      "cellTexts": [
+        "Jumping Medium Kick(During a jump) M",
         "7",
         "7-12",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -929,15 +929,15 @@
         "-2500",
         "-4000",
         "500",
-        "中",
-        "空中ヒット時吹き飛びダウン"
+        "Mid",
+        "Forces a juggle state when hitting a mid-air opponent"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "ジャンプ中K（コンダ）",
+      "rowType": "data",
+      "moveName": "Jumping Medium Kick",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_kick_m.png] 中",
+        "commandText": "(During a jump) [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_m.png"
         ],
@@ -948,7 +948,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -958,7 +958,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -967,13 +967,13 @@
       }
     },
     {
-      "index": 18,
-      "text": "ジャンプ強P（イディナローク）（ジャンプ中に）強 | 9 | 9-13 | 着地後3 | 800 | 2000 | -4000 | -5000 | 1000 | 中 | 空中カウンター/パニッシュカウンター時叩きつけダウン",
-      "cells": [
-        "ジャンプ強P（イディナローク）（ジャンプ中に）強",
+      "rowIndex": 18,
+      "rowText": "Jumping Heavy Punch(During a jump) H | 9 | 9-13 | 3 frame(s) after landing | 800 | 2000 | -4000 | -5000 | 1000 | Mid | Forces a slam knockdown on counter or Punish Counter when hitting a mid-air opponent",
+      "cellTexts": [
+        "Jumping Heavy Punch(During a jump) H",
         "9",
         "9-13",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -983,15 +983,15 @@
         "-4000",
         "-5000",
         "1000",
-        "中",
-        "空中カウンター/パニッシュカウンター時叩きつけダウン"
+        "Mid",
+        "Forces a slam knockdown on counter or Punish Counter when hitting a mid-air opponent"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "ジャンプ強P（イディナローク）",
+      "rowType": "data",
+      "moveName": "Jumping Heavy Punch",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_punch_h.png] 強",
+        "commandText": "(During a jump) [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_h.png"
         ],
@@ -1002,7 +1002,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -1012,7 +1012,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1021,13 +1021,13 @@
       }
     },
     {
-      "index": 19,
-      "text": "ジャンプ強K（ジャール・プチーツァ）（ジャンプ中に）強 | 11 | 11-16 | 着地後3 | 800 | 2000 | -4000 | -5000 | 1000 | 中",
-      "cells": [
-        "ジャンプ強K（ジャール・プチーツァ）（ジャンプ中に）強",
+      "rowIndex": 19,
+      "rowText": "Jumping Heavy Kick(During a jump) H | 11 | 11-16 | 3 frame(s) after landing | 800 | 2000 | -4000 | -5000 | 1000 | Mid",
+      "cellTexts": [
+        "Jumping Heavy Kick(During a jump) H",
         "11",
         "11-16",
-        "着地後3",
+        "3 frame(s) after landing",
         "",
         "",
         "",
@@ -1037,15 +1037,15 @@
         "-4000",
         "-5000",
         "1000",
-        "中",
+        "Mid",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 10,
-      "rowKind": "data",
-      "skillName": "ジャンプ強K（ジャール・プチーツァ）",
+      "rowType": "data",
+      "moveName": "Jumping Heavy Kick",
       "commandInput": {
-        "commandText": "（ジャンプ中に） [icon_kick_h.png] 強",
+        "commandText": "(During a jump) [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_h.png"
         ],
@@ -1056,7 +1056,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）"
+            "value": "(During a jump)"
           },
           {
             "type": "icon",
@@ -1066,7 +1066,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1075,21 +1075,21 @@
       }
     },
     {
-      "index": 20,
-      "text": "特殊技",
-      "cells": [
-        "特殊技"
+      "rowIndex": 20,
+      "rowText": "Unique Attacks",
+      "cellTexts": [
+        "Unique Attacks"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "特殊技"
+      "rowType": "section",
+      "moveName": "Unique Attacks"
     },
     {
-      "index": 21,
-      "text": "ギリオチーナ 中 | 22 | 22-23 | 19 | 3 | -3 | 700 | 1500 | -2500 | -5000 | 500 | 中",
-      "cells": [
-        "ギリオチーナ 中",
+      "rowIndex": 21,
+      "rowText": "Guillotinna M | 22 | 22-23 | 19 | 3 | -3 | 700 | 1500 | -2500 | -5000 | 500 | Mid",
+      "cellTexts": [
+        "Guillotinna M",
         "22",
         "22-23",
         "19",
@@ -1102,15 +1102,15 @@
         "-2500",
         "-5000",
         "500",
-        "中",
+        "Mid",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "ギリオチーナ",
+      "rowType": "data",
+      "moveName": "Guillotinna",
       "commandInput": {
-        "commandText": "[key-r.png] [key-plus.png] [icon_kick_m.png] 中",
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -1143,7 +1143,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -1154,10 +1154,10 @@
       }
     },
     {
-      "index": 22,
-      "text": "シャーロスチ 強 | 16 | 16-18 | 31 | D | -14 | 900 | 3000 | -4000 | -10000 | 1000 | 下 | カウンター/パニッシュカウンター時ダウン時間延長",
-      "cells": [
-        "シャーロスチ 強",
+      "rowIndex": 22,
+      "rowText": "Malice H | 16 | 16-18 | 31 | D | -14 | 900 | 3000 | -4000 | -10000 | 1000 | Low | Knockdown time extended when attack lands as a counter or Punish Counter",
+      "cellTexts": [
+        "Malice H",
         "16",
         "16-18",
         "31",
@@ -1170,15 +1170,15 @@
         "-4000",
         "-10000",
         "1000",
-        "下",
-        "カウンター/パニッシュカウンター時ダウン時間延長"
+        "Low",
+        "Knockdown time extended when attack lands as a counter or Punish Counter"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "シャーロスチ",
+      "rowType": "data",
+      "moveName": "Malice",
       "commandInput": {
-        "commandText": "[key-dr.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "[key-dr.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-dr.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -1211,7 +1211,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1222,10 +1222,10 @@
       }
     },
     {
-      "index": 23,
-      "text": "ヴィリーナ 強 | 11 | 11-1611-12, 13-16 | 24 | D | -5 | C | 900 | 2500 | -5000 | -10000 | 1000 | 上 | 空中ヒット時吹き飛びダウン",
-      "cells": [
-        "ヴィリーナ 強",
+      "rowIndex": 23,
+      "rowText": "Bylina H | 11 | 11-1611-12, 13-16 | 24 | D | -5 | C | 900 | 2500 | -5000 | -10000 | 1000 | High | Forces a juggle state when hitting a mid-air opponent",
+      "cellTexts": [
+        "Bylina H",
         "11",
         "11-1611-12, 13-16",
         "24",
@@ -1238,15 +1238,15 @@
         "-5000",
         "-10000",
         "1000",
-        "上",
-        "空中ヒット時吹き飛びダウン"
+        "High",
+        "Forces a juggle state when hitting a mid-air opponent"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "ヴィリーナ",
+      "rowType": "data",
+      "moveName": "Bylina",
       "commandInput": {
-        "commandText": "[key-r.png] [key-plus.png] [icon_kick_h.png] 強",
+        "commandText": "[key-r.png] [key-plus.png] [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -1279,7 +1279,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1290,10 +1290,10 @@
       }
     },
     {
-      "index": 24,
-      "text": "グロームストレルカ（1段目） 中 | 8 | 8-10 | 16 | 5 | -1 | C | 500 | 1500 | -3000 | -4000 | 400 | 上",
-      "cells": [
-        "グロームストレルカ（1段目） 中",
+      "rowIndex": 24,
+      "rowText": "Grom Strelka(1) M | 8 | 8-10 | 16 | 5 | -1 | C | 500 | 1500 | -3000 | -4000 | 400 | High",
+      "cellTexts": [
+        "Grom Strelka(1) M",
         "8",
         "8-10",
         "16",
@@ -1306,15 +1306,15 @@
         "-3000",
         "-4000",
         "400",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "グロームストレルカ（1段目）",
+      "rowType": "data",
+      "moveName": "Grom Strelka(1)",
       "commandInput": {
-        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] 中",
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-l.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -1347,7 +1347,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -1358,10 +1358,10 @@
       }
     },
     {
-      "index": 25,
-      "text": "グロームストレルカ（2段目） 中中 | 10 | 10-12 | 20 | 3 | -6 | C | 500 | コンボ補正20% | 800 | -2000 | -3000 | 400 | 上",
-      "cells": [
-        "グロームストレルカ（2段目） 中中",
+      "rowIndex": 25,
+      "rowText": "Grom Strelka(2) MM | 10 | 10-12 | 20 | 3 | -6 | C | 500 | Combo scaling 20% | 800 | -2000 | -3000 | 400 | High",
+      "cellTexts": [
+        "Grom Strelka(2) MM",
         "10",
         "10-12",
         "20",
@@ -1369,20 +1369,20 @@
         "-6",
         "C",
         "500",
-        "コンボ補正20%",
+        "Combo scaling 20%",
         "800",
         "-2000",
         "-3000",
         "400",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "グロームストレルカ（2段目）",
+      "rowType": "data",
+      "moveName": "Grom Strelka(2)",
       "commandInput": {
-        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] 中 [arrow_3.png] [icon_punch_m.png] 中",
+        "commandText": "[key-l.png] [key-plus.png] [icon_punch_m.png] M [arrow_3.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-l.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -1419,7 +1419,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -1435,7 +1435,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -1448,10 +1448,10 @@
       }
     },
     {
-      "index": 26,
-      "text": "ジラント強強 | 20 | 20-22 | 20 | 3 | -3 | C | 500 | 1000 | -2500 | -4000 | 500 | 上",
-      "cells": [
-        "ジラント強強",
+      "rowIndex": 26,
+      "rowText": "ZilantHH | 20 | 20-22 | 20 | 3 | -3 | C | 500 | 1000 | -2500 | -4000 | 500 | High",
+      "cellTexts": [
+        "ZilantHH",
         "20",
         "20-22",
         "20",
@@ -1464,15 +1464,15 @@
         "-2500",
         "-4000",
         "500",
-        "上",
+        "High",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "ジラント",
+      "rowType": "data",
+      "moveName": "Zilant",
       "commandInput": {
-        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強",
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_h.png",
           "/6/assets/images/common/controller/arrow_3.png",
@@ -1493,7 +1493,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -1509,7 +1509,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1520,10 +1520,10 @@
       }
     },
     {
-      "index": 27,
-      "text": "ジラントルカー強強強 | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | 中",
-      "cells": [
-        "ジラントルカー強強強",
+      "rowIndex": 27,
+      "rowText": "Zilant MidHHH | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | Mid",
+      "cellTexts": [
+        "Zilant MidHHH",
         "21",
         "21-23",
         "22",
@@ -1536,15 +1536,15 @@
         "-5000",
         "-10000",
         "1000",
-        "中",
+        "Mid",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "ジラントルカー",
+      "rowType": "data",
+      "moveName": "Zilant Mid",
       "commandInput": {
-        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強",
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H [arrow_3.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_h.png",
           "/6/assets/images/common/controller/arrow_3.png",
@@ -1569,7 +1569,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -1585,7 +1585,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -1601,7 +1601,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1614,10 +1614,10 @@
       }
     },
     {
-      "index": 28,
-      "text": "ジラントナガー強強強 | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | 下",
-      "cells": [
-        "ジラントナガー強強強",
+      "rowIndex": 28,
+      "rowText": "Zilant LowHHH | 21 | 21-23 | 22 | 3 | -4 | 1000 | 2000 | -5000 | -10000 | 1000 | Low",
+      "cellTexts": [
+        "Zilant LowHHH",
         "21",
         "21-23",
         "22",
@@ -1630,15 +1630,15 @@
         "-5000",
         "-10000",
         "1000",
-        "下",
+        "Low",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "ジラントナガー",
+      "rowType": "data",
+      "moveName": "Zilant Low",
       "commandInput": {
-        "commandText": "[icon_kick_h.png] 強 [arrow_3.png] [icon_punch_h.png] 強 [arrow_3.png] [icon_kick_h.png] 強",
+        "commandText": "[icon_kick_h.png] H [arrow_3.png] [icon_punch_h.png] H [arrow_3.png] [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_kick_h.png",
           "/6/assets/images/common/controller/arrow_3.png",
@@ -1663,7 +1663,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -1679,7 +1679,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -1695,7 +1695,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1708,24 +1708,24 @@
       }
     },
     {
-      "index": 29,
-      "text": "必殺技",
-      "cells": [
-        "必殺技"
+      "rowIndex": 29,
+      "rowText": "Special Moves",
+      "cellTexts": [
+        "Special Moves"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "必殺技"
+      "rowType": "section",
+      "moveName": "Special Moves"
     },
     {
-      "index": 30,
-      "text": "弱 トリグラフ 弱 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
-      "cells": [
-        "弱 トリグラフ 弱",
+      "rowIndex": 30,
+      "rowText": "L Triglav L | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "L Triglav L",
         "22",
         "22-31",
-        "全体 55",
+        "55 total frames",
         "D",
         "-2",
         "SA3",
@@ -1735,15 +1735,15 @@
         "-2500",
         "-3000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "弱 トリグラフ",
+      "rowType": "data",
+      "moveName": "L Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -1784,7 +1784,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -1796,13 +1796,13 @@
       }
     },
     {
-      "index": 31,
-      "text": "中 トリグラフ 中 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
-      "cells": [
-        "中 トリグラフ 中",
+      "rowIndex": 31,
+      "rowText": "M Triglav M | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "M Triglav M",
         "22",
         "22-31",
-        "全体 55",
+        "55 total frames",
         "D",
         "-2",
         "SA3",
@@ -1812,15 +1812,15 @@
         "-2500",
         "-3000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "中 トリグラフ",
+      "rowType": "data",
+      "moveName": "M Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -1861,7 +1861,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -1873,13 +1873,13 @@
       }
     },
     {
-      "index": 32,
-      "text": "強 トリグラフ 強 | 22 | 22-31 | 全体 55 | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | 上・弾",
-      "cells": [
-        "強 トリグラフ 強",
+      "rowIndex": 32,
+      "rowText": "H Triglav H | 22 | 22-31 | 55 total frames | D | -2 | SA3 | 800 | 1000 | -2500 | -3000 | 800 | High - Projectile",
+      "cellTexts": [
+        "H Triglav H",
         "22",
         "22-31",
-        "全体 55",
+        "55 total frames",
         "D",
         "-2",
         "SA3",
@@ -1889,15 +1889,15 @@
         "-2500",
         "-3000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "強 トリグラフ",
+      "rowType": "data",
+      "moveName": "H Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -1938,7 +1938,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -1950,31 +1950,31 @@
       }
     },
     {
-      "index": 33,
-      "text": "OD 弱 トリグラフ 弱中 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
-      "cells": [
-        "OD 弱 トリグラフ 弱中",
+      "rowIndex": 33,
+      "rowText": "OD L Triglav LM | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD L Triglav LM",
         "20",
         "20-39",
-        "全体 53",
+        "53 total frames",
         "D",
         "3",
         "SA2",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "OD 弱 トリグラフ",
+      "rowType": "data",
+      "moveName": "OD L Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -2017,7 +2017,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -2027,7 +2027,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -2040,31 +2040,31 @@
       }
     },
     {
-      "index": 34,
-      "text": "OD 中 トリグラフ 弱強 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
-      "cells": [
-        "OD 中 トリグラフ 弱強",
+      "rowIndex": 34,
+      "rowText": "OD M Triglav LH | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD M Triglav LH",
         "20",
         "20-39",
-        "全体 53",
+        "53 total frames",
         "D",
         "3",
         "SA2",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "OD 中 トリグラフ",
+      "rowType": "data",
+      "moveName": "OD M Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -2107,7 +2107,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -2117,7 +2117,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -2130,31 +2130,31 @@
       }
     },
     {
-      "index": 35,
-      "text": "OD 強 トリグラフ 中強 | 20 | 20-39 | 全体 53 | D | 3 | SA2 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 1000 | 上・弾",
-      "cells": [
-        "OD 強 トリグラフ 中強",
+      "rowIndex": 35,
+      "rowText": "OD H Triglav MH | 20 | 20-39 | 53 total frames | D | 3 | SA2 | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "OD H Triglav MH",
         "20",
         "20-39",
-        "全体 53",
+        "53 total frames",
         "D",
         "3",
         "SA2",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "OD 強 トリグラフ",
+      "rowType": "data",
+      "moveName": "OD H Triglav",
       "commandInput": {
-        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] 中 [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_punch_m.png] M [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-d.png",
@@ -2197,7 +2197,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -2207,7 +2207,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -2220,13 +2220,13 @@
       }
     },
     {
-      "index": 36,
-      "text": "弱 ストリボーグ 弱 | 16 | 16-21 | 全体 49 | D | -10 | SA3 | 1000 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）",
-      "cells": [
-        "弱 ストリボーグ 弱",
+      "rowIndex": 36,
+      "rowText": "L Stribog L | 16 | 16-21 | 49 total frames | D | -10 | SA3 | 1000 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)",
+      "cellTexts": [
+        "L Stribog L",
         "16",
         "16-21",
-        "全体 49",
+        "49 total frames",
         "D",
         "-10",
         "SA3",
@@ -2236,15 +2236,15 @@
         "-3500",
         "-5000",
         "800",
-        "上",
-        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "弱 ストリボーグ",
+      "rowType": "data",
+      "moveName": "L Stribog",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -2293,7 +2293,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -2306,13 +2306,13 @@
       }
     },
     {
-      "index": 37,
-      "text": "中 ストリボーグ 中 | 20 | 20-2620-22, 24-26 | 全体 53 | D | -8 | SA3 | 1200 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）",
-      "cells": [
-        "中 ストリボーグ 中",
+      "rowIndex": 37,
+      "rowText": "M Stribog M | 20 | 20-2620-22, 24-26 | 53 total frames | D | -8 | SA3 | 1200 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)",
+      "cellTexts": [
+        "M Stribog M",
         "20",
         "20-2620-22, 24-26",
-        "全体 53",
+        "53 total frames",
         "D",
         "-8",
         "SA3",
@@ -2322,15 +2322,15 @@
         "-3500",
         "-5000",
         "800",
-        "上",
-        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）"
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "中 ストリボーグ",
+      "rowType": "data",
+      "moveName": "M Stribog",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -2379,7 +2379,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -2392,13 +2392,13 @@
       }
     },
     {
-      "index": 38,
-      "text": "強 ストリボーグ 強 | 28 | 28-4228-30, 40-42 | 全体 61 | D | 4 | SA3 | 800 | 2000 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加",
-      "cells": [
-        "強 ストリボーグ 強",
+      "rowIndex": 38,
+      "rowText": "H Stribog H | 28 | 28-4228-30, 40-42 | 61 total frames | D | 4 | SA3 | 800 | 2000 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect Parry",
+      "cellTexts": [
+        "H Stribog H",
         "28",
         "28-4228-30, 40-42",
-        "全体 61",
+        "61 total frames",
         "D",
         "4",
         "SA3",
@@ -2408,15 +2408,15 @@
         "-3500",
         "-5000",
         "800",
-        "上",
-        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加"
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect Parry"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "強 ストリボーグ",
+      "rowType": "data",
+      "moveName": "H Stribog",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -2465,7 +2465,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -2478,13 +2478,13 @@
       }
     },
     {
-      "index": 39,
-      "text": "OD ストリボーグ | 19 | 19-3019-21, 28-30 | 全体 52 | D | 2 | SA2 | 1000 | 0 | -3500 | -5000 | 800 | 上 | ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加初段のみSA2/SA3/CAでキャンセル可能",
-      "cells": [
-        "OD ストリボーグ",
+      "rowIndex": 39,
+      "rowText": "OD Stribog | 19 | 19-3019-21, 28-30 | 52 total frames | D | 2 | SA2 | 1000 | 0 | -3500 | -5000 | 800 | High | Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect ParryOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art",
+      "cellTexts": [
+        "OD Stribog",
         "19",
         "19-3019-21, 28-30",
-        "全体 52",
+        "52 total frames",
         "D",
         "2",
         "SA2",
@@ -2494,13 +2494,13 @@
         "-3500",
         "-5000",
         "800",
-        "上",
-        "ジャストパリィ時はドライブゲージを10000増加飛び道具相殺判定あり（1回）ジャストパリィ時硬直3F増加初段のみSA2/SA3/CAでキャンセル可能"
+        "High",
+        "Increases the Drive Gauge by 10,000 during a Perfect ParryClashes with projectiles (Once)3 frames of recovery added on Perfect ParryOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "OD ストリボーグ",
+      "rowType": "data",
+      "moveName": "OD Stribog",
       "commandInput": {
         "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png] [icon_punch.png]",
         "iconPaths": [
@@ -2569,31 +2569,31 @@
       }
     },
     {
-      "index": 40,
-      "text": "弱 ヴィーハト 弱 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
-      "cells": [
-        "弱 ヴィーハト 弱",
+      "rowIndex": 40,
+      "rowText": "L Departure L | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "L Departure L",
         "150",
         "150-159",
-        "全体 50",
+        "50 total frames",
         "",
         "",
         "",
         "800",
-        "始動補正20％",
+        "Starter scaling 20％",
         "1000",
         "-2500",
         "-3000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "弱 ヴィーハト",
+      "rowType": "data",
+      "moveName": "L Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -2642,7 +2642,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -2655,31 +2655,31 @@
       }
     },
     {
-      "index": 41,
-      "text": "中 ヴィーハト 中 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
-      "cells": [
-        "中 ヴィーハト 中",
+      "rowIndex": 41,
+      "rowText": "M Departure M | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "M Departure M",
         "150",
         "150-159",
-        "全体 50",
+        "50 total frames",
         "",
         "",
         "",
         "800",
-        "始動補正20％",
+        "Starter scaling 20％",
         "1000",
         "-2500",
         "-3000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "中 ヴィーハト",
+      "rowType": "data",
+      "moveName": "M Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -2728,7 +2728,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -2741,31 +2741,31 @@
       }
     },
     {
-      "index": 42,
-      "text": "強 ヴィーハト 強 | 150 | 150-159 | 全体 50 | 800 | 始動補正20％ | 1000 | -2500 | -3000 | 1000 | 上・弾",
-      "cells": [
-        "強 ヴィーハト 強",
+      "rowIndex": 42,
+      "rowText": "H Departure H | 150 | 150-159 | 50 total frames | 800 | Starter scaling 20％ | 1000 | -2500 | -3000 | 1000 | High - Projectile",
+      "cellTexts": [
+        "H Departure H",
         "150",
         "150-159",
-        "全体 50",
+        "50 total frames",
         "",
         "",
         "",
         "800",
-        "始動補正20％",
+        "Starter scaling 20％",
         "1000",
         "-2500",
         "-3000",
         "1000",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "強 ヴィーハト",
+      "rowType": "data",
+      "moveName": "H Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -2814,7 +2814,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -2827,31 +2827,31 @@
       }
     },
     {
-      "index": 43,
-      "text": "OD 弱 ヴィーハト 弱中 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
-      "cells": [
-        "OD 弱 ヴィーハト 弱中",
+      "rowIndex": 43,
+      "rowText": "OD L Departure LM | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD L Departure LM",
         "110",
         "110-149110-119, 140-149",
-        "全体 40",
+        "40 total frames",
         "",
         "",
         "",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "OD 弱 ヴィーハト",
+      "rowType": "data",
+      "moveName": "OD L Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_m.png] 中",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -2902,7 +2902,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -2912,7 +2912,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -2926,31 +2926,31 @@
       }
     },
     {
-      "index": 44,
-      "text": "OD 中 ヴィーハト 弱強 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
-      "cells": [
-        "OD 中 ヴィーハト 弱強",
+      "rowIndex": 44,
+      "rowText": "OD M Departure LH | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD M Departure LH",
         "110",
         "110-149110-119, 140-149",
-        "全体 40",
+        "40 total frames",
         "",
         "",
         "",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "OD 中 ヴィーハト",
+      "rowType": "data",
+      "moveName": "OD M Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -3001,7 +3001,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -3011,7 +3011,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -3025,31 +3025,31 @@
       }
     },
     {
-      "index": 45,
-      "text": "OD 強 ヴィーハト 中強 | 110 | 110-149110-119, 140-149 | 全体 40 | 1000 | 始動補正20％ | 0 | -3000 | -5000 | 800 | 上・弾",
-      "cells": [
-        "OD 強 ヴィーハト 中強",
+      "rowIndex": 45,
+      "rowText": "OD H Departure MH | 110 | 110-149110-119, 140-149 | 40 total frames | 1000 | Starter scaling 20％ | 0 | -3000 | -5000 | 800 | High - Projectile",
+      "cellTexts": [
+        "OD H Departure MH",
         "110",
         "110-149110-119, 140-149",
-        "全体 40",
+        "40 total frames",
         "",
         "",
         "",
         "1000",
-        "始動補正20％",
+        "Starter scaling 20％",
         "0",
         "-3000",
         "-5000",
         "800",
-        "上・弾",
+        "High - Projectile",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "OD 強 ヴィーハト",
+      "rowType": "data",
+      "moveName": "OD H Departure",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] 中 [icon_punch_h.png] 強",
+        "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_m.png] M [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -3100,7 +3100,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -3110,7 +3110,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -3124,31 +3124,31 @@
       }
     },
     {
-      "index": 46,
-      "text": "ヴィーハト・アクノ（ヴィーハト設置中に） 弱中 | 全体 44 | 0 | 0 | 0 | 0 | 0 | 6-25F 完全無敵26F目から空中判定31F目から行動可",
-      "cells": [
-        "ヴィーハト・アクノ（ヴィーハト設置中に） 弱中",
+      "rowIndex": 46,
+      "rowText": "Departure: Window(While Departure is active) LM | 44 total frames | 0 | 0 | 0 | 0 | 0 | Completely invincible from frames 6 - 25Considered airborne from frame 26Can perform moves from frame 31",
+      "cellTexts": [
+        "Departure: Window(While Departure is active) LM",
         "",
         "",
-        "全体 44",
+        "44 total frames",
         "",
         "",
-        "",
-        "0",
         "",
         "0",
+        "",
+        "0",
         "0",
         "0",
         "0",
         "",
-        "6-25F 完全無敵26F目から空中判定31F目から行動可"
+        "Completely invincible from frames 6 - 25Considered airborne from frame 26Can perform moves from frame 31"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 8,
-      "rowKind": "data",
-      "skillName": "ヴィーハト・アクノ",
+      "rowType": "data",
+      "moveName": "Departure: Window",
       "commandInput": {
-        "commandText": "（ヴィーハト設置中に） [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [key-or.png] [icon_punch_m.png] 中",
+        "commandText": "(While Departure is active) [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_l.png] L [key-or.png] [icon_punch_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -3171,7 +3171,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ヴィーハト設置中に）"
+            "value": "(While Departure is active)"
           },
           {
             "type": "icon",
@@ -3205,7 +3205,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -3221,7 +3221,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -3236,13 +3236,13 @@
       }
     },
     {
-      "index": 47,
-      "text": "ヴィーハト・チェーニ（ヴィーハト設置中に） 強 | 全体 40 | 0 | 0 | 0 | 0 | 0",
-      "cells": [
-        "ヴィーハト・チェーニ（ヴィーハト設置中に） 強",
+      "rowIndex": 47,
+      "rowText": "Departure: Shadow(While Departure is active) H | 40 total frames | 0 | 0 | 0 | 0 | 0",
+      "cellTexts": [
+        "Departure: Shadow(While Departure is active) H",
         "",
         "",
-        "全体 40",
+        "40 total frames",
         "",
         "",
         "",
@@ -3255,12 +3255,12 @@
         "",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 7,
-      "rowKind": "data",
-      "skillName": "ヴィーハト・チェーニ",
+      "rowType": "data",
+      "moveName": "Departure: Shadow",
       "commandInput": {
-        "commandText": "（ヴィーハト設置中に） [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] 強",
+        "commandText": "(While Departure is active) [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dl.png",
@@ -3279,7 +3279,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ヴィーハト設置中に）"
+            "value": "(While Departure is active)"
           },
           {
             "type": "icon",
@@ -3313,7 +3313,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -3326,10 +3326,10 @@
       }
     },
     {
-      "index": 48,
-      "text": "アムネジア | 3 | 3-20 | 35 | 800 | 始動補正50％※即時補正60％ | 1000 | -2500 | -3000 | 1000 | 上・弾 | 当身成立時にドライブゲージ10000増加当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる",
-      "cells": [
-        "アムネジア",
+      "rowIndex": 48,
+      "rowText": "Amnesia | 3 | 3-20 | 35 | 800 | Starter scaling 50％※Immediate scaling 60％ | 1000 | -2500 | -3000 | 1000 | High - Projectile | Drive Gauge increases by 10,000 if the move is successfulFires a projectile if the move is successful* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "Amnesia",
         "3",
         "3-20",
         "35",
@@ -3337,18 +3337,18 @@
         "",
         "",
         "800",
-        "始動補正50％※即時補正60％",
+        "Starter scaling 50％※Immediate scaling 60％",
         "1000",
         "-2500",
         "-3000",
         "1000",
-        "上・弾",
-        "当身成立時にドライブゲージ10000増加当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+        "High - Projectile",
+        "Drive Gauge increases by 10,000 if the move is successfulFires a projectile if the move is successful* Combo scaling occurs after the 3rd hit"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "アムネジア",
+      "rowType": "data",
+      "moveName": "Amnesia",
       "commandInput": {
         "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png]",
         "iconPaths": [
@@ -3399,10 +3399,10 @@
       }
     },
     {
-      "index": 49,
-      "text": "OD アムネジア | 1 | 1-20 | 35 | 1200 | 始動補正50％※即時補正60％ | 0 | -3000 | -5000 | 1200 | 上・弾 | 当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる",
-      "cells": [
-        "OD アムネジア",
+      "rowIndex": 49,
+      "rowText": "OD Amnesia | 1 | 1-20 | 35 | 1200 | Starter scaling 50％※Immediate scaling 60％ | 0 | -3000 | -5000 | 1200 | High - Projectile | Fires a projectile if the move is successful* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "OD Amnesia",
         "1",
         "1-20",
         "35",
@@ -3410,18 +3410,18 @@
         "",
         "",
         "1200",
-        "始動補正50％※即時補正60％",
+        "Starter scaling 50％※Immediate scaling 60％",
         "0",
         "-3000",
         "-5000",
         "1200",
-        "上・弾",
-        "当身成立時に飛び道具が発生※コンボの3段目以降に補正がかかる"
+        "High - Projectile",
+        "Fires a projectile if the move is successful* Combo scaling occurs after the 3rd hit"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "OD アムネジア",
+      "rowType": "data",
+      "moveName": "OD Amnesia",
       "commandInput": {
         "commandText": "[key-d.png] [key-d.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
         "iconPaths": [
@@ -3481,13 +3481,13 @@
       }
     },
     {
-      "index": 50,
-      "text": "弱 トルバラン 弱 | 22 | 全体 50 | D | -6 | SA3 | 800 | 1000 | -2500 | -3000 | 600 | 上・弾 | 発生は密着で発動した場合の数値",
-      "cells": [
-        "弱 トルバラン 弱",
+      "rowIndex": 50,
+      "rowText": "L Torbalan L | 22 | 50 total frames | D | -6 | SA3 | 800 | 1000 | -2500 | -3000 | 600 | High - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "L Torbalan L",
         "22",
         "",
-        "全体 50",
+        "50 total frames",
         "D",
         "-6",
         "SA3",
@@ -3497,15 +3497,15 @@
         "-2500",
         "-3000",
         "600",
-        "上・弾",
-        "発生は密着で発動した場合の数値"
+        "High - Projectile",
+        "Start up value listed is when the attack is performed at close range"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "弱 トルバラン",
+      "rowType": "data",
+      "moveName": "L Torbalan",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_l.png] 弱",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -3554,7 +3554,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -3567,31 +3567,31 @@
       }
     },
     {
-      "index": 51,
-      "text": "中 トルバラン 中 | 26 | 全体 50 | 6 | -8 | SA3 | 1000 | 始動補正20% | 1000 | -2500 | -3000 | 600 | 中・弾 | 発生は密着で発動した場合の数値",
-      "cells": [
-        "中 トルバラン 中",
+      "rowIndex": 51,
+      "rowText": "M Torbalan M | 26 | 50 total frames | 6 | -8 | SA3 | 1000 | Starter scaling 20% | 1000 | -2500 | -3000 | 600 | Mid - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "M Torbalan M",
         "26",
         "",
-        "全体 50",
+        "50 total frames",
         "6",
         "-8",
         "SA3",
         "1000",
-        "始動補正20%",
+        "Starter scaling 20%",
         "1000",
         "-2500",
         "-3000",
         "600",
-        "中・弾",
-        "発生は密着で発動した場合の数値"
+        "Mid - Projectile",
+        "Start up value listed is when the attack is performed at close range"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "中 トルバラン",
+      "rowType": "data",
+      "moveName": "M Torbalan",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_m.png] 中",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -3640,7 +3640,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -3653,31 +3653,31 @@
       }
     },
     {
-      "index": 52,
-      "text": "強 トルバラン 強 | 26 | 全体 50 | 6 | -8 | SA3 | 1000 | 始動補正20% | 1000 | -2500 | -3000 | 600 | 下・弾 | 発生は密着で発動した場合の数値",
-      "cells": [
-        "強 トルバラン 強",
+      "rowIndex": 52,
+      "rowText": "H Torbalan H | 26 | 50 total frames | 6 | -8 | SA3 | 1000 | Starter scaling 20% | 1000 | -2500 | -3000 | 600 | Low - Projectile | Start up value listed is when the attack is performed at close range",
+      "cellTexts": [
+        "H Torbalan H",
         "26",
         "",
-        "全体 50",
+        "50 total frames",
         "6",
         "-8",
         "SA3",
         "1000",
-        "始動補正20%",
+        "Starter scaling 20%",
         "1000",
         "-2500",
         "-3000",
         "600",
-        "下・弾",
-        "発生は密着で発動した場合の数値"
+        "Low - Projectile",
+        "Start up value listed is when the attack is performed at close range"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "強 トルバラン",
+      "rowType": "data",
+      "moveName": "H Torbalan",
       "commandInput": {
-        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_h.png] 強",
+        "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -3726,7 +3726,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -3739,29 +3739,29 @@
       }
     },
     {
-      "index": 53,
-      "text": "OD トルバラン | 22 | 全体 50 | D | 25 | SA2 | 800 | 始動補正20% | 0 | -5000 | -5000 | 800 | 上・弾 | 発生は密着で発動した場合の数値初段のみSA2/SA3/CAでキャンセル可能",
-      "cells": [
-        "OD トルバラン",
+      "rowIndex": 53,
+      "rowText": "OD Torbalan | 22 | 50 total frames | D | 25 | SA2 | 800 | Starter scaling 20% | 0 | -5000 | -5000 | 800 | High - Projectile | Start up value listed is when the attack is performed at close rangeOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art",
+      "cellTexts": [
+        "OD Torbalan",
         "22",
         "",
-        "全体 50",
+        "50 total frames",
         "D",
         "25",
         "SA2",
         "800",
-        "始動補正20%",
+        "Starter scaling 20%",
         "0",
         "-5000",
         "-5000",
         "800",
-        "上・弾",
-        "発生は密着で発動した場合の数値初段のみSA2/SA3/CAでキャンセル可能"
+        "High - Projectile",
+        "Start up value listed is when the attack is performed at close rangeOnly the first attack can be canceled into Super Art 2/Super Art 3/Critical Art"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "OD トルバラン",
+      "rowType": "data",
+      "moveName": "OD Torbalan",
       "commandInput": {
         "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
         "iconPaths": [
@@ -3830,29 +3830,29 @@
       }
     },
     {
-      "index": 54,
-      "text": "アブニマーチ | 26 | 全体 72 | 1800 | 即時補正10% | 2500 | 0 | -10000 | 3000 | 投 | ■クラシック操作パニッシュカウンター時のダメージ2070発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（1656）",
-      "cells": [
-        "アブニマーチ",
+      "rowIndex": 54,
+      "rowText": "Embrace | 26 | 72 total frames | 1800 | Immediate scaling 10% | 2500 | 0 | -10000 | 3000 | Throw | With Classic ControlsDoes 2070 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 1656 individual damage when the attack lands as a Punish Counter",
+      "cellTexts": [
+        "Embrace",
         "26",
         "",
-        "全体 72",
+        "72 total frames",
         "",
         "",
         "",
         "1800",
-        "即時補正10%",
+        "Immediate scaling 10%",
         "2500",
         "0",
         "-10000",
         "3000",
-        "投",
-        "■クラシック操作パニッシュカウンター時のダメージ2070発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（1656）"
+        "Throw",
+        "With Classic ControlsDoes 2070 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 1656 individual damage when the attack lands as a Punish Counter"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "アブニマーチ",
+      "rowType": "data",
+      "moveName": "Embrace",
       "commandInput": {
         "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png]",
         "iconPaths": [
@@ -3912,29 +3912,29 @@
       }
     },
     {
-      "index": 55,
-      "text": "OD アブニマーチ | 26 | 全体 72 | 2600 | 即時補正10% | 0 | 0 | -10000 | 3000 | 投 | ■クラシック操作パニッシュカウンター時のダメージ2990発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（2392）",
-      "cells": [
-        "OD アブニマーチ",
+      "rowIndex": 55,
+      "rowText": "OD Embrace | 26 | 72 total frames | 2600 | Immediate scaling 10% | 0 | 0 | -10000 | 3000 | Throw | With Classic ControlsDoes 2990 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 2392 individual damage when the attack lands as a Punish Counter",
+      "cellTexts": [
+        "OD Embrace",
         "26",
         "",
-        "全体 72",
+        "72 total frames",
         "",
         "",
         "",
         "2600",
-        "即時補正10%",
+        "Immediate scaling 10%",
         "0",
         "0",
         "-10000",
         "3000",
-        "投",
-        "■クラシック操作パニッシュカウンター時のダメージ2990発生、全体は密着で発動した場合の数値■モダン操作時パニッシュカウンター時のダメージ（2392）"
+        "Throw",
+        "With Classic ControlsDoes 2990 individual damage when the attack lands as a Punish CounterStart up value listed is when the attack is performed at close rangeWith Modern ControlsDoes 2392 individual damage when the attack lands as a Punish Counter"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "OD アブニマーチ",
+      "rowType": "data",
+      "moveName": "OD Embrace",
       "commandInput": {
         "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_kick.png] [icon_kick.png]",
         "iconPaths": [
@@ -4003,24 +4003,24 @@
       }
     },
     {
-      "index": 56,
-      "text": "スーパーアーツ",
-      "cells": [
-        "スーパーアーツ"
+      "rowIndex": 56,
+      "rowText": "Super Arts",
+      "cellTexts": [
+        "Super Arts"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "スーパーアーツ"
+      "rowType": "section",
+      "moveName": "Super Arts"
     },
     {
-      "index": 57,
-      "text": "SA1 チェルノボーグ | 8 | 全体 84 | D | -33 | 2000 | 0 | -2500 | -5000 | 0 | 上 | 1-10F 打撃・投げに対して無敵最低保障ダメージ30％カウンター/パニッシュカウンターで数値が変動しない",
-      "cells": [
-        "SA1 チェルノボーグ",
+      "rowIndex": 57,
+      "rowText": "SA1 Chornobog | 8 | 84 total frames | D | -33 | 2000 | 0 | -2500 | -5000 | 0 | High | Invincible to strikes and throws from frames 1 - 10Minimum guaranteed damage is 30%Values do not change on counter or Punish Counter",
+      "cellTexts": [
+        "SA1 Chornobog",
         "8",
         "",
-        "全体 84",
+        "84 total frames",
         "D",
         "-33",
         "",
@@ -4030,13 +4030,13 @@
         "-2500",
         "-5000",
         "0",
-        "上",
-        "1-10F 打撃・投げに対して無敵最低保障ダメージ30％カウンター/パニッシュカウンターで数値が変動しない"
+        "High",
+        "Invincible to strikes and throws from frames 1 - 10Minimum guaranteed damage is 30%Values do not change on counter or Punish Counter"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 12,
-      "rowKind": "data",
-      "skillName": "SA1 チェルノボーグ",
+      "rowType": "data",
+      "moveName": "SA1 Chornobog",
       "commandInput": {
         "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_punch.png]",
         "iconPaths": [
@@ -4123,29 +4123,29 @@
       }
     },
     {
-      "index": 58,
-      "text": "SA2 ラヴーシュカ | 29 | 全体 13 | 2000 | 始動補正25％※即時補正25％ | 0 | -4000 | -10000 | 0 | 上中下中 | 最低保障ダメージ40％カウンター/パニッシュカウンターで数値が変動しない※コンボの3段目以降に補正がかかる",
-      "cells": [
-        "SA2 ラヴーシュカ",
+      "rowIndex": 58,
+      "rowText": "SA2 Lovushka | 29 | 13 total frames | 2000 | Starter scaling 25％※Immediate scaling 25％ | 0 | -4000 | -10000 | 0 | HighMidLowMid | Minimum guaranteed damage is 40%Values do not change on counter or Punish Counter* Combo scaling occurs after the 3rd hit",
+      "cellTexts": [
+        "SA2 Lovushka",
         "29",
         "",
-        "全体 13",
+        "13 total frames",
         "",
         "",
         "",
         "2000",
-        "始動補正25％※即時補正25％",
+        "Starter scaling 25％※Immediate scaling 25％",
         "0",
         "-4000",
         "-10000",
         "0",
-        "上中下中",
-        "最低保障ダメージ40％カウンター/パニッシュカウンターで数値が変動しない※コンボの3段目以降に補正がかかる"
+        "HighMidLowMid",
+        "Minimum guaranteed damage is 40%Values do not change on counter or Punish Counter* Combo scaling occurs after the 3rd hit"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "SA2 ラヴーシュカ",
+      "rowType": "data",
+      "moveName": "SA2 Lovushka",
       "commandInput": {
         "commandText": "[key-d.png] [key-dl.png] [key-l.png] [key-d.png] [key-dl.png] [key-l.png] [key-plus.png] [icon_punch.png]",
         "iconPaths": [
@@ -4232,10 +4232,10 @@
       }
     },
     {
-      "index": 59,
-      "text": "SA3 ザプリェット | 18 | 18-23 | 62 | D | -50 | 4000 | ※即時補正10% | 0 | -7500 | -15000 | 0 | 上 | 1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用",
-      "cells": [
-        "SA3 ザプリェット",
+      "rowIndex": 59,
+      "rowText": "SA3 Interdiction | 18 | 18-23 | 62 | D | -50 | 4000 | *Immediate scaling 10% | 0 | -7500 | -15000 | 0 | High | Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves",
+      "cellTexts": [
+        "SA3 Interdiction",
         "18",
         "18-23",
         "62",
@@ -4243,18 +4243,18 @@
         "-50",
         "",
         "4000",
-        "※即時補正10%",
+        "*Immediate scaling 10%",
         "0",
         "-7500",
         "-15000",
         "0",
-        "上",
-        "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+        "High",
+        "Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "SA3 ザプリェット",
+      "rowType": "data",
+      "moveName": "SA3 Interdiction",
       "commandInput": {
         "commandText": "[key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
         "iconPaths": [
@@ -4341,10 +4341,10 @@
       }
     },
     {
-      "index": 60,
-      "text": "CA ザプリェット（体力25%以下で） | 18 | 18-23 | 62 | D | -50 | 4500 | ※即時補正10% | 0 | -10000 | -20000 | 0 | 上 | 1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用",
-      "cells": [
-        "CA ザプリェット（体力25%以下で）",
+      "rowIndex": 60,
+      "rowText": "CA Interdiction(when under 25% vitality) | 18 | 18-23 | 62 | D | -50 | 4500 | *Immediate scaling 10% | 0 | -10000 | -20000 | 0 | High | Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves",
+      "cellTexts": [
+        "CA Interdiction(when under 25% vitality)",
         "18",
         "18-23",
         "62",
@@ -4352,20 +4352,20 @@
         "-50",
         "",
         "4500",
-        "※即時補正10%",
+        "*Immediate scaling 10%",
         "0",
         "-10000",
         "-20000",
         "0",
-        "上",
-        "1-23F 完全無敵最低保障ダメージ50％カウンター/パニッシュカウンターで数値が変動しない※必殺技キャンセル時のみ適用"
+        "High",
+        "Completely invincible from frames 1 - 23Minimum guaranteed damage is 50%Values do not change on counter or Punish Counter* Can only be canceled into from special moves"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "CA ザプリェット",
+      "rowType": "data",
+      "moveName": "CA Interdiction",
       "commandInput": {
-        "commandText": "（体力25%以下で） [key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
+        "commandText": "(when under 25% vitality) [key-d.png] [key-dr.png] [key-r.png] [key-d.png] [key-dr.png] [key-r.png] [key-plus.png] [icon_kick.png]",
         "iconPaths": [
           "/6/assets/images/common/controller/key-d.png",
           "/6/assets/images/common/controller/key-dr.png",
@@ -4390,7 +4390,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（体力25%以下で）"
+            "value": "(when under 25% vitality)"
           },
           {
             "type": "icon",
@@ -4454,21 +4454,21 @@
       }
     },
     {
-      "index": 61,
-      "text": "通常投げ",
-      "cells": [
-        "通常投げ"
+      "rowIndex": 61,
+      "rowText": "Throws",
+      "cellTexts": [
+        "Throws"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "通常投げ"
+      "rowType": "section",
+      "moveName": "Throws"
     },
     {
-      "index": 62,
-      "text": "ラヴィーナ（近距離で） 弱弱 | 5 | 5-7 | 23 | D | 1200 | 始動補正40%即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
-      "cells": [
-        "ラヴィーナ（近距離で） 弱弱",
+      "rowIndex": 62,
+      "rowText": "Ravina(When near opponent) LL | 5 | 5-7 | 23 | D | 1200 | Starter scaling 40%Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Ravina(When near opponent) LL",
         "5",
         "5-7",
         "23",
@@ -4476,20 +4476,20 @@
         "",
         "",
         "1200",
-        "始動補正40%即時補正20%",
+        "Starter scaling 40%Immediate scaling 20%",
         "2000",
         "0",
         "-10000",
         "2000",
-        "投",
-        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "ラヴィーナ",
+      "rowType": "data",
+      "moveName": "Ravina",
       "commandInput": {
-        "commandText": "（近距離で） [key-nutral.png] [key-or.png] [key-r.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "commandText": "(When near opponent) [key-nutral.png] [key-or.png] [key-r.png] [key-plus.png] [icon_punch_l.png] L [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-nutral.png",
           "/6/assets/images/common/controller/key-or.png",
@@ -4510,7 +4510,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（近距離で）"
+            "value": "(When near opponent)"
           },
           {
             "type": "icon",
@@ -4544,7 +4544,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -4554,7 +4554,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -4568,10 +4568,10 @@
       }
     },
     {
-      "index": 63,
-      "text": "ウラガーン（近距離で） 弱弱 | 5 | 5-7 | 23 | D | 1200 | 始動補正40%即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
-      "cells": [
-        "ウラガーン（近距離で） 弱弱",
+      "rowIndex": 63,
+      "rowText": "Uragan(When near opponent) LL | 5 | 5-7 | 23 | D | 1200 | Starter scaling 40%Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Uragan(When near opponent) LL",
         "5",
         "5-7",
         "23",
@@ -4579,20 +4579,20 @@
         "",
         "",
         "1200",
-        "始動補正40%即時補正20%",
+        "Starter scaling 40%Immediate scaling 20%",
         "2000",
         "0",
         "-10000",
         "2000",
-        "投",
-        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "ウラガーン",
+      "rowType": "data",
+      "moveName": "Uragan",
       "commandInput": {
-        "commandText": "（近距離で） [key-l.png] [key-plus.png] [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "commandText": "(When near opponent) [key-l.png] [key-plus.png] [icon_punch_l.png] L [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/key-l.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -4609,7 +4609,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（近距離で）"
+            "value": "(When near opponent)"
           },
           {
             "type": "icon",
@@ -4631,7 +4631,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -4641,7 +4641,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -4653,31 +4653,31 @@
       }
     },
     {
-      "index": 64,
-      "text": "タルナード（ジャンプ中に）（近距離で）弱弱 | 5 | 5-7 | 着地後3 | D | 1200 | 即時補正20% | 2000 | 0 | -10000 | 2000 | 投 | パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン",
-      "cells": [
-        "タルナード（ジャンプ中に）（近距離で）弱弱",
+      "rowIndex": 64,
+      "rowText": "Tornado(During a jump) (When near opponent)LL | 5 | 5-7 | 3 frame(s) after landing | D | 1200 | Immediate scaling 20% | 2000 | 0 | -10000 | 2000 | Throw | Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown",
+      "cellTexts": [
+        "Tornado(During a jump) (When near opponent)LL",
         "5",
         "5-7",
-        "着地後3",
+        "3 frame(s) after landing",
         "D",
         "",
         "",
         "1200",
-        "即時補正20%",
+        "Immediate scaling 20%",
         "2000",
         "0",
         "-10000",
         "2000",
-        "投",
-        "パニッシュカウンター時以下の性能変化・ダメージ2040・SAゲージ4000増加・ハードノックダウン"
+        "Throw",
+        "Properties change to the following when the attack lands as a Punish Counter:- Deals 2040 damage- Super Art gauge increases by 4000- Forces a hard knockdown"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "タルナード",
+      "rowType": "data",
+      "moveName": "Tornado",
       "commandInput": {
-        "commandText": "（ジャンプ中に）（近距離で） [icon_punch_l.png] 弱 [icon_kick_l.png] 弱",
+        "commandText": "(During a jump) (When near opponent) [icon_punch_l.png] L [icon_kick_l.png] L",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_l.png",
           "/6/assets/images/common/controller/icon_kick_l.png"
@@ -4690,7 +4690,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ジャンプ中に）（近距離で）"
+            "value": "(During a jump) (When near opponent)"
           },
           {
             "type": "icon",
@@ -4700,7 +4700,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           },
           {
             "type": "icon",
@@ -4710,7 +4710,7 @@
           },
           {
             "type": "text",
-            "value": "弱"
+            "value": "L"
           }
         ],
         "localIconPaths": [
@@ -4720,24 +4720,24 @@
       }
     },
     {
-      "index": 65,
-      "text": "共通システム",
-      "cells": [
-        "共通システム"
+      "rowIndex": 65,
+      "rowText": "Common Moves",
+      "cellTexts": [
+        "Common Moves"
       ],
-      "cellCount": 1,
+      "totalCellCount": 1,
       "nonEmptyCellCount": 1,
-      "rowKind": "section",
-      "skillName": "共通システム"
+      "rowType": "section",
+      "moveName": "Common Moves"
     },
     {
-      "index": 66,
-      "text": "前方ステップ | 全体 22 | 0 | 0 | 0 | 0 | 0",
-      "cells": [
-        "前方ステップ",
+      "rowIndex": 66,
+      "rowText": "Forward Dash | 22 total frames | 0 | 0 | 0 | 0 | 0",
+      "cellTexts": [
+        "Forward Dash",
         "",
         "",
-        "全体 22",
+        "22 total frames",
         "",
         "",
         "",
@@ -4750,10 +4750,10 @@
         "",
         ""
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 7,
-      "rowKind": "data",
-      "skillName": "前方ステップ",
+      "rowType": "data",
+      "moveName": "Forward Dash",
       "commandInput": {
         "commandText": "[key-r.png] [key-r.png]",
         "iconPaths": [
@@ -4786,29 +4786,29 @@
       }
     },
     {
-      "index": 67,
-      "text": "後方ステップ | 全体 23 | 0 | 0 | 0 | 0 | 0 | 1-15F 投げ無敵",
-      "cells": [
-        "後方ステップ",
+      "rowIndex": 67,
+      "rowText": "Backward Dash | 23 total frames | 0 | 0 | 0 | 0 | 0 | Invincible to throws from frame 1 to frame 15.",
+      "cellTexts": [
+        "Backward Dash",
         "",
         "",
-        "全体 23",
+        "23 total frames",
         "",
         "",
-        "",
-        "0",
         "",
         "0",
+        "",
+        "0",
         "0",
         "0",
         "0",
         "",
-        "1-15F 投げ無敵"
+        "Invincible to throws from frame 1 to frame 15."
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 8,
-      "rowKind": "data",
-      "skillName": "後方ステップ",
+      "rowType": "data",
+      "moveName": "Backward Dash",
       "commandInput": {
         "commandText": "[key-l.png] [key-l.png]",
         "iconPaths": [
@@ -4841,10 +4841,10 @@
       }
     },
     {
-      "index": 68,
-      "text": "ドライブインパクト（エスパーダ）強強 | 26 | 26-27 | 35 | D | -3 | 800 | 始動補正20% | 0 | -5000 | -15000 | 0 | 上 | 1-27F アーマー判定（2回）パニッシュカウンター、もしくはアーマー成立後にヒットで以下の性能変化・地上ヒット膝崩れ・空中ヒットきりもみダウン・SAゲージ3000増加",
-      "cells": [
-        "ドライブインパクト（エスパーダ）強強",
+      "rowIndex": 68,
+      "rowText": "Drive Impact: EspadaHH | 26 | 26-27 | 35 | D | -3 | 800 | Starter scaling 20% | 0 | -5000 | -15000 | 0 | High | Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000",
+      "cellTexts": [
+        "Drive Impact: EspadaHH",
         "26",
         "26-27",
         "35",
@@ -4852,20 +4852,20 @@
         "-3",
         "",
         "800",
-        "始動補正20%",
+        "Starter scaling 20%",
         "0",
         "-5000",
         "-15000",
         "0",
-        "上",
-        "1-27F アーマー判定（2回）パニッシュカウンター、もしくはアーマー成立後にヒットで以下の性能変化・地上ヒット膝崩れ・空中ヒットきりもみダウン・SAゲージ3000増加"
+        "High",
+        "Super Armor for 2 attacks from frames 1 - 27Produces a wall splat if the pushback on hit causes the opponent to connect with the stage wallOn Punish Counter or after a successful hit after Super Armor absorbs a hit, the following properties change:- Produces a crumple stun if the opponent is standing on the ground- Forces a spinning knockdown when hitting a mid-air opponent- Super Art gauge increases by 3000"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 14,
-      "rowKind": "data",
-      "skillName": "ドライブインパクト（エスパーダ）",
+      "rowType": "data",
+      "moveName": "Drive Impact: Espada",
       "commandInput": {
-        "commandText": "[icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "commandText": "[icon_punch_h.png] H [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_h.png",
           "/6/assets/images/common/controller/icon_kick_h.png"
@@ -4884,7 +4884,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -4894,7 +4894,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -4904,10 +4904,10 @@
       }
     },
     {
-      "index": 69,
-      "text": "[ガード時]ドライブリバーサル（エクシリオ）（ガード中 or ドライブパリィ成立中に） 強強 | 20 | 20-22 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | 上 | リカバリアブルダメージ1-22F 完全無敵ヒット時硬直5F増加",
-      "cells": [
-        "[ガード時]ドライブリバーサル（エクシリオ）（ガード中 or ドライブパリィ成立中に） 強強",
+      "rowIndex": 69,
+      "rowText": "Drive Reversal (while blocking): Exilio(When blocking or during a successful Drive Parry) HH | 20 | 20-22 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | High | Recoverable damageCompletely invincible on frames 1 - 225 frames of recovery added on hit",
+      "cellTexts": [
+        "Drive Reversal (while blocking): Exilio(When blocking or during a successful Drive Parry) HH",
         "20",
         "20-22",
         "26",
@@ -4920,15 +4920,15 @@
         "0",
         "0",
         "0",
-        "上",
-        "リカバリアブルダメージ1-22F 完全無敵ヒット時硬直5F増加"
+        "High",
+        "Recoverable damageCompletely invincible on frames 1 - 225 frames of recovery added on hit"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "[ガード時]ドライブリバーサル（エクシリオ）",
+      "rowType": "data",
+      "moveName": "Drive Reversal (while blocking): Exilio",
       "commandInput": {
-        "commandText": "（ガード中 or ドライブパリィ成立中に） [key-r.png] [key-plus.png] [icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "commandText": "(When blocking or during a successful Drive Parry) [key-r.png] [key-plus.png] [icon_punch_h.png] H [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -4945,7 +4945,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ガード中 or ドライブパリィ成立中に）"
+            "value": "(When blocking or during a successful Drive Parry)"
           },
           {
             "type": "icon",
@@ -4967,7 +4967,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -4977,7 +4977,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -4989,10 +4989,10 @@
       }
     },
     {
-      "index": 70,
-      "text": "[起き上がり時]ドライブリバーサル（エクシリオ）（起き上がり時に） 強強 | 18 | 18-20 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | 上 | リカバリアブルダメージ1-20F 完全無敵ヒット時硬直5F増加",
-      "cells": [
-        "[起き上がり時]ドライブリバーサル（エクシリオ）（起き上がり時に） 強強",
+      "rowIndex": 70,
+      "rowText": "Drive Reversal (while recovering): Exilio(During knockdown recovery) HH | 18 | 18-20 | 26 | D | -6 | 500 | 0 | 0 | 0 | 0 | High | Recoverable damageCompletely invincible on frames 1 - 205 frames of recovery added on hit",
+      "cellTexts": [
+        "Drive Reversal (while recovering): Exilio(During knockdown recovery) HH",
         "18",
         "18-20",
         "26",
@@ -5005,15 +5005,15 @@
         "0",
         "0",
         "0",
-        "上",
-        "リカバリアブルダメージ1-20F 完全無敵ヒット時硬直5F増加"
+        "High",
+        "Recoverable damageCompletely invincible on frames 1 - 205 frames of recovery added on hit"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 13,
-      "rowKind": "data",
-      "skillName": "[起き上がり時]ドライブリバーサル（エクシリオ）",
+      "rowType": "data",
+      "moveName": "Drive Reversal (while recovering): Exilio",
       "commandInput": {
-        "commandText": "（起き上がり時に） [key-r.png] [key-plus.png] [icon_punch_h.png] 強 [icon_kick_h.png] 強",
+        "commandText": "(During knockdown recovery) [key-r.png] [key-plus.png] [icon_punch_h.png] H [icon_kick_h.png] H",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-plus.png",
@@ -5030,7 +5030,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（起き上がり時に）"
+            "value": "(During knockdown recovery)"
           },
           {
             "type": "icon",
@@ -5052,7 +5052,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           },
           {
             "type": "icon",
@@ -5062,7 +5062,7 @@
           },
           {
             "type": "text",
-            "value": "強"
+            "value": "H"
           }
         ],
         "localIconPaths": [
@@ -5074,16 +5074,16 @@
       }
     },
     {
-      "index": 71,
-      "text": "ドライブパリィ中中 | 1 | [※2] 1-12 | 33 | ※1 | 0 | 0 | 0 | 0 | 0 | ※1 動作の4F目からドライブラッシュでキャンセル可※2 ボタンホールドでパリィの持続を延長可硬直部分はガードのみ可動作中常に被パニッシュカウンター判定",
-      "cells": [
-        "ドライブパリィ中中",
+      "rowIndex": 71,
+      "rowText": "Drive ParryMM | 1 | [*2] 1-12 | 33 | *1 | 0 | 0 | 0 | 0 | 0 | *1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution.",
+      "cellTexts": [
+        "Drive ParryMM",
         "1",
-        "[※2] 1-12",
+        "[*2] 1-12",
         "33",
         "",
         "",
-        "※1",
+        "*1",
         "0",
         "",
         "0",
@@ -5091,14 +5091,14 @@
         "0",
         "0",
         "",
-        "※1 動作の4F目からドライブラッシュでキャンセル可※2 ボタンホールドでパリィの持続を延長可硬直部分はガードのみ可動作中常に被パニッシュカウンター判定"
+        "*1 Can be canceled from the 4th frame via Drive Rush*2 Parry hitbox is extended for as long as the buttons are heldOnly blocks can be performed during the recovery periodAlways in Punish Counter state during execution."
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 11,
-      "rowKind": "data",
-      "skillName": "ドライブパリィ",
+      "rowType": "data",
+      "moveName": "Drive Parry",
       "commandInput": {
-        "commandText": "[icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_m.png",
           "/6/assets/images/common/controller/icon_kick_m.png"
@@ -5117,7 +5117,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -5127,7 +5127,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -5137,10 +5137,10 @@
       }
     },
     {
-      "index": 72,
-      "text": "ジャストパリィ（打撃）ガード方向 中中 | 1 | 1 | 0 | 始動補正50％ | 相手の攻撃に対応した方向入力を行った状態でパリィを入力し、入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する（上段/中段攻撃に対して←方向、下段攻撃に対しては↙方向)方向が正しくなかった場合は通常のドライブパリィとなり、追加でDゲージが3000増加する硬直終了から5Fの間完全無敵 （パリィを継続した場合は無敵にならない）ジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター",
-      "cells": [
-        "ジャストパリィ（打撃）ガード方向 中中",
+      "rowIndex": 72,
+      "rowText": "Perfect Parry (strike)Block Direction MM | 1 | 1 | 0 | Starter scaling 50％ | Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished",
+      "cellTexts": [
+        "Perfect Parry (strike)Block Direction MM",
         "1",
         "",
         "1",
@@ -5148,20 +5148,20 @@
         "",
         "",
         "0",
-        "始動補正50％",
+        "Starter scaling 50％",
         "",
         "",
         "",
         "",
         "",
-        "相手の攻撃に対応した方向入力を行った状態でパリィを入力し、入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する（上段/中段攻撃に対して←方向、下段攻撃に対しては↙方向)方向が正しくなかった場合は通常のドライブパリィとなり、追加でDゲージが3000増加する硬直終了から5Fの間完全無敵 （パリィを継続した場合は無敵にならない）ジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+        "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frame. (For high and overhead attacks, the player must press the direction away from the opponent. For low attacks, down and back)If no direction is inputted the result will be a regular parry with an additional Drive increase of 3000.Fully invincible for 5 frames once recovery is over (invincibility not granted if you continue the parry)The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 6,
-      "rowKind": "data",
-      "skillName": "ジャストパリィ（打撃）",
+      "rowType": "data",
+      "moveName": "Perfect Parry (strike)",
       "commandInput": {
-        "commandText": "ガード方向 [key-plus.png] [icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "commandText": "Block Direction [key-plus.png] [icon_punch_m.png] M [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-plus.png",
           "/6/assets/images/common/controller/icon_punch_m.png",
@@ -5176,7 +5176,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "ガード方向"
+            "value": "Block Direction"
           },
           {
             "type": "icon",
@@ -5192,7 +5192,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -5202,7 +5202,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -5213,10 +5213,10 @@
       }
     },
     {
-      "index": 73,
-      "text": "ジャストパリィ（飛び道具）中中 | 1 | 10 | 0 | 始動補正50％ | パリィを入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する暗転演出が入らないジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター",
-      "cells": [
-        "ジャストパリィ（飛び道具）中中",
+      "rowIndex": 73,
+      "rowText": "Perfect Parry (projectile)MM | 1 | 10 | 0 | Starter scaling 50％ | Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished",
+      "cellTexts": [
+        "Perfect Parry (projectile)MM",
         "1",
         "",
         "10",
@@ -5224,20 +5224,20 @@
         "",
         "",
         "0",
-        "始動補正50％",
+        "Starter scaling 50％",
         "",
         "",
         "",
         "",
         "",
-        "パリィを入力したフレーム、もしくはその次のフレームで攻撃を受けると成立する暗転演出が入らないジャストパリィを取られた側はキャンセルが出来なくなり、動作終了まで強制パニッシュカウンター"
+        "Perfect Parry activates when an attack is absorbed on the frame a parry is input, or on the next frameNo screen freeze occurs.The player on the receiving end of a Perfect Parry cannot cancel and is forced into a Punish Counter state until their move is finished"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 6,
-      "rowKind": "data",
-      "skillName": "ジャストパリィ（飛び道具）",
+      "rowType": "data",
+      "moveName": "Perfect Parry (projectile)",
       "commandInput": {
-        "commandText": "[icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "commandText": "[icon_punch_m.png] M [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/icon_punch_m.png",
           "/6/assets/images/common/controller/icon_kick_m.png"
@@ -5256,7 +5256,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -5266,7 +5266,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
@@ -5276,31 +5276,31 @@
       }
     },
     {
-      "index": 74,
-      "text": "パリィドライブラッシュ（ドライブパリィ中に） | 全体 45 | ※ | 0 | 乗算補正15％ | 0 | 0 | 0 | 0 | 暗転10F※動作9F目から攻撃行動にキャンセル可 24F目からパリィ以外の行動でキャンセル可",
-      "cells": [
-        "パリィドライブラッシュ（ドライブパリィ中に）",
+      "rowIndex": 74,
+      "rowText": "Parry Drive Rush(During a Drive Parry) | 45 total frames | * | 0 | Multiplier scaling 15％ | 0 | 0 | 0 | 0 | Screen freeze occurs until the 10th frame* Can be canceled into an attack on the 9th frame of the move Can be canceled into actions other than a parry from the 24th frame",
+      "cellTexts": [
+        "Parry Drive Rush(During a Drive Parry)",
         "",
         "",
-        "全体 45",
+        "45 total frames",
         "",
         "",
-        "※",
+        "*",
         "0",
-        "乗算補正15％",
+        "Multiplier scaling 15％",
         "0",
         "0",
         "0",
         "0",
         "",
-        "暗転10F※動作9F目から攻撃行動にキャンセル可 24F目からパリィ以外の行動でキャンセル可"
+        "Screen freeze occurs until the 10th frame* Can be canceled into an attack on the 9th frame of the move Can be canceled into actions other than a parry from the 24th frame"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 10,
-      "rowKind": "data",
-      "skillName": "パリィドライブラッシュ",
+      "rowType": "data",
+      "moveName": "Parry Drive Rush",
       "commandInput": {
-        "commandText": "（ドライブパリィ中に） [key-r.png] [key-r.png]",
+        "commandText": "(During a Drive Parry) [key-r.png] [key-r.png]",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-r.png"
@@ -5313,7 +5313,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（ドライブパリィ中に）"
+            "value": "(During a Drive Parry)"
           },
           {
             "type": "icon",
@@ -5335,31 +5335,31 @@
       }
     },
     {
-      "index": 75,
-      "text": "キャンセルドライブラッシュ（必殺技キャンセル可能な攻撃ヒット中に） ( ) 中中 | 全体 46 | ※ | 0 | 乗算補正15％ | 0 | 0 | 0 | 0 | 暗転9F※動作10F目から攻撃行動にキャンセル可 25F目からパリィ以外の行動でキャンセル可",
-      "cells": [
-        "キャンセルドライブラッシュ（必殺技キャンセル可能な攻撃ヒット中に） ( ) 中中",
+      "rowIndex": 75,
+      "rowText": "Cancel Drive Rush(While connecting with a special-cancelable move) ( ) MM | 46 total frames | * | 0 | Multiplier scaling 15％ | 0 | 0 | 0 | 0 | Screen freeze occurs until the 9th frame* Can be canceled into an attack from the 10th frame of the move Can be canceled into actions other than a parry from the 25th frame",
+      "cellTexts": [
+        "Cancel Drive Rush(While connecting with a special-cancelable move) ( ) MM",
         "",
         "",
-        "全体 46",
+        "46 total frames",
         "",
         "",
-        "※",
+        "*",
         "0",
-        "乗算補正15％",
+        "Multiplier scaling 15％",
         "0",
         "0",
         "0",
         "0",
         "",
-        "暗転9F※動作10F目から攻撃行動にキャンセル可 25F目からパリィ以外の行動でキャンセル可"
+        "Screen freeze occurs until the 9th frame* Can be canceled into an attack from the 10th frame of the move Can be canceled into actions other than a parry from the 25th frame"
       ],
-      "cellCount": 15,
+      "totalCellCount": 15,
       "nonEmptyCellCount": 10,
-      "rowKind": "data",
-      "skillName": "キャンセルドライブラッシュ",
+      "rowType": "data",
+      "moveName": "Cancel Drive Rush",
       "commandInput": {
-        "commandText": "（必殺技キャンセル可能な攻撃ヒット中に） [key-r.png] [key-r.png] [key-or.png] ( [key-nutral.png] [key-or.png] [key-r.png] ) [key-plus.png] [icon_punch_m.png] 中 [icon_kick_m.png] 中",
+        "commandText": "(While connecting with a special-cancelable move) [key-r.png] [key-r.png] [key-or.png] ( [key-nutral.png] [key-or.png] [key-r.png] ) [key-plus.png] [icon_punch_m.png] M [icon_kick_m.png] M",
         "iconPaths": [
           "/6/assets/images/common/controller/key-r.png",
           "/6/assets/images/common/controller/key-r.png",
@@ -5386,7 +5386,7 @@
         "tokens": [
           {
             "type": "text",
-            "value": "（必殺技キャンセル可能な攻撃ヒット中に）"
+            "value": "(While connecting with a special-cancelable move)"
           },
           {
             "type": "icon",
@@ -5446,7 +5446,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           },
           {
             "type": "icon",
@@ -5456,7 +5456,7 @@
           },
           {
             "type": "text",
-            "value": "中"
+            "value": "M"
           }
         ],
         "localIconPaths": [
