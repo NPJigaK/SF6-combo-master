@@ -1,5 +1,6 @@
 import type { InputFrame } from "../../input/types";
-import type { ComboTrial, TrialStep } from "../../trial/schema";
+import { applyDirectionModeToInputFrame, type DirectionMode } from "../../input/direction";
+import type { CompiledTrial, CompiledTrialMoveStep, CompiledTrialStep } from "../../trial/compiled";
 import { isNeutralInput, resolveStepInputEvent, shouldStartTrial } from "../core/inputMatcher";
 import { buildSnapshot, createInitialAssessments, pushEvent } from "../core/runtimeState";
 import type { ModeEvent, StepAssessment, TrialEngine, TrialEngineSnapshot, TrialEngineStatus } from "../core/types";
@@ -7,30 +8,25 @@ import type { ModeEvent, StepAssessment, TrialEngine, TrialEngineSnapshot, Trial
 const HISTORY_LIMIT_FRAMES = 240;
 const DEFAULT_TIMEOUT_FRAMES = 60;
 
-function hasButtonExpectation(step: TrialStep): boolean {
+function hasButtonExpectation(step: CompiledTrialMoveStep): boolean {
   return (step.expect.buttons?.length ?? 0) > 0 || (step.expect.anyTwoButtonsFrom?.length ?? 0) > 0;
 }
 
-function expectedButtons(step: TrialStep): Set<string> {
+function expectedButtons(step: CompiledTrialMoveStep): Set<string> {
   return new Set([...(step.expect.buttons ?? []), ...(step.expect.anyTwoButtonsFrom ?? [])]);
 }
 
-function isDirectionOnlyStep(step: TrialStep): boolean {
+function isDirectionOnlyStep(step: CompiledTrialMoveStep): boolean {
   return step.expect.direction !== undefined && !step.expect.motion && !hasButtonExpectation(step);
 }
 
-function resolveTimeoutFrames(trial: ComboTrial, step: TrialStep): number {
-  return (
-    step.stepper?.timeoutFrames ??
-    trial.rules?.stepper?.timeoutFramesDefault ??
-    step.timing?.closeAfterPrevFrames ??
-    step.window?.closeAfterPrevFrames ??
-    DEFAULT_TIMEOUT_FRAMES
-  );
+function resolveTimeoutFrames(trial: CompiledTrial): number {
+  return trial.rules?.stepper?.timeoutFramesDefault ?? DEFAULT_TIMEOUT_FRAMES;
 }
 
 export class StepperEngine implements TrialEngine {
-  private readonly trial: ComboTrial;
+  private readonly trial: CompiledTrial;
+  private readonly directionMode: DirectionMode;
   private history: InputFrame[] = [];
   private startFrame: number | null = null;
   private stepStartFrame: number | null = null;
@@ -46,8 +42,9 @@ export class StepperEngine implements TrialEngine {
   private releaseGateSatisfied = true;
   private neutralObservedSinceStepStart = false;
 
-  public constructor(trial: ComboTrial) {
+  public constructor(trial: CompiledTrial, directionMode: DirectionMode = "normal") {
     this.trial = trial;
+    this.directionMode = directionMode;
     this.assessments = createInitialAssessments(trial);
   }
 
@@ -77,22 +74,30 @@ export class StepperEngine implements TrialEngine {
     this.events.splice(0, this.events.length);
   }
 
-  private currentStep(): TrialStep | null {
+  private currentStep(): CompiledTrialStep | null {
     return this.trial.steps[this.currentStepIndex] ?? null;
   }
 
-  private configureStepEntry(step: TrialStep, previousStep: TrialStep | null): void {
-    const requireReleaseBeforeReuse = step.stepper?.requireReleaseBeforeReuse ?? this.trial.rules?.stepper?.requireReleaseBeforeReuseDefault ?? true;
+  private configureStepEntry(step: CompiledTrialStep, previousStep: CompiledTrialStep | null): void {
+    if (step.kind !== "move" || previousStep?.kind !== "move") {
+      this.releaseGateSatisfied = true;
+      this.neutralObservedSinceStepStart = false;
+      return;
+    }
+
+    const requireReleaseBeforeReuse =
+      this.trial.rules?.stepper?.requireReleaseBeforeReuseDefault ?? true;
+
     if (!requireReleaseBeforeReuse || !hasButtonExpectation(step)) {
       this.releaseGateSatisfied = true;
-    } else if (!previousStep || !hasButtonExpectation(previousStep)) {
-      this.releaseGateSatisfied = true;
-    } else {
-      const stepButtons = expectedButtons(step);
-      const previousButtons = expectedButtons(previousStep);
-      const overlaps = Array.from(stepButtons).some((button) => previousButtons.has(button));
-      this.releaseGateSatisfied = !overlaps;
+      this.neutralObservedSinceStepStart = false;
+      return;
     }
+
+    const stepButtons = expectedButtons(step);
+    const previousButtons = expectedButtons(previousStep);
+    const overlaps = Array.from(stepButtons).some((button) => previousButtons.has(button));
+    this.releaseGateSatisfied = !overlaps;
     this.neutralObservedSinceStepStart = false;
   }
 
@@ -105,7 +110,15 @@ export class StepperEngine implements TrialEngine {
       };
     }
 
-    const timeoutFrames = resolveTimeoutFrames(this.trial, step);
+    if (step.kind === "delay") {
+      const target = this.stepStartFrame + step.frames;
+      return {
+        openFrame: target,
+        closeFrame: target,
+      };
+    }
+
+    const timeoutFrames = resolveTimeoutFrames(this.trial);
     return {
       openFrame: this.stepStartFrame,
       closeFrame: this.stepStartFrame + timeoutFrames,
@@ -154,13 +167,13 @@ export class StepperEngine implements TrialEngine {
     this.configureStepEntry(step, null);
   }
 
-  private markMatched(step: TrialStep, inputFrame: number): void {
+  private markMatched(step: CompiledTrialStep, inputFrame: number, notes: string[] = ["matched"]): void {
     const assessment = this.assessments[this.currentStepIndex];
     assessment.result = "matched";
     assessment.actualFrame = inputFrame;
     assessment.deltaFrames = null;
     assessment.attempts += 1;
-    assessment.notes = ["matched"];
+    assessment.notes = notes;
 
     this.lastMatchedFrame = inputFrame;
     this.lastMatchedInputFrame = inputFrame;
@@ -175,11 +188,12 @@ export class StepperEngine implements TrialEngine {
       message: `Step ${step.id} matched at ${inputFrame}F.`,
     });
 
+    const previous = step;
     this.currentStepIndex += 1;
     const nextStep = this.currentStep();
     this.stepStartFrame = this.currentFrame;
     if (nextStep) {
-      this.configureStepEntry(nextStep, step);
+      this.configureStepEntry(nextStep, previous);
     }
   }
 
@@ -205,44 +219,29 @@ export class StepperEngine implements TrialEngine {
     return this.snapshot();
   }
 
-  public advance(frame: InputFrame): TrialEngineSnapshot {
-    this.currentFrame = frame.frame;
-
-    this.history.push(frame);
-    if (this.history.length > HISTORY_LIMIT_FRAMES) {
-      this.history.splice(0, this.history.length - HISTORY_LIMIT_FRAMES);
-    }
-
-    if (this.status !== "running") {
-      return this.snapshot();
-    }
-
-    if (this.startFrame === null) {
-      if (!shouldStartTrial(this.trial.steps[0], frame)) {
-        return this.snapshot();
-      }
-
-      this.startFrame = frame.frame;
+  private handleDelayStep(step: Extract<CompiledTrialStep, { kind: "delay" }>, frame: InputFrame): TrialEngineSnapshot {
+    if (this.stepStartFrame === null) {
       this.stepStartFrame = frame.frame;
-      const firstStep = this.currentStep();
-      if (firstStep) {
-        this.configureStepEntry(firstStep, null);
-      }
     }
 
-    const step = this.currentStep();
-    if (!step) {
-      this.completeIfFinished(frame.frame);
+    const targetFrame = this.stepStartFrame + step.frames;
+    if (frame.frame < targetFrame) {
       return this.snapshot();
     }
 
+    this.markMatched(step, targetFrame, ["delay_elapsed"]);
+    this.completeIfFinished(frame.frame);
+    return this.snapshot();
+  }
+
+  private handleMoveStep(step: CompiledTrialMoveStep, frame: InputFrame): TrialEngineSnapshot {
     const requireNeutralBeforeStep =
-      step.stepper?.requireNeutralBeforeStep ?? this.trial.rules?.stepper?.requireNeutralBeforeStepDefault ?? false;
+      this.trial.rules?.stepper?.requireNeutralBeforeStepDefault ?? false;
     if (isNeutralInput(frame)) {
       this.neutralObservedSinceStepStart = true;
     }
 
-    const timeoutFrames = resolveTimeoutFrames(this.trial, step);
+    const timeoutFrames = resolveTimeoutFrames(this.trial);
     if (this.stepStartFrame !== null && frame.frame - this.stepStartFrame > timeoutFrames) {
       this.retryCurrentStep(frame.frame, `timeout (${timeoutFrames}F)`);
       return this.snapshot();
@@ -270,13 +269,13 @@ export class StepperEngine implements TrialEngine {
       return this.snapshot();
     }
 
-    const requirePressed = step.stepper?.requirePressed ?? this.trial.rules?.stepper?.requirePressedDefault ?? true;
+    const requirePressed = this.trial.rules?.stepper?.requirePressedDefault ?? true;
     if (requirePressed && hasButtonExpectation(step) && frame.pressed.length === 0) {
       return this.snapshot();
     }
 
     const requireReleaseBeforeReuse =
-      step.stepper?.requireReleaseBeforeReuse ?? this.trial.rules?.stepper?.requireReleaseBeforeReuseDefault ?? true;
+      this.trial.rules?.stepper?.requireReleaseBeforeReuseDefault ?? true;
     if (requireReleaseBeforeReuse && hasButtonExpectation(step) && !this.releaseGateSatisfied) {
       return this.snapshot();
     }
@@ -296,5 +295,44 @@ export class StepperEngine implements TrialEngine {
     this.markMatched(step, match.inputFrame);
     this.completeIfFinished(frame.frame);
     return this.snapshot();
+  }
+
+  public advance(frame: InputFrame): TrialEngineSnapshot {
+    const normalizedFrame = applyDirectionModeToInputFrame(frame, this.directionMode);
+    this.currentFrame = normalizedFrame.frame;
+
+    this.history.push(normalizedFrame);
+    if (this.history.length > HISTORY_LIMIT_FRAMES) {
+      this.history.splice(0, this.history.length - HISTORY_LIMIT_FRAMES);
+    }
+
+    if (this.status !== "running") {
+      return this.snapshot();
+    }
+
+    if (this.startFrame === null) {
+      if (!shouldStartTrial(this.trial.steps[0], normalizedFrame)) {
+        return this.snapshot();
+      }
+
+      this.startFrame = normalizedFrame.frame;
+      this.stepStartFrame = normalizedFrame.frame;
+      const firstStep = this.currentStep();
+      if (firstStep) {
+        this.configureStepEntry(firstStep, null);
+      }
+    }
+
+    const step = this.currentStep();
+    if (!step) {
+      this.completeIfFinished(normalizedFrame.frame);
+      return this.snapshot();
+    }
+
+    if (step.kind === "delay") {
+      return this.handleDelayStep(step, normalizedFrame);
+    }
+
+    return this.handleMoveStep(step, normalizedFrame);
   }
 }

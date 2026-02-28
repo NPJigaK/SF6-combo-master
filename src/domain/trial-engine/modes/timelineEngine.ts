@@ -1,23 +1,22 @@
 import type { InputFrame } from "../../input/types";
-import type { ComboTrial } from "../../trial/schema";
-import {
-  resolveStepInputEvent,
-  shouldStartTrial,
-} from "../core/inputMatcher";
-import {
-  buildSnapshot,
-  createInitialAssessments,
-  pushEvent,
-} from "../core/runtimeState";
-import { resolveTimelineMissFrame, resolveTimelineTargetFrame } from "../core/stepWindow";
+import { applyDirectionModeToInputFrame, type DirectionMode } from "../../input/direction";
+import type { CompiledTrial, CompiledTrialMoveStep } from "../../trial/compiled";
+import { resolveStepInputEvent, shouldStartTrial } from "../core/inputMatcher";
+import { buildSnapshot, createInitialAssessments, pushEvent } from "../core/runtimeState";
 import type { ModeEvent, StepAssessment, TrialEngine, TrialEngineSnapshot, TrialEngineStatus } from "../core/types";
 
 const HISTORY_LIMIT_FRAMES = 240;
-const DEFAULT_TOLERANCE_FRAMES = 2;
-const DEFAULT_MISS_AFTER_FRAMES = 45;
+
+type CurrentWindow = {
+  targetFrame: number | null;
+  openFrame: number | null;
+  closeFrame: number | null;
+  isFirstMoveWithoutWindow: boolean;
+};
 
 export class TimelineEngine implements TrialEngine {
-  private readonly trial: ComboTrial;
+  private readonly trial: CompiledTrial;
+  private readonly directionMode: DirectionMode;
   private history: InputFrame[] = [];
   private startFrame: number | null = null;
   private currentStepIndex = 0;
@@ -31,8 +30,9 @@ export class TimelineEngine implements TrialEngine {
   private readonly events: ModeEvent[] = [];
   private readonly lastResolvedInputFrameByStep = new Map<number, number>();
 
-  public constructor(trial: ComboTrial) {
+  public constructor(trial: CompiledTrial, directionMode: DirectionMode = "normal") {
     this.trial = trial;
+    this.directionMode = directionMode;
     this.assessments = createInitialAssessments(trial);
   }
 
@@ -60,48 +60,79 @@ export class TimelineEngine implements TrialEngine {
     this.events.splice(0, this.events.length);
   }
 
-  private getCurrentTargetFrames(): { targetFrame: number | null; missFrame: number | null; toleranceFrames: number } {
+  private getStepBaseFrame(stepIndex: number): number | null {
     if (this.startFrame === null) {
-      return {
-        targetFrame: null,
-        missFrame: null,
-        toleranceFrames: this.trial.rules?.timeline?.defaultToleranceFrames ?? DEFAULT_TOLERANCE_FRAMES,
-      };
+      return null;
     }
 
+    if (stepIndex === 0) {
+      return this.startFrame;
+    }
+
+    return this.previousResolvedFrame ?? this.startFrame;
+  }
+
+  private getCurrentWindow(): CurrentWindow {
     const step = this.trial.steps[this.currentStepIndex];
     if (!step) {
       return {
         targetFrame: null,
-        missFrame: null,
-        toleranceFrames: this.trial.rules?.timeline?.defaultToleranceFrames ?? DEFAULT_TOLERANCE_FRAMES,
+        openFrame: null,
+        closeFrame: null,
+        isFirstMoveWithoutWindow: false,
       };
     }
 
-    const targetFrame = resolveTimelineTargetFrame(step, this.currentStepIndex, this.startFrame, this.previousResolvedFrame);
-    const toleranceFrames = step.timeline?.toleranceFrames ?? this.trial.rules?.timeline?.defaultToleranceFrames ?? DEFAULT_TOLERANCE_FRAMES;
-    const defaultMissAfterFrames = this.trial.rules?.timeline?.defaultMissAfterFrames ?? DEFAULT_MISS_AFTER_FRAMES;
-    const missFrame = resolveTimelineMissFrame(step, targetFrame, defaultMissAfterFrames);
+    const baseFrame = this.getStepBaseFrame(this.currentStepIndex);
+    if (baseFrame === null) {
+      return {
+        targetFrame: null,
+        openFrame: null,
+        closeFrame: null,
+        isFirstMoveWithoutWindow: false,
+      };
+    }
 
+    if (step.kind === "delay") {
+      const target = baseFrame + step.frames;
+      return {
+        targetFrame: target,
+        openFrame: target,
+        closeFrame: target,
+        isFirstMoveWithoutWindow: false,
+      };
+    }
+
+    if (this.currentStepIndex === 0 || !step.windowFromPrev) {
+      return {
+        targetFrame: null,
+        openFrame: null,
+        closeFrame: null,
+        isFirstMoveWithoutWindow: true,
+      };
+    }
+
+    const open = baseFrame + step.windowFromPrev.minAfterPrevFrames;
+    const close = baseFrame + step.windowFromPrev.maxAfterPrevFrames;
     return {
-      targetFrame,
-      missFrame,
-      toleranceFrames,
+      targetFrame: open,
+      openFrame: open,
+      closeFrame: close,
+      isFirstMoveWithoutWindow: false,
     };
   }
 
-  private markMatched(stepIndex: number, targetFrame: number, inputFrame: number, toleranceFrames: number): void {
+  private markMatched(stepIndex: number, targetFrame: number | null, inputFrame: number): void {
     const step = this.trial.steps[stepIndex];
-    const delta = inputFrame - targetFrame;
-    const withinTolerance = Math.abs(delta) <= toleranceFrames;
     const assessment = this.assessments[stepIndex];
 
+    const delta = targetFrame === null ? 0 : inputFrame - targetFrame;
     assessment.result = "matched";
-    assessment.targetFrame = targetFrame;
+    assessment.targetFrame = targetFrame ?? inputFrame;
     assessment.actualFrame = inputFrame;
     assessment.deltaFrames = delta;
     assessment.attempts += 1;
-    assessment.notes = [withinTolerance ? "within_tolerance" : "outside_tolerance"];
+    assessment.notes = targetFrame === null ? ["matched"] : ["within_window"];
 
     this.lastMatchedFrame = inputFrame;
     this.lastMatchedInputFrame = inputFrame;
@@ -114,9 +145,7 @@ export class TimelineEngine implements TrialEngine {
       frame: inputFrame,
       stepIndex,
       stepId: step?.id ?? null,
-      message: withinTolerance
-        ? `Step ${step?.id ?? stepIndex + 1} matched at ${inputFrame}F (delta ${delta >= 0 ? "+" : ""}${delta}F).`
-        : `Step ${step?.id ?? stepIndex + 1} matched out of tolerance at ${inputFrame}F (delta ${delta >= 0 ? "+" : ""}${delta}F).`,
+      message: `Step ${step?.id ?? stepIndex + 1} matched at ${inputFrame}F.`,
     });
   }
 
@@ -131,8 +160,6 @@ export class TimelineEngine implements TrialEngine {
     assessment.attempts += 1;
     assessment.notes = ["timed_out"];
 
-    // When a step is missed, continue timeline progression from the miss boundary
-    // so the next step can still be attempted instead of immediately cascading misses.
     this.previousResolvedFrame = missFrame;
 
     pushEvent(this.events, {
@@ -164,17 +191,14 @@ export class TimelineEngine implements TrialEngine {
   }
 
   private snapshot(): TrialEngineSnapshot {
-    const { targetFrame, toleranceFrames } = this.getCurrentTargetFrames();
-    const openFrame = targetFrame === null ? null : targetFrame - toleranceFrames;
-    const closeFrame = targetFrame === null ? null : targetFrame + toleranceFrames;
-
+    const window = this.getCurrentWindow();
     return buildSnapshot({
       mode: "timeline",
       status: this.status,
       currentStepIndex: this.currentStepIndex,
       currentFrame: this.currentFrame,
-      currentWindowOpenFrame: openFrame,
-      currentWindowCloseFrame: closeFrame,
+      currentWindowOpenFrame: window.openFrame,
+      currentWindowCloseFrame: window.closeFrame,
       lastMatchedFrame: this.lastMatchedFrame,
       lastMatchedInputFrame: this.lastMatchedInputFrame,
       lastMatchedCommitFrame: this.lastMatchedCommitFrame,
@@ -187,10 +211,61 @@ export class TimelineEngine implements TrialEngine {
     return this.snapshot();
   }
 
-  public advance(frame: InputFrame): TrialEngineSnapshot {
-    this.currentFrame = frame.frame;
+  private handleDelayStep(frame: InputFrame, window: CurrentWindow): TrialEngineSnapshot {
+    const target = window.targetFrame;
+    if (target === null) {
+      return this.snapshot();
+    }
 
-    this.history.push(frame);
+    if (frame.frame < target) {
+      return this.snapshot();
+    }
+
+    this.markMatched(this.currentStepIndex, target, target);
+    this.currentStepIndex += 1;
+    this.completeIfFinished(frame.frame);
+    return this.snapshot();
+  }
+
+  private handleMoveStep(frame: InputFrame, step: CompiledTrialMoveStep, window: CurrentWindow): TrialEngineSnapshot {
+    const match = resolveStepInputEvent(step, this.history, frame);
+    if (match) {
+      const lastInputFrame = this.lastResolvedInputFrameByStep.get(this.currentStepIndex);
+      if (lastInputFrame === undefined || match.inputFrame > lastInputFrame) {
+        if (window.isFirstMoveWithoutWindow) {
+          this.lastResolvedInputFrameByStep.set(this.currentStepIndex, match.inputFrame);
+          this.markMatched(this.currentStepIndex, null, match.inputFrame);
+          this.currentStepIndex += 1;
+          this.completeIfFinished(frame.frame);
+          return this.snapshot();
+        }
+
+        const open = window.openFrame;
+        const close = window.closeFrame;
+        if (open !== null && close !== null && match.inputFrame >= open && match.inputFrame <= close) {
+          this.lastResolvedInputFrameByStep.set(this.currentStepIndex, match.inputFrame);
+          this.markMatched(this.currentStepIndex, window.targetFrame, match.inputFrame);
+          this.currentStepIndex += 1;
+          this.completeIfFinished(frame.frame);
+          return this.snapshot();
+        }
+      }
+    }
+
+    if (!window.isFirstMoveWithoutWindow && window.closeFrame !== null && frame.frame > window.closeFrame) {
+      this.markMissed(this.currentStepIndex, window.targetFrame ?? window.closeFrame, window.closeFrame);
+      this.currentStepIndex += 1;
+      this.completeIfFinished(frame.frame);
+    }
+
+    return this.snapshot();
+  }
+
+  public advance(frame: InputFrame): TrialEngineSnapshot {
+    const normalizedFrame = applyDirectionModeToInputFrame(frame, this.directionMode);
+    this.currentFrame = normalizedFrame.frame;
+
+    this.history.push(normalizedFrame);
     if (this.history.length > HISTORY_LIMIT_FRAMES) {
       this.history.splice(0, this.history.length - HISTORY_LIMIT_FRAMES);
     }
@@ -200,41 +275,23 @@ export class TimelineEngine implements TrialEngine {
     }
 
     if (this.startFrame === null) {
-      if (!shouldStartTrial(this.trial.steps[0], frame)) {
+      if (!shouldStartTrial(this.trial.steps[0], normalizedFrame)) {
         return this.snapshot();
       }
-      this.startFrame = frame.frame;
+      this.startFrame = normalizedFrame.frame;
     }
 
     const step = this.trial.steps[this.currentStepIndex];
     if (!step) {
-      this.completeIfFinished(frame.frame);
+      this.completeIfFinished(normalizedFrame.frame);
       return this.snapshot();
     }
 
-    const { targetFrame, missFrame, toleranceFrames } = this.getCurrentTargetFrames();
-    if (targetFrame === null || missFrame === null) {
-      return this.snapshot();
+    const window = this.getCurrentWindow();
+    if (step.kind === "delay") {
+      return this.handleDelayStep(normalizedFrame, window);
     }
 
-    const match = resolveStepInputEvent(step, this.history, frame);
-    if (match) {
-      const lastInputFrame = this.lastResolvedInputFrameByStep.get(this.currentStepIndex);
-      if (lastInputFrame === undefined || match.inputFrame > lastInputFrame) {
-        this.lastResolvedInputFrameByStep.set(this.currentStepIndex, match.inputFrame);
-        this.markMatched(this.currentStepIndex, targetFrame, match.inputFrame, toleranceFrames);
-        this.currentStepIndex += 1;
-        this.completeIfFinished(frame.frame);
-        return this.snapshot();
-      }
-    }
-
-    if (frame.frame > missFrame) {
-      this.markMissed(this.currentStepIndex, targetFrame, missFrame);
-      this.currentStepIndex += 1;
-      this.completeIfFinished(frame.frame);
-    }
-
-    return this.snapshot();
+    return this.handleMoveStep(normalizedFrame, step, window);
   }
 }

@@ -1,6 +1,7 @@
 import type { InputFrame } from "../../input/types";
-import type { ComboTrial, TrialMode } from "../../trial/schema";
-import type { TrialMoveDataResolver } from "../../trial/validate";
+import type { DirectionMode } from "../../input/direction";
+import type { CompiledTrial } from "../../trial/compiled";
+import type { TrialMode } from "../../trial/schema";
 
 export type TrialEngineStatus = "running" | "success";
 
@@ -50,9 +51,9 @@ export interface TrialEngine {
 
 export type TrialEngineOptions = {
   modeOverride?: TrialMode;
-  resolveMoveData?: TrialMoveDataResolver;
+  directionMode?: DirectionMode;
 };
 
-export function defaultMode(trial: ComboTrial): TrialMode {
+export function defaultMode(trial: CompiledTrial): TrialMode {
   return trial.rules?.defaultMode ?? "timeline";
 }
