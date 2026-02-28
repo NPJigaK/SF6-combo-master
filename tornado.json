@@ -1,0 +1,24 @@
+{
+  "project_dir": ".",
+  "review_dir": "docs/reviews",
+  "max_review_cycles": 2,
+  "review_interval": 2,
+  "agents": [
+    {
+      "id": "dev-1",
+      "kind": "codex",
+      "model": "gpt-5.3-codex",
+      "role": "dev",
+      "working_dir": ".",
+      "max_iterations": 10
+    },
+    {
+      "id": "review-1",
+      "kind": "claude-code",
+      "model": "claude-opus-4-6",
+      "role": "review",
+      "working_dir": ".",
+      "max_iterations": 5
+    }
+  ]
+}

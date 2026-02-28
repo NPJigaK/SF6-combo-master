@@ -1,6 +1,6 @@
 import { detectMotion } from "../../input/motion";
 import type { CanonicalButton, InputFrame } from "../../input/types";
-import type { TrialStep } from "../../trial/schema";
+import type { CompiledTrialMoveStep, CompiledTrialStep } from "../../trial/compiled";
 
 const MOTION_TO_BUTTON_MAX_GAP_FRAMES = 12;
 const PREHOLD_DIRECTIONS = new Set([1, 2, 3]);
@@ -87,7 +87,7 @@ function findAnyTwoButtonsMatch(
   };
 }
 
-function resolveButtonInputFrame(step: TrialStep, history: InputFrame[], currentFrame: InputFrame): number | null {
+function resolveButtonInputFrame(step: CompiledTrialMoveStep, history: InputFrame[], currentFrame: InputFrame): number | null {
   const expectedButtons = step.expect.buttons ?? [];
   const anyTwoButtons = Array.from(new Set(step.expect.anyTwoButtonsFrom ?? []));
 
@@ -131,7 +131,7 @@ export type StepInputMatch = {
   motionCompletionFrame: number | null;
 };
 
-export function resolveStepInputEvent(step: TrialStep, history: InputFrame[], currentFrame: InputFrame): StepInputMatch | null {
+export function resolveStepInputEvent(step: CompiledTrialMoveStep, history: InputFrame[], currentFrame: InputFrame): StepInputMatch | null {
   const { direction, motion } = step.expect;
 
   if (direction !== undefined && currentFrame.direction !== direction) {
@@ -199,8 +199,12 @@ export function isNeutralInput(frame: InputFrame): boolean {
   return frame.direction === 5 && frame.down.length === 0;
 }
 
-export function shouldStartTrial(firstStep: TrialStep | undefined, frame: InputFrame): boolean {
+export function shouldStartTrial(firstStep: CompiledTrialStep | undefined, frame: InputFrame): boolean {
   if (!firstStep) {
+    return hasInputActivity(frame);
+  }
+
+  if (firstStep.kind !== "move") {
     return hasInputActivity(frame);
   }
 

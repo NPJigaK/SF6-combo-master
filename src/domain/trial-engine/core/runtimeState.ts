@@ -1,9 +1,10 @@
-import type { ComboTrial, TrialMode } from "../../trial/schema";
+import type { CompiledTrial } from "../../trial/compiled";
+import type { TrialMode } from "../../trial/schema";
 import type { ModeEvent, StepAssessment, TrialEngineSnapshot, TrialEngineStatus } from "./types";
 
 const EVENT_LIMIT = 80;
 
-export function createInitialAssessments(trial: ComboTrial): StepAssessment[] {
+export function createInitialAssessments(trial: CompiledTrial): StepAssessment[] {
   return trial.steps.map((step, stepIndex) => ({
     stepIndex,
     stepId: step.id,

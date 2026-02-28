@@ -13,6 +13,7 @@ dist-ssr
 .test-dist
 storage
 *.local
+.tmp-skill-install
 
 # Editor directories and files
 .vscode/*
@@ -25,4 +26,5 @@ storage
 *.sln
 *.sw?
 
-.agents/*
+.agents
+.claude

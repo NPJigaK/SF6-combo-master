@@ -6,12 +6,12 @@ const { createTrialEngine } = require("../.test-dist/src/domain/trial-engine/cre
 
 function advanceWithSamples(engine, samples, options = {}) {
   let previousFrame = options.previousFrame ?? null;
-  let nextFrame = options.startFrame ?? 0;
+  const startFrame = options.startFrame ?? 0;
   let snapshot = engine.getSnapshot();
 
   for (let frame = 0; frame < samples.length; frame += 1) {
     const sample = samples[frame];
-    const absoluteFrame = nextFrame + frame;
+    const absoluteFrame = startFrame + frame;
     const inputFrame = buildInputFrame(
       absoluteFrame,
       {
@@ -33,7 +33,7 @@ test("Stepper requires release before same-button reuse", () => {
   const trial = {
     id: "stepper-release-gate",
     name: "stepper-release-gate",
-    fps: 60,
+    startPolicy: "immediate",
     rules: {
       defaultMode: "stepper",
       stepper: {
@@ -45,20 +45,18 @@ test("Stepper requires release before same-button reuse", () => {
     steps: [
       {
         id: "step-1",
+        kind: "move",
+        moveId: "sf6.jp.standingLightPunch",
         expect: {
           buttons: ["LP"],
-        },
-        timeline: {
-          targetAfterPrevFrames: 0,
         },
       },
       {
         id: "step-2",
+        kind: "move",
+        moveId: "sf6.jp.standingLightPunch",
         expect: {
           buttons: ["LP"],
-        },
-        timeline: {
-          targetAfterPrevFrames: 0,
         },
       },
     ],
@@ -67,11 +65,11 @@ test("Stepper requires release before same-button reuse", () => {
   const engine = createTrialEngine(trial, { modeOverride: "stepper" });
   const snapshot = advanceWithSamples(engine, [
     { direction: 5, down: [] },
-    { direction: 5, down: ["LP"] }, // step-1
-    { direction: 5, down: ["LP"] }, // hold only
-    { direction: 5, down: ["LP"] }, // hold only
-    { direction: 5, down: [] }, // release gate unlock
-    { direction: 5, down: ["LP"] }, // step-2
+    { direction: 5, down: ["LP"] },
+    { direction: 5, down: ["LP"] },
+    { direction: 5, down: ["LP"] },
+    { direction: 5, down: [] },
+    { direction: 5, down: ["LP"] },
   ]);
 
   assert.equal(snapshot.status, "success");
@@ -82,7 +80,7 @@ test("Stepper timeout creates retry event instead of fail", () => {
   const trial = {
     id: "stepper-timeout-retry",
     name: "stepper-timeout-retry",
-    fps: 60,
+    startPolicy: "immediate",
     rules: {
       defaultMode: "stepper",
       stepper: {
@@ -92,11 +90,10 @@ test("Stepper timeout creates retry event instead of fail", () => {
     steps: [
       {
         id: "step-1",
+        kind: "move",
+        moveId: "sf6.jp.crouchingMediumPunch",
         expect: {
           buttons: ["MP"],
-        },
-        timeline: {
-          targetAfterPrevFrames: 0,
         },
       },
     ],
@@ -104,10 +101,10 @@ test("Stepper timeout creates retry event instead of fail", () => {
 
   const engine = createTrialEngine(trial, { modeOverride: "stepper" });
   const snapshot = advanceWithSamples(engine, [
-    { direction: 6, down: [] }, // start stepper trial
+    { direction: 6, down: [] },
     { direction: 5, down: [] },
     { direction: 5, down: [] },
-    { direction: 5, down: [] }, // timeout retry should happen here
+    { direction: 5, down: [] },
     { direction: 5, down: ["MP"] },
   ]);
 

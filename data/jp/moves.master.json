@@ -3,7 +3,6 @@
     "characterId": "jp",
     "sourceOfTruth": "official.raw",
     "generatedAt": "2026-02-26T05:37:45.753Z",
-    "schemaVersion": 2,
     "commonReferenceMode": false,
     "localization": {
       "jaEmbedded": true,

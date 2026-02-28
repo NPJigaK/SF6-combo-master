@@ -1,0 +1,12 @@
+{
+  "id": "m7-crouch-lp-stand-lp-light-stribog-fast",
+  "name": "しゃがみ小P > 立ち小P > 弱ストリボーグ",
+  "notes": [
+    "全ステップ最速入力（window.max=0F）"
+  ],
+  "steps": [
+    { "move": "sf6.jp.crouchingLightPunch" },
+    { "move": "sf6.jp.standingLightPunch", "connect": "link", "window": { "max": 0 } },
+    { "move": "sf6.jp.lStribog", "connect": "cancel", "cancelKind": "special", "window": { "max": 0 } }
+  ]
+}

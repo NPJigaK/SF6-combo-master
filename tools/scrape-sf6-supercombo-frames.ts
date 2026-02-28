@@ -6,7 +6,6 @@ import { CheerioCrawler, log } from 'crawlee';
 const CANONICAL_URL = 'https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data';
 const FETCH_URL = 'https://srk.shib.live/w/Street_Fighter_6/JP/Frame_data';
 const SOURCE_TYPE = 'mirror' as const;
-const SCHEMA_VERSION = 2;
 
 const REQUESTED_URLS = [
   'https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Frame_data#tabber-General',
@@ -146,7 +145,6 @@ type SupercomboBuildPayload = {
     finalUrl: string;
     revisionId: number | null;
     sourceType: typeof SOURCE_TYPE;
-    schemaVersion: number;
     status: number | null;
     lastEditedText: string | null;
     extractionError: string | null;
@@ -671,7 +669,6 @@ function buildBuildPayload(extraction: RawExtraction): SupercomboBuildPayload {
       finalUrl: extraction.meta.finalUrl,
       revisionId: extraction.meta.revisionId,
       sourceType: extraction.meta.sourceType,
-      schemaVersion: SCHEMA_VERSION,
       status: extraction.meta.status,
       lastEditedText: extraction.meta.lastEditedText,
       extractionError: mergedError,
