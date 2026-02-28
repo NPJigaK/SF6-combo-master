@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "tsc -p tsconfig.tests.json && node -e \"require('node:fs').writeFileSync('.test-dist/package.json', '{\\\"type\\\":\\\"commonjs\\\"}\\n')\" && node --test tests-cjs/input-frame.test.cjs tests-cjs/direction.test.cjs tests-cjs/button-mapping.test.cjs tests-cjs/motion.test.cjs tests-cjs/trial-validate.test.cjs tests-cjs/trial-compiler.test.cjs tests-cjs/trial-builder.test.cjs tests-cjs/trial-timeline.test.cjs tests-cjs/trial-stepper.test.cjs tests-cjs/versionless-schema.test.cjs",
+    "test": "tsc -p tsconfig.tests.json && node -e \"require('node:fs').writeFileSync('.test-dist/package.json', JSON.stringify({ type: 'commonjs' }) + '\\n')\" && node --test --test-isolation=none tests-cjs/input-frame.test.cjs tests-cjs/direction.test.cjs tests-cjs/button-mapping.test.cjs tests-cjs/motion.test.cjs tests-cjs/trial-validate.test.cjs tests-cjs/trial-compiler.test.cjs tests-cjs/trial-builder.test.cjs tests-cjs/trial-timeline.test.cjs tests-cjs/trial-stepper.test.cjs tests-cjs/versionless-schema.test.cjs",
     "preview": "vite preview",
     "tauri:build": "tauri build",
     "tauri:dev": "scripts\\tauri-dev.cmd dev",
