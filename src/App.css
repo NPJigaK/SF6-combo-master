@@ -60,6 +60,19 @@ body {
   padding: 0.6rem 0.75rem;
 }
 
+.control input,
+.control textarea {
+  border: 1px solid #5031ae;
+  border-radius: 10px;
+  background: #190640;
+  color: #f5f4ff;
+  padding: 0.6rem 0.75rem;
+}
+
+.control textarea {
+  resize: vertical;
+}
+
 .preview {
   border: 1px solid #4b26a8;
   border-radius: 14px;
@@ -644,6 +657,138 @@ body {
   margin-top: 0.55rem;
 }
 
+.builder-layout {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.builder-form,
+.builder-preview {
+  border: 1px solid #412488;
+  border-radius: 12px;
+  background: rgba(24, 6, 57, 0.78);
+  padding: 0.75rem;
+}
+
+.builder-allow-override {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.86rem;
+  color: #dbcffe;
+}
+
+.builder-step-header,
+.builder-preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.builder-step-header h3,
+.builder-preview-head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.builder-step-header button,
+.builder-step-actions button,
+.builder-preview-head button {
+  border: 1px solid #6a45d2;
+  border-radius: 9px;
+  background: #24095b;
+  color: #f5edff;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+}
+
+.builder-step-header button:hover,
+.builder-step-actions button:hover,
+.builder-preview-head button:hover {
+  background: #321176;
+}
+
+.builder-step-header button:disabled,
+.builder-step-actions button:disabled,
+.builder-preview-head button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.builder-step-list {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.builder-step-card {
+  border: 1px solid #5533b5;
+  border-radius: 10px;
+  background: rgba(17, 1, 38, 0.82);
+  padding: 0.6rem;
+}
+
+.builder-step-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.builder-step-actions {
+  display: inline-flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.builder-step-grid {
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.builder-id-line {
+  margin: 0.55rem 0 0;
+  color: #d9ccff;
+  font-size: 0.84rem;
+}
+
+.builder-json {
+  margin-top: 0.55rem;
+  width: 100%;
+  border: 1px solid #5f3bbb;
+  border-radius: 9px;
+  background: #110128;
+  color: #f6f1ff;
+  padding: 0.55rem 0.65rem;
+  font-family: ui-monospace, "Cascadia Mono", "Consolas", monospace;
+  resize: vertical;
+}
+
+.builder-error {
+  margin: 0.55rem 0 0;
+  border: 1px solid #d35f73;
+  border-radius: 9px;
+  background: rgba(104, 18, 42, 0.5);
+  color: #ffdbe2;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.84rem;
+}
+
+.builder-copy-status {
+  margin: 0.55rem 0 0;
+  color: #d8cafe;
+  font-size: 0.82rem;
+}
+
 .empty {
   margin: 0;
   color: #c9c2e6;
@@ -651,6 +796,14 @@ body {
 
 @media (max-width: 680px) {
   .trial-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-step-grid {
     grid-template-columns: 1fr;
   }
 

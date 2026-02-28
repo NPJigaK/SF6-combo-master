@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { ComboBuilderFeature } from "./features/combo-builder/ComboBuilderFeature";
 import { MoveBrowserFeature } from "./features/move-browser/MoveBrowserFeature";
 import { TrialPracticeFeature } from "./features/trial-practice/TrialPracticeFeature";
 import "./App.css";
 
-type AppScreen = "trial-practice" | "move-browser";
+type AppScreen = "trial-practice" | "move-browser" | "combo-builder";
 
 function parseCharacterIdFromMasterPath(path: string): string | null {
   const match = path.match(/\/data\/([^/]+)\/moves\.master\.json$/);
@@ -56,22 +57,21 @@ export default function App() {
             value={screen}
             onChange={(event) => {
               const nextScreen = event.currentTarget.value;
-              if (nextScreen === "trial-practice" || nextScreen === "move-browser") {
+              if (nextScreen === "trial-practice" || nextScreen === "move-browser" || nextScreen === "combo-builder") {
                 setScreen(nextScreen);
               }
             }}
           >
             <option value="trial-practice">コンボ練習</option>
             <option value="move-browser">技ブラウザ</option>
+            <option value="combo-builder">コンボビルダー</option>
           </select>
         </label>
       </section>
 
-      {screen === "trial-practice" ? (
-        <TrialPracticeFeature characterId={characterId} />
-      ) : (
-        <MoveBrowserFeature characterId={characterId} />
-      )}
+      {screen === "trial-practice" ? <TrialPracticeFeature characterId={characterId} /> : null}
+      {screen === "move-browser" ? <MoveBrowserFeature characterId={characterId} /> : null}
+      {screen === "combo-builder" ? <ComboBuilderFeature characterId={characterId} /> : null}
     </main>
   );
 }
