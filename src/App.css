@@ -30,6 +30,58 @@ body {
   color: #cbcaec;
 }
 
+.app-toolbar {
+  border: 1px solid #412488;
+  border-radius: 14px;
+  background: rgba(20, 5, 49, 0.74);
+  padding: 0.85rem 0.9rem;
+  display: grid;
+  grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.app-character-control {
+  min-width: 190px;
+}
+
+.screen-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.screen-tab {
+  border: 1px solid #5d37bf;
+  border-radius: 999px;
+  background: #18063b;
+  color: #e7dcff;
+  padding: 0.42rem 0.84rem;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.screen-tab:hover {
+  background: #25095d;
+}
+
+.screen-tab.is-active {
+  border-color: #8d6ef0;
+  background: #351082;
+  box-shadow: 0 0 0 1px rgba(141, 110, 240, 0.35);
+}
+
+.screen-description {
+  margin: -0.15rem 0 0;
+  color: #d8ccff;
+  font-size: 0.84rem;
+  grid-column: 2;
+}
+
+.app-screen-content {
+  animation: screen-fade-in 180ms ease-out;
+}
+
 .controls {
   display: flex;
   gap: 0.75rem;
@@ -794,7 +846,27 @@ body {
   color: #c9c2e6;
 }
 
+@keyframes screen-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 680px) {
+  .app-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .screen-description {
+    grid-column: auto;
+    margin-top: -0.1rem;
+  }
+
   .trial-layout {
     grid-template-columns: 1fr;
   }
