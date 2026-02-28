@@ -27,7 +27,7 @@ function resolveLocalStorage(): Storage | null {
   return window.localStorage;
 }
 
-function readStorageKey(key: StorageKey): string | null {
+export function readStorageKey(key: StorageKey): string | null {
   const storage = resolveLocalStorage();
   if (!storage) {
     return null;
@@ -40,7 +40,7 @@ function readStorageKey(key: StorageKey): string | null {
   }
 }
 
-function writeStorageKey(key: StorageKey, value: string): void {
+export function writeStorageKey(key: StorageKey, value: string): void {
   const storage = resolveLocalStorage();
   if (!storage) {
     return;
@@ -53,7 +53,7 @@ function writeStorageKey(key: StorageKey, value: string): void {
   }
 }
 
-function removeStorageKey(key: StorageKey): void {
+export function removeStorageKey(key: StorageKey): void {
   const storage = resolveLocalStorage();
   if (!storage) {
     return;

@@ -1,13 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { computeResetTrialPressTrigger } from "../domain/input/resetBinding";
 import {
-  createDefaultButtonBindings,
-  normalizeButtonBindings,
-  setBinding,
-} from "../domain/input/buttonMapping";
-import { computeResetTrialPressTrigger, normalizeResetTrialBinding } from "../domain/input/resetBinding";
-import {
-  ATTACK_ACTION_IDS,
-  isPhysicalButton as isKnownPhysicalButton,
   type AttackActionId,
   type ButtonBindings,
   type InputFrame,
@@ -36,145 +29,10 @@ import {
   resolveAvailableTrialModes,
   resolveInitialTrialMode,
 } from "../components/trial-runner/trialRunnerOptions";
+import { useTrialRunnerSettingsStore } from "../stores/trialRunnerSettingsStore";
 import { useInputProvider } from "./useInputProvider";
-import { STORAGE_KEYS, useSettings, type SettingsStore } from "./useSettings";
 import { useSfx } from "./useSfx";
 import { useTrialEngine } from "./useTrialEngine";
-
-function readStoredInputMode(settings: SettingsStore): InputMode {
-  const stored = settings.read(STORAGE_KEYS.inputMode);
-  if (stored && isInputMode(stored)) {
-    return stored;
-  }
-
-  return "auto";
-}
-
-function readStoredDirectionDisplayMode(settings: SettingsStore): DirectionDisplayMode {
-  const stored = settings.read(STORAGE_KEYS.directionDisplayMode);
-  if (stored && isDirectionDisplayMode(stored)) {
-    return stored;
-  }
-
-  return "number";
-}
-
-function readStoredDirectionMode(settings: SettingsStore): DirectionMode {
-  const stored = settings.read(STORAGE_KEYS.directionMode);
-  if (stored && isPlayerSideMode(stored)) {
-    return stored;
-  }
-
-  return "normal";
-}
-
-function readStoredDownDisplayMode(settings: SettingsStore): DownDisplayMode {
-  const stored = settings.read(STORAGE_KEYS.downDisplayMode);
-  if (stored && isDownDisplayMode(stored)) {
-    return stored;
-  }
-
-  return "text";
-}
-
-function isPhysicalButton(value: unknown): value is PhysicalButton {
-  return typeof value === "string" && isKnownPhysicalButton(value);
-}
-
-function parseStoredButtonBindingsValue(stored: string): ButtonBindings | null {
-  const parsed = JSON.parse(stored) as unknown;
-  if (!parsed || typeof parsed !== "object") {
-    return null;
-  }
-
-  const partial: Partial<Record<AttackActionId, PhysicalButton | null>> = {};
-  const record = parsed as Record<string, unknown>;
-
-  for (const actionId of ATTACK_ACTION_IDS) {
-    const value = record[actionId];
-    if (value === null) {
-      partial[actionId] = null;
-    } else if (isPhysicalButton(value)) {
-      partial[actionId] = value;
-    }
-  }
-
-  return normalizeButtonBindings(partial);
-}
-
-function readStoredButtonBindings(settings: SettingsStore): ButtonBindings {
-  const fallback = createDefaultButtonBindings();
-
-  try {
-    const current = settings.read(STORAGE_KEYS.buttonBindings);
-    if (current) {
-      const parsedCurrent = parseStoredButtonBindingsValue(current);
-      if (parsedCurrent) {
-        return parsedCurrent;
-      }
-    }
-
-    const legacy = settings.read(STORAGE_KEYS.buttonBindingsLegacy);
-    if (!legacy) {
-      return fallback;
-    }
-
-    const parsedLegacy = parseStoredButtonBindingsValue(legacy);
-    if (!parsedLegacy) {
-      return fallback;
-    }
-
-    settings.write(STORAGE_KEYS.buttonBindings, JSON.stringify(parsedLegacy));
-    settings.remove(STORAGE_KEYS.buttonBindingsLegacy);
-    return parsedLegacy;
-  } catch {
-    return fallback;
-  }
-}
-
-function parseStoredResetTrialBindingValue(stored: string): PhysicalButton[] | null {
-  const parsed = JSON.parse(stored) as unknown;
-  if (!Array.isArray(parsed)) {
-    return null;
-  }
-
-  const collected: PhysicalButton[] = [];
-  for (const value of parsed) {
-    if (isPhysicalButton(value)) {
-      collected.push(value);
-    }
-  }
-
-  return normalizeResetTrialBinding(collected);
-}
-
-function readStoredResetTrialBinding(settings: SettingsStore): PhysicalButton[] {
-  try {
-    const current = settings.read(STORAGE_KEYS.resetTrialBinding);
-    if (current) {
-      const parsedCurrent = parseStoredResetTrialBindingValue(current);
-      if (parsedCurrent) {
-        return parsedCurrent;
-      }
-    }
-
-    const legacy = settings.read(STORAGE_KEYS.resetTrialBindingLegacy);
-    if (!legacy) {
-      return [];
-    }
-
-    const parsedLegacy = parseStoredResetTrialBindingValue(legacy);
-    if (!parsedLegacy) {
-      return [];
-    }
-
-    settings.write(STORAGE_KEYS.resetTrialBinding, JSON.stringify(parsedLegacy));
-    settings.remove(STORAGE_KEYS.resetTrialBindingLegacy);
-    return parsedLegacy;
-  } catch {
-    return [];
-  }
-}
 
 export type UseTrialRunnerControllerOptions = {
   trial: CompiledTrial;
@@ -218,25 +76,26 @@ export type UseTrialRunnerControllerResult = {
 };
 
 export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOptions): UseTrialRunnerControllerResult {
-  const settings = useSettings();
-  const [selectedTrialMode, setSelectedTrialMode] = useState<TrialMode>(() =>
-    resolveInitialTrialMode(trial, settings),
-  );
   const availableTrialModes = useMemo(() => resolveAvailableTrialModes(), []);
-  const [inputMode, setInputMode] = useState<InputMode>(() => readStoredInputMode(settings));
-  const [directionMode, setDirectionMode] = useState<DirectionMode>(() => readStoredDirectionMode(settings));
-  const [directionDisplayMode, setDirectionDisplayMode] = useState<DirectionDisplayMode>(() =>
-    readStoredDirectionDisplayMode(settings),
-  );
-  const [downDisplayMode, setDownDisplayMode] = useState<DownDisplayMode>(() =>
-    readStoredDownDisplayMode(settings),
-  );
-  const [buttonBindings, setButtonBindings] = useState<ButtonBindings>(() => readStoredButtonBindings(settings));
-  const [resetTrialBinding, setResetTrialBinding] = useState<PhysicalButton[]>(() =>
-    readStoredResetTrialBinding(settings),
-  );
+  const allowModeOverride = trial.rules?.allowModeOverride ?? true;
+  const trialModeOverride = useTrialRunnerSettingsStore((state) => state.trialModeOverride);
+  const setTrialModeOverride = useTrialRunnerSettingsStore((state) => state.setTrialModeOverride);
+  const inputMode = useTrialRunnerSettingsStore((state) => state.inputMode);
+  const setInputMode = useTrialRunnerSettingsStore((state) => state.setInputMode);
+  const directionMode = useTrialRunnerSettingsStore((state) => state.directionMode);
+  const setDirectionMode = useTrialRunnerSettingsStore((state) => state.setDirectionMode);
+  const directionDisplayMode = useTrialRunnerSettingsStore((state) => state.directionDisplayMode);
+  const setDirectionDisplayMode = useTrialRunnerSettingsStore((state) => state.setDirectionDisplayMode);
+  const downDisplayMode = useTrialRunnerSettingsStore((state) => state.downDisplayMode);
+  const setDownDisplayMode = useTrialRunnerSettingsStore((state) => state.setDownDisplayMode);
+  const buttonBindings = useTrialRunnerSettingsStore((state) => state.buttonBindings);
+  const setButtonBinding = useTrialRunnerSettingsStore((state) => state.setButtonBinding);
+  const resetTrialBinding = useTrialRunnerSettingsStore((state) => state.resetTrialBinding);
+  const setResetTrialBinding = useTrialRunnerSettingsStore((state) => state.setResetTrialBinding);
+  const resetBindingsToDefault = useTrialRunnerSettingsStore((state) => state.resetBindingsToDefault);
   const [pendingBindingTarget, setPendingBindingTarget] = useState<BindingTarget | null>(null);
   const [isBindingsOpen, setIsBindingsOpen] = useState(false);
+  const selectedTrialMode = useMemo(() => resolveInitialTrialMode(trial, trialModeOverride), [trial, trialModeOverride]);
   const {
     snapshot: trialSnapshot,
     recentFrames,
@@ -287,13 +146,16 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
   };
 
   const handleTrialModeChange = (value: string) => {
+    if (!allowModeOverride) {
+      return;
+    }
     if (!isTrialMode(value)) {
       return;
     }
     if (!availableTrialModes.includes(value)) {
       return;
     }
-    setSelectedTrialMode(value);
+    setTrialModeOverride(value);
   };
 
   const handleStartBinding = (actionId: AttackActionId) => {
@@ -312,7 +174,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
   };
 
   const handleClearBinding = (actionId: AttackActionId) => {
-    setButtonBindings((previous) => setBinding(previous, actionId, null));
+    setButtonBinding(actionId, null);
     setPendingBindingTarget((current) => (current === actionId ? null : current));
   };
 
@@ -323,8 +185,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
   };
 
   const handleResetBindingsToDefault = () => {
-    setButtonBindings(createDefaultButtonBindings());
-    setResetTrialBinding([]);
+    resetBindingsToDefault();
     clearPendingResetCapture();
     resetTrialComboActiveRef.current = false;
     setPendingBindingTarget(null);
@@ -353,7 +214,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
         }
 
         if (pendingResetCaptureArmedRef.current) {
-          const capturedButtons = normalizeResetTrialBinding(Array.from(pendingResetCaptureRef.current));
+          const capturedButtons = [...pendingResetCaptureRef.current];
           setResetTrialBinding(capturedButtons);
           clearPendingResetCapture();
           setPendingBindingTarget(null);
@@ -366,7 +227,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
       if (pendingTarget) {
         const physical = frame.physicalPressed[0];
         if (physical) {
-          setButtonBindings((previous) => setBinding(previous, pendingTarget, physical));
+          setButtonBinding(pendingTarget, physical);
           setPendingBindingTarget(null);
         }
         return;
@@ -385,7 +246,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
 
       advanceFrame(frame);
     },
-    [advanceFrame, clearPendingResetCapture, resetTrialEngine],
+    [advanceFrame, clearPendingResetCapture, resetTrialEngine, setButtonBinding, setResetTrialBinding],
   );
 
   const getCurrentButtonBindings = useCallback(() => buttonBindingsRef.current, []);
@@ -394,35 +255,6 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
     getButtonBindings: getCurrentButtonBindings,
     onFrame: onInputFrame,
   });
-
-  useEffect(() => {
-    settings.write(settings.keys.inputMode, inputMode);
-  }, [inputMode, settings]);
-
-  useEffect(() => {
-    settings.write(settings.keys.directionMode, directionMode);
-  }, [directionMode, settings]);
-
-  useEffect(() => {
-    settings.write(settings.keys.directionDisplayMode, directionDisplayMode);
-  }, [directionDisplayMode, settings]);
-
-  useEffect(() => {
-    settings.write(settings.keys.downDisplayMode, downDisplayMode);
-  }, [downDisplayMode, settings]);
-
-  useEffect(() => {
-    settings.write(settings.keys.trialModeOverride, selectedTrialMode);
-  }, [selectedTrialMode, settings]);
-
-  useEffect(() => {
-    if (availableTrialModes.includes(selectedTrialMode)) {
-      return;
-    }
-
-    const fallback = resolveInitialTrialMode(trial, settings);
-    setSelectedTrialMode(fallback);
-  }, [availableTrialModes, selectedTrialMode, settings, trial]);
 
   useEffect(() => {
     buttonBindingsRef.current = buttonBindings;
@@ -436,14 +268,6 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
   useEffect(() => {
     pendingBindingTargetRef.current = pendingBindingTarget;
   }, [pendingBindingTarget]);
-
-  useEffect(() => {
-    settings.write(settings.keys.buttonBindings, JSON.stringify(buttonBindings));
-  }, [buttonBindings, settings]);
-
-  useEffect(() => {
-    settings.write(settings.keys.resetTrialBinding, JSON.stringify(resetTrialBinding));
-  }, [resetTrialBinding, settings]);
 
   useEffect(() => {
     resetTrialEngine();
@@ -498,7 +322,7 @@ export function useTrialRunnerController({ trial }: UseTrialRunnerControllerOpti
     visibleHistoryEntries,
     selectedTrialMode,
     availableTrialModes,
-    allowModeOverride: trial.rules?.allowModeOverride ?? true,
+    allowModeOverride,
     inputMode,
     directionMode,
     directionDisplayMode,
