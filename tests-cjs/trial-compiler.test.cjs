@@ -7,14 +7,24 @@ const MASTER_MOVES = [
   {
     moveId: "sf6.jp.standingLightPunch",
     official: {
-      moveName: "立ち小P",
+      moveName: "Standing Light Punch",
+      localization: {
+        ja: {
+          moveName: "立ち小P",
+        },
+      },
       command: { tokens: [{ type: "icon", file: "icon_punch_l.png" }] },
     },
   },
   {
     moveId: "sf6.jp.crouchingMediumPunch",
     official: {
-      moveName: "しゃがみ中P",
+      moveName: "Crouching Medium Punch",
+      localization: {
+        ja: {
+          moveName: "しゃがみ中P",
+        },
+      },
       command: { tokens: [{ type: "icon", file: "icon_punch_m.png" }] },
     },
   },
@@ -113,11 +123,32 @@ test("compileTrial window max=0 means frame-perfect timing", () => {
   assert.equal(compiled.steps[1].windowFromPrev.minAfterPrevFrames, 0);
 });
 
-test("compileTrial derives label from official moveName when not specified", () => {
+test("compileTrial prefers ja localized label when not specified", () => {
   const compiled = compileTrial(createBaseTrial(), { masterMoves: MASTER_MOVES });
 
   assert.equal(compiled.steps[0].label, "立ち小P");
   assert.equal(compiled.steps[1].label, "しゃがみ中P");
+});
+
+test("compileTrial falls back to official moveName when ja localization is unavailable", () => {
+  const trial = {
+    id: "fallback-label-test",
+    name: "fallback-label-test",
+    steps: [{ move: "sf6.jp.standingHeavyKick" }],
+  };
+  const masterMoves = [
+    ...MASTER_MOVES,
+    {
+      moveId: "sf6.jp.standingHeavyKick",
+      official: {
+        moveName: "Standing Heavy Kick",
+        command: { tokens: [{ type: "icon", file: "icon_kick_h.png" }] },
+      },
+    },
+  ];
+
+  const compiled = compileTrial(trial, { masterMoves });
+  assert.equal(compiled.steps[0].label, "Standing Heavy Kick");
 });
 
 test("compileTrial uses explicit label override when specified", () => {

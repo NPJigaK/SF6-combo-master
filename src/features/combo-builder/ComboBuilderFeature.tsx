@@ -7,7 +7,7 @@ import {
 } from "../../domain/trial/builder";
 import { assessComboCandidate, type ComboCandidateAssessment, type ComboCandidateMove } from "../../domain/combo/candidateAssessment";
 import type { OfficialFrameColumns } from "../../domain/combo/frameNormalization";
-import type { MasterMoveData } from "../../domain/trial/compiler";
+import { resolveMoveDisplayName, type MasterMoveData } from "../../domain/trial/compiler";
 import type { TrialCancelKind, TrialConnectType, TrialMode } from "../../domain/trial/schema";
 
 type MasterDataFile = {
@@ -78,10 +78,13 @@ for (const [path, rawMaster] of Object.entries(masterModules)) {
   }
 
   const masterMoves = (rawMaster.moves ?? []) as BuilderMasterMove[];
-  const options = masterMoves.map((move) => ({
-    moveId: move.moveId,
-    label: move.official?.moveName ? `${move.official.moveName} (${move.moveId})` : move.moveId,
-  }));
+  const options = masterMoves.map((move) => {
+    const displayName = resolveMoveDisplayName(move);
+    return {
+      moveId: move.moveId,
+      label: displayName ? `${displayName} (${move.moveId})` : move.moveId,
+    };
+  });
   const moveMap = new Map<string, ComboCandidateMove>();
   for (const move of masterMoves) {
     moveMap.set(move.moveId, {

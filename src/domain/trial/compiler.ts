@@ -23,6 +23,11 @@ export type MasterMoveData = {
     command?: {
       tokens?: CommandToken[];
     };
+    localization?: {
+      ja?: {
+        moveName?: string;
+      };
+    };
   };
 };
 
@@ -69,6 +74,15 @@ function motionFromDirections(directions: number[]): MotionCode | null {
 
 function unique<T>(values: readonly T[]): T[] {
   return Array.from(new Set(values));
+}
+
+function trimOptionalText(value: string | undefined): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed && trimmed.length > 0 ? trimmed : undefined;
+}
+
+export function resolveMoveDisplayName(move: Pick<MasterMoveData, "official">): string | undefined {
+  return trimOptionalText(move.official?.localization?.ja?.moveName) ?? trimOptionalText(move.official?.moveName);
 }
 
 function parseExpectation(moveId: string, tokens: CommandToken[]): TrialStepExpectation {
@@ -193,7 +207,7 @@ export function compileTrial(trial: ComboTrial, options: CompileTrialOptions): C
 
       const tokens = (move.official?.command?.tokens ?? []) as CommandToken[];
       const expect = parseExpectation(step.move, tokens);
-      const label = step.label ?? move.official?.moveName;
+      const label = step.label ?? resolveMoveDisplayName(move);
 
       const compiledStep: CompiledTrialMoveStep = {
         id: `s${index}`,
