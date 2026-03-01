@@ -199,3 +199,27 @@ test("judgeJuggleConnection returns unknown when candidate misc signal lacks tie
   assert.equal(result.result, "unknown");
   assert.equal(result.unknownReason, "tier_b_juggle_limit_missing");
 });
+
+test("judgeJuggleConnection keeps tier A false even when tier B juggle limit is present", () => {
+  const previous = createTierA({ miscellaneous: "High" });
+  const result = judgeJuggleConnection(previous.misc, {
+    juggleStart: "1",
+    juggleIncrease: "1",
+    juggleLimit: "4",
+  });
+
+  assert.equal(result.result, false);
+});
+
+test("judgeJuggleConnection keeps tier A confirmed true even when tier B juggle limit is insufficient", () => {
+  const previous = createTierA({
+    miscellaneous: "Forces a juggle state when hitting a mid-air opponent.",
+  });
+  const result = judgeJuggleConnection(previous.misc, {
+    juggleStart: "1",
+    juggleIncrease: "1",
+    juggleLimit: "0",
+  });
+
+  assert.equal(result.result, true);
+});

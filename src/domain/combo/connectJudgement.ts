@@ -34,7 +34,11 @@ export type TargetConnectionJudgement = {
   unknownReason?: string;
 };
 
-export type TierBJuggleProperties = {
+export type TierBAssistValues = {
+  hitstun?: string | null;
+  hitstop?: string | null;
+  afterDrOnHit?: string | null;
+  afterDrOnBlock?: string | null;
   juggleStart?: string | null;
   juggleIncrease?: string | null;
   juggleLimit?: string | null;
@@ -44,7 +48,7 @@ export type JuggleConnectionJudgement = {
   connect: "juggle";
   result: TriState;
   previousMisc: NormalizedValue<string>;
-  tierBJuggleProperties?: TierBJuggleProperties;
+  tierBAssistValues?: TierBAssistValues;
   unknownReason?: string;
 };
 
@@ -243,14 +247,14 @@ function parseOptionalInteger(rawValue: string | null | undefined): number | nul
 
 export function judgeJuggleConnection(
   previousMisc: NormalizedValue<string>,
-  tierBJuggleProperties?: TierBJuggleProperties,
+  tierBAssistValues?: TierBAssistValues,
 ): JuggleConnectionJudgement {
   if (previousMisc.status !== "known") {
     return {
       connect: "juggle",
       result: "unknown",
       previousMisc,
-      tierBJuggleProperties,
+      tierBAssistValues,
       unknownReason: `prev.misc:${previousMisc.unknownReason}`,
     };
   }
@@ -261,7 +265,7 @@ export function judgeJuggleConnection(
       connect: "juggle",
       result: true,
       previousMisc,
-      tierBJuggleProperties,
+      tierBAssistValues,
     };
   }
 
@@ -270,17 +274,17 @@ export function judgeJuggleConnection(
       connect: "juggle",
       result: false,
       previousMisc,
-      tierBJuggleProperties,
+      tierBAssistValues,
     };
   }
 
-  const juggleLimit = parseOptionalInteger(tierBJuggleProperties?.juggleLimit);
+  const juggleLimit = parseOptionalInteger(tierBAssistValues?.juggleLimit);
   if (juggleLimit !== null && juggleLimit > 0) {
     return {
       connect: "juggle",
       result: true,
       previousMisc,
-      tierBJuggleProperties,
+      tierBAssistValues,
     };
   }
 
@@ -288,7 +292,7 @@ export function judgeJuggleConnection(
     connect: "juggle",
     result: "unknown",
     previousMisc,
-    tierBJuggleProperties,
-    unknownReason: tierBJuggleProperties ? "tier_b_juggle_limit_insufficient" : "tier_b_juggle_limit_missing",
+    tierBAssistValues,
+    unknownReason: tierBAssistValues ? "tier_b_juggle_limit_insufficient" : "tier_b_juggle_limit_missing",
   };
 }
