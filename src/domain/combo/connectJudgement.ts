@@ -26,6 +26,14 @@ export type ChainConnectionJudgement = {
   unknownReason?: string;
 };
 
+export type TargetConnectionJudgement = {
+  connect: "target";
+  result: TriState;
+  explicitTargetRoutes: readonly string[];
+  targetMoveAliases: readonly string[];
+  unknownReason?: string;
+};
+
 function unknownReasonsForLink(
   previousOnHitAdv: NormalizedValue<number>,
   nextStartup: NormalizedValue<number>,
@@ -149,5 +157,55 @@ export function judgeChainConnection(
     previousMisc,
     targetMoveAliases,
     unknownReason: "chain_target_not_explicit",
+  };
+}
+
+function normalizeAliases(aliases: readonly string[]): string[] {
+  return aliases.map((alias) => alias.trim().toLowerCase()).filter((alias) => alias.length > 0);
+}
+
+function hasExplicitTargetRoute(routes: readonly string[], targetAliases: readonly string[]): boolean {
+  return routes.some((route) => {
+    const normalizedRoute = route.trim().toLowerCase();
+    if (normalizedRoute.length === 0) {
+      return false;
+    }
+
+    return targetAliases.some((alias) => normalizedRoute.includes(alias) || alias.includes(normalizedRoute));
+  });
+}
+
+export function judgeTargetConnection(
+  explicitTargetRoutes: readonly string[] | null | undefined,
+  targetMoveAliases: readonly string[],
+): TargetConnectionJudgement {
+  const routes = normalizeAliases(explicitTargetRoutes ?? []);
+  const aliases = normalizeAliases(targetMoveAliases);
+
+  if (routes.length === 0) {
+    return {
+      connect: "target",
+      result: "unknown",
+      explicitTargetRoutes: routes,
+      targetMoveAliases,
+      unknownReason: "target_route_not_provided",
+    };
+  }
+
+  if (aliases.length === 0) {
+    return {
+      connect: "target",
+      result: "unknown",
+      explicitTargetRoutes: routes,
+      targetMoveAliases,
+      unknownReason: "target_alias_not_provided",
+    };
+  }
+
+  return {
+    connect: "target",
+    result: hasExplicitTargetRoute(routes, aliases),
+    explicitTargetRoutes: routes,
+    targetMoveAliases,
   };
 }

@@ -9,6 +9,7 @@ const {
   judgeLinkConnection,
   judgeCancelConnection,
   judgeChainConnection,
+  judgeTargetConnection,
 } = require("../.test-dist/src/domain/combo/connectJudgement.js");
 
 function createTierA(overrides = {}) {
@@ -131,4 +132,30 @@ test("judgeChainConnection returns true when rapid cancel target text is explici
   const result = judgeChainConnection(previous.misc, ["crouching light punch"]);
 
   assert.equal(result.result, true);
+});
+
+test("judgeTargetConnection returns unknown when explicit route data is missing", () => {
+  const result = judgeTargetConnection([], ["light stribog"]);
+
+  assert.equal(result.result, "unknown");
+  assert.equal(result.unknownReason, "target_route_not_provided");
+});
+
+test("judgeTargetConnection returns unknown when target alias is missing", () => {
+  const result = judgeTargetConnection(["standing medium punch > medium stribog"], []);
+
+  assert.equal(result.result, "unknown");
+  assert.equal(result.unknownReason, "target_alias_not_provided");
+});
+
+test("judgeTargetConnection returns true when explicit route includes target alias", () => {
+  const result = judgeTargetConnection(["standing medium punch > medium stribog"], ["medium stribog"]);
+
+  assert.equal(result.result, true);
+});
+
+test("judgeTargetConnection returns false when explicit route excludes target alias", () => {
+  const result = judgeTargetConnection(["standing medium punch > medium torbalan"], ["medium stribog"]);
+
+  assert.equal(result.result, false);
 });
