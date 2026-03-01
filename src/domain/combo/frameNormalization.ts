@@ -156,7 +156,7 @@ export function parseCancelCell(rawValue: string | null | undefined, source: Fra
 
   const tokens = value
     .toUpperCase()
-    .split(/[\\s/+,|]+/)
+    .split(/[\s/+,|]+/)
     .filter(Boolean);
 
   let special: TriState = false;

@@ -55,6 +55,10 @@ test("parseCancelCell resolves true false unknown by cancel kind", () => {
     tier: "A",
     source: "official.columns.cancel",
   });
+  const spaced = parseCancelCell("C SA3", {
+    tier: "A",
+    source: "official.columns.cancel",
+  });
   const wildcard = parseCancelCell("*", {
     tier: "A",
     source: "official.columns.cancel",
@@ -71,6 +75,10 @@ test("parseCancelCell resolves true false unknown by cancel kind", () => {
   assert.deepEqual(
     { special: superOnly.special, super: superOnly.super, dr: superOnly.dr },
     { special: false, super: true, dr: false },
+  );
+  assert.deepEqual(
+    { special: spaced.special, super: spaced.super, dr: spaced.dr },
+    { special: true, super: true, dr: true },
   );
   assert.deepEqual(
     { special: wildcard.special, super: wildcard.super, dr: wildcard.dr },
