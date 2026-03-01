@@ -49,6 +49,7 @@ export type JuggleConnectionJudgement = {
   result: TriState;
   previousMisc: NormalizedValue<string>;
   tierBAssistValues?: TierBAssistValues;
+  usedTierBAssist: boolean;
   unknownReason?: string;
 };
 
@@ -255,6 +256,7 @@ export function judgeJuggleConnection(
       result: "unknown",
       previousMisc,
       tierBAssistValues,
+      usedTierBAssist: false,
       unknownReason: `prev.misc:${previousMisc.unknownReason}`,
     };
   }
@@ -266,6 +268,7 @@ export function judgeJuggleConnection(
       result: true,
       previousMisc,
       tierBAssistValues,
+      usedTierBAssist: false,
     };
   }
 
@@ -275,6 +278,7 @@ export function judgeJuggleConnection(
       result: false,
       previousMisc,
       tierBAssistValues,
+      usedTierBAssist: false,
     };
   }
 
@@ -285,6 +289,7 @@ export function judgeJuggleConnection(
       result: true,
       previousMisc,
       tierBAssistValues,
+      usedTierBAssist: true,
     };
   }
 
@@ -293,6 +298,7 @@ export function judgeJuggleConnection(
     result: "unknown",
     previousMisc,
     tierBAssistValues,
+    usedTierBAssist: false,
     unknownReason: tierBAssistValues ? "tier_b_juggle_limit_insufficient" : "tier_b_juggle_limit_missing",
   };
 }
