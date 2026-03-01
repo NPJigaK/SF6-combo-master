@@ -836,6 +836,75 @@ body {
   font-size: 0.76rem;
 }
 
+.builder-step-suggestions {
+  margin-top: 0.4rem;
+  border: 1px solid #5a3cb7;
+  border-radius: 8px;
+  background: rgba(20, 4, 45, 0.78);
+  padding: 0.45rem 0.5rem;
+}
+
+.builder-step-suggestions-summary {
+  margin: 0;
+  color: #d8c9ff;
+  font-size: 0.75rem;
+}
+
+.builder-step-suggestions-list {
+  margin-top: 0.38rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.26rem;
+}
+
+.builder-step-suggestion {
+  border: 1px solid #6a49c8;
+  border-radius: 8px;
+  background: rgba(35, 11, 82, 0.72);
+  color: #f2ecff;
+  padding: 0.28rem 0.42rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.builder-step-suggestion:hover {
+  background: rgba(54, 19, 116, 0.8);
+}
+
+.builder-step-suggestion.is-selected {
+  box-shadow: 0 0 0 1px rgba(181, 156, 255, 0.65);
+}
+
+.builder-step-suggestion.is-confirmed {
+  border-color: #2f9960;
+}
+
+.builder-step-suggestion.is-candidate {
+  border-color: #b78b32;
+}
+
+.builder-step-suggestion.is-unknown {
+  border-color: #6f6a8c;
+}
+
+.builder-step-suggestion-badge {
+  border-radius: 999px;
+  border: 1px solid #9f84e6;
+  min-width: 1.2rem;
+  text-align: center;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  padding: 0.02rem 0.24rem;
+}
+
+.builder-step-suggestion-label {
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
 .builder-step-actions {
   display: inline-flex;
   gap: 0.35rem;
