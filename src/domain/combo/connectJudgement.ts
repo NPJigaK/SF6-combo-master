@@ -18,6 +18,14 @@ export type CancelConnectionJudgement = {
   unknownReason?: string;
 };
 
+export type ChainConnectionJudgement = {
+  connect: "chain";
+  result: TriState;
+  previousMisc: NormalizedValue<string>;
+  targetMoveAliases: readonly string[];
+  unknownReason?: string;
+};
+
 function unknownReasonsForLink(
   previousOnHitAdv: NormalizedValue<number>,
   nextStartup: NormalizedValue<number>,
@@ -80,5 +88,66 @@ export function judgeCancelConnection(
     result,
     cancel,
     unknownReason: result === "unknown" ? cancel.unknownReason ?? `cancel_${cancelKind}_unknown` : undefined,
+  };
+}
+
+const RAPID_CANCEL_PATTERN = /(can be rapid cancel(?:ed)?|rapid canceled|rapid cancel|連打キャンセル)/i;
+
+function includesAlias(text: string, aliases: readonly string[]): boolean {
+  const normalizedText = text.toLowerCase();
+  return aliases.some((alias) => {
+    const normalizedAlias = alias.trim().toLowerCase();
+    return normalizedAlias.length > 0 && normalizedText.includes(normalizedAlias);
+  });
+}
+
+export function judgeChainConnection(
+  previousMisc: NormalizedValue<string>,
+  targetMoveAliases: readonly string[],
+): ChainConnectionJudgement {
+  if (previousMisc.status !== "known") {
+    return {
+      connect: "chain",
+      result: "unknown",
+      previousMisc,
+      targetMoveAliases,
+      unknownReason: `prev.misc:${previousMisc.unknownReason}`,
+    };
+  }
+
+  if (!RAPID_CANCEL_PATTERN.test(previousMisc.value)) {
+    return {
+      connect: "chain",
+      result: false,
+      previousMisc,
+      targetMoveAliases,
+    };
+  }
+
+  if (targetMoveAliases.length === 0) {
+    return {
+      connect: "chain",
+      result: "unknown",
+      previousMisc,
+      targetMoveAliases,
+      unknownReason: "chain_target_not_provided",
+    };
+  }
+
+  if (includesAlias(previousMisc.value, targetMoveAliases)) {
+    return {
+      connect: "chain",
+      result: true,
+      previousMisc,
+      targetMoveAliases,
+    };
+  }
+
+  return {
+    connect: "chain",
+    result: "unknown",
+    previousMisc,
+    targetMoveAliases,
+    unknownReason: "chain_target_not_explicit",
   };
 }

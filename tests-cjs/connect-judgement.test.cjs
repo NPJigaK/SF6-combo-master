@@ -8,6 +8,7 @@ const {
 const {
   judgeLinkConnection,
   judgeCancelConnection,
+  judgeChainConnection,
 } = require("../.test-dist/src/domain/combo/connectJudgement.js");
 
 function createTierA(overrides = {}) {
@@ -106,4 +107,28 @@ test("judgeCancelConnection returns unknown for wildcard cancel routes", () => {
   assert.match(special.unknownReason, /wildcard_cancel_destination/);
   assert.match(superCancel.unknownReason, /wildcard_cancel_destination/);
   assert.match(dr.unknownReason, /wildcard_cancel_destination/);
+});
+
+test("judgeChainConnection returns false when rapid cancel text is absent", () => {
+  const previous = createTierA({ miscellaneous: "High" });
+  const result = judgeChainConnection(previous.misc, ["crouching light punch"]);
+
+  assert.equal(result.result, false);
+});
+
+test("judgeChainConnection returns unknown when rapid cancel target is not explicit", () => {
+  const previous = createTierA({ miscellaneous: "Can be rapid canceled" });
+  const result = judgeChainConnection(previous.misc, ["crouching light punch"]);
+
+  assert.equal(result.result, "unknown");
+  assert.equal(result.unknownReason, "chain_target_not_explicit");
+});
+
+test("judgeChainConnection returns true when rapid cancel target text is explicit", () => {
+  const previous = createTierA({
+    miscellaneous: "Can be rapid canceled into crouching light punch.",
+  });
+  const result = judgeChainConnection(previous.misc, ["crouching light punch"]);
+
+  assert.equal(result.result, true);
 });
