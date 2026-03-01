@@ -1,4 +1,5 @@
 import { Fragment, type ReactNode } from "react";
+import { applyDirectionModeToDirection, applyDirectionModeToMotion, type DirectionMode } from "../../domain/input/direction";
 import type { CompiledTrialMoveStep, CompiledTrialStep } from "../../domain/trial/compiled";
 import type { TrialEngineSnapshot } from "../../domain/trial-engine/core/types";
 import { TrialStepCard } from "./TrialStepCard";
@@ -9,6 +10,7 @@ type ButtonsRenderer = (buttons: readonly string[]) => ReactNode;
 export type TrialStepListProps = {
   steps: readonly CompiledTrialStep[];
   snapshot: TrialEngineSnapshot;
+  directionMode: DirectionMode;
   renderDirection: DirectionRenderer;
   renderButtons: ButtonsRenderer;
 };
@@ -24,16 +26,17 @@ function parseMotionDirections(motion: string): number[] {
   return directions;
 }
 
-function renderMotionValue(motion: string, renderDirection: DirectionRenderer): ReactNode {
-  const directions = parseMotionDirections(motion);
+function renderMotionValue(motion: string, directionMode: DirectionMode, renderDirection: DirectionRenderer): ReactNode {
+  const displayMotion = applyDirectionModeToMotion(motion, directionMode);
+  const directions = parseMotionDirections(displayMotion);
   if (directions.length === 0) {
-    return motion;
+    return displayMotion;
   }
 
   return (
     <span className="trial-step-motion-seq">
       {directions.map((direction, index) => (
-        <span key={`${motion}-${index}-${direction}`} className="trial-step-motion-token">
+        <span key={`${displayMotion}-${index}-${direction}`} className="trial-step-motion-token">
           {renderDirection(direction)}
         </span>
       ))}
@@ -41,7 +44,12 @@ function renderMotionValue(motion: string, renderDirection: DirectionRenderer): 
   );
 }
 
-function renderStepExpectation(step: CompiledTrialStep, renderDirection: DirectionRenderer, renderButtons: ButtonsRenderer): ReactNode {
+function renderStepExpectation(
+  step: CompiledTrialStep,
+  directionMode: DirectionMode,
+  renderDirection: DirectionRenderer,
+  renderButtons: ButtonsRenderer,
+): ReactNode {
   if (step.kind === "delay") {
     return `Delay ${step.frames}F`;
   }
@@ -53,16 +61,17 @@ function renderStepExpectation(step: CompiledTrialStep, renderDirection: Directi
     parts.push(
       <span key="motion" className="trial-step-expect-group">
         <span className="trial-step-expect-label">motion</span>
-        <span>{renderMotionValue(moveStep.expect.motion, renderDirection)}</span>
+        <span>{renderMotionValue(moveStep.expect.motion, directionMode, renderDirection)}</span>
       </span>,
     );
   }
 
   if (moveStep.expect.direction) {
+    const displayDirection = applyDirectionModeToDirection(moveStep.expect.direction, directionMode);
     parts.push(
       <span key="direction" className="trial-step-expect-group">
         <span className="trial-step-expect-label">dir</span>
-        <span>{renderDirection(moveStep.expect.direction)}</span>
+        <span>{renderDirection(displayDirection)}</span>
       </span>,
     );
   }
@@ -127,7 +136,7 @@ function stepWindowLabel(step: CompiledTrialStep): string {
   return `+${step.windowFromPrev.minAfterPrevFrames}F to +${step.windowFromPrev.maxAfterPrevFrames}F`;
 }
 
-export function TrialStepList({ steps, snapshot, renderDirection, renderButtons }: TrialStepListProps) {
+export function TrialStepList({ steps, snapshot, directionMode, renderDirection, renderButtons }: TrialStepListProps) {
   return (
     <section className="trial-steps-panel">
       <h3>Steps</h3>
@@ -138,7 +147,7 @@ export function TrialStepList({ steps, snapshot, renderDirection, renderButtons 
             title={stepDisplayName(step)}
             stateClass={stepStateClass(stepIndex, snapshot)}
             windowLabel={stepWindowLabel(step)}
-            expectation={renderStepExpectation(step, renderDirection, renderButtons)}
+            expectation={renderStepExpectation(step, directionMode, renderDirection, renderButtons)}
             assessment={snapshot.assessments[stepIndex]}
           />
         ))}

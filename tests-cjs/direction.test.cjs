@@ -2,7 +2,9 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 
 const {
+  applyDirectionModeToDirection,
   applyDirectionModeToInputFrame,
+  applyDirectionModeToMotion,
   mirrorDirection,
 } = require("../.test-dist/src/domain/input/direction.js");
 
@@ -41,4 +43,17 @@ test("applyDirectionModeToInputFrame mirrors only direction field", () => {
 
   const normal = applyDirectionModeToInputFrame(frame, "normal");
   assert.equal(normal, frame);
+});
+
+test("applyDirectionModeToDirection mirrors only on mirrored mode", () => {
+  assert.equal(applyDirectionModeToDirection(4, "normal"), 4);
+  assert.equal(applyDirectionModeToDirection(4, "mirrored"), 6);
+  assert.equal(applyDirectionModeToDirection(2, "mirrored"), 2);
+});
+
+test("applyDirectionModeToMotion mirrors horizontal directions per token", () => {
+  assert.equal(applyDirectionModeToMotion("236", "normal"), "236");
+  assert.equal(applyDirectionModeToMotion("236", "mirrored"), "214");
+  assert.equal(applyDirectionModeToMotion("623", "mirrored"), "421");
+  assert.equal(applyDirectionModeToMotion("22", "mirrored"), "22");
 });

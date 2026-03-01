@@ -89,6 +89,7 @@ export function TrialRunnerPanel({ trial }: { trial: CompiledTrial }) {
         <TrialStepList
           steps={trial.steps}
           snapshot={controller.trialSnapshot}
+          directionMode={controller.directionMode}
           renderDirection={controller.renderDirection}
           renderButtons={controller.renderButtons}
         />

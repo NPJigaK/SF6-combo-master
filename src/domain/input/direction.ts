@@ -19,6 +19,24 @@ export function mirrorDirection(direction: Direction): Direction {
   return MIRRORED_DIRECTION_MAP[direction];
 }
 
+export function applyDirectionModeToDirection(direction: Direction, mode: DirectionMode): Direction {
+  if (mode !== "mirrored") {
+    return direction;
+  }
+  return mirrorDirection(direction);
+}
+
+export function applyDirectionModeToMotion(motion: string, mode: DirectionMode): string {
+  if (mode !== "mirrored") {
+    return motion;
+  }
+
+  return motion.replace(/[1-9]/g, (value) => {
+    const direction = Number(value) as Direction;
+    return String(mirrorDirection(direction));
+  });
+}
+
 export function isDirectionMode(value: string): value is DirectionMode {
   return DIRECTION_MODES.includes(value as DirectionMode);
 }
@@ -39,7 +57,7 @@ export function applyDirectionModeToInputFrame(frame: InputFrame, mode: Directio
     return frame;
   }
 
-  const mirroredDirection = mirrorDirection(frame.direction);
+  const mirroredDirection = applyDirectionModeToDirection(frame.direction, mode);
   if (mirroredDirection === frame.direction) {
     return frame;
   }
