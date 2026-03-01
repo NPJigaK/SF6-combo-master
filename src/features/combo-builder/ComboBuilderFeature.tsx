@@ -5,6 +5,8 @@ import {
   DEFAULT_FOLLOWUP_CONNECT,
   type TrialBuilderMoveStepInput,
 } from "../../domain/trial/builder";
+import { assessComboCandidate, type ComboCandidateAssessment, type ComboCandidateMove } from "../../domain/combo/candidateAssessment";
+import type { OfficialFrameColumns } from "../../domain/combo/frameNormalization";
 import type { MasterMoveData } from "../../domain/trial/compiler";
 import type { TrialCancelKind, TrialConnectType, TrialMode } from "../../domain/trial/schema";
 
@@ -15,6 +17,13 @@ type MasterDataFile = {
 type MoveOption = {
   moveId: string;
   label: string;
+};
+
+type BuilderMasterMove = MasterMoveData & {
+  official?: MasterMoveData["official"] & {
+    columns?: OfficialFrameColumns | null;
+  };
+  supercomboExtras?: ComboCandidateMove["supercomboExtras"];
 };
 
 type BuilderMoveStepDraft = {
@@ -61,24 +70,59 @@ const masterModules = import.meta.glob("../../../data/*/moves.master.json", {
 }) as Record<string, MasterDataFile>;
 
 const moveOptionsByCharacter = new Map<string, MoveOption[]>();
+const moveMapByCharacter = new Map<string, Map<string, ComboCandidateMove>>();
 for (const [path, rawMaster] of Object.entries(masterModules)) {
   const characterId = parseCharacterIdFromMasterPath(path);
   if (!characterId) {
     continue;
   }
 
-  const options = (rawMaster.moves ?? []).map((move) => ({
+  const masterMoves = (rawMaster.moves ?? []) as BuilderMasterMove[];
+  const options = masterMoves.map((move) => ({
     moveId: move.moveId,
     label: move.official?.moveName ? `${move.official.moveName} (${move.moveId})` : move.moveId,
   }));
+  const moveMap = new Map<string, ComboCandidateMove>();
+  for (const move of masterMoves) {
+    moveMap.set(move.moveId, {
+      moveId: move.moveId,
+      official: {
+        moveName: move.official?.moveName,
+        columns: move.official?.columns ?? null,
+      },
+      supercomboExtras: move.supercomboExtras ?? null,
+    });
+  }
 
   options.sort((left, right) => left.label.localeCompare(right.label));
   moveOptionsByCharacter.set(characterId, options);
+  moveMapByCharacter.set(characterId, moveMap);
+}
+
+function buildAssessmentTooltip(assessment: ComboCandidateAssessment): string {
+  const lines = [
+    `connect=${assessment.connect}`,
+    `result=${assessment.result}`,
+    `confidence=${assessment.confidence}`,
+  ];
+
+  if (assessment.unknownReason) {
+    lines.push(`reason=${assessment.unknownReason}`);
+  }
+
+  if (assessment.sources.length > 0) {
+    lines.push(`sources=${assessment.sources.join(", ")}`);
+  }
+
+  return lines.join("\n");
 }
 
 export function ComboBuilderFeature({ characterId }: { characterId: string }) {
   const moveOptions = useMemo(() => {
     return moveOptionsByCharacter.get(characterId) ?? [];
+  }, [characterId]);
+  const moveMap = useMemo(() => {
+    return moveMapByCharacter.get(characterId) ?? new Map<string, ComboCandidateMove>();
   }, [characterId]);
   const [trialName, setTrialName] = useState<string>("New Combo Trial");
   const [trialIdInput, setTrialIdInput] = useState<string>("");
@@ -126,6 +170,26 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
       windowMax: parseOptionalNumber(step.windowMax),
     }));
   }, [steps]);
+  const stepAssessments = useMemo(() => {
+    return steps.map((step, index) => {
+      if (index === 0) {
+        return null;
+      }
+
+      const previousMove = moveMap.get(steps[index - 1].move);
+      const nextMove = moveMap.get(step.move);
+      if (!previousMove || !nextMove) {
+        return null;
+      }
+
+      return assessComboCandidate({
+        connect: step.connect,
+        previousMove,
+        nextMove,
+        cancelKind: step.connect === "cancel" ? step.cancelKind : undefined,
+      });
+    });
+  }, [moveMap, steps]);
 
   const generated = useMemo(() => {
     if (moveOptions.length === 0) {
@@ -298,7 +362,17 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
             {steps.map((step, index) => (
               <article key={`step-${index}`} className="builder-step-card">
                 <div className="builder-step-card-head">
-                  <strong>Step {index + 1}</strong>
+                  <div className="builder-step-meta">
+                    <strong>Step {index + 1}</strong>
+                    {index > 0 && stepAssessments[index] ? (
+                      <span
+                        className={`builder-step-confidence is-${stepAssessments[index].confidence}`}
+                        title={buildAssessmentTooltip(stepAssessments[index])}
+                      >
+                        {stepAssessments[index].confidence}
+                      </span>
+                    ) : null}
+                  </div>
                   <div className="builder-step-actions">
                     <button type="button" onClick={() => moveStep(index, -1)} disabled={index === 0}>
                       Up
@@ -315,6 +389,13 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
                     </button>
                   </div>
                 </div>
+                {index > 0 && stepAssessments[index] ? (
+                  <p className="builder-step-confidence-detail">
+                    {`result=${stepAssessments[index].result}${
+                      stepAssessments[index].unknownReason ? ` (${stepAssessments[index].unknownReason})` : ""
+                    }`}
+                  </p>
+                ) : null}
 
                 <div className="builder-step-grid">
                   <label className="control grow">
