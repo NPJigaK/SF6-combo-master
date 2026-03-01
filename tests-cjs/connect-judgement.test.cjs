@@ -1,8 +1,14 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 
-const { normalizeTierAFrameData } = require("../.test-dist/src/domain/combo/frameNormalization.js");
-const { judgeLinkConnection } = require("../.test-dist/src/domain/combo/connectJudgement.js");
+const {
+  normalizeTierAFrameData,
+  parseCancelCell,
+} = require("../.test-dist/src/domain/combo/frameNormalization.js");
+const {
+  judgeLinkConnection,
+  judgeCancelConnection,
+} = require("../.test-dist/src/domain/combo/connectJudgement.js");
 
 function createTierA(overrides = {}) {
   return normalizeTierAFrameData(
@@ -60,4 +66,44 @@ test("judgeLinkConnection keeps both unknown reasons when both sides are unresol
   assert.equal(result.result, "unknown");
   assert.match(result.unknownReason, /prev\.onHitAdv:knockdown_notation/);
   assert.match(result.unknownReason, /next\.startup:total_frames_notation/);
+});
+
+test("judgeCancelConnection maps C to special super dr as true", () => {
+  const cancel = parseCancelCell("C", {
+    tier: "A",
+    source: "official.columns.cancel",
+  });
+
+  assert.equal(judgeCancelConnection(cancel, "special").result, true);
+  assert.equal(judgeCancelConnection(cancel, "super").result, true);
+  assert.equal(judgeCancelConnection(cancel, "dr").result, true);
+});
+
+test("judgeCancelConnection maps SA tokens to super only", () => {
+  const cancel = parseCancelCell("SA2", {
+    tier: "A",
+    source: "official.columns.cancel",
+  });
+
+  assert.equal(judgeCancelConnection(cancel, "special").result, false);
+  assert.equal(judgeCancelConnection(cancel, "super").result, true);
+  assert.equal(judgeCancelConnection(cancel, "dr").result, false);
+});
+
+test("judgeCancelConnection returns unknown for wildcard cancel routes", () => {
+  const cancel = parseCancelCell("*", {
+    tier: "A",
+    source: "official.columns.cancel",
+  });
+
+  const special = judgeCancelConnection(cancel, "special");
+  const superCancel = judgeCancelConnection(cancel, "super");
+  const dr = judgeCancelConnection(cancel, "dr");
+
+  assert.equal(special.result, "unknown");
+  assert.equal(superCancel.result, "unknown");
+  assert.equal(dr.result, "unknown");
+  assert.match(special.unknownReason, /wildcard_cancel_destination/);
+  assert.match(superCancel.unknownReason, /wildcard_cancel_destination/);
+  assert.match(dr.unknownReason, /wildcard_cancel_destination/);
 });

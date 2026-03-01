@@ -1,4 +1,5 @@
-import type { NormalizedValue, TriState } from "./frameNormalization";
+import type { TrialCancelKind } from "../trial/schema";
+import type { NormalizedCancelValue, NormalizedValue, TriState } from "./frameNormalization";
 
 export type LinkConnectionJudgement = {
   connect: "link";
@@ -6,6 +7,14 @@ export type LinkConnectionJudgement = {
   expression: "prev.onHitAdv >= next.startup";
   previousOnHitAdv: NormalizedValue<number>;
   nextStartup: NormalizedValue<number>;
+  unknownReason?: string;
+};
+
+export type CancelConnectionJudgement = {
+  connect: "cancel";
+  cancelKind: TrialCancelKind;
+  result: TriState;
+  cancel: NormalizedCancelValue;
   unknownReason?: string;
 };
 
@@ -46,5 +55,30 @@ export function judgeLinkConnection(
     expression: "prev.onHitAdv >= next.startup",
     previousOnHitAdv,
     nextStartup,
+  };
+}
+
+function pickCancelState(cancel: NormalizedCancelValue, cancelKind: TrialCancelKind): TriState {
+  if (cancelKind === "special") {
+    return cancel.special;
+  }
+  if (cancelKind === "super") {
+    return cancel.super;
+  }
+  return cancel.dr;
+}
+
+export function judgeCancelConnection(
+  cancel: NormalizedCancelValue,
+  cancelKind: TrialCancelKind,
+): CancelConnectionJudgement {
+  const result = pickCancelState(cancel, cancelKind);
+
+  return {
+    connect: "cancel",
+    cancelKind,
+    result,
+    cancel,
+    unknownReason: result === "unknown" ? cancel.unknownReason ?? `cancel_${cancelKind}_unknown` : undefined,
   };
 }
