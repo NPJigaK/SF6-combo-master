@@ -10,6 +10,7 @@ const {
   judgeCancelConnection,
   judgeChainConnection,
   judgeTargetConnection,
+  judgeJuggleConnection,
 } = require("../.test-dist/src/domain/combo/connectJudgement.js");
 
 function createTierA(overrides = {}) {
@@ -158,4 +159,43 @@ test("judgeTargetConnection returns false when explicit route excludes target al
   const result = judgeTargetConnection(["standing medium punch > medium torbalan"], ["medium stribog"]);
 
   assert.equal(result.result, false);
+});
+
+test("judgeJuggleConnection returns false when misc has no juggle signal", () => {
+  const previous = createTierA({ miscellaneous: "High" });
+  const result = judgeJuggleConnection(previous.misc);
+
+  assert.equal(result.result, false);
+});
+
+test("judgeJuggleConnection returns true when misc has confirmed juggle state text", () => {
+  const previous = createTierA({
+    miscellaneous: "Forces a juggle state when hitting a mid-air opponent.",
+  });
+  const result = judgeJuggleConnection(previous.misc);
+
+  assert.equal(result.result, true);
+});
+
+test("judgeJuggleConnection uses tier B juggle limit when misc signal is only candidate-level", () => {
+  const previous = createTierA({
+    miscellaneous: "Has juggle potential after anti-air hit.",
+  });
+  const result = judgeJuggleConnection(previous.misc, {
+    juggleStart: "1",
+    juggleIncrease: "4",
+    juggleLimit: "4",
+  });
+
+  assert.equal(result.result, true);
+});
+
+test("judgeJuggleConnection returns unknown when candidate misc signal lacks tier B juggle limit", () => {
+  const previous = createTierA({
+    miscellaneous: "Has juggle potential after anti-air hit.",
+  });
+  const result = judgeJuggleConnection(previous.misc);
+
+  assert.equal(result.result, "unknown");
+  assert.equal(result.unknownReason, "tier_b_juggle_limit_missing");
 });

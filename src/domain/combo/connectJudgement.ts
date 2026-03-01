@@ -34,6 +34,20 @@ export type TargetConnectionJudgement = {
   unknownReason?: string;
 };
 
+export type TierBJuggleProperties = {
+  juggleStart?: string | null;
+  juggleIncrease?: string | null;
+  juggleLimit?: string | null;
+};
+
+export type JuggleConnectionJudgement = {
+  connect: "juggle";
+  result: TriState;
+  previousMisc: NormalizedValue<string>;
+  tierBJuggleProperties?: TierBJuggleProperties;
+  unknownReason?: string;
+};
+
 function unknownReasonsForLink(
   previousOnHitAdv: NormalizedValue<number>,
   nextStartup: NormalizedValue<number>,
@@ -207,5 +221,74 @@ export function judgeTargetConnection(
     result: hasExplicitTargetRoute(routes, aliases),
     explicitTargetRoutes: routes,
     targetMoveAliases,
+  };
+}
+
+const CONFIRMED_JUGGLE_PATTERN =
+  /(forces? a juggle state|puts airborne opponents into (?:a )?limited juggle state|空中ヒット時に.*?浮かせ)/i;
+const CANDIDATE_JUGGLE_PATTERN = /(juggle|mid-air opponent|airborne opponent|空中ヒット|空中)/i;
+
+function parseOptionalInteger(rawValue: string | null | undefined): number | null {
+  if (!rawValue) {
+    return null;
+  }
+
+  const value = rawValue.trim();
+  if (!/^-?\d+$/.test(value)) {
+    return null;
+  }
+
+  return Number.parseInt(value, 10);
+}
+
+export function judgeJuggleConnection(
+  previousMisc: NormalizedValue<string>,
+  tierBJuggleProperties?: TierBJuggleProperties,
+): JuggleConnectionJudgement {
+  if (previousMisc.status !== "known") {
+    return {
+      connect: "juggle",
+      result: "unknown",
+      previousMisc,
+      tierBJuggleProperties,
+      unknownReason: `prev.misc:${previousMisc.unknownReason}`,
+    };
+  }
+
+  const miscText = previousMisc.value;
+  if (CONFIRMED_JUGGLE_PATTERN.test(miscText)) {
+    return {
+      connect: "juggle",
+      result: true,
+      previousMisc,
+      tierBJuggleProperties,
+    };
+  }
+
+  if (!CANDIDATE_JUGGLE_PATTERN.test(miscText)) {
+    return {
+      connect: "juggle",
+      result: false,
+      previousMisc,
+      tierBJuggleProperties,
+    };
+  }
+
+  const juggleLimit = parseOptionalInteger(tierBJuggleProperties?.juggleLimit);
+  if (juggleLimit !== null && juggleLimit > 0) {
+    return {
+      connect: "juggle",
+      result: true,
+      previousMisc,
+      tierBJuggleProperties,
+    };
+  }
+
+  return {
+    connect: "juggle",
+    result: "unknown",
+    previousMisc,
+    tierBJuggleProperties,
+    unknownReason: tierBJuggleProperties ? "tier_b_juggle_limit_insufficient" : "tier_b_juggle_limit_missing",
   };
 }
