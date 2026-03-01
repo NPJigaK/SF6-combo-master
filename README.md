@@ -21,3 +21,9 @@ Web Gamepad API で全てのコントローラーを対応しています。
 | PS3 | Web Gamepad API | 互換対応 |
 | Switch | Web Gamepad API | 互換対応 |
 | その他未対応コントローラー | Web Gamepad API | 互換対応 |
+
+## Validation Checklist
+
+When updating official snapshot data (`frame.raw.json` / `moves.master.json`), follow:
+
+- `docs/official-snapshot-validation-checklist.md`
