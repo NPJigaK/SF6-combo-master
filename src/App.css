@@ -850,6 +850,12 @@ body {
   font-size: 0.75rem;
 }
 
+.builder-step-suggestions-hint {
+  margin: 0.22rem 0 0;
+  color: #b9abd9;
+  font-size: 0.7rem;
+}
+
 .builder-step-suggestions-list {
   margin-top: 0.38rem;
   display: flex;

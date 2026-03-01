@@ -24,6 +24,13 @@ type MoveOption = {
   label: string;
 };
 
+type GroupedMoveOptions = {
+  suggested: MoveOption[];
+  connectable: MoveOption[];
+  unknown: MoveOption[];
+  mismatch: MoveOption[];
+};
+
 type BuilderMasterMove = MasterMoveData & {
   official?: MasterMoveData["official"] & {
     columns?: OfficialFrameColumns | null;
@@ -152,6 +159,46 @@ function rankForSuggestions(rankedCandidates: readonly RankedComboCandidateMove[
     return [...connectable, ...unknown].slice(0, 8).map((candidate) => candidate.move.moveId);
   }
   return unknown.slice(0, 8).map((candidate) => candidate.move.moveId);
+}
+
+function buildGroupedMoveOptions(
+  stepAnalysis: StepCandidateAnalysis,
+  moveOptionById: ReadonlyMap<string, MoveOption>,
+): GroupedMoveOptions {
+  const suggestedMoveIdSet = new Set(stepAnalysis.suggestedMoveIds);
+  const groups: GroupedMoveOptions = {
+    suggested: [],
+    connectable: [],
+    unknown: [],
+    mismatch: [],
+  };
+
+  for (const moveId of stepAnalysis.orderedMoveIds) {
+    const moveOption = moveOptionById.get(moveId);
+    const assessment = stepAnalysis.confidenceByMoveId.get(moveId);
+    if (!moveOption || !assessment) {
+      continue;
+    }
+
+    if (suggestedMoveIdSet.has(moveId)) {
+      groups.suggested.push(moveOption);
+      continue;
+    }
+
+    if (assessment.result === true) {
+      groups.connectable.push(moveOption);
+      continue;
+    }
+
+    if (assessment.result === "unknown") {
+      groups.unknown.push(moveOption);
+      continue;
+    }
+
+    groups.mismatch.push(moveOption);
+  }
+
+  return groups;
 }
 
 export function ComboBuilderFeature({ characterId }: { characterId: string }) {
@@ -442,11 +489,16 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
             {steps.map((step, index) => {
               const stepAnalysis = stepAnalyses[index];
               const selectedAssessment = stepAnalysis?.selectedAssessment ?? null;
-              const orderedMoveOptions = stepAnalysis
-                ? stepAnalysis.orderedMoveIds
-                    .map((moveId) => moveOptionById.get(moveId))
-                    .filter((option): option is MoveOption => Boolean(option))
-                : moveOptions;
+              const groupedMoveOptions = stepAnalysis ? buildGroupedMoveOptions(stepAnalysis, moveOptionById) : null;
+              const renderMoveOption = (option: MoveOption) => {
+                const assessment = stepAnalysis?.confidenceByMoveId.get(option.moveId);
+                const prefix = assessment ? `${moveAssessmentBadgeLabel(assessment)} ` : "";
+                return (
+                  <option key={option.moveId} value={option.moveId}>
+                    {`${prefix}${option.label}`}
+                  </option>
+                );
+              };
 
               return (
                 <article key={`step-${index}`} className="builder-step-card">
@@ -492,6 +544,7 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
                           ? `Connectable ${stepAnalysis.connectableCount} / Unknown ${stepAnalysis.unknownCount} / Mismatch ${stepAnalysis.falseCount}`
                           : `No confirmed connections in current data. Unknown ${stepAnalysis.unknownCount} / Mismatch ${stepAnalysis.falseCount}`}
                       </p>
+                      <p className="builder-step-suggestions-hint">Suggested moves are pinned at the top of the Move list.</p>
                       {stepAnalysis.suggestedMoveIds.length > 0 ? (
                         <div className="builder-step-suggestions-list">
                           {stepAnalysis.suggestedMoveIds.map((moveId) => {
@@ -529,15 +582,32 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
                     <label className="control grow">
                       <span>Move</span>
                       <select value={step.move} onChange={(event) => updateStep(index, { move: event.currentTarget.value })}>
-                        {orderedMoveOptions.map((option) => {
-                          const assessment = stepAnalysis?.confidenceByMoveId.get(option.moveId);
-                          const prefix = assessment ? `${moveAssessmentBadgeLabel(assessment)} ` : "";
-                          return (
-                            <option key={option.moveId} value={option.moveId}>
-                              {`${prefix}${option.label}`}
-                            </option>
-                          );
-                        })}
+                        {groupedMoveOptions ? (
+                          <>
+                            {groupedMoveOptions.suggested.length > 0 ? (
+                              <optgroup label={`Suggested (${groupedMoveOptions.suggested.length})`}>
+                                {groupedMoveOptions.suggested.map(renderMoveOption)}
+                              </optgroup>
+                            ) : null}
+                            {groupedMoveOptions.connectable.length > 0 ? (
+                              <optgroup label={`Connectable (${groupedMoveOptions.connectable.length})`}>
+                                {groupedMoveOptions.connectable.map(renderMoveOption)}
+                              </optgroup>
+                            ) : null}
+                            {groupedMoveOptions.unknown.length > 0 ? (
+                              <optgroup label={`Unknown (${groupedMoveOptions.unknown.length})`}>
+                                {groupedMoveOptions.unknown.map(renderMoveOption)}
+                              </optgroup>
+                            ) : null}
+                            {groupedMoveOptions.mismatch.length > 0 ? (
+                              <optgroup label={`Mismatch (${groupedMoveOptions.mismatch.length})`}>
+                                {groupedMoveOptions.mismatch.map(renderMoveOption)}
+                              </optgroup>
+                            ) : null}
+                          </>
+                        ) : (
+                          moveOptions.map(renderMoveOption)
+                        )}
                       </select>
                     </label>
 
