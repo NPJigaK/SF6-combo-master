@@ -748,6 +748,25 @@ body {
   font-size: 1rem;
 }
 
+.builder-step-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.builder-followup-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #d7cbf8;
+  font-size: 0.74rem;
+}
+
+.builder-followup-filter select {
+  min-width: 10rem;
+}
+
 .builder-step-header button,
 .builder-step-actions button,
 .builder-preview-head button {
@@ -854,6 +873,26 @@ body {
   margin: 0.22rem 0 0;
   color: #b9abd9;
   font-size: 0.7rem;
+}
+
+.builder-step-apply-best {
+  margin-top: 0.34rem;
+  border: 1px solid #5f8fd8;
+  border-radius: 8px;
+  background: rgba(24, 53, 111, 0.75);
+  color: #e5f1ff;
+  padding: 0.26rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.73rem;
+}
+
+.builder-step-apply-best:hover {
+  background: rgba(33, 72, 149, 0.82);
+}
+
+.builder-step-apply-best:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .builder-step-suggestions-list {

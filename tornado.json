@@ -1,8 +1,8 @@
 {
   "project_dir": ".",
-  "review_dir": "docs/reviews",
+  "review_dir": ".",
   "max_review_cycles": 2,
-  "review_interval": 2,
+  "review_interval": 1,
   "agents": [
     {
       "id": "dev-1",

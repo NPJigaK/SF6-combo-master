@@ -31,6 +31,8 @@ type GroupedMoveOptions = {
   mismatch: MoveOption[];
 };
 
+type MoveOptionFilterMode = "recommended" | "all";
+
 type BuilderMasterMove = MasterMoveData & {
   official?: MasterMoveData["official"] & {
     columns?: OfficialFrameColumns | null;
@@ -60,6 +62,7 @@ type StepCandidateAnalysis = {
 const CONNECT_OPTIONS: readonly TrialConnectType[] = ["link", "cancel", "chain", "target"];
 const CANCEL_KIND_OPTIONS: readonly TrialCancelKind[] = ["special", "super", "dr"];
 const MODE_OPTIONS: readonly TrialMode[] = ["timeline", "stepper"];
+const FOLLOWUP_MOVE_FILTER_OPTIONS: readonly MoveOptionFilterMode[] = ["recommended", "all"];
 
 function parseCharacterIdFromMasterPath(path: string): string | null {
   const match = path.match(/\/data\/([^/]+)\/moves\.master\.json$/);
@@ -201,6 +204,33 @@ function buildGroupedMoveOptions(
   return groups;
 }
 
+function hasRecommendedMoveOptions(groups: GroupedMoveOptions): boolean {
+  return groups.suggested.length > 0 || groups.connectable.length > 0 || groups.unknown.length > 0;
+}
+
+function filterGroupedMoveOptions(
+  groups: GroupedMoveOptions,
+  filterMode: MoveOptionFilterMode,
+  selectedMoveId: string,
+): GroupedMoveOptions {
+  if (filterMode === "all" || !hasRecommendedMoveOptions(groups)) {
+    return groups;
+  }
+
+  const selectedMismatch = groups.mismatch.find((option) => option.moveId === selectedMoveId);
+  return {
+    ...groups,
+    mismatch: selectedMismatch ? [selectedMismatch] : [],
+  };
+}
+
+function mismatchGroupLabel(groups: GroupedMoveOptions, filterMode: MoveOptionFilterMode): string {
+  if (filterMode === "recommended" && groups.mismatch.length === 1 && hasRecommendedMoveOptions(groups)) {
+    return "Current Mismatch (1)";
+  }
+  return `Mismatch (${groups.mismatch.length})`;
+}
+
 export function ComboBuilderFeature({ characterId }: { characterId: string }) {
   const moveOptions = useMemo(() => {
     return moveOptionsByCharacter.get(characterId) ?? [];
@@ -220,6 +250,7 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
   const [trialIdInput, setTrialIdInput] = useState<string>("");
   const [notesText, setNotesText] = useState<string>("");
   const [defaultMode, setDefaultMode] = useState<TrialMode>("timeline");
+  const [followupMoveFilterMode, setFollowupMoveFilterMode] = useState<MoveOptionFilterMode>("recommended");
   const [allowModeOverride, setAllowModeOverride] = useState<boolean>(true);
   const [steps, setSteps] = useState<BuilderMoveStepDraft[]>([]);
   const [copyStatus, setCopyStatus] = useState<string>("");
@@ -480,9 +511,29 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
 
           <div className="builder-step-header">
             <h3>Steps</h3>
-            <button type="button" onClick={addStep} disabled={moveOptions.length === 0}>
-              Add Step
-            </button>
+            <div className="builder-step-header-actions">
+              <label className="builder-followup-filter">
+                <span>Follow-up Move list</span>
+                <select
+                  value={followupMoveFilterMode}
+                  onChange={(event) => {
+                    const value = event.currentTarget.value;
+                    if (value === "recommended" || value === "all") {
+                      setFollowupMoveFilterMode(value);
+                    }
+                  }}
+                >
+                  {FOLLOWUP_MOVE_FILTER_OPTIONS.map((mode) => (
+                    <option key={mode} value={mode}>
+                      {mode === "recommended" ? "Recommended first" : "Show all"}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button type="button" onClick={addStep} disabled={moveOptions.length === 0}>
+                Add Step
+              </button>
+            </div>
           </div>
 
           <div className="builder-step-list">
@@ -490,6 +541,11 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
               const stepAnalysis = stepAnalyses[index];
               const selectedAssessment = stepAnalysis?.selectedAssessment ?? null;
               const groupedMoveOptions = stepAnalysis ? buildGroupedMoveOptions(stepAnalysis, moveOptionById) : null;
+              const filteredMoveOptions = groupedMoveOptions
+                ? filterGroupedMoveOptions(groupedMoveOptions, followupMoveFilterMode, step.move)
+                : null;
+              const bestSuggestedMoveId = stepAnalysis?.suggestedMoveIds[0] ?? null;
+              const isBestSuggestedMoveSelected = bestSuggestedMoveId === step.move;
               const renderMoveOption = (option: MoveOption) => {
                 const assessment = stepAnalysis?.confidenceByMoveId.get(option.moveId);
                 const prefix = assessment ? `${moveAssessmentBadgeLabel(assessment)} ` : "";
@@ -544,7 +600,21 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
                           ? `Connectable ${stepAnalysis.connectableCount} / Unknown ${stepAnalysis.unknownCount} / Mismatch ${stepAnalysis.falseCount}`
                           : `No confirmed connections in current data. Unknown ${stepAnalysis.unknownCount} / Mismatch ${stepAnalysis.falseCount}`}
                       </p>
-                      <p className="builder-step-suggestions-hint">Suggested moves are pinned at the top of the Move list.</p>
+                      <p className="builder-step-suggestions-hint">
+                        {followupMoveFilterMode === "recommended"
+                          ? "Move list hides mismatch options unless the current move is mismatch."
+                          : "Move list shows all options, including mismatch moves."}
+                      </p>
+                      {bestSuggestedMoveId ? (
+                        <button
+                          type="button"
+                          className="builder-step-apply-best"
+                          onClick={() => updateStep(index, { move: bestSuggestedMoveId })}
+                          disabled={isBestSuggestedMoveSelected}
+                        >
+                          {isBestSuggestedMoveSelected ? "Best suggestion selected" : "Use best suggestion"}
+                        </button>
+                      ) : null}
                       {stepAnalysis.suggestedMoveIds.length > 0 ? (
                         <div className="builder-step-suggestions-list">
                           {stepAnalysis.suggestedMoveIds.map((moveId) => {
@@ -582,26 +652,26 @@ export function ComboBuilderFeature({ characterId }: { characterId: string }) {
                     <label className="control grow">
                       <span>Move</span>
                       <select value={step.move} onChange={(event) => updateStep(index, { move: event.currentTarget.value })}>
-                        {groupedMoveOptions ? (
+                        {filteredMoveOptions ? (
                           <>
-                            {groupedMoveOptions.suggested.length > 0 ? (
-                              <optgroup label={`Suggested (${groupedMoveOptions.suggested.length})`}>
-                                {groupedMoveOptions.suggested.map(renderMoveOption)}
+                            {filteredMoveOptions.suggested.length > 0 ? (
+                              <optgroup label={`Suggested (${filteredMoveOptions.suggested.length})`}>
+                                {filteredMoveOptions.suggested.map(renderMoveOption)}
                               </optgroup>
                             ) : null}
-                            {groupedMoveOptions.connectable.length > 0 ? (
-                              <optgroup label={`Connectable (${groupedMoveOptions.connectable.length})`}>
-                                {groupedMoveOptions.connectable.map(renderMoveOption)}
+                            {filteredMoveOptions.connectable.length > 0 ? (
+                              <optgroup label={`Connectable (${filteredMoveOptions.connectable.length})`}>
+                                {filteredMoveOptions.connectable.map(renderMoveOption)}
                               </optgroup>
                             ) : null}
-                            {groupedMoveOptions.unknown.length > 0 ? (
-                              <optgroup label={`Unknown (${groupedMoveOptions.unknown.length})`}>
-                                {groupedMoveOptions.unknown.map(renderMoveOption)}
+                            {filteredMoveOptions.unknown.length > 0 ? (
+                              <optgroup label={`Unknown (${filteredMoveOptions.unknown.length})`}>
+                                {filteredMoveOptions.unknown.map(renderMoveOption)}
                               </optgroup>
                             ) : null}
-                            {groupedMoveOptions.mismatch.length > 0 ? (
-                              <optgroup label={`Mismatch (${groupedMoveOptions.mismatch.length})`}>
-                                {groupedMoveOptions.mismatch.map(renderMoveOption)}
+                            {filteredMoveOptions.mismatch.length > 0 ? (
+                              <optgroup label={mismatchGroupLabel(filteredMoveOptions, followupMoveFilterMode)}>
+                                {filteredMoveOptions.mismatch.map(renderMoveOption)}
                               </optgroup>
                             ) : null}
                           </>

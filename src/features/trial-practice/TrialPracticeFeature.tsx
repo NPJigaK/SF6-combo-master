@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { TrialRunnerPanel } from "../../components/TrialRunnerPanel";
 import type { CompiledTrial } from "../../domain/trial/compiled";
 import { compileTrial, type MasterMoveData } from "../../domain/trial/compiler";
+import { calculateTrialBaseDamage } from "../../domain/trial/damage";
 import type { ComboTrial } from "../../domain/trial/schema";
 
 type MasterDataFile = {
@@ -11,6 +12,7 @@ type MasterDataFile = {
 type TrialOption = {
   id: string;
   label: string;
+  damage: number | null;
   trial: CompiledTrial;
 };
 
@@ -61,9 +63,11 @@ for (const [characterId, trials] of rawTrialsByCharacter.entries()) {
   const masterMoves = masterMovesByCharacter.get(characterId) ?? [];
   const options = trials.map((trial) => {
     const compiled = compileTrial(trial, { masterMoves });
+    const damage = calculateTrialBaseDamage(trial, masterMoves);
     return {
       id: compiled.id,
-      label: compiled.name,
+      label: damage === null ? `${compiled.name} (DMG ?)` : `${compiled.name} (DMG ${damage.toLocaleString()})`,
+      damage,
       trial: compiled,
     };
   });
@@ -89,6 +93,9 @@ export function TrialPracticeFeature({ characterId }: { characterId: string }) {
   const selectedTrial = useMemo(() => {
     return trialOptions.find((option) => option.id === selectedTrialId)?.trial ?? trialOptions[0]?.trial ?? null;
   }, [selectedTrialId, trialOptions]);
+  const selectedDamage = useMemo(() => {
+    return trialOptions.find((option) => option.id === selectedTrialId)?.damage ?? trialOptions[0]?.damage ?? null;
+  }, [selectedTrialId, trialOptions]);
 
   return (
     <>
@@ -108,6 +115,9 @@ export function TrialPracticeFeature({ characterId }: { characterId: string }) {
           </select>
         </label>
       </section>
+      <p className="provider-line">
+        {selectedDamage === null ? "Estimated base damage: unavailable" : `Estimated base damage: ${selectedDamage}`}
+      </p>
 
       {selectedTrial ? (
         <TrialRunnerPanel trial={selectedTrial} />
