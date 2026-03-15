@@ -1,9 +1,0 @@
-{
-  "id": "jp_m2_crouch_lp_stand_lp_light_stribog",
-  "name": "JP Combo 2: しゃがみ小P > 立ち小P > 弱ストリボーグ",
-  "steps": [
-    { "move": "sf6.jp.crouchingLightPunch" },
-    { "move": "sf6.jp.standingLightPunch", "connect": "link" },
-    { "move": "sf6.jp.lStribog", "connect": "cancel", "cancelKind": "special" }
-  ]
-}
