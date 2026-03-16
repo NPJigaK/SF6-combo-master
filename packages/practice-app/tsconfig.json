@@ -3,6 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "./src",
+    "types": ["node", "vitest/globals", "@testing-library/jest-dom"],
     "tsBuildInfoFile": "./node_modules/.cache/tsconfig.tsbuildinfo"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

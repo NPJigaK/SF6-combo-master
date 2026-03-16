@@ -14,11 +14,14 @@ import referenceRulesetData from "./content/rulesets/sf6cm-reference-ruleset.v1.
 export { terminalRequirementKinds, type BuiltInDrill, type BuiltInDrillCatalog } from "./contracts/drill";
 export {
   failureKeys,
+  type FrameSpanSummary,
   motionFamilyIds,
   type FailureKey,
   type InputProfile,
   type LocaleCatalog,
+  type MatchClassification,
   type MotionFamilyId,
+  type RecentAttemptSummaryRecord,
   type ReferenceRuleset,
   type TerminalEvent,
 } from "./contracts/ruleset";

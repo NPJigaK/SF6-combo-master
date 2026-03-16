@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "SF6 Combo Master",
+  "version": "0.1.0",
+  "identifier": "com.sf6cm.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm --filter @sf6cm/desktop dev",
+    "beforeBuildCommand": "pnpm --filter @sf6cm/desktop build",
+    "devUrl": "http://localhost:5173",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "SF6 Combo Master",
+        "width": 1440,
+        "height": 960,
+        "resizable": true
+      }
+    ]
+  },
+  "bundle": {
+    "active": true,
+    "targets": "nsis"
+  }
+}

@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
 
+import {
+  normalizeBrowserGamepadSample,
+  type BrowserGamepadSnapshot,
+} from "../../../apps/web/src/platform/browserGamepadAdapter";
+import {
+  normalizeDesktopInputEvent,
+  type DesktopInputBridgeEvent,
+} from "../../../apps/desktop/src/platform/tauriInputBridge";
 import type { BuiltInDrill } from "../src/contracts/drill";
 import type { FrameTimeline, InputSample } from "../src/grading/frameTimeline";
 import { appendInputSample, createFrameTimeline } from "../src/grading/frameTimeline";
@@ -137,5 +145,41 @@ describe("grading core", () => {
         "missing_step",
       ]),
     ).toBe("terminal_input_mismatch");
+  });
+
+  it("keeps browser and desktop shells aligned by grading the same normalized timeline", () => {
+    const browserSnapshots: BrowserGamepadSnapshot[] = [
+      { timestampMs: 0, mapping: "standard", axes: [0, 1], buttons: [] },
+      { timestampMs: 16.7, mapping: "standard", axes: [1, 1], buttons: [] },
+      { timestampMs: 33.4, mapping: "standard", axes: [1, 0], buttons: ["LP"] },
+    ];
+    const desktopEvents: DesktopInputBridgeEvent[] = [
+      { timestampMs: 0, direction: { down: true }, buttons: [] },
+      { timestampMs: 16.7, direction: { down: true, forward: true }, buttons: [] },
+      { timestampMs: 33.4, direction: { forward: true }, buttons: ["LP"] },
+    ];
+
+    const browserSamples = browserSnapshots.map((snapshot) => normalizeBrowserGamepadSample(snapshot));
+    const desktopSamples = desktopEvents.map((event) => normalizeDesktopInputEvent(event));
+
+    expect(browserSamples).toEqual(desktopSamples);
+
+    const drill = findDrill("qcf_punch");
+    const browserResult = gradeAttempt({
+      frames: buildTimeline(browserSamples).frames,
+      drill,
+      ruleset: referenceRuleset,
+      inputProfile,
+    });
+    const desktopResult = gradeAttempt({
+      frames: buildTimeline(desktopSamples).frames,
+      drill,
+      ruleset: referenceRuleset,
+      inputProfile,
+    });
+
+    expect(browserResult).toEqual(desktopResult);
+    expect(browserResult.passed).toBe(true);
+    expect(browserResult.match_kind).toBe("canonical");
   });
 });
