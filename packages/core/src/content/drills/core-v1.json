@@ -1,0 +1,125 @@
+{
+  "catalog_id": "sf6cm-core-drills@1",
+  "drills": [
+    {
+      "drill_id": "qcf_punch",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "QCF",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "punch",
+      "notation_tokens": ["QCF", "+", "P"],
+      "title_key": "drills.qcf_punch.title",
+      "short_description_key": "drills.qcf_punch.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.QCF",
+        "sort_order": 1
+      }
+    },
+    {
+      "drill_id": "qcb_kick",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "QCB",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "kick",
+      "notation_tokens": ["QCB", "+", "K"],
+      "title_key": "drills.qcb_kick.title",
+      "short_description_key": "drills.qcb_kick.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.QCB",
+        "sort_order": 2
+      }
+    },
+    {
+      "drill_id": "dpf_punch",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "DPF",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "punch",
+      "notation_tokens": ["DPF", "+", "P"],
+      "title_key": "drills.dpf_punch.title",
+      "short_description_key": "drills.dpf_punch.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.DPF",
+        "sort_order": 3
+      }
+    },
+    {
+      "drill_id": "dpb_kick",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "DPB",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "kick",
+      "notation_tokens": ["DPB", "+", "K"],
+      "title_key": "drills.dpb_kick.title",
+      "short_description_key": "drills.dpb_kick.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.DPB",
+        "sort_order": 4
+      }
+    },
+    {
+      "drill_id": "charge_back_forward_punch",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "charge_back_forward",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "punch",
+      "notation_tokens": ["charge", "back", "forward", "+", "P"],
+      "title_key": "drills.charge_back_forward_punch.title",
+      "short_description_key": "drills.charge_back_forward_punch.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.charge_back_forward",
+        "sort_order": 5
+      }
+    },
+    {
+      "drill_id": "charge_down_up_kick",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "charge_down_up",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "kick",
+      "notation_tokens": ["charge", "down", "up", "+", "K"],
+      "title_key": "drills.charge_down_up_kick.title",
+      "short_description_key": "drills.charge_down_up_kick.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.charge_down_up",
+        "sort_order": 6
+      }
+    },
+    {
+      "drill_id": "double_qcf_punch",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "double_QCF",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "punch",
+      "notation_tokens": ["double_QCF", "+", "P"],
+      "title_key": "drills.double_qcf_punch.title",
+      "short_description_key": "drills.double_qcf_punch.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.double_QCF",
+        "sort_order": 7
+      }
+    },
+    {
+      "drill_id": "double_qcb_kick",
+      "reference_ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+      "motion_family_id": "double_QCB",
+      "terminal_requirement_kind": "button_family",
+      "terminal_requirement_value": "kick",
+      "notation_tokens": ["double_QCB", "+", "K"],
+      "title_key": "drills.double_qcb_kick.title",
+      "short_description_key": "drills.double_qcb_kick.description",
+      "curriculum": {
+        "track_id": "core-v1",
+        "family_label_key": "motion_family_labels.double_QCB",
+        "sort_order": 8
+      }
+    }
+  ]
+}

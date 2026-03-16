@@ -1,0 +1,53 @@
+{
+  "locale": "ja",
+  "motion_family_labels": {
+    "QCF": "波動 / QCF",
+    "QCB": "逆波動 / QCB",
+    "DPF": "昇竜 / DPF",
+    "DPB": "逆昇竜 / DPB",
+    "charge_back_forward": "溜め後ろ前",
+    "charge_down_up": "溜め下上",
+    "double_QCF": "真空 / double QCF",
+    "double_QCB": "逆真空 / double QCB"
+  },
+  "drills": {
+    "drills.qcf_punch.title": "波動 / QCF",
+    "drills.qcf_punch.description": "下から前まで回して、最後はパンチ系ボタンで入力します。",
+    "drills.qcb_kick.title": "逆波動 / QCB",
+    "drills.qcb_kick.description": "下から後ろまで回して、最後はキック系ボタンで入力します。",
+    "drills.dpf_punch.title": "昇竜 / DPF",
+    "drills.dpf_punch.description": "前、下、斜め前の順に入れて、最後はパンチで締めます。",
+    "drills.dpb_kick.title": "逆昇竜 / DPB",
+    "drills.dpb_kick.description": "後ろ、下、斜め後ろの順に入れて、最後はキックで締めます。",
+    "drills.charge_back_forward_punch.title": "溜め後ろ前",
+    "drills.charge_back_forward_punch.description": "後ろを十分に溜めてから前へ入れ、最後はパンチで入力します。",
+    "drills.charge_down_up_kick.title": "溜め下上",
+    "drills.charge_down_up_kick.description": "下を十分に溜めてから上へ入れ、最後はキックで入力します。",
+    "drills.double_qcf_punch.title": "真空 / double QCF",
+    "drills.double_qcf_punch.description": "二回の QCF を完成させてから、最後はパンチで入力します。",
+    "drills.double_qcb_kick.title": "逆真空 / double QCB",
+    "drills.double_qcb_kick.description": "二回の QCB を完成させてから、最後はキックで入力します。",
+    "profiles.default_press_only": "標準の押下優先プロファイル"
+  },
+  "failure_messages": {
+    "missing_step": "必要な方向入力が足りませんでした。",
+    "extra_direction_break": "余計な方向入力で軌道が途切れました。",
+    "window_expired": "攻撃ボタンまでに時間がかかりすぎました。",
+    "charge_insufficient": "溜め時間が足りませんでした。",
+    "terminal_input_mismatch": "最後の攻撃入力がドリル条件と一致しませんでした。",
+    "release_not_allowed": "このプロファイルはボタン押下で判定するため、離し入力は無効です。",
+    "shortcut_not_whitelisted": "そのショートカットは固定ルールセットで許可されていません。"
+  },
+  "support_messages": {
+    "web": {
+      "unsupported_browser": "Web の採点は、対応する Chromium 系ブラウザか Firefox のデスクトップ版で利用してください。",
+      "standard_mapping_required": "Web の採点には標準マッピングのゲームパッドが必要です。"
+    },
+    "desktop": {
+      "unsupported_device": "デスクトップ版の採点には XInput 対応コントローラーが必要です。"
+    },
+    "keyboard": {
+      "graded_practice_unavailable": "キーボードは操作用のみで、採点付き練習には使えません。"
+    }
+  }
+}

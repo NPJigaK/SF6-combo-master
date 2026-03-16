@@ -1,0 +1,18 @@
+{
+  "name": "@sf6cm/practice-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest --root ../.. --project practice-app"
+  },
+  "dependencies": {
+    "@sf6cm/core": "workspace:*",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

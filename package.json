@@ -1,0 +1,30 @@
+{
+  "name": "sf6-combo-master",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.26.2",
+  "scripts": {
+    "typecheck": "pnpm --recursive --filter \"@sf6cm/*\" typecheck",
+    "test": "pnpm --filter @sf6cm/core test",
+    "build:web": "pnpm --filter @sf6cm/web build",
+    "build:desktop": "pnpm --filter @sf6cm/desktop build",
+    "validate": "pnpm typecheck && pnpm test"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vitest": "^3.2.4"
+  }
+}

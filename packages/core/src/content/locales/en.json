@@ -1,0 +1,53 @@
+{
+  "locale": "en",
+  "motion_family_labels": {
+    "QCF": "Quarter Circle Forward / QCF",
+    "QCB": "Quarter Circle Back / QCB",
+    "DPF": "Dragon Punch Forward / DPF",
+    "DPB": "Dragon Punch Back / DPB",
+    "charge_back_forward": "Charge Back Forward",
+    "charge_down_up": "Charge Down Up",
+    "double_QCF": "Double Quarter Circle Forward",
+    "double_QCB": "Double Quarter Circle Back"
+  },
+  "drills": {
+    "drills.qcf_punch.title": "Quarter Circle Forward / QCF",
+    "drills.qcf_punch.description": "Roll from down to forward, then finish with a punch-family attack.",
+    "drills.qcb_kick.title": "Quarter Circle Back / QCB",
+    "drills.qcb_kick.description": "Roll from down to back, then finish with a kick-family attack.",
+    "drills.dpf_punch.title": "Dragon Punch Forward / DPF",
+    "drills.dpf_punch.description": "Tap forward, move to down, then finish on down-forward with punch.",
+    "drills.dpb_kick.title": "Dragon Punch Back / DPB",
+    "drills.dpb_kick.description": "Tap back, move to down, then finish on down-back with kick.",
+    "drills.charge_back_forward_punch.title": "Charge Back Forward",
+    "drills.charge_back_forward_punch.description": "Hold back long enough, snap to forward, then press punch.",
+    "drills.charge_down_up_kick.title": "Charge Down Up",
+    "drills.charge_down_up_kick.description": "Hold down long enough, jump to up, then press kick.",
+    "drills.double_qcf_punch.title": "Double Quarter Circle Forward",
+    "drills.double_qcf_punch.description": "Complete two quarter-circle-forward motions before the punch input.",
+    "drills.double_qcb_kick.title": "Double Quarter Circle Back",
+    "drills.double_qcb_kick.description": "Complete two quarter-circle-back motions before the kick input.",
+    "profiles.default_press_only": "Default Press-First Profile"
+  },
+  "failure_messages": {
+    "missing_step": "A required direction was missing.",
+    "extra_direction_break": "An extra direction broke the motion path.",
+    "window_expired": "The motion took too long before the attack button.",
+    "charge_insufficient": "The charge was released too early.",
+    "terminal_input_mismatch": "The finishing attack did not match the drill.",
+    "release_not_allowed": "That attempt ended on button release, but this profile grades on press.",
+    "shortcut_not_whitelisted": "That shortcut is not supported by the frozen reference ruleset."
+  },
+  "support_messages": {
+    "web": {
+      "unsupported_browser": "Use a current desktop Chromium browser or Firefox for graded web practice.",
+      "standard_mapping_required": "Web grading requires a standard-mapped gamepad."
+    },
+    "desktop": {
+      "unsupported_device": "Desktop grading requires an XInput-compatible controller."
+    },
+    "keyboard": {
+      "graded_practice_unavailable": "Keyboard input is available for navigation, not graded practice."
+    }
+  }
+}

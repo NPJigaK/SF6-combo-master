@@ -78,14 +78,22 @@
 - Create: `vitest.workspace.ts`
 - Create: `packages/core/package.json`
 - Create: `packages/core/tsconfig.json`
+- Create: `packages/core/src/index.ts`
 - Create: `packages/practice-app/package.json`
 - Create: `packages/practice-app/tsconfig.json`
+- Create: `packages/practice-app/src/index.ts`
 - Create: `apps/web/package.json`
+- Create: `apps/web/tsconfig.json`
+- Create: `apps/web/src/main.tsx`
 - Create: `apps/desktop/package.json`
+- Create: `apps/desktop/tsconfig.json`
+- Create: `apps/desktop/src/main.tsx`
 
 - [ ] **Step 1: Create the root workspace files and scripts**
 
 Define the pnpm workspace, root scripts, and shared TS or test settings for `packages/core`, `packages/practice-app`, `apps/web`, and `apps/desktop`.
+
+Current toolchain warning to record during this step: Vitest currently emits `The workspace file is deprecated and will be removed in the next major. Please, use the test.projects field in the root config file instead.` Treat this as a temporary accepted warning for the early chunks while `vitest.workspace.ts` remains in use.
 
 - [ ] **Step 2: Add empty package manifests and TS configs for each workspace**
 
@@ -126,6 +134,7 @@ Cover ruleset version IDs, motion-family scope, profile defaults, drill naming r
 
 Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
 Expected: FAIL because the shared contract files do not exist yet.
+Execution note: the filtered `@sf6cm/core` package test script must invoke Vitest with the workspace root as the effective root so `packages/core/tests/contentContracts.test.ts` resolves correctly during filtered runs.
 
 - [ ] **Step 3: Author the minimal shared contract types and content artifacts**
 
@@ -139,10 +148,56 @@ Make the shared content and types importable by tests, the shared app, and both 
 
 Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
 Expected: PASS.
+Execution note: keep the same workspace-rooted Vitest assumption here so the root-relative test path remains valid.
+
+## Pre-Chunk 2: External Comparison Baseline Freeze
+
+### Task 3: Freeze the external comparison baseline metadata before grading work
+
+**Files:**
+- Modify: `packages/core/src/content/rulesets/sf6cm-reference-ruleset.v1.json`
+- Modify: `packages/core/tests/contentContracts.test.ts`
+
+- [ ] **Step 1: Extend the contract test with failing assertions for the external comparison baseline metadata**
+
+Require the ruleset artifact to freeze these exact fields before any calibration-sensitive parser or grading work starts:
+
+- `retail platform label`
+- `exact patch/build label, or exact public build record source when official build labels are not publicly exposed`
+- `verification date`
+- `control assumptions`
+- `Button Release Input status`
+- `calibration notes` covering both input-history semantics and command-window behavior
+
+- [ ] **Step 2: Run the contract test to confirm the new baseline assertions fail**
+
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
+Expected: FAIL because the baseline metadata has not been fully pinned yet.
+Execution note: the filtered `@sf6cm/core` package test script must still run Vitest with the workspace root as the effective root so `packages/core/tests/contentContracts.test.ts` resolves correctly.
+
+- [ ] **Step 3: Capture and pin the external comparison baseline metadata in the frozen ruleset artifact**
+
+Record the approved-design baseline fields exactly and keep the product language clear that the app still grades against its own frozen reference ruleset rather than official SF6 validation.
+
+For `v1`, pin:
+
+- `retail_platform_label`: `Steam / Windows`
+- `comparison_snapshot_label`: `Street Fighter 6 retail Steam public branch`
+- `comparison_build_record_source`: `SteamDB public branch record`
+- `comparison_build_id`: `21420575`
+- `comparison_build_built_utc`: `2026-01-08T08:20:23Z`
+- `comparison_build_updated_utc`: `2026-01-30T07:00:24Z`
+- `verification_date`: `2026-03-16`
+- `button_release_input_status`: `Official toggle exists; shipped app default profile remains off`
+
+- [ ] **Step 4: Re-run the contract test after the baseline metadata is frozen**
+
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
+Expected: PASS.
 
 ## Chunk 2: Shared 60Hz Grading Core
 
-### Task 3: Build the 60Hz frame timeline and terminal-event primitives under TDD
+### Task 4: Build the 60Hz frame timeline and terminal-event primitives under TDD
 
 **Files:**
 - Create: `packages/core/src/grading/frameTimeline.ts`
@@ -173,7 +228,7 @@ Expose only the timeline, direction-resolution, and terminal-event APIs needed b
 Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/frameTimeline.test.ts`
 Expected: PASS.
 
-### Task 4: Implement grading, input-history semantics, and recent-attempt summaries under TDD
+### Task 5: Implement grading, input-history semantics, and recent-attempt summaries under TDD
 
 **Files:**
 - Create: `packages/core/src/grading/gradeAttempt.ts`
@@ -209,7 +264,7 @@ Expected: PASS for all core tests.
 
 ## Chunk 3: Shared Practice App and Thin Shells
 
-### Task 5: Build the shared practice app before platform-specific UI divergence
+### Task 6: Build the shared practice app before platform-specific UI divergence
 
 **Files:**
 - Create: `packages/practice-app/src/App.tsx`
@@ -246,7 +301,7 @@ Expected: PASS.
 Run: `pnpm typecheck`
 Expected: PASS.
 
-### Task 6: Add thin web and desktop shells, then validate parity
+### Task 7: Add thin web and desktop shells, then validate parity
 
 **Files:**
 - Create: `apps/web/vite.config.ts`

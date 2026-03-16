@@ -20,20 +20,31 @@ MVP ships with:
 - `sf6cm-reference-ruleset@1.0.0`
 - `sf6cm-input-profile@1`
 
-The shipped ruleset is app-defined and frozen. It is calibrated against, but not claimed to be equivalent to, a pinned SF6 retail comparison baseline.
+The shipped ruleset is app-defined and frozen. It is calibrated against, but not claimed to be equivalent to, a pinned SF6 retail comparison baseline. For `v1`, the approved external comparison baseline is Steam / Windows using the Street Fighter 6 retail Steam public branch.
 
 ### 2.2 External comparison baseline metadata
 
 The ruleset metadata must record:
 
 - retail platform or snapshot label
-- exact patch or build label
+- exact patch/build label, or exact public build record source when official build labels are not publicly exposed
 - verification date
 - relevant control and profile assumptions
 - Button Release Input status
 - notes describing which visible Input History semantics and command-window behaviors were calibrated
 
 This baseline exists for calibration, QA, and regression tracking. Product language must still say that the app grades against its own frozen reference ruleset.
+
+For `v1`, baseline metadata is pinned to:
+
+- retail platform label: `Steam / Windows`
+- comparison snapshot label: `Street Fighter 6 retail Steam public branch`
+- comparison build record source: `SteamDB public branch record`
+- comparison build ID: `21420575`
+- comparison build built UTC: `2026-01-08T08:20:23Z`
+- comparison build updated UTC: `2026-01-30T07:00:24Z`
+- verification date: `2026-03-16`
+- Button Release Input status: official toggle exists; shipped app default profile remains off
 
 ### 2.3 Motion-family scope for `v1`
 

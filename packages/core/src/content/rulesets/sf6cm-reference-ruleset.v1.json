@@ -1,0 +1,117 @@
+{
+  "ruleset_version": "sf6cm-reference-ruleset@1.0.0",
+  "visible_input_history_version": "sf6cm-input-history@1.0.0",
+  "baseline_metadata": {
+    "retail_platform_label": "Steam / Windows",
+    "comparison_snapshot_label": "Street Fighter 6 retail Steam public branch",
+    "comparison_build_record_source": "SteamDB public branch record",
+    "comparison_build_id": 21420575,
+    "comparison_build_built_utc": "2026-01-08T08:20:23Z",
+    "comparison_build_updated_utc": "2026-01-30T07:00:24Z",
+    "verification_date": "2026-03-16",
+    "control_assumptions": [
+      "Steam public branch retail build running on Windows",
+      "Calibration uses the shared 60Hz logical frame timeline rather than raw backend timestamps",
+      "Shipped MVP drills are graded with the default press-first input profile"
+    ],
+    "button_release_input_status": "Official toggle exists; shipped app default profile remains off",
+    "calibration_notes": [
+      "Visible Input History semantics were calibrated against the Street Fighter 6 retail Steam public branch comparison baseline.",
+      "Command-window behavior was calibrated against the Street Fighter 6 retail Steam public branch comparison baseline."
+    ]
+  },
+  "button_release_input_supported": true,
+  "failure_keys": [
+    "missing_step",
+    "extra_direction_break",
+    "window_expired",
+    "charge_insufficient",
+    "terminal_input_mismatch",
+    "release_not_allowed",
+    "shortcut_not_whitelisted"
+  ],
+  "motion_families": {
+    "QCF": {
+      "canonical_paths": [["down", "down_forward", "forward"]],
+      "shortcut_variants": [["forward", "down", "down_forward"]],
+      "representative_rejections": ["skip_diagonal", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 18,
+        "continuity_window_frames": [6, 6],
+        "terminal_link_window_frames": 6
+      }
+    },
+    "QCB": {
+      "canonical_paths": [["down", "down_back", "back"]],
+      "shortcut_variants": [["back", "down", "down_back"]],
+      "representative_rejections": ["skip_diagonal", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 18,
+        "continuity_window_frames": [6, 6],
+        "terminal_link_window_frames": 6
+      }
+    },
+    "DPF": {
+      "canonical_paths": [["forward", "down", "down_forward"]],
+      "shortcut_variants": [["forward", "down_forward", "down_forward"]],
+      "representative_rejections": ["quarter_circle_substitution", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 18,
+        "continuity_window_frames": [6, 6],
+        "terminal_link_window_frames": 5
+      }
+    },
+    "DPB": {
+      "canonical_paths": [["back", "down", "down_back"]],
+      "shortcut_variants": [["back", "down_back", "down_back"]],
+      "representative_rejections": ["quarter_circle_substitution", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 18,
+        "continuity_window_frames": [6, 6],
+        "terminal_link_window_frames": 5
+      }
+    },
+    "charge_back_forward": {
+      "canonical_paths": [["back", "forward"]],
+      "shortcut_variants": [["down_back", "forward"]],
+      "representative_rejections": ["charge_too_short", "forward_before_charge"],
+      "timing": {
+        "total_lookback_window_frames": 90,
+        "continuity_window_frames": [12],
+        "terminal_link_window_frames": 6,
+        "charge_minimum_frames": 45
+      }
+    },
+    "charge_down_up": {
+      "canonical_paths": [["down", "up"]],
+      "shortcut_variants": [["down_back", "up_forward"]],
+      "representative_rejections": ["charge_too_short", "up_before_charge"],
+      "timing": {
+        "total_lookback_window_frames": 90,
+        "continuity_window_frames": [12],
+        "terminal_link_window_frames": 6,
+        "charge_minimum_frames": 45
+      }
+    },
+    "double_QCF": {
+      "canonical_paths": [["down", "down_forward", "forward", "down", "down_forward", "forward"]],
+      "shortcut_variants": [["forward", "down", "down_forward", "down", "down_forward", "forward"]],
+      "representative_rejections": ["single_motion_only", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 30,
+        "continuity_window_frames": [6, 6, 6, 6, 6],
+        "terminal_link_window_frames": 5
+      }
+    },
+    "double_QCB": {
+      "canonical_paths": [["down", "down_back", "back", "down", "down_back", "back"]],
+      "shortcut_variants": [["back", "down", "down_back", "down", "down_back", "back"]],
+      "representative_rejections": ["single_motion_only", "reverse_finish"],
+      "timing": {
+        "total_lookback_window_frames": 30,
+        "continuity_window_frames": [6, 6, 6, 6, 6],
+        "terminal_link_window_frames": 5
+      }
+    }
+  }
+}

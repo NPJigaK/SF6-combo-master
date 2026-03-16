@@ -1,0 +1,8 @@
+{
+  "profile_id": "sf6cm-input-profile@1",
+  "label_key": "profiles.default_press_only",
+  "default_terminal_event": "press",
+  "available_terminal_events": ["press", "release"],
+  "button_release_input_enabled": false,
+  "default_notation": "icon"
+}
