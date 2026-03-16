@@ -6,13 +6,14 @@
 
 **Architecture:** Use a small TypeScript workspace with one shared core package for frozen contracts, content, grading, input-history semantics, and persistence record types; one shared React practice app for UI, i18n, and local persistence orchestration; and thin web and desktop shells that only adapt input capture, runtime packaging, and offline behavior. Preserve all product decisions from the approved design by pinning rulesets, profiles, drills, failure keys, and support boundaries in shared data and tests before any UI-heavy work.
 
-**Tech Stack:** npm workspaces, TypeScript, React, Vite, Vitest, Testing Library, Tauri, Rust
+**Tech Stack:** pnpm, TypeScript, React, Vite, Vitest, Testing Library, Tauri, Rust
 
 ---
 
 ## File Map
 
 - `package.json`: root workspace scripts for install, typecheck, test, web build, desktop build, and validation.
+- `pnpm-workspace.yaml`: workspace package discovery for `packages/*` and `apps/*`.
 - `tsconfig.base.json`: shared TypeScript compiler settings for all packages and apps.
 - `vitest.workspace.ts`: root Vitest workspace wiring.
 - `packages/core/package.json`: shared core package manifest.
@@ -72,6 +73,7 @@
 
 **Files:**
 - Create: `package.json`
+- Create: `pnpm-workspace.yaml`
 - Create: `tsconfig.base.json`
 - Create: `vitest.workspace.ts`
 - Create: `packages/core/package.json`
@@ -83,7 +85,7 @@
 
 - [ ] **Step 1: Create the root workspace files and scripts**
 
-Define npm workspaces, root scripts, and shared TS or test settings for `packages/core`, `packages/practice-app`, `apps/web`, and `apps/desktop`.
+Define the pnpm workspace, root scripts, and shared TS or test settings for `packages/core`, `packages/practice-app`, `apps/web`, and `apps/desktop`.
 
 - [ ] **Step 2: Add empty package manifests and TS configs for each workspace**
 
@@ -95,12 +97,12 @@ Create empty `index.ts` or `main.tsx` entrypoints where needed so the workspace 
 
 - [ ] **Step 4: Install the initial toolchain**
 
-Run: `npm install`
+Run: `pnpm install`
 Expected: workspace dependencies install successfully.
 
 - [ ] **Step 5: Verify the empty workspace is wired correctly**
 
-Run: `npm run typecheck`
+Run: `pnpm typecheck`
 Expected: PASS with placeholder files only.
 
 ### Task 2: Freeze the approved contracts in shared data before implementation
@@ -122,7 +124,7 @@ Cover ruleset version IDs, motion-family scope, profile defaults, drill naming r
 
 - [ ] **Step 2: Run the contract tests to capture the expected failures**
 
-Run: `npm run test --workspace @sf6cm/core -- --run packages/core/tests/contentContracts.test.ts`
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
 Expected: FAIL because the shared contract files do not exist yet.
 
 - [ ] **Step 3: Author the minimal shared contract types and content artifacts**
@@ -135,7 +137,7 @@ Make the shared content and types importable by tests, the shared app, and both 
 
 - [ ] **Step 5: Re-run the contract tests**
 
-Run: `npm run test --workspace @sf6cm/core -- --run packages/core/tests/contentContracts.test.ts`
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/contentContracts.test.ts`
 Expected: PASS.
 
 ## Chunk 2: Shared 60Hz Grading Core
@@ -155,7 +157,7 @@ Cover 60Hz quantization, bounded ring-buffer behavior, backend-resolved directio
 
 - [ ] **Step 2: Run the timeline tests to confirm failure**
 
-Run: `npm run test --workspace @sf6cm/core -- --run packages/core/tests/frameTimeline.test.ts`
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/frameTimeline.test.ts`
 Expected: FAIL because the grading primitives are not implemented.
 
 - [ ] **Step 3: Implement the minimal frame timeline and terminal-event modules**
@@ -168,7 +170,7 @@ Expose only the timeline, direction-resolution, and terminal-event APIs needed b
 
 - [ ] **Step 5: Re-run the timeline tests**
 
-Run: `npm run test --workspace @sf6cm/core -- --run packages/core/tests/frameTimeline.test.ts`
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/frameTimeline.test.ts`
 Expected: PASS.
 
 ### Task 4: Implement grading, input-history semantics, and recent-attempt summaries under TDD
@@ -193,7 +195,7 @@ Cover visible input-history semantics versioned to the same ruleset or profile b
 
 - [ ] **Step 3: Run the new core tests to verify failure**
 
-Run: `npm run test --workspace @sf6cm/core -- --run packages/core/tests/gradingCore.test.ts packages/core/tests/inputHistoryView.test.ts packages/core/tests/persistenceRecords.test.ts`
+Run: `pnpm --filter @sf6cm/core test -- --run packages/core/tests/gradingCore.test.ts packages/core/tests/inputHistoryView.test.ts packages/core/tests/persistenceRecords.test.ts`
 Expected: FAIL because the top-level grader, view projection, and summary builders are missing.
 
 - [ ] **Step 4: Implement the minimal shared grader**
@@ -202,7 +204,7 @@ Use only the frozen ruleset/profile data, family-specific tables, and determinis
 
 - [ ] **Step 5: Re-run the full core suite**
 
-Run: `npm run test --workspace @sf6cm/core`
+Run: `pnpm --filter @sf6cm/core test`
 Expected: PASS for all core tests.
 
 ## Chunk 3: Shared Practice App and Thin Shells
@@ -227,7 +229,7 @@ Cover localized drill labels, localized primary failure messaging, summary persi
 
 - [ ] **Step 2: Run the shared-app tests to confirm failure**
 
-Run: `npm run test --workspace @sf6cm/practice-app -- --run packages/practice-app/src/App.test.tsx`
+Run: `pnpm --filter @sf6cm/practice-app test -- --run packages/practice-app/src/App.test.tsx`
 Expected: FAIL because the shared app and controller do not exist yet.
 
 - [ ] **Step 3: Implement the shared React app**
@@ -236,12 +238,12 @@ Keep it shell-agnostic. Accept an injected input adapter and reuse the same `pub
 
 - [ ] **Step 4: Re-run the shared-app tests**
 
-Run: `npm run test --workspace @sf6cm/practice-app -- --run packages/practice-app/src/App.test.tsx`
+Run: `pnpm --filter @sf6cm/practice-app test -- --run packages/practice-app/src/App.test.tsx`
 Expected: PASS.
 
 - [ ] **Step 5: Typecheck the shared app against the shared core**
 
-Run: `npm run typecheck`
+Run: `pnpm typecheck`
 Expected: PASS.
 
 ### Task 6: Add thin web and desktop shells, then validate parity
@@ -270,7 +272,7 @@ Bootstrap the browser shell, Gamepad API adapter, support guard, and offline cac
 
 - [ ] **Step 2: Validate the web shell build**
 
-Run: `npm run build --workspace @sf6cm/web`
+Run: `pnpm --filter @sf6cm/web build`
 Expected: PASS with the shared app and core bundled against the supported-browser shell.
 
 - [ ] **Step 3: Add the desktop shell**
@@ -283,32 +285,32 @@ Extend the shared core fixtures so the same normalized input sequence is asserte
 
 - [ ] **Step 5: Run final MVP validation**
 
-Run: `npm run test --workspace @sf6cm/core`
+Run: `pnpm --filter @sf6cm/core test`
 Expected: PASS.
 
-Run: `npm run test --workspace @sf6cm/practice-app`
+Run: `pnpm --filter @sf6cm/practice-app test`
 Expected: PASS.
 
-Run: `npm run build --workspace @sf6cm/web`
+Run: `pnpm --filter @sf6cm/web build`
 Expected: PASS.
 
 Run: `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml`
 Expected: PASS.
 
-Run: `npm run build --workspace @sf6cm/desktop`
+Run: `pnpm --filter @sf6cm/desktop build`
 Expected: PASS.
 
 ## Validation Commands
 
 Use these root commands once the workspace scripts exist:
 
-- `npm install`
-- `npm run typecheck`
-- `npm run test --workspace @sf6cm/core`
-- `npm run test --workspace @sf6cm/practice-app`
-- `npm run build --workspace @sf6cm/web`
+- `pnpm install`
+- `pnpm typecheck`
+- `pnpm --filter @sf6cm/core test`
+- `pnpm --filter @sf6cm/practice-app test`
+- `pnpm --filter @sf6cm/web build`
 - `cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml`
-- `npm run build --workspace @sf6cm/desktop`
+- `pnpm --filter @sf6cm/desktop build`
 
 Manual MVP smoke checks after the automated suite:
 
@@ -330,4 +332,3 @@ Do not add any of the following during MVP implementation:
 - additional motion families beyond the approved core eight
 - official SF6 move names, art, audio, or copyrighted game data
 - grading leniency tiers
-
