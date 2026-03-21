@@ -18,6 +18,7 @@ export {
 export {
   PracticeSessionController,
   type PracticeInputAdapter,
+  type PracticeInputShellState,
   type PracticeSessionSnapshot,
 } from "./session/PracticeSessionController";
 export {

@@ -45,6 +45,7 @@ export function App({
 
   const allSupportIssues = ["keyboard.graded_practice_unavailable", ...supportIssues] as const;
   const latestAttempt = snapshot.recentAttempts.at(-1) ?? null;
+  const runtimeShellState = snapshot.inputShellState;
 
   return (
     <main
@@ -122,6 +123,29 @@ export function App({
           />
         </aside>
         <section style={{ display: "grid", gap: "1rem" }}>
+          {runtimeShellState.mode === "warned_non_grading" ? (
+            <section
+              aria-label="graded practice status"
+              style={{
+                padding: "1rem 1.1rem",
+                borderRadius: "1.25rem",
+                background: "#fff1f2",
+                border: "1px solid #fb7185",
+              }}
+            >
+              <p style={{ margin: 0, fontWeight: 700 }}>{ui.gradingPaused}</p>
+              {runtimeShellState.interruptionReason === "source_disconnected" ? (
+                <p style={{ margin: "0.65rem 0 0" }}>{ui.sourceDisconnectedReset}</p>
+              ) : null}
+              {runtimeShellState.issues.length > 0 ? (
+                <ul style={{ margin: "0.65rem 0 0", paddingLeft: "1rem", display: "grid", gap: "0.45rem" }}>
+                  {runtimeShellState.issues.map((issue) => (
+                    <li key={issue}>{getSupportMessage(snapshot.locale, issue)}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
+          ) : null}
           <ResultBanner locale={snapshot.locale} result={snapshot.latestResult} />
           <section
             aria-label="support notes"

@@ -23,9 +23,20 @@ import {
   type PracticeSettings,
   type PracticeStorage,
 } from "../storage";
+import type { SupportIssueKey } from "../i18n";
+
+export interface PracticeInputShellState {
+  mode: "ready" | "warned_non_grading";
+  issues: SupportIssueKey[];
+  activeSourceId: string | null;
+  interruptionReason: "source_disconnected" | null;
+}
 
 export interface PracticeInputAdapter {
   subscribe(listener: (sample: InputSample) => void): () => void;
+  subscribeStatus(listener: (status: PracticeInputShellState) => void): () => void;
+  getStatus(): PracticeInputShellState;
+  setActiveSourceLock(sourceId: string | null): void;
 }
 
 export interface PracticeSessionSnapshot {
@@ -38,6 +49,7 @@ export interface PracticeSessionSnapshot {
   inputHistory: InputHistoryView;
   recentAttempts: RecentAttemptSummaryRecord[];
   progressByDrill: Record<string, DrillProgressRecord>;
+  inputShellState: PracticeInputShellState;
 }
 
 function detectInitialLocale(): SupportedLocale {
@@ -79,6 +91,8 @@ function updateDrillProgress(
 }
 
 export class PracticeSessionController {
+  private readonly inputAdapter: PracticeInputAdapter;
+
   private readonly storage: PracticeStorage;
 
   private readonly ruleset: ReferenceRuleset;
@@ -93,9 +107,13 @@ export class PracticeSessionController {
 
   private unsubscribeFromAdapter: (() => void) | null = null;
 
+  private unsubscribeFromStatus: (() => void) | null = null;
+
   private timeline = { capacity: 256, frames: [] } as ReturnType<typeof appendInputSample> | { capacity: number; frames: [] };
 
   private latestAttemptSignature: string | null = null;
+
+  private activeAttemptSourceId: string | null = null;
 
   private snapshot: PracticeSessionSnapshot;
 
@@ -114,6 +132,7 @@ export class PracticeSessionController {
     drillCatalog?: BuiltInDrillCatalog;
     now?: () => string;
   }) {
+    this.inputAdapter = inputAdapter;
     this.storage = storage;
     this.ruleset = ruleset;
     this.inputProfile = inputProfile;
@@ -135,17 +154,24 @@ export class PracticeSessionController {
       inputHistory: createEmptyHistoryView(ruleset, inputProfile),
       recentAttempts: [...this.storage.loadRecentAttempts()],
       progressByDrill: { ...this.storage.loadProgress() },
+      inputShellState: inputAdapter.getStatus(),
     };
 
     this.persistSettings();
     this.unsubscribeFromAdapter = inputAdapter.subscribe((sample) => {
       this.handleInputSample(sample);
     });
+    this.unsubscribeFromStatus = inputAdapter.subscribeStatus((status) => {
+      this.handleInputShellState(status);
+    });
   }
 
   dispose(): void {
+    this.releaseActiveAttemptSourceLock();
     this.unsubscribeFromAdapter?.();
     this.unsubscribeFromAdapter = null;
+    this.unsubscribeFromStatus?.();
+    this.unsubscribeFromStatus = null;
     this.listeners.clear();
   }
 
@@ -191,18 +217,25 @@ export class PracticeSessionController {
       return;
     }
 
-    this.timeline = { capacity: 256, frames: [] };
+    this.resetInProgressAttempt();
     this.latestAttemptSignature = null;
     this.snapshot = {
       ...this.snapshot,
       selectedDrillId: drillId,
-      latestResult: null,
-      inputHistory: createEmptyHistoryView(this.ruleset, this.inputProfile),
     };
     this.emitChange();
   }
 
   private handleInputSample(sample: InputSample): void {
+    if (this.snapshot.inputShellState.mode !== "ready" || !this.snapshot.inputShellState.activeSourceId) {
+      return;
+    }
+
+    if (!this.activeAttemptSourceId) {
+      this.activeAttemptSourceId = this.snapshot.inputShellState.activeSourceId;
+      this.inputAdapter.setActiveSourceLock(this.activeAttemptSourceId);
+    }
+
     this.timeline = appendInputSample(this.timeline, sample);
 
     const drill = this.getSelectedDrill();
@@ -225,9 +258,11 @@ export class PracticeSessionController {
     const attemptSignature = terminalEvent
       ? [drill.drill_id, terminalEvent.frame, terminalEvent.kind, terminalEvent.button].join(":")
       : null;
+    let attemptCompleted = false;
 
     if (attemptSignature && attemptSignature !== this.latestAttemptSignature) {
       this.latestAttemptSignature = attemptSignature;
+      attemptCompleted = true;
 
       const timestamp = this.now();
       const record = buildRecentAttemptSummaryRecord({
@@ -253,7 +288,36 @@ export class PracticeSessionController {
       progressByDrill,
     };
 
+    if (attemptCompleted) {
+      this.releaseActiveAttemptSourceLock();
+    }
+
     this.emitChange();
+  }
+
+  private handleInputShellState(status: PracticeInputShellState): void {
+    const previousState = this.snapshot.inputShellState;
+    const shouldResetAttempt = status.mode === "warned_non_grading" && this.activeAttemptSourceId !== null;
+
+    if (shouldResetAttempt) {
+      this.resetInProgressAttempt();
+    }
+
+    this.snapshot = {
+      ...this.snapshot,
+      inputShellState: status,
+    };
+
+    if (
+      shouldResetAttempt ||
+      previousState.mode !== status.mode ||
+      previousState.activeSourceId !== status.activeSourceId ||
+      previousState.interruptionReason !== status.interruptionReason ||
+      previousState.issues.length !== status.issues.length ||
+      previousState.issues.some((issue, index) => issue !== status.issues[index])
+    ) {
+      this.emitChange();
+    }
   }
 
   private getSelectedDrill(): BuiltInDrill {
@@ -274,6 +338,25 @@ export class PracticeSessionController {
     };
 
     this.storage.saveSettings(settings);
+  }
+
+  private resetInProgressAttempt(): void {
+    this.timeline = { capacity: 256, frames: [] };
+    this.releaseActiveAttemptSourceLock();
+    this.snapshot = {
+      ...this.snapshot,
+      latestResult: null,
+      inputHistory: createEmptyHistoryView(this.ruleset, this.inputProfile),
+    };
+  }
+
+  private releaseActiveAttemptSourceLock(): void {
+    if (!this.activeAttemptSourceId) {
+      return;
+    }
+
+    this.activeAttemptSourceId = null;
+    this.inputAdapter.setActiveSourceLock(null);
   }
 
   private emitChange(): void {

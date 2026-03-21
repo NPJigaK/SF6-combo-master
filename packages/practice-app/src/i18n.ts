@@ -27,6 +27,8 @@ interface UiCopy {
   noAttemptsYet: string;
   notationIcon: string;
   notationNumpad: string;
+  gradingPaused: string;
+  sourceDisconnectedReset: string;
 }
 
 const uiCopy: Record<SupportedLocale, UiCopy> = {
@@ -49,6 +51,8 @@ const uiCopy: Record<SupportedLocale, UiCopy> = {
     noAttemptsYet: "No graded attempts yet.",
     notationIcon: "Icon / motion tokens",
     notationNumpad: "Numpad",
+    gradingPaused: "Graded practice is paused.",
+    sourceDisconnectedReset: "The current graded attempt was cleared because the active source disconnected.",
   },
   ja: {
     appTitle: "SF6 Combo Master",
@@ -69,6 +73,8 @@ const uiCopy: Record<SupportedLocale, UiCopy> = {
     noAttemptsYet: "まだ採点済みの入力はありません。",
     notationIcon: "アイコン / モーション表記",
     notationNumpad: "テンキー",
+    gradingPaused: "採点付き練習は一時停止中です。",
+    sourceDisconnectedReset: "アクティブな入力元が切断されたため、進行中の採点をクリアしました。",
   },
 };
 

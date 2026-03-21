@@ -258,6 +258,57 @@ must produce the same:
 
 Platform differences are allowed only in packaging, installation, offline behavior, controller discovery, and environment warnings. Unsupported environments must warn or block graded practice rather than silently changing grading behavior.
 
+### 5.1.1 Canonical input-capture contract
+
+The shared grading core remains authoritative only from the normalized 60Hz logical frame timeline onward. MVP also fixes the shell-side capture contract that produces that timeline.
+
+For officially supported compatibility paths:
+
+- web uses standard-mapped gamepads only
+- desktop uses XInput-compatible controllers only
+
+The graded directional source for a supported device includes both:
+
+- digital directional input provided by the supported compatibility path
+- primary analog directional input provided by the supported compatibility path
+
+These are two directional surfaces of the same device, not separate graded sources.
+
+Directional merge rules:
+
+- digital and analog directional contributions must be merged into one directional state per device
+- neither digital nor analog has implicit priority
+- opposing directions may survive the merge and are then resolved by the shared core's existing neutralization rules
+- analog directional input contributes only when the absolute value of the relevant normalized axis is at least `0.5`
+
+Active-source rules:
+
+- at any moment there is at most one active graded source
+- the active graded source is the last supported device that produced a graded-capable input change
+- a graded-capable input change is either a change in the device's merged directional state or a change in its semantic attack-button state
+- repeated polls with no canonical state change must not switch the active graded source
+- once a graded attempt has started, the active graded source is locked for that attempt
+- a different supported device may become the active graded source only after the current attempt ends, resets, or the active source disconnects
+- inputs from multiple devices must never be merged into the same graded attempt
+
+Unsupported-path rules:
+
+- unsupported paths must enter a warned non-grading state instead of silently grading or silently dropping graded practice
+- the surrounding UI remains navigable, but no graded attempt may start or continue until a supported graded source becomes active
+- unsupported-path observations must not be converted into graded attempts
+
+Disconnect rules:
+
+- if the active graded source disconnects during an in-progress graded attempt, that attempt is void
+- a void attempt must be reset and cleared from in-progress state
+- a void attempt must not be recorded as pass or fail
+
+Scope boundary:
+
+- this contract fixes directional capture, active-source selection, and warned non-grading behavior
+- it does not standardize physical attack-button layout
+- the shared grading boundary stays at semantic button tokens in `InputSample.buttons`
+
 ### 5.2 Web support contract
 
 Officially supported for MVP:
@@ -273,6 +324,8 @@ Not officially supported for MVP:
 
 Web practice must not depend on a server once the app has loaded.
 
+For supported standard-mapped gamepads, graded directional input must accept both digital directional input and primary analog directional input under the canonical input-capture contract above.
+
 ### 5.3 Desktop support contract
 
 Officially supported for MVP:
@@ -286,6 +339,8 @@ Not officially supported for MVP:
 - raw-input or DirectInput support promises
 
 Desktop must work fully offline after install.
+
+For supported XInput-compatible controllers, graded directional input must accept both digital directional input and primary analog directional input under the canonical input-capture contract above.
 
 ### 5.4 Keyboard boundary
 
@@ -374,6 +429,7 @@ Automated coverage must include:
 - Button Release Input policy tests
 - deterministic primary-failure selection tests
 - parity tests showing identical grading from the same normalized frame timeline on web and desktop
+- shell conformance tests showing supported capture paths produce the canonical graded-source contract on both web and desktop
 - Input History Display conformance tests tied to the pinned baseline semantics
 - localization tests proving locale does not affect grading or persistence meaning
 - persistence schema and migration tests

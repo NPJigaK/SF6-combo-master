@@ -149,14 +149,35 @@ describe("grading core", () => {
 
   it("keeps browser and desktop shells aligned by grading the same normalized timeline", () => {
     const browserSnapshots: BrowserGamepadSnapshot[] = [
-      { timestampMs: 0, mapping: "standard", axes: [0, 1], buttons: [] },
-      { timestampMs: 16.7, mapping: "standard", axes: [1, 1], buttons: [] },
-      { timestampMs: 33.4, mapping: "standard", axes: [1, 0], buttons: ["LP"] },
+      {
+        sourceId: "browser:0",
+        timestampMs: 0,
+        mapping: "standard",
+        digitalDirection: { up: false, down: true, back: false, forward: false },
+        analogDirection: { up: false, down: false, back: false, forward: false },
+        buttons: [],
+      },
+      {
+        sourceId: "browser:0",
+        timestampMs: 16.7,
+        mapping: "standard",
+        digitalDirection: { up: false, down: true, back: false, forward: true },
+        analogDirection: { up: false, down: false, back: false, forward: false },
+        buttons: [],
+      },
+      {
+        sourceId: "browser:0",
+        timestampMs: 33.4,
+        mapping: "standard",
+        digitalDirection: { up: false, down: false, back: false, forward: true },
+        analogDirection: { up: false, down: false, back: false, forward: false },
+        buttons: ["LP"],
+      },
     ];
     const desktopEvents: DesktopInputBridgeEvent[] = [
-      { timestampMs: 0, direction: { down: true }, buttons: [] },
-      { timestampMs: 16.7, direction: { down: true, forward: true }, buttons: [] },
-      { timestampMs: 33.4, direction: { forward: true }, buttons: ["LP"] },
+      { sourceId: "xinput:0", timestampMs: 0, direction: { down: true }, buttons: [] },
+      { sourceId: "xinput:0", timestampMs: 16.7, direction: { down: true, forward: true }, buttons: [] },
+      { sourceId: "xinput:0", timestampMs: 33.4, direction: { forward: true }, buttons: ["LP"] },
     ];
 
     const browserSamples = browserSnapshots.map((snapshot) => normalizeBrowserGamepadSample(snapshot));
