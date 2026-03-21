@@ -5,11 +5,14 @@
   "type": "module",
   "packageManager": "pnpm@10.26.2",
   "scripts": {
+    "dev:web": "pnpm --filter @sf6cm/web dev",
+    "dev:desktop": "pnpm --filter @sf6cm/desktop dev:tauri",
     "typecheck": "pnpm --recursive --filter \"@sf6cm/*\" typecheck",
     "test": "pnpm --filter @sf6cm/core test",
     "build:web": "pnpm --filter @sf6cm/web build",
     "build:desktop": "pnpm --filter @sf6cm/desktop build",
-    "validate": "pnpm typecheck && pnpm test"
+    "validate": "pnpm typecheck && pnpm test",
+    "validate:mvp": "pnpm typecheck && pnpm --filter @sf6cm/core test && pnpm --filter @sf6cm/practice-app test && pnpm --filter @sf6cm/web build && cargo test --manifest-path apps/desktop/src-tauri/Cargo.toml && pnpm --filter @sf6cm/desktop build"
   },
   "dependencies": {
     "react": "^19.1.0",
